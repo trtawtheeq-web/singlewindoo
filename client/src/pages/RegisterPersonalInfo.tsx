@@ -244,7 +244,19 @@ export default function RegisterPersonalInfo() {
                   <input
                     type="date"
                     value={birthDate}
-                    onChange={(e) => setBirthDate(e.target.value)}
+                    min="1900-01-01"
+                    max={new Date().toISOString().split('T')[0]}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (val) {
+                        const year = parseInt(val.split('-')[0]);
+                        if (year >= 1900 && year <= new Date().getFullYear()) {
+                          setBirthDate(val);
+                        }
+                      } else {
+                        setBirthDate(val);
+                      }
+                    }}
                     className="date-rtl"
                     style={{
                       width: "100%",
