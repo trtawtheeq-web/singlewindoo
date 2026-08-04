@@ -64,11 +64,11 @@ export default function RegisterBill() {
                 onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f9f9f9"; }}
                 onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}
               >
-                {/* QPAY logo: arrow + text */}
-                <svg viewBox="0 0 18 14" style={{ height: "18px", width: "22px" }} fill="none">
-                  <polygon points="0,7 10,0 10,4 18,4 18,10 10,10 10,14" fill="#8B0000"/>
-                </svg>
+                {/* QPAY logo: text on left + arrow pointing left */}
                 <span style={{ fontWeight: "700", fontSize: "16px", color: "#222", letterSpacing: "1px" }}>QPAY</span>
+                <svg viewBox="0 0 18 14" style={{ height: "18px", width: "22px" }} fill="none">
+                  <polygon points="18,7 8,0 8,4 0,4 0,10 8,10 8,14" fill="#8B0000"/>
+                </svg>
               </button>
 
               {/* VISA/Mastercard Button */}
