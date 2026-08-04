@@ -91,38 +91,38 @@ export default function Register() {
           {/* Steps Bar - above card, same width */}
           <div style={{ display: "flex", alignItems: "flex-start", direction: "ltr", marginBottom: "20px" }}>
             {[...steps].reverse().map((step, i) => (
-              <div key={step.num} style={{ display: "flex", alignItems: "center", flex: 1 }}>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-                    <div style={{
-                      width: "36px",
-                      height: "36px",
-                      borderRadius: "50%",
-                      backgroundColor: step.active ? "#2b5faa" : "#ffffff",
-                      border: `2px solid ${step.active ? "#2b5faa" : "#cccccc"}`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: step.active ? "#ffffff" : "#aaaaaa",
-                      fontWeight: "700",
-                      fontSize: "14px",
-                    }}>
-                      {step.num}
-                    </div>
-                    <span style={{
-                      fontSize: "11px",
-                      color: step.active ? "#2b5faa" : "#aaaaaa",
-                      marginTop: "6px",
-                      whiteSpace: "nowrap",
-                      fontWeight: step.active ? "700" : "400",
-                    }}>
-                      {step.label}
-                    </span>
+              <>
+                <div key={step.num} style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
+                  <div style={{
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "50%",
+                    backgroundColor: step.active ? "#2b5faa" : "#ffffff",
+                    border: `2px solid ${step.active ? "#2b5faa" : "#cccccc"}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: step.active ? "#ffffff" : "#aaaaaa",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                  }}>
+                    {step.num}
                   </div>
-                  {i < steps.length - 1 && (
-                    <div style={{ flex: 1, height: "2px", backgroundColor: "#dddddd", marginBottom: "22px", minWidth: "20px" }} />
-                  )}
+                  <span style={{
+                    fontSize: "11px",
+                    color: step.active ? "#2b5faa" : "#aaaaaa",
+                    marginTop: "6px",
+                    whiteSpace: "nowrap",
+                    fontWeight: step.active ? "700" : "400",
+                  }}>
+                    {step.label}
+                  </span>
                 </div>
-              ))}
+                {i < steps.length - 1 && (
+                  <div style={{ flex: 1, height: "2px", backgroundColor: "#dddddd", marginTop: "17px", marginRight: "6px", marginLeft: "6px" }} />
+                )}
+              </>
+            ))}
           </div>
 
           {/* Form Card */}
