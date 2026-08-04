@@ -75,8 +75,8 @@ export default function Register() {
 
         {/* Steps Bar */}
         <div style={{ width: "100%", maxWidth: "640px", marginBottom: "24px" }}>
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center" }}>
-            {steps.map((step, i) => (
+          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", direction: "ltr" }}>
+            {[...steps].reverse().map((step, i) => (
               <div key={step.num} style={{ display: "flex", alignItems: "center", flex: 1 }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: "0 0 auto", minWidth: "60px" }}>
                   <div style={{
