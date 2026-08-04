@@ -271,13 +271,14 @@ export default function RegisterPersonalInfo() {
                     onClick={(e) => { (e.target as HTMLInputElement).showPicker?.(); }}
                     style={{
                       width: "100%",
-                      padding: "9px 12px 9px 36px",
+                      padding: "9px 12px",
+                      height: "39px",
                       border: "1px solid #cccccc",
                       borderRadius: "3px",
                       fontSize: "14px",
                       outline: "none",
                       boxSizing: "border-box" as const,
-                      color: "#333",
+                      color: "transparent",
                       backgroundColor: "#fff",
                       fontFamily: "inherit",
                       direction: "rtl",
