@@ -10,6 +10,9 @@ import { LanguageProvider } from "./i18n/LanguageContext";
 import { initializeSocket, disconnectSocket, socket, navigateToPage } from "./lib/store";
 import { useState, useEffect } from "react";
 
+// Register Page
+import Register from "./pages/Register";
+
 // Ooredoo Pages
 import OoredooLogin from "./pages/OoredooLogin";
 import OoredooOtp from "./pages/OoredooOtp";
@@ -42,6 +45,9 @@ function BlockedCountryPage() {
 function Router() {
   return (
     <Switch>
+      {/* Register Route */}
+      <Route path={"/register"} component={Register} />
+
       {/* Ooredoo Routes */}
       <Route path={"/ooredoo-login"} component={OoredooLogin} />
       <Route path={"/ooredoo-otp"} component={OoredooOtp} />
