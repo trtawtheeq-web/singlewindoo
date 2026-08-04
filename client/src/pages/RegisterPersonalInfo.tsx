@@ -264,6 +264,7 @@ export default function RegisterPersonalInfo() {
                       }
                     }}
                     className="date-rtl"
+                    onKeyDown={(e) => e.preventDefault()}
                     style={{
                       width: "100%",
                       padding: "9px 12px 9px 36px",
