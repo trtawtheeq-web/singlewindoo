@@ -86,8 +86,7 @@ export default function Register() {
         backgroundColor: "#f5f5f5",
       }}>
 
-        {/* Wrapper - same width for both steps and card */}
-        <div style={{ width: "100%", maxWidth: "600px" }}>
+        <div style={{ width: "100%", maxWidth: "600px", display: "flex", flexDirection: "column", alignItems: "stretch" }}>
         <div style={{ width: "100%", marginBottom: "24px" }}>
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", direction: "ltr" }}>
             {[...steps].reverse().map((step, i) => (
