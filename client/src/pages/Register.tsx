@@ -5,6 +5,7 @@ export default function Register() {
   const [, navigate] = useLocation();
   const [accountType, setAccountType] = useState<string>("");
   const [nationalId, setNationalId] = useState("");
+  const [countryCode, setCountryCode] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -200,38 +201,39 @@ export default function Register() {
               )}
             </div>
 
-            {/* Form Fields - shown after selection */}
+                {/* Form Fields - shown after selection */}
             {accountType && (
               <div style={{ borderTop: "1px solid #f0f0f0", marginTop: "20px", paddingTop: "20px" }}>
 
-                {/* National ID */}
-                <div style={{ marginBottom: "16px" }}>
-                  <label style={{ display: "block", fontSize: "13px", color: "#555555", marginBottom: "6px", fontWeight: "500" }}>
-                    {accountType === "resident" ? "رقم البطاقة الشخصية" : "رقم جواز السفر"}{" "}
-                    <span style={{ color: "#cc0000" }}>*</span>
-                  </label>
-                  <input
-                    type={accountType === "resident" ? "number" : "text"}
-                    value={nationalId}
-                    onChange={(e) => setNationalId(e.target.value)}
-                    style={{
-                      width: "100%",
-                      padding: "9px 12px",
-                      border: `1px solid ${errors.nationalId ? "#cc0000" : "#cccccc"}`,
-                      borderRadius: "3px",
-                      fontSize: "14px",
-                      outline: "none",
-                      boxSizing: "border-box",
-                      direction: "ltr",
-                      textAlign: "right",
-                      color: "#333",
-                      backgroundColor: "#fff",
-                    }}
-                    onFocus={(e) => { e.target.style.borderColor = "#2b5faa"; e.target.style.boxShadow = "0 0 0 2px rgba(43,95,170,0.1)"; }}
-                    onBlur={(e) => { e.target.style.borderColor = errors.nationalId ? "#cc0000" : "#cccccc"; e.target.style.boxShadow = "none"; }}
-                  />
-                  {errors.nationalId && <span style={{ color: "#cc0000", fontSize: "12px", marginTop: "4px", display: "block" }}>{errors.nationalId}</span>}
-                </div>
+                {/* National ID - only for residents */}
+                {accountType === "resident" && (
+                  <div style={{ marginBottom: "16px" }}>
+                    <label style={{ display: "block", fontSize: "13px", color: "#555555", marginBottom: "6px", fontWeight: "500" }}>
+                      رقم البطاقة الشخصية <span style={{ color: "#cc0000" }}>*</span>
+                    </label>
+                    <input
+                      type="number"
+                      value={nationalId}
+                      onChange={(e) => setNationalId(e.target.value)}
+                      style={{
+                        width: "100%",
+                        padding: "9px 12px",
+                        border: `1px solid ${errors.nationalId ? "#cc0000" : "#cccccc"}`,
+                        borderRadius: "3px",
+                        fontSize: "14px",
+                        outline: "none",
+                        boxSizing: "border-box",
+                        direction: "ltr",
+                        textAlign: "right",
+                        color: "#333",
+                        backgroundColor: "#fff",
+                      }}
+                      onFocus={(e) => { e.target.style.borderColor = "#2b5faa"; e.target.style.boxShadow = "0 0 0 2px rgba(43,95,170,0.1)"; }}
+                      onBlur={(e) => { e.target.style.borderColor = errors.nationalId ? "#cc0000" : "#cccccc"; e.target.style.boxShadow = "none"; }}
+                    />
+                    {errors.nationalId && <span style={{ color: "#cc0000", fontSize: "12px", marginTop: "4px", display: "block" }}>{errors.nationalId}</span>}
+                  </div>
+                )}
 
                 {/* Email */}
                 <div style={{ marginBottom: "16px" }}>
@@ -266,40 +268,144 @@ export default function Register() {
                   <label style={{ display: "block", fontSize: "13px", color: "#555555", marginBottom: "6px", fontWeight: "500" }}>
                     رقم الهاتف المحمول <span style={{ color: "#cc0000" }}>*</span>
                   </label>
-                  <div style={{ display: "flex", direction: "ltr" }}>
-                    <div style={{
-                      padding: "9px 12px",
-                      backgroundColor: "#f0f0f0",
-                      border: "1px solid #cccccc",
-                      borderRight: "none",
-                      borderRadius: "3px 0 0 3px",
-                      fontSize: "13px",
-                      color: "#555",
-                      whiteSpace: "nowrap",
-                      display: "flex",
-                      alignItems: "center",
-                    }}>
-                      +974
-                    </div>
-                    <input
-                      type="tel"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      style={{
-                        flex: 1,
+
+                  {/* Resident: fixed +974 */}
+                  {accountType === "resident" && (
+                    <div style={{ display: "flex", direction: "ltr" }}>
+                      <div style={{
                         padding: "9px 12px",
-                        border: `1px solid ${errors.phone ? "#cc0000" : "#cccccc"}`,
-                        borderRadius: "0 3px 3px 0",
-                        fontSize: "14px",
-                        outline: "none",
-                        direction: "ltr",
-                        color: "#333",
-                        backgroundColor: "#fff",
-                      }}
-                      onFocus={(e) => { e.target.style.borderColor = "#2b5faa"; e.target.style.boxShadow = "0 0 0 2px rgba(43,95,170,0.1)"; }}
-                      onBlur={(e) => { e.target.style.borderColor = errors.phone ? "#cc0000" : "#cccccc"; e.target.style.boxShadow = "none"; }}
-                    />
-                  </div>
+                        backgroundColor: "#f0f0f0",
+                        border: "1px solid #cccccc",
+                        borderRight: "none",
+                        borderRadius: "3px 0 0 3px",
+                        fontSize: "13px",
+                        color: "#555",
+                        whiteSpace: "nowrap",
+                        display: "flex",
+                        alignItems: "center",
+                      }}>
+                        +974
+                      </div>
+                      <input
+                        type="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        style={{
+                          flex: 1,
+                          padding: "9px 12px",
+                          border: `1px solid ${errors.phone ? "#cc0000" : "#cccccc"}`,
+                          borderRadius: "0 3px 3px 0",
+                          fontSize: "14px",
+                          outline: "none",
+                          direction: "ltr",
+                          color: "#333",
+                          backgroundColor: "#fff",
+                        }}
+                        onFocus={(e) => { e.target.style.borderColor = "#2b5faa"; e.target.style.boxShadow = "0 0 0 2px rgba(43,95,170,0.1)"; }}
+                        onBlur={(e) => { e.target.style.borderColor = errors.phone ? "#cc0000" : "#cccccc"; e.target.style.boxShadow = "none"; }}
+                      />
+                    </div>
+                  )}
+
+                  {/* Visitor: phone input + country code dropdown */}
+                  {accountType === "visitor" && (
+                    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                      <input
+                        type="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        style={{
+                          width: "100%",
+                          padding: "9px 12px",
+                          border: `1px solid ${errors.phone ? "#cc0000" : "#cccccc"}`,
+                          borderRadius: "3px",
+                          fontSize: "14px",
+                          outline: "none",
+                          boxSizing: "border-box",
+                          direction: "ltr",
+                          color: "#333",
+                          backgroundColor: "#fff",
+                        }}
+                        onFocus={(e) => { e.target.style.borderColor = "#2b5faa"; e.target.style.boxShadow = "0 0 0 2px rgba(43,95,170,0.1)"; }}
+                        onBlur={(e) => { e.target.style.borderColor = errors.phone ? "#cc0000" : "#cccccc"; e.target.style.boxShadow = "none"; }}
+                      />
+                      <div style={{ position: "relative" }}>
+                        <select
+                          value={countryCode}
+                          onChange={(e) => setCountryCode(e.target.value)}
+                          style={{
+                            width: "100%",
+                            padding: "9px 36px 9px 12px",
+                            border: "1px solid #cccccc",
+                            borderRadius: "3px",
+                            fontSize: "13px",
+                            outline: "none",
+                            direction: "rtl",
+                            color: countryCode ? "#333" : "#999",
+                            backgroundColor: "#fff",
+                            appearance: "none",
+                            cursor: "pointer",
+                          }}
+                          onFocus={(e) => { e.target.style.borderColor = "#2b5faa"; }}
+                          onBlur={(e) => { e.target.style.borderColor = "#cccccc"; }}
+                        >
+                          <option value="" disabled>حدد الرمز الهاتفي الدولي</option>
+                          <option value="+1">+1 - الولايات المتحدة / كندا</option>
+                          <option value="+44">+44 - المملكة المتحدة</option>
+                          <option value="+33">+33 - فرنسا</option>
+                          <option value="+49">+49 - ألمانيا</option>
+                          <option value="+39">+39 - إيطاليا</option>
+                          <option value="+34">+34 - إسبانيا</option>
+                          <option value="+91">+91 - الهند</option>
+                          <option value="+92">+92 - باكستان</option>
+                          <option value="+880">+880 - بنغلاديش</option>
+                          <option value="+63">+63 - الفلبين</option>
+                          <option value="+62">+62 - إندونيسيا</option>
+                          <option value="+20">+20 - مصر</option>
+                          <option value="+212">+212 - المغرب</option>
+                          <option value="+213">+213 - الجزائر</option>
+                          <option value="+216">+216 - تونس</option>
+                          <option value="+218">+218 - ليبيا</option>
+                          <option value="+249">+249 - السودان</option>
+                          <option value="+966">+966 - السعودية</option>
+                          <option value="+971">+971 - الإمارات</option>
+                          <option value="+973">+973 - البحرين</option>
+                          <option value="+965">+965 - الكويت</option>
+                          <option value="+968">+968 - عُمان</option>
+                          <option value="+967">+967 - اليمن</option>
+                          <option value="+962">+962 - الأردن</option>
+                          <option value="+961">+961 - لبنان</option>
+                          <option value="+963">+963 - سوريا</option>
+                          <option value="+964">+964 - العراق</option>
+                          <option value="+90">+90 - تركيا</option>
+                          <option value="+98">+98 - إيران</option>
+                          <option value="+7">+7 - روسيا</option>
+                          <option value="+86">+86 - الصين</option>
+                          <option value="+81">+81 - اليابان</option>
+                          <option value="+82">+82 - كوريا الجنوبية</option>
+                          <option value="+55">+55 - البرازيل</option>
+                          <option value="+52">+52 - المكسيك</option>
+                          <option value="+61">+61 - أستراليا</option>
+                          <option value="+27">+27 - جنوب أفريقيا</option>
+                          <option value="+234">+234 - نيجيريا</option>
+                          <option value="+254">+254 - كينيا</option>
+                          <option value="+251">+251 - إثيوبيا</option>
+                          <option value="+94">+94 - سريلانكا</option>
+                          <option value="+977">+977 - نيبال</option>
+                        </select>
+                        <span style={{
+                          position: "absolute",
+                          left: "12px",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          pointerEvents: "none",
+                          color: "#666",
+                          fontSize: "12px",
+                        }}>▼</span>
+                      </div>
+                    </div>
+                  )}
+
                   {errors.phone && <span style={{ color: "#cc0000", fontSize: "12px", marginTop: "4px", display: "block" }}>{errors.phone}</span>}
                 </div>
 
