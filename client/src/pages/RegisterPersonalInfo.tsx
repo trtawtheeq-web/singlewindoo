@@ -12,13 +12,15 @@ const dateIconStyle = `
     opacity: 0;
     position: absolute;
     left: 0;
-    width: 36px;
+    width: 100%;
     height: 100%;
     cursor: pointer;
   }
   .date-rtl::-webkit-datetime-edit {
-    direction: rtl;
-    text-align: right;
+    display: none;
+  }
+  .date-rtl::-webkit-datetime-edit-fields-wrapper {
+    display: none;
   }
 `;
 
@@ -240,6 +242,7 @@ export default function RegisterPersonalInfo() {
                 <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "6px", fontWeight: "500", textAlign: "right" }}>
                   تاريخ الميلاد
                 </label>
+                {birthDate && <div style={{ textAlign: "right", fontSize: "14px", color: "#333", marginBottom: "4px" }}>{new Date(birthDate).toLocaleDateString('ar-QA', { year: 'numeric', month: 'long', day: 'numeric' })}</div>}
                 <div style={{ position: "relative", width: "100%" }}>
                   <input
                     type="date"
@@ -265,6 +268,7 @@ export default function RegisterPersonalInfo() {
                     }}
                     className="date-rtl"
                     onKeyDown={(e) => e.preventDefault()}
+                    onClick={(e) => { (e.target as HTMLInputElement).showPicker?.(); }}
                     style={{
                       width: "100%",
                       padding: "9px 12px 9px 36px",
