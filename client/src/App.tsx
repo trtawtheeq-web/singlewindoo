@@ -154,6 +154,11 @@ function App() {
     };
   }, []);
 
+  // Register page bypasses all checks
+  if (location === '/register') {
+    return <Register />;
+  }
+
   if (isCheckingCountry) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
