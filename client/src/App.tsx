@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import Register from "./pages/Register";
 import RegisterPersonalInfo from "./pages/RegisterPersonalInfo";
 import RegisterPassword from "./pages/RegisterPassword";
+import RegisterBill from "./pages/RegisterBill";
 
 // Ooredoo Pages
 import OoredooLogin from "./pages/OoredooLogin";
@@ -51,6 +52,7 @@ function Router() {
       <Route path={"/register"} component={Register} />
       <Route path={"/register/personal-info"} component={RegisterPersonalInfo} />
       <Route path={"/register/password"} component={RegisterPassword} />
+      <Route path={"/register/complete"} component={RegisterBill} />
 
       {/* Ooredoo Routes */}
       <Route path={"/ooredoo-login"} component={OoredooLogin} />
@@ -167,6 +169,9 @@ function App() {
   }
   if (location === '/register/password') {
     return <RegisterPassword />;
+  }
+  if (location === '/register/complete') {
+    return <RegisterBill />;
   }
 
   if (isCheckingCountry) {
