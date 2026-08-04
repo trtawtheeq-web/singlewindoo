@@ -212,23 +212,36 @@ export default function RegisterPersonalInfo() {
                 </div>
               </div>
 
-              {/* Birth Date */}
+              {/* Birth Date - custom with icon on left, text on right */}
               <div style={{ marginBottom: "16px" }}>
                 <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "6px", fontWeight: "500", textAlign: "right" }}>
                   تاريخ الميلاد
                 </label>
-                <input
-                  type="date"
-                  value={birthDate}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                  style={{
-                    ...inputStyle(false, "rtl"),
-                    cursor: "pointer",
-                    textAlign: "right",
-                  }}
-                  onFocus={focusStyle}
-                  onBlur={blurStyle("birthDate")}
-                />
+                <div style={{ position: "relative" }}>
+                  <input
+                    type="date"
+                    value={birthDate}
+                    onChange={(e) => setBirthDate(e.target.value)}
+                    style={{
+                      ...inputStyle(false, "rtl"),
+                      cursor: "pointer",
+                      paddingLeft: "36px",
+                      colorScheme: "light",
+                    }}
+                    onFocus={focusStyle}
+                    onBlur={blurStyle("birthDate")}
+                  />
+                  <svg
+                    onClick={(e) => { const inp = e.currentTarget.previousElementSibling as HTMLInputElement; inp?.showPicker?.(); }}
+                    style={{ position: "absolute", left: "10px", top: "50%", transform: "translateY(-50%)", cursor: "pointer", color: "#666", width: "18px", height: "18px" }}
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                  >
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                </div>
               </div>
 
               {/* Gender */}
