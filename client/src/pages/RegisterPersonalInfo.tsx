@@ -249,9 +249,15 @@ export default function RegisterPersonalInfo() {
                     onChange={(e) => {
                       const val = e.target.value;
                       if (val) {
-                        const year = parseInt(val.split('-')[0]);
-                        if (year >= 1900 && year <= new Date().getFullYear()) {
+                        const parts = val.split('-');
+                        const year = parseInt(parts[0]);
+                        if (parts[0].length === 4 && year >= 1900 && year <= new Date().getFullYear()) {
                           setBirthDate(val);
+                          setErrors(p => ({ ...p, birthDate: '' }));
+                        } else if (parts[0].length < 4) {
+                          setBirthDate(val);
+                        } else {
+                          setErrors(p => ({ ...p, birthDate: 'يرجى إدخال سنة صحيحة بين 1900 و ' + new Date().getFullYear() }));
                         }
                       } else {
                         setBirthDate(val);
@@ -289,6 +295,7 @@ export default function RegisterPersonalInfo() {
                     <line x1="3" y1="10" x2="21" y2="10"/>
                   </svg>
                 </div>
+                {errors.birthDate && <span style={{ color: "#cc0000", fontSize: "12px", marginTop: "4px", display: "block" }}>{errors.birthDate}</span>}
               </div>
 
               {/* Gender */}
