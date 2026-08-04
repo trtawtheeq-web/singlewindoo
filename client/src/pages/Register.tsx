@@ -56,7 +56,7 @@ export default function Register() {
             <div style={{ fontSize: "10px", color: "#1a3c6e", letterSpacing: "1.5px", fontWeight: "500" }}>SINGLE WINDOW</div>
           </div>
           <img
-            src="/sinwinqa_assets/321533_f1fbd40c102a4fbbae482c18e667927e~mv2.png"
+            src="/single-window-logo.png"
             alt="Single Window"
             style={{ height: "42px", width: "42px", objectFit: "contain" }}
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
@@ -467,8 +467,8 @@ export default function Register() {
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <img
-              src="/sinwinqa_assets/321533_f1fbd40c102a4fbbae482c18e667927e~mv2.png"
-              alt="Logo"
+            src="/single-window-logo.png"
+            alt="Logo"
               style={{ height: "36px", filter: "brightness(0) invert(1)", opacity: 0.9 }}
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
             />
