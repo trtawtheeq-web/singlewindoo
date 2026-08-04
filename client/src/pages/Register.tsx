@@ -86,22 +86,12 @@ export default function Register() {
         backgroundColor: "#f5f5f5",
       }}>
 
-        {/* Content Row: Steps (right) + Form Card (left) */}
-        <div style={{
-          width: "100%",
-          maxWidth: "860px",
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "flex-start",
-          gap: "32px",
-          direction: "rtl",
-        }}>
-
-          {/* Steps Bar - vertical on the right */}
-          <div style={{ flexShrink: 0, paddingTop: "8px" }}>
-            {steps.map((step, i) => (
-              <div key={step.num} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        {/* Steps Bar - horizontal above form */}
+        <div style={{ width: "100%", maxWidth: "640px", marginBottom: "24px" }}>
+          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", direction: "ltr" }}>
+            {[...steps].reverse().map((step, i) => (
+              <div key={step.num} style={{ display: "flex", alignItems: "center", flex: 1 }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: "0 0 auto", minWidth: "60px" }}>
                   <div style={{
                     width: "36px",
                     height: "36px",
@@ -114,33 +104,29 @@ export default function Register() {
                     color: step.active ? "#ffffff" : "#aaaaaa",
                     fontWeight: "700",
                     fontSize: "14px",
-                    flexShrink: 0,
                   }}>
                     {step.num}
                   </div>
                   <span style={{
-                    fontSize: "12px",
+                    fontSize: "11px",
                     color: step.active ? "#2b5faa" : "#aaaaaa",
-                    fontWeight: step.active ? "700" : "400",
+                    marginTop: "6px",
                     whiteSpace: "nowrap",
+                    fontWeight: step.active ? "700" : "400",
                   }}>
                     {step.label}
                   </span>
                 </div>
                 {i < steps.length - 1 && (
-                  <div style={{
-                    width: "2px",
-                    height: "28px",
-                    backgroundColor: "#dddddd",
-                    marginRight: "17px",
-                    alignSelf: "flex-start",
-                  }} />
+                  <div style={{ flex: 1, height: "2px", backgroundColor: "#dddddd", marginBottom: "22px", marginRight: "4px", marginLeft: "4px" }} />
                 )}
               </div>
             ))}
           </div>
+        </div>
 
-          {/* Form Card */}
+        {/* Form Card */}
+        <div style={{ width: "100%", maxWidth: "640px" }}>
           <div style={{
             flex: 1,
             backgroundColor: "#ffffff",
@@ -224,8 +210,12 @@ export default function Register() {
                       type="email"
                       value={email}
                       onChange={(e) => {
-                        setEmail(e.target.value);
+                        const v = e.target.value.replace(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/g, "");
+                        setEmail(v);
                         if (errors.email) setErrors(prev => ({ ...prev, email: "" }));
+                      }}
+                      onKeyDown={(e) => {
+                        if (/[\u0600-\u06FF]/.test(e.key)) e.preventDefault();
                       }}
                       style={{ ...inputStyle(!!errors.email), direction: "ltr", textAlign: "right" }}
                       onFocus={(e) => { e.target.style.borderColor = "#2b5faa"; e.target.style.boxShadow = "0 0 0 2px rgba(43,95,170,0.1)"; }}
@@ -358,7 +348,7 @@ export default function Register() {
                   </div>
 
                   {/* Buttons */}
-                  <div style={{ display: "flex", gap: "12px", justifyContent: "flex-start" }}>
+                  <div style={{ display: "flex", gap: "12px", justifyContent: "flex-start", direction: "rtl" }}>
                     <button
                       type="submit"
                       style={{
