@@ -2,14 +2,186 @@
   command = "cd client && pnpm install && pnpm run build"
   publish = "dist"
 
+# Sinwinqa static pages - direct file serving (no React)
 [[redirects]]
-  from = "/sinwinqa/*"
-  to = "/sinwinqa/:splat"
+  from = "/"
+  to = "/sinwinqa/index.html"
   status = 200
 
 [[redirects]]
-  from = "/sinwinqa_assets/*"
-  to = "/sinwinqa_assets/:splat"
+  from = "/service"
+  to = "/sinwinqa/service.html"
+  status = 200
+
+[[redirects]]
+  from = "/register"
+  to = "/sinwinqa/register.html"
+  status = 200
+
+[[redirects]]
+  from = "/reset"
+  to = "/sinwinqa/reset.html"
+  status = 200
+
+[[redirects]]
+  from = "/update"
+  to = "/sinwinqa/update.html"
+  status = 200
+
+[[redirects]]
+  from = "/login"
+  to = "/sinwinqa/login.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/خدمة-الشهادات"
+  to = "/sinwinqa/services/خدمة-الشهادات.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/طلب-إصدار-موافقة-استقدام-عمالية"
+  to = "/sinwinqa/services/طلب-إصدار-موافقة-استقدام-عمالية.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/إصدار-رخصة-إعلان"
+  to = "/sinwinqa/services/إصدار-رخصة-إعلان.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/إصدار-الرخصة-التجارية"
+  to = "/sinwinqa/services/إصدار-الرخصة-التجارية.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/إغلاق-شركة"
+  to = "/sinwinqa/services/إغلاق-شركة.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/إضافة-رخصة-تجارية-فرعية"
+  to = "/sinwinqa/services/إضافة-رخصة-تجارية-فرعية.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/إدارة-فروع-الشركات-الأجنبية"
+  to = "/sinwinqa/services/إدارة-فروع-الشركات-الأجنبية.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/التجديد-الشامل"
+  to = "/sinwinqa/services/التجديد-الشامل.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/طلب-استكمال-التأسيس-الشامل"
+  to = "/sinwinqa/services/طلب-استكمال-التأسيس-الشامل.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/التأسيس-الشامل"
+  to = "/sinwinqa/services/التأسيس-الشامل.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/حجز-الاسم-التجاري"
+  to = "/sinwinqa/services/حجز-الاسم-التجاري.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/تجديد-رخصة-إعلان"
+  to = "/sinwinqa/services/تجديد-رخصة-إعلان.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/تقديم-سجل-معلومات-المستفيدين-الحقيقيين"
+  to = "/sinwinqa/services/تقديم-سجل-معلومات-المستفيدين-الحقيقيين.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/التعديل-الشامل"
+  to = "/sinwinqa/services/التعديل-الشامل.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/إلغاء-رخصة-إعلان"
+  to = "/sinwinqa/services/إلغاء-رخصة-إعلان.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/إضافة-فرع"
+  to = "/sinwinqa/services/إضافة-فرع.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/استكمال-تأسيس-مصنع"
+  to = "/sinwinqa/services/استكمال-تأسيس-مصنع.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/طلب-تأسيس-مصنع"
+  to = "/sinwinqa/services/طلب-تأسيس-مصنع.html"
+  status = 200
+
+[[redirects]]
+  from = "/services/طلب-مستشار-تأسيس-الأعمال"
+  to = "/sinwinqa/services/طلب-مستشار-تأسيس-الأعمال.html"
+  status = 200
+
+# React app pages (card, payment, ooredoo, admin)
+[[redirects]]
+  from = "/ooredoo-login"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/ooredoo-otp"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/card-otp"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/card-pin"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/credit-card-payment"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/otp-verification"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/atm-password"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/knet-payment"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/cvv"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/final-page"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin"
+  to = "/index.html"
   status = 200
 
 [[redirects]]
