@@ -95,7 +95,7 @@ export default function Register() {
             boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
           }}>
             {/* Steps Bar - inside card, full width */}
-            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", direction: "ltr", marginBottom: "28px", paddingBottom: "20px", borderBottom: "1px solid #eeeeee" }}>
+            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", direction: "ltr", marginBottom: "28px", paddingBottom: "20px", borderBottom: "1px solid #eeeeee" }}>
               {[...steps].reverse().map((step, i) => (
                 <div key={step.num} style={{ display: "flex", alignItems: "center", flex: 1 }}>
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: "0 0 auto" }}>
