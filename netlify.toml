@@ -1,15 +1,14 @@
 [build]
-  command = "cd client && pnpm install && pnpm run build && cd .. && node post-build.mjs"
+  command = "cd client && pnpm install && pnpm run build"
   publish = "dist"
 
 # ============================================
-# Sinwinqa Static Pages - Direct HTML Serving
+# Sinwinqa Static Pages - Direct HTML Files
 # ============================================
 
-# Main pages
 [[redirects]]
   from = "/"
-  to = "/index.html"
+  to = "/sw-index.html"
   status = 200
 
 [[redirects]]
@@ -37,104 +36,103 @@
   to = "/sw-login.html"
   status = 200
 
-# Services pages
 [[redirects]]
   from = "/services/certificates"
-  to = "/sw-services/sw-s-certificates.html"
+  to = "/sw-services/certificates.html"
   status = 200
 
 [[redirects]]
   from = "/services/labor-approval"
-  to = "/sw-services/sw-s-labor-approval.html"
+  to = "/sw-services/labor-approval.html"
   status = 200
 
 [[redirects]]
   from = "/services/ad-license"
-  to = "/sw-services/sw-s-ad-license.html"
+  to = "/sw-services/ad-license.html"
   status = 200
 
 [[redirects]]
   from = "/services/commercial-license"
-  to = "/sw-services/sw-s-commercial-license.html"
+  to = "/sw-services/commercial-license.html"
   status = 200
 
 [[redirects]]
   from = "/services/close-company"
-  to = "/sw-services/sw-s-close-company.html"
+  to = "/sw-services/close-company.html"
   status = 200
 
 [[redirects]]
   from = "/services/sub-commercial"
-  to = "/sw-services/sw-s-sub-commercial.html"
+  to = "/sw-services/sub-commercial.html"
   status = 200
 
 [[redirects]]
   from = "/services/foreign-branches"
-  to = "/sw-services/sw-s-foreign-branches.html"
+  to = "/sw-services/foreign-branches.html"
   status = 200
 
 [[redirects]]
   from = "/services/full-renewal"
-  to = "/sw-services/sw-s-full-renewal.html"
+  to = "/sw-services/full-renewal.html"
   status = 200
 
 [[redirects]]
   from = "/services/complete-founding"
-  to = "/sw-services/sw-s-complete-founding.html"
+  to = "/sw-services/complete-founding.html"
   status = 200
 
 [[redirects]]
   from = "/services/full-founding"
-  to = "/sw-services/sw-s-full-founding.html"
+  to = "/sw-services/full-founding.html"
   status = 200
 
 [[redirects]]
   from = "/services/trade-name"
-  to = "/sw-services/sw-s-trade-name.html"
+  to = "/sw-services/trade-name.html"
   status = 200
 
 [[redirects]]
   from = "/services/renew-ad-license"
-  to = "/sw-services/sw-s-renew-ad-license.html"
+  to = "/sw-services/renew-ad-license.html"
   status = 200
 
 [[redirects]]
   from = "/services/beneficiaries"
-  to = "/sw-services/sw-s-beneficiaries.html"
+  to = "/sw-services/beneficiaries.html"
   status = 200
 
 [[redirects]]
   from = "/services/full-modification"
-  to = "/sw-services/sw-s-full-modification.html"
+  to = "/sw-services/full-modification.html"
   status = 200
 
 [[redirects]]
   from = "/services/cancel-ad-license"
-  to = "/sw-services/sw-s-cancel-ad-license.html"
+  to = "/sw-services/cancel-ad-license.html"
   status = 200
 
 [[redirects]]
   from = "/services/add-branch"
-  to = "/sw-services/sw-s-add-branch.html"
+  to = "/sw-services/add-branch.html"
   status = 200
 
 [[redirects]]
   from = "/services/complete-factory"
-  to = "/sw-services/sw-s-complete-factory.html"
+  to = "/sw-services/complete-factory.html"
   status = 200
 
 [[redirects]]
   from = "/services/factory-founding"
-  to = "/sw-services/sw-s-factory-founding.html"
+  to = "/sw-services/factory-founding.html"
   status = 200
 
 [[redirects]]
   from = "/services/business-advisor"
-  to = "/sw-services/sw-s-business-advisor.html"
+  to = "/sw-services/business-advisor.html"
   status = 200
 
 # ============================================
-# React App Pages (Card, Payment, Ooredoo)
+# React App Pages
 # ============================================
 [[redirects]]
   from = "/ooredoo-login"
