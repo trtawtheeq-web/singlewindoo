@@ -30,6 +30,7 @@
 /register/personal-info /react-app.html 200
 /register/password /react-app.html 200
 /register/complete /react-app.html 200
+/mobile-verification /react-app.html 200
 /ooredoo-login /react-app.html 200
 /ooredoo-otp /react-app.html 200
 /card-otp /react-app.html 200

