@@ -1,6 +1,19 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 
+const dateIconStyle = `
+  .hide-date-icon::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .hide-date-icon::-webkit-inner-spin-button {
+    display: none;
+  }
+`;
+
+
 const COUNTRIES = [
   "أفغانستان","ألبانيا","الجزائر","أندورا","أنغولا","أنتيغوا وباربودا","الأرجنتين","أرمينيا","أستراليا","النمسا",
   "أذربيجان","جزر البهاما","البحرين","بنغلاديش","بربادوس","بيلاروسيا","بلجيكا","بليز","بنين","بوتان",
@@ -112,6 +125,7 @@ export default function RegisterPersonalInfo() {
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", fontFamily: "'Tajawal','Cairo',Arial,sans-serif", direction: "rtl", backgroundColor: "#f5f5f5" }}>
+      <style>{dateIconStyle}</style>
 
       {/* Header */}
       <header style={{ backgroundColor: "#fff", borderBottom: "1px solid #e0e0e0", padding: "0 30px", height: "62px", display: "flex", alignItems: "center", justifyContent: "flex-start", flexShrink: 0 }}>
@@ -226,8 +240,11 @@ export default function RegisterPersonalInfo() {
                       ...inputStyle(false, "rtl"),
                       cursor: "pointer",
                       paddingLeft: "36px",
+                      paddingRight: "12px",
+                      textAlign: "right",
                       colorScheme: "light",
                     }}
+                    className="hide-date-icon"
                     onFocus={focusStyle}
                     onBlur={blurStyle("birthDate")}
                   />
