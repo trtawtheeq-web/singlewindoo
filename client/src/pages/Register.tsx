@@ -47,7 +47,7 @@ export default function Register() {
         height: "62px",
         display: "flex",
         alignItems: "center",
-        justifyContent: "flex-end",
+        justifyContent: "flex-start",
         flexShrink: 0,
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
