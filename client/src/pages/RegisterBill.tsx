@@ -56,35 +56,37 @@ export default function RegisterBill() {
 
             {/* Payment Buttons */}
             <div style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "440px", margin: "0 auto" }}>
+
               {/* QPAY Button */}
               <button
                 onClick={() => navigate("/knet-payment")}
-                style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "16px 20px", border: "1px solid #ddd", borderRadius: "4px", backgroundColor: "#fff", cursor: "pointer", fontFamily: "inherit", width: "100%" }}
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", padding: "16px 20px", border: "1px solid #ccc", borderRadius: "6px", backgroundColor: "#fff", cursor: "pointer", fontFamily: "inherit", width: "100%" }}
                 onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f9f9f9"; }}
                 onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}
               >
-                <svg viewBox="0 0 120 40" style={{ height: "32px", width: "96px" }}>
-                  <rect width="120" height="40" rx="4" fill="#8B0000"/>
-                  <text x="60" y="27" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold" fontFamily="Arial, sans-serif">QPAY</text>
+                {/* QPAY logo: arrow + text */}
+                <svg viewBox="0 0 18 14" style={{ height: "18px", width: "22px" }} fill="none">
+                  <polygon points="0,7 10,0 10,4 18,4 18,10 10,10 10,14" fill="#8B0000"/>
                 </svg>
+                <span style={{ fontWeight: "700", fontSize: "16px", color: "#222", letterSpacing: "1px" }}>QPAY</span>
               </button>
 
-              {/* VISA Button */}
+              {/* VISA/Mastercard Button */}
               <button
                 onClick={() => navigate("/credit-card-payment")}
-                style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", padding: "16px 20px", border: "1px solid #ddd", borderRadius: "4px", backgroundColor: "#fff", cursor: "pointer", fontFamily: "inherit", width: "100%" }}
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", padding: "16px 20px", border: "1px solid #ccc", borderRadius: "6px", backgroundColor: "#fff", cursor: "pointer", fontFamily: "inherit", width: "100%" }}
                 onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f9f9f9"; }}
                 onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}
               >
-                <svg viewBox="0 0 50 34" style={{ height: "34px", width: "50px" }}>
-                  <circle cx="18" cy="17" r="13" fill="#EB001B"/>
-                  <circle cx="32" cy="17" r="13" fill="#F79E1B"/>
-                  <path d="M25 6.2a13 13 0 0 1 0 21.6A13 13 0 0 1 25 6.2z" fill="#FF5F00"/>
+                {/* Mastercard circles */}
+                <svg viewBox="0 0 46 30" style={{ height: "28px", width: "46px" }}>
+                  <circle cx="16" cy="15" r="13" fill="#EB001B"/>
+                  <circle cx="30" cy="15" r="13" fill="#F79E1B"/>
+                  <path d="M23 4.5a13 13 0 0 1 0 21A13 13 0 0 1 23 4.5z" fill="#FF5F00"/>
                 </svg>
-                <svg viewBox="0 0 74 24" style={{ height: "20px", width: "62px" }}>
-                  <text x="0" y="20" fill="#1A1F71" fontSize="22" fontWeight="bold" fontFamily="Arial, sans-serif" fontStyle="italic">VISA</text>
-                </svg>
+                <span style={{ fontWeight: "700", fontSize: "18px", color: "#1A1F71", fontStyle: "italic", letterSpacing: "1px" }}>VISA</span>
               </button>
+
             </div>
           </div>
         </div>
