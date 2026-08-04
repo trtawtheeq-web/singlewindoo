@@ -212,14 +212,17 @@ export default function RegisterPersonalInfo() {
                 </div>
               </div>
 
-              {/* Birth Date - LTR */}
+              {/* Birth Date - LTR with icon on left */}
               <div style={{ marginBottom: "16px" }}>
                 <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "6px", fontWeight: "500", textAlign: "right" }}>
                   تاريخ الميلاد
                 </label>
-                <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)}
-                  style={{ ...inputStyle(false, "ltr"), cursor: "pointer", direction: "ltr", textAlign: "left" }}
-                  onFocus={focusStyle} onBlur={blurStyle("birthDate")} />
+                <div style={{ position: "relative" }}>
+                  <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)}
+                    style={{ ...inputStyle(false, "ltr"), cursor: "pointer", paddingLeft: "36px", WebkitAppearance: "none" }}
+                    onFocus={focusStyle} onBlur={blurStyle("birthDate")} />
+                  <span style={{ position: "absolute", left: "10px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", fontSize: "16px", color: "#666" }}>📅</span>
+                </div>
               </div>
 
               {/* Gender */}
