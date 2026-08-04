@@ -4,7 +4,7 @@ import { useLocation } from "wouter";
 export default function Register() {
   const [, navigate] = useLocation();
   const [accountType, setAccountType] = useState<string>("");
-  const [countryCode, setCountryCode] = useState("");
+  const [countryCode, setCountryCode] = useState("+974");
   const [nationalId, setNationalId] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -26,7 +26,7 @@ export default function Register() {
     else if (!validateEmail(email)) newErrors.email = "يرجى إدخال بريد إلكتروني صحيح";
     if (!phone) newErrors.phone = "هذا الحقل مطلوب";
     else if (!validatePhone(phone)) newErrors.phone = "رقم الهاتف يجب أن يحتوي على أرقام فقط (7-12 رقم)";
-    if (accountType === "visitor" && !countryCode) newErrors.countryCode = "يرجى اختيار رمز الدولة";
+
     if (Object.keys(newErrors).length === 0) {
       navigate("/register/personal-info");
     } else {
@@ -302,7 +302,7 @@ export default function Register() {
                               fontFamily: "inherit",
                             }}
                           >
-                            <option value="" disabled>حدد الرمز الهاتفي الدولي</option>
+                            <option value="+974">قطر +974</option>
                             <option value="+1">+1 - الولايات المتحدة / كندا</option>
                             <option value="+44">+44 - المملكة المتحدة</option>
                             <option value="+33">+33 - فرنسا</option>
