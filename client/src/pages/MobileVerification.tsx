@@ -123,30 +123,24 @@ export default function MobileVerification() {
 
       {/* Header */}
       <header style={{ backgroundColor: "#fff", borderBottom: "1px solid #e0e0e0", padding: "10px 30px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        {/* Left: Single Window Logo */}
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <img src="/logo.svg" alt="النافذة الواحدة" style={{ height: 48, objectFit: "contain" }} />
+        </div>
+        {/* Right: QGCC Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+              <span style={{ fontSize: 9, color: "#555" }}>QATAR GOVERNMENT CONTACT CENTER</span>
+              <span style={{ fontSize: 18, fontWeight: "900", color: "#1a3c6e" }}>GCC</span>
+              <span style={{ fontSize: 18, fontWeight: "900", color: "#8B0000" }}>Q</span>
+            </div>
+            <div style={{ fontSize: 10, color: "#555", textAlign: "right" }}>مركز الإتصال الحكومي - قطر</div>
+          </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", lineHeight: 1 }}>
             <span style={{ fontSize: 20, fontWeight: "900", color: "#8B0000" }}>1</span>
             <span style={{ fontSize: 20, fontWeight: "900", color: "#8B0000" }}>9</span>
           </div>
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-              <span style={{ fontSize: 18, fontWeight: "900", color: "#8B0000" }}>Q</span>
-              <span style={{ fontSize: 18, fontWeight: "900", color: "#1a3c6e" }}>GCC</span>
-              <span style={{ fontSize: 9, color: "#555", marginRight: 4 }}>QATAR GOVERNMENT CONTACT CENTER</span>
-            </div>
-            <div style={{ fontSize: 10, color: "#555", textAlign: "right" }}>مركز الإتصال الحكومي - قطر</div>
-          </div>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ textAlign: "right" }}>
-            <div style={{ fontSize: 13, fontWeight: "700", color: "#1a3c6e" }}>النافـذة الـواحدة</div>
-            <div style={{ fontSize: 10, color: "#1a3c6e", letterSpacing: 1 }}>SINGLE WINDOW</div>
-          </div>
-          <svg viewBox="0 0 60 60" style={{ width: 44, height: 44 }}>
-            <polygon points="30,5 55,20 55,40 30,55 5,40 5,20" fill="none" stroke="#1a3c6e" strokeWidth="3"/>
-            <polygon points="30,15 45,23 45,37 30,45 15,37 15,23" fill="#1a3c6e"/>
-            <polygon points="30,22 38,27 38,33 30,38 22,33 22,27" fill="#fff"/>
-          </svg>
         </div>
       </header>
 
