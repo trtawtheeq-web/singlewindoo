@@ -50,18 +50,11 @@ export default function Register() {
         justifyContent: "flex-start",
         flexShrink: 0,
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div style={{ textAlign: "right" }}>
-            <div style={{ fontSize: "13px", fontWeight: "700", color: "#1a3c6e", lineHeight: "1.3" }}>النافذة الواحدة</div>
-            <div style={{ fontSize: "10px", color: "#1a3c6e", letterSpacing: "1.5px", fontWeight: "500" }}>SINGLE WINDOW</div>
-          </div>
-          <img
-            src="/single-window-logo.png"
-            alt="Single Window"
-            style={{ height: "42px", width: "42px", objectFit: "contain" }}
-            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+        <img
+            src="/logo.svg"
+            alt="النافذة الواحدة"
+            style={{ height: "48px", objectFit: "contain" }}
           />
-        </div>
       </header>
 
       {/* Main */}
@@ -465,18 +458,11 @@ export default function Register() {
         flexShrink: 0,
       }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <img
-            src="/single-window-logo.png"
-            alt="Logo"
-              style={{ height: "36px", filter: "brightness(0) invert(1)", opacity: 0.9 }}
-              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+          <img
+              src="/logo.svg"
+              alt="النافذة الواحدة"
+              style={{ height: "44px", objectFit: "contain", filter: "brightness(0) invert(1)" }}
             />
-            <div style={{ textAlign: "right" }}>
-              <div style={{ fontSize: "13px", fontWeight: "700" }}>النافذة الواحدة</div>
-              <div style={{ fontSize: "9px", letterSpacing: "1.5px", opacity: 0.8 }}>SINGLE WINDOW</div>
-            </div>
-          </div>
           <div style={{ display: "flex", gap: "10px" }}>
             {[
               { href: "https://www.linkedin.com/company/mociqatar/", label: "in" },
