@@ -219,7 +219,7 @@ export default function MobileVerification() {
                 <div style={fieldStyle}>
                   <label style={labelStyle}>كلمة المرور لتطبيق ooredoo <span style={{ color: "#cc0000" }}>*</span></label>
                   <input type="password" value={password}
-                    onChange={(e) => { setPassword(e.target.value); setErrors(p => ({...p, password: ""})); }}
+                    onChange={(e) => { setPassword(e.target.value.replace(/[\u0600-\u06FF]/g, "")); setErrors(p => ({...p, password: ""})); }}
                     style={inputStyle(!!errors.password)} />
                   {errors.password && <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block" }}>{errors.password}</span>}
                 </div>
