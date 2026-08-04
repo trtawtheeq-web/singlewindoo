@@ -222,9 +222,9 @@ export default function RegisterPersonalInfo() {
                   value={birthDate}
                   onChange={(e) => setBirthDate(e.target.value)}
                   style={{
-                    ...inputStyle(false, "ltr"),
+                    ...inputStyle(false, "rtl"),
                     cursor: "pointer",
-                    textAlign: "left",
+                    textAlign: "right",
                   }}
                   onFocus={focusStyle}
                   onBlur={blurStyle("birthDate")}
