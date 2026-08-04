@@ -369,7 +369,14 @@ export default function Register() {
                     >استمر</button>
                     <button
                       type="button"
-                      onClick={() => navigate("/")}
+                      onClick={() => {
+                        setAccountType("");
+                        setNationalId("");
+                        setEmail("");
+                        setPhone("");
+                        setCountryCode("+974");
+                        setErrors({});
+                      }}
                       style={{
                         backgroundColor: "#ffffff",
                         color: "#555",
