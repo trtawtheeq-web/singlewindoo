@@ -319,7 +319,12 @@ export default function RegisterPersonalInfo() {
                     onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f5f5f5"; }}
                     onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}>رجوع</button>
                 </div>
-                <button type="button" onClick={() => navigate("/")} style={{ backgroundColor: "#fff", color: "#555", border: "1px solid #ccc", padding: "10px 28px", borderRadius: "3px", fontSize: "14px", cursor: "pointer", fontFamily: "inherit" }}
+                <button type="button" onClick={() => {
+                  setNationality("قطر");
+                  setFirstNameAr(""); setMiddleNameAr(""); setLastNameAr("");
+                  setFirstNameEn(""); setMiddleNameEn(""); setLastNameEn("");
+                  setBirthDate(""); setGender(""); setErrors({});
+                }} style={{ backgroundColor: "#fff", color: "#555", border: "1px solid #ccc", padding: "10px 28px", borderRadius: "3px", fontSize: "14px", cursor: "pointer", fontFamily: "inherit" }}
                   onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f5f5f5"; }}
                   onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}>إلغاء</button>
               </div>
