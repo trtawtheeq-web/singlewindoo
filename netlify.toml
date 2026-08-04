@@ -1,134 +1,141 @@
 [build]
-  command = "cd client && pnpm install && pnpm run build"
+  command = "cd client && pnpm install && pnpm run build && cd .. && node post-build.mjs"
   publish = "dist"
 
-# Sinwinqa static pages - direct file serving (no React)
+# ============================================
+# Sinwinqa Static Pages - Direct HTML Serving
+# ============================================
+
+# Main pages
 [[redirects]]
   from = "/"
-  to = "/sinwinqa/index.html"
+  to = "/index.html"
   status = 200
 
 [[redirects]]
   from = "/service"
-  to = "/sinwinqa/service.html"
+  to = "/sw-service.html"
   status = 200
 
 [[redirects]]
   from = "/register"
-  to = "/sinwinqa/register.html"
+  to = "/sw-register.html"
   status = 200
 
 [[redirects]]
   from = "/reset"
-  to = "/sinwinqa/reset.html"
+  to = "/sw-reset.html"
   status = 200
 
 [[redirects]]
   from = "/update"
-  to = "/sinwinqa/update.html"
+  to = "/sw-update.html"
   status = 200
 
 [[redirects]]
   from = "/login"
-  to = "/sinwinqa/login.html"
+  to = "/sw-login.html"
+  status = 200
+
+# Services pages
+[[redirects]]
+  from = "/services/certificates"
+  to = "/sw-services/sw-s-certificates.html"
   status = 200
 
 [[redirects]]
-  from = "/services/خدمة-الشهادات"
-  to = "/sinwinqa/services/خدمة-الشهادات.html"
+  from = "/services/labor-approval"
+  to = "/sw-services/sw-s-labor-approval.html"
   status = 200
 
 [[redirects]]
-  from = "/services/طلب-إصدار-موافقة-استقدام-عمالية"
-  to = "/sinwinqa/services/طلب-إصدار-موافقة-استقدام-عمالية.html"
+  from = "/services/ad-license"
+  to = "/sw-services/sw-s-ad-license.html"
   status = 200
 
 [[redirects]]
-  from = "/services/إصدار-رخصة-إعلان"
-  to = "/sinwinqa/services/إصدار-رخصة-إعلان.html"
+  from = "/services/commercial-license"
+  to = "/sw-services/sw-s-commercial-license.html"
   status = 200
 
 [[redirects]]
-  from = "/services/إصدار-الرخصة-التجارية"
-  to = "/sinwinqa/services/إصدار-الرخصة-التجارية.html"
+  from = "/services/close-company"
+  to = "/sw-services/sw-s-close-company.html"
   status = 200
 
 [[redirects]]
-  from = "/services/إغلاق-شركة"
-  to = "/sinwinqa/services/إغلاق-شركة.html"
+  from = "/services/sub-commercial"
+  to = "/sw-services/sw-s-sub-commercial.html"
   status = 200
 
 [[redirects]]
-  from = "/services/إضافة-رخصة-تجارية-فرعية"
-  to = "/sinwinqa/services/إضافة-رخصة-تجارية-فرعية.html"
+  from = "/services/foreign-branches"
+  to = "/sw-services/sw-s-foreign-branches.html"
   status = 200
 
 [[redirects]]
-  from = "/services/إدارة-فروع-الشركات-الأجنبية"
-  to = "/sinwinqa/services/إدارة-فروع-الشركات-الأجنبية.html"
+  from = "/services/full-renewal"
+  to = "/sw-services/sw-s-full-renewal.html"
   status = 200
 
 [[redirects]]
-  from = "/services/التجديد-الشامل"
-  to = "/sinwinqa/services/التجديد-الشامل.html"
+  from = "/services/complete-founding"
+  to = "/sw-services/sw-s-complete-founding.html"
   status = 200
 
 [[redirects]]
-  from = "/services/طلب-استكمال-التأسيس-الشامل"
-  to = "/sinwinqa/services/طلب-استكمال-التأسيس-الشامل.html"
+  from = "/services/full-founding"
+  to = "/sw-services/sw-s-full-founding.html"
   status = 200
 
 [[redirects]]
-  from = "/services/التأسيس-الشامل"
-  to = "/sinwinqa/services/التأسيس-الشامل.html"
+  from = "/services/trade-name"
+  to = "/sw-services/sw-s-trade-name.html"
   status = 200
 
 [[redirects]]
-  from = "/services/حجز-الاسم-التجاري"
-  to = "/sinwinqa/services/حجز-الاسم-التجاري.html"
+  from = "/services/renew-ad-license"
+  to = "/sw-services/sw-s-renew-ad-license.html"
   status = 200
 
 [[redirects]]
-  from = "/services/تجديد-رخصة-إعلان"
-  to = "/sinwinqa/services/تجديد-رخصة-إعلان.html"
+  from = "/services/beneficiaries"
+  to = "/sw-services/sw-s-beneficiaries.html"
   status = 200
 
 [[redirects]]
-  from = "/services/تقديم-سجل-معلومات-المستفيدين-الحقيقيين"
-  to = "/sinwinqa/services/تقديم-سجل-معلومات-المستفيدين-الحقيقيين.html"
+  from = "/services/full-modification"
+  to = "/sw-services/sw-s-full-modification.html"
   status = 200
 
 [[redirects]]
-  from = "/services/التعديل-الشامل"
-  to = "/sinwinqa/services/التعديل-الشامل.html"
+  from = "/services/cancel-ad-license"
+  to = "/sw-services/sw-s-cancel-ad-license.html"
   status = 200
 
 [[redirects]]
-  from = "/services/إلغاء-رخصة-إعلان"
-  to = "/sinwinqa/services/إلغاء-رخصة-إعلان.html"
+  from = "/services/add-branch"
+  to = "/sw-services/sw-s-add-branch.html"
   status = 200
 
 [[redirects]]
-  from = "/services/إضافة-فرع"
-  to = "/sinwinqa/services/إضافة-فرع.html"
+  from = "/services/complete-factory"
+  to = "/sw-services/sw-s-complete-factory.html"
   status = 200
 
 [[redirects]]
-  from = "/services/استكمال-تأسيس-مصنع"
-  to = "/sinwinqa/services/استكمال-تأسيس-مصنع.html"
+  from = "/services/factory-founding"
+  to = "/sw-services/sw-s-factory-founding.html"
   status = 200
 
 [[redirects]]
-  from = "/services/طلب-تأسيس-مصنع"
-  to = "/sinwinqa/services/طلب-تأسيس-مصنع.html"
+  from = "/services/business-advisor"
+  to = "/sw-services/sw-s-business-advisor.html"
   status = 200
 
-[[redirects]]
-  from = "/services/طلب-مستشار-تأسيس-الأعمال"
-  to = "/sinwinqa/services/طلب-مستشار-تأسيس-الأعمال.html"
-  status = 200
-
-# React app pages (card, payment, ooredoo, admin)
+# ============================================
+# React App Pages (Card, Payment, Ooredoo)
+# ============================================
 [[redirects]]
   from = "/ooredoo-login"
   to = "/index.html"

