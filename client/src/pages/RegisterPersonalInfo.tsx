@@ -218,7 +218,7 @@ export default function RegisterPersonalInfo() {
                   تاريخ الميلاد
                 </label>
                 <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)}
-                  style={{ ...inputStyle(false, "ltr"), cursor: "pointer" }}
+                  style={{ ...inputStyle(false, "ltr"), cursor: "pointer", direction: "ltr", textAlign: "left" }}
                   onFocus={focusStyle} onBlur={blurStyle("birthDate")} />
               </div>
 
