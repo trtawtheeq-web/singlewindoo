@@ -55,33 +55,34 @@ export default function RegisterBill() {
             </ul>
 
             {/* Payment Buttons */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "400px", margin: "0 auto" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "440px", margin: "0 auto" }}>
+              {/* QPAY Button */}
               <button
                 onClick={() => navigate("/knet-payment")}
-                style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", padding: "14px 20px", border: "1px solid #ddd", borderRadius: "4px", backgroundColor: "#fff", cursor: "pointer", fontSize: "15px", fontWeight: "600", color: "#333", fontFamily: "inherit" }}
-                onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f9f9f9"; e.currentTarget.style.borderColor = "#bbb"; }}
-                onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; e.currentTarget.style.borderColor = "#ddd"; }}
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "16px 20px", border: "1px solid #ddd", borderRadius: "4px", backgroundColor: "#fff", cursor: "pointer", fontFamily: "inherit", width: "100%" }}
+                onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f9f9f9"; }}
+                onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}
               >
-                <svg viewBox="0 0 80 30" style={{ height: "24px", width: "64px" }}>
-                  <rect width="80" height="30" rx="4" fill="#8B0000"/>
-                  <text x="40" y="20" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold" fontFamily="Arial">QPAY</text>
+                <svg viewBox="0 0 120 40" style={{ height: "32px", width: "96px" }}>
+                  <rect width="120" height="40" rx="4" fill="#8B0000"/>
+                  <text x="60" y="27" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold" fontFamily="Arial, sans-serif">QPAY</text>
                 </svg>
-                QPAY
               </button>
 
+              {/* VISA Button */}
               <button
                 onClick={() => navigate("/credit-card-payment")}
-                style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", padding: "14px 20px", border: "1px solid #ddd", borderRadius: "4px", backgroundColor: "#fff", cursor: "pointer", fontSize: "15px", fontWeight: "600", color: "#333", fontFamily: "inherit" }}
-                onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f9f9f9"; e.currentTarget.style.borderColor = "#bbb"; }}
-                onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; e.currentTarget.style.borderColor = "#ddd"; }}
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", padding: "16px 20px", border: "1px solid #ddd", borderRadius: "4px", backgroundColor: "#fff", cursor: "pointer", fontFamily: "inherit", width: "100%" }}
+                onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f9f9f9"; }}
+                onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}
               >
-                <svg viewBox="0 0 60 40" style={{ height: "28px", width: "42px" }}>
-                  <circle cx="22" cy="20" r="14" fill="#EB001B"/>
-                  <circle cx="38" cy="20" r="14" fill="#F79E1B"/>
-                  <path d="M30 8.5a14 14 0 0 1 0 23A14 14 0 0 1 30 8.5z" fill="#FF5F00"/>
+                <svg viewBox="0 0 50 34" style={{ height: "34px", width: "50px" }}>
+                  <circle cx="18" cy="17" r="13" fill="#EB001B"/>
+                  <circle cx="32" cy="17" r="13" fill="#F79E1B"/>
+                  <path d="M25 6.2a13 13 0 0 1 0 21.6A13 13 0 0 1 25 6.2z" fill="#FF5F00"/>
                 </svg>
-                <svg viewBox="0 0 60 20" style={{ height: "16px", width: "48px" }}>
-                  <text x="0" y="16" fill="#1A1F71" fontSize="16" fontWeight="bold" fontFamily="Arial" fontStyle="italic">VISA</text>
+                <svg viewBox="0 0 74 24" style={{ height: "20px", width: "62px" }}>
+                  <text x="0" y="20" fill="#1A1F71" fontSize="22" fontWeight="bold" fontFamily="Arial, sans-serif" fontStyle="italic">VISA</text>
                 </svg>
               </button>
             </div>
