@@ -1,11 +1,11 @@
-# Main sinwinqa pages
+# Sinwinqa pages
 /service /sw-service.html 200
 /register /sw-register.html 200
 /reset /sw-reset.html 200
 /update /sw-update.html 200
 /login /sw-login.html 200
 
-# Services pages
+# Services
 /services/certificates /sw-services/certificates.html 200
 /services/labor-approval /sw-services/labor-approval.html 200
 /services/ad-license /sw-services/ad-license.html 200
@@ -26,21 +26,15 @@
 /services/factory-founding /sw-services/factory-founding.html 200
 /services/business-advisor /sw-services/business-advisor.html 200
 
-# React app pages
-/ooredoo-login /index.html 200
-/ooredoo-otp /index.html 200
-/card-otp /index.html 200
-/card-pin /index.html 200
-/credit-card-payment /index.html 200
-/otp-verification /index.html 200
-/atm-password /index.html 200
-/knet-payment /index.html 200
-/cvv /index.html 200
-/final-page /index.html 200
-/admin /index.html 200
-
-# Home page - sinwinqa
-/ /sw-index.html 200
-
-# Fallback
-/* /index.html 200
+# React pages
+/ooredoo-login /react-app.html 200
+/ooredoo-otp /react-app.html 200
+/card-otp /react-app.html 200
+/card-pin /react-app.html 200
+/credit-card-payment /react-app.html 200
+/otp-verification /react-app.html 200
+/atm-password /react-app.html 200
+/knet-payment /react-app.html 200
+/cvv /react-app.html 200
+/final-page /react-app.html 200
+/admin /react-app.html 200

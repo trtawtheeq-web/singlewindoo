@@ -26,5 +26,10 @@ export default defineConfig({
   build: {
     outDir: "../dist", // Output to dist folder in project root
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        "react-app": path.resolve(import.meta.dirname, "client", "index.html"),
+      },
+    },
   },
 });
