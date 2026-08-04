@@ -86,8 +86,8 @@ export default function Register() {
         backgroundColor: "#f5f5f5",
       }}>
 
-        {/* Steps Bar - horizontal above form */}
-        <div style={{ width: "100%", maxWidth: "640px", marginBottom: "24px" }}>
+        {/* Steps Bar - horizontal above form, same width as card */}
+        <div style={{ width: "100%", maxWidth: "560px", marginBottom: "24px" }}>
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", direction: "ltr" }}>
             {[...steps].reverse().map((step, i) => (
               <div key={step.num} style={{ display: "flex", alignItems: "center", flex: 1 }}>
@@ -126,7 +126,7 @@ export default function Register() {
         </div>
 
         {/* Form Card */}
-        <div style={{ width: "100%", maxWidth: "640px" }}>
+        <div style={{ width: "100%", maxWidth: "560px" }}>
           <div style={{
             flex: 1,
             backgroundColor: "#ffffff",
