@@ -119,7 +119,7 @@ export default function Register() {
                     </span>
                   </div>
                   {i < steps.length - 1 && (
-                    <div style={{ flex: 1, height: "2px", backgroundColor: "#dddddd", marginBottom: "22px", marginRight: "4px", marginLeft: "4px" }} />
+                    <div style={{ flex: 1, height: "2px", backgroundColor: "#dddddd", marginBottom: "22px", minWidth: "20px" }} />
                   )}
                 </div>
               ))}
