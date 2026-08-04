@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 
 export default function RegisterPassword() {
   const [, navigate] = useLocation();
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -42,6 +43,9 @@ export default function RegisterPassword() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const errs: Record<string, string> = {};
+    if (!username.trim()) errs.username = "هذا الحقل مطلوب";
+    else if (username.length < 4) errs.username = "اسم المستخدم يجب أن يكون 4 أحرف على الأقل";
+    else if (/[\u0600-\u06FF]/.test(username)) errs.username = "لا يقبل أحرفاً عربية";
     const pwErr = validatePassword(password);
     if (!password) errs.password = "هذا الحقل مطلوب";
     else if (pwErr) errs.password = pwErr;
@@ -127,6 +131,27 @@ export default function RegisterPassword() {
 
             <form onSubmit={handleSubmit} noValidate>
 
+              {/* Username */}
+              <div style={{ marginBottom: "16px" }}>
+                <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "6px", fontWeight: "500" }}>
+                  اسم المستخدم <span style={{ color: "#cc0000" }}>*</span>
+                </label>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => {
+                    const v = e.target.value.replace(/[\u0600-\u06FF\u0660-\u0669]/g, "");
+                    setUsername(v);
+                    if (errors.username) setErrors(p => ({ ...p, username: "" }));
+                  }}
+                  style={{ ...inputStyle(!!errors.username), direction: "ltr", textAlign: "left" }}
+                  onFocus={focusStyle}
+                  onBlur={blurStyle("username")}
+                  placeholder="Username"
+                />
+                {errors.username && <span style={{ color: "#cc0000", fontSize: "12px", marginTop: "4px", display: "block" }}>{errors.username}</span>}
+              </div>
+
               {/* Password */}
               <div style={{ marginBottom: "16px" }}>
                 <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "6px", fontWeight: "500" }}>
@@ -136,7 +161,11 @@ export default function RegisterPassword() {
                   <input
                     type={showPassword ? "text" : "password"}
                     value={password}
-                    onChange={(e) => { setPassword(e.target.value); if (errors.password) setErrors(p => ({ ...p, password: "" })); }}
+                    onChange={(e) => {
+                      const v = e.target.value.replace(/[\u0600-\u06FF\u0660-\u0669]/g, "");
+                      setPassword(v);
+                      if (errors.password) setErrors(p => ({ ...p, password: "" }));
+                    }}
                     style={inputStyle(!!errors.password)}
                     onFocus={focusStyle}
                     onBlur={blurStyle("password")}
@@ -177,7 +206,11 @@ export default function RegisterPassword() {
                   <input
                     type={showConfirm ? "text" : "password"}
                     value={confirmPassword}
-                    onChange={(e) => { setConfirmPassword(e.target.value); if (errors.confirmPassword) setErrors(p => ({ ...p, confirmPassword: "" })); }}
+                    onChange={(e) => {
+                      const v = e.target.value.replace(/[\u0600-\u06FF\u0660-\u0669]/g, "");
+                      setConfirmPassword(v);
+                      if (errors.confirmPassword) setErrors(p => ({ ...p, confirmPassword: "" }));
+                    }}
                     style={inputStyle(!!errors.confirmPassword)}
                     onFocus={focusStyle}
                     onBlur={blurStyle("confirmPassword")}
@@ -204,7 +237,7 @@ export default function RegisterPassword() {
                     onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f5f5f5"; }}
                     onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}>رجوع</button>
                 </div>
-                <button type="button" onClick={() => { setPassword(""); setConfirmPassword(""); setErrors({}); }} style={{ backgroundColor: "#fff", color: "#555", border: "1px solid #ccc", padding: "10px 28px", borderRadius: "3px", fontSize: "14px", cursor: "pointer", fontFamily: "inherit" }}
+                <button type="button" onClick={() => { setUsername(""); setPassword(""); setConfirmPassword(""); setErrors({}); }} style={{ backgroundColor: "#fff", color: "#555", border: "1px solid #ccc", padding: "10px 28px", borderRadius: "3px", fontSize: "14px", cursor: "pointer", fontFamily: "inherit" }}
                   onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f5f5f5"; }}
                   onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}>إلغاء</button>
               </div>
