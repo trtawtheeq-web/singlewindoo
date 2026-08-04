@@ -226,34 +226,24 @@ export default function RegisterPersonalInfo() {
                 </div>
               </div>
 
-              {/* Birth Date - 3 separate fields: day/month/year */}
+              {/* Birth Date */}
               <div style={{ marginBottom: "16px" }}>
                 <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "6px", fontWeight: "500", textAlign: "right" }}>
                   تاريخ الميلاد
                 </label>
-                <div style={{ display: "flex", gap: "8px", direction: "rtl" }}>
-                  <div style={{ flex: 2 }}>
-                    <input
-                      type="number" min="1900" max="2099" placeholder="سنة"
-                      style={{ ...inputStyle(false), textAlign: "center" }}
-                      onFocus={focusStyle} onBlur={blurStyle("birthDate")}
-                      onInput={(e) => { const v = (e.target as HTMLInputElement).value; if (v.length > 4) (e.target as HTMLInputElement).value = v.slice(0,4); }}
-                    />
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <select style={{ ...inputStyle(false), textAlign: "center", cursor: "pointer" }} onFocus={focusStyle} onBlur={blurStyle("birthDate")}>
-                      <option value="">شهر</option>
-                      {["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"].map((m,i) => <option key={i} value={i+1}>{m}</option>)}
-                    </select>
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <input
-                      type="number" min="1" max="31" placeholder="يوم"
-                      style={{ ...inputStyle(false), textAlign: "center" }}
-                      onFocus={focusStyle} onBlur={blurStyle("birthDate")}
-                      onInput={(e) => { const v = parseInt((e.target as HTMLInputElement).value); if (v > 31) (e.target as HTMLInputElement).value = "31"; if (v < 1) (e.target as HTMLInputElement).value = "1"; }}
-                    />
-                  </div>
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                  <input
+                    type="date"
+                    value={birthDate}
+                    onChange={(e) => setBirthDate(e.target.value)}
+                    style={{
+                      ...inputStyle(false, "ltr"),
+                      cursor: "pointer",
+                      width: "auto",
+                    }}
+                    onFocus={focusStyle}
+                    onBlur={blurStyle("birthDate")}
+                  />
                 </div>
               </div>
 
