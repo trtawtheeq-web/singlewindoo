@@ -27,7 +27,11 @@ export default function Register() {
     if (!phone) newErrors.phone = "هذا الحقل مطلوب";
     else if (!validatePhone(phone)) newErrors.phone = "رقم الهاتف يجب أن يحتوي على أرقام فقط (7-12 رقم)";
     if (accountType === "visitor" && !countryCode) newErrors.countryCode = "يرجى اختيار رمز الدولة";
-    setErrors(newErrors);
+    if (Object.keys(newErrors).length === 0) {
+      navigate("/register/personal-info");
+    } else {
+      setErrors(newErrors);
+    }
   };
 
   const steps = [

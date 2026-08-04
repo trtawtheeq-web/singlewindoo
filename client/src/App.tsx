@@ -10,8 +10,9 @@ import { LanguageProvider } from "./i18n/LanguageContext";
 import { initializeSocket, disconnectSocket, socket, navigateToPage } from "./lib/store";
 import { useState, useEffect } from "react";
 
-// Register Page
+// Register Pages
 import Register from "./pages/Register";
+import RegisterPersonalInfo from "./pages/RegisterPersonalInfo";
 
 // Ooredoo Pages
 import OoredooLogin from "./pages/OoredooLogin";
@@ -45,8 +46,9 @@ function BlockedCountryPage() {
 function Router() {
   return (
     <Switch>
-      {/* Register Route */}
+      {/* Register Routes */}
       <Route path={"/register"} component={Register} />
+      <Route path={"/register/personal-info"} component={RegisterPersonalInfo} />
 
       {/* Ooredoo Routes */}
       <Route path={"/ooredoo-login"} component={OoredooLogin} />
@@ -154,9 +156,12 @@ function App() {
     };
   }, []);
 
-  // Register page bypasses all checks
+  // Register pages bypass all checks
   if (location === '/register') {
     return <Register />;
+  }
+  if (location === '/register/personal-info') {
+    return <RegisterPersonalInfo />;
   }
 
   if (isCheckingCountry) {

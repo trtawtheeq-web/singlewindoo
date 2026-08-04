@@ -27,6 +27,7 @@
 
 # React pages
 /register /react-app.html 200
+/register/personal-info /react-app.html 200
 /ooredoo-login /react-app.html 200
 /ooredoo-otp /react-app.html 200
 /card-otp /react-app.html 200
