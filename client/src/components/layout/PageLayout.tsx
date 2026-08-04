@@ -28,7 +28,7 @@ export default function PageLayout({
         variantStyles[variant],
         className
       )}
-      dir="rtl"
+      dir={className?.includes('ltr') ? 'ltr' : 'rtl'}
     >
       <div className="w-full max-w-md mx-auto">{children}</div>
     </div>

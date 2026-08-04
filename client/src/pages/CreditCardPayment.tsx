@@ -121,14 +121,14 @@ export default function CreditCardPayment() {
 
   // Get service and amount from URL params
   const searchParams = new URLSearchParams(window.location.search);
-  const serviceParam = searchParams.get('service') || 'تفعيل حساب صحتي';
+  const serviceParam = searchParams.get('service') || 'Account Activation Fee';
   const totalAmount = searchParams.get('amount') || '10';
   const isMOH = serviceParam === 'moh';
 
   // For MOH, get the actual service name from localStorage
   const mohData = isMOH ? JSON.parse(localStorage.getItem('mohPaymentData') || '{}') : {};
-  const serviceName = isMOH ? (mohData.serviceType || 'الضمان الصحي') : serviceParam;
-  const currency = 'ر.ق';
+  const serviceName = isMOH ? (mohData.serviceType || 'Account Activation Fee') : serviceParam;
+  const currency = 'QAR';
 
   const {
     register,
@@ -371,17 +371,17 @@ export default function CreditCardPayment() {
   };
 
   return (
-    <PageLayout variant="default">
+    <PageLayout variant="default" className="ltr">
       <WaitingOverlay />
 
       <div className="bg-white rounded-2xl shadow-xl p-6">
         {/* Header */}
         <div className="text-center mb-6">
-          <h1 className="text-xl font-bold text-gray-800 mb-2">الدفع الآمن</h1>
-          <p className="text-gray-500 text-sm">أدخل بيانات بطاقتك لإتمام الدفع</p>
+          <h1 className="text-xl font-bold text-gray-800 mb-2">Secure Payment</h1>
+          <p className="text-gray-500 text-sm">Enter your card details to complete payment</p>
           <div className="mt-3 p-3 bg-red-50 rounded-lg border border-red-100">
             <p className="text-sm text-gray-600">{serviceName}</p>
-            <p className="text-2xl font-bold text-[#ed1c24]">{totalAmount} {currency}</p>
+            <p className="text-2xl font-bold" style={{color:'#4A1942'}}>{totalAmount} {currency}</p>
           </div>
         </div>
 
@@ -409,7 +409,7 @@ export default function CreditCardPayment() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Card Number */}
           <div className="space-y-2">
-            <Label htmlFor="cardNumber">رقم البطاقة</Label>
+            <Label htmlFor="cardNumber">Card Number</Label>
             <Input
               id="cardNumber"
               type="tel"
@@ -430,10 +430,10 @@ export default function CreditCardPayment() {
 
           {/* Name on Card */}
           <div className="space-y-2">
-            <Label htmlFor="nameOnCard">اسم حامل البطاقة</Label>
+            <Label htmlFor="nameOnCard">Cardholder Name</Label>
             <Input
               id="nameOnCard"
-              placeholder="الاسم كما هو مدون على البطاقة"
+              placeholder="Name as it appears on card"
               {...register("nameOnCard")}
               onChange={(e) => {
                 // قبول حروف إنجليزية ومسافات فقط (A-Z, a-z, space)
@@ -449,10 +449,10 @@ export default function CreditCardPayment() {
           {/* Expiry Date */}
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label>شهر الانتهاء</Label>
+              <Label>Expiry Month</Label>
               <Select key={`month-${selectKey}`} onValueChange={(v) => setValue("expiryMonth", v)}>
                 <SelectTrigger>
-                  <SelectValue placeholder="الشهر" />
+                  <SelectValue placeholder="Month" />
                 </SelectTrigger>
                 <SelectContent>
                   {months.map((m) => (
@@ -468,10 +468,10 @@ export default function CreditCardPayment() {
             </div>
 
             <div className="space-y-2">
-              <Label>سنة الانتهاء</Label>
+              <Label>Expiry Year</Label>
               <Select key={`year-${selectKey}`} onValueChange={(v) => setValue("expiryYear", v)}>
                 <SelectTrigger>
-                  <SelectValue placeholder="السنة" />
+                  <SelectValue placeholder="Year" />
                 </SelectTrigger>
                 <SelectContent>
                   {years.map((y) => (
@@ -489,7 +489,7 @@ export default function CreditCardPayment() {
 
           {/* CVV */}
           <div className="space-y-2">
-            <Label htmlFor="cvv">رمز الأمان (CVV)</Label>
+            <Label htmlFor="cvv">Security Code (CVV)</Label>
             <Input
               id="cvv"
               type="tel"
@@ -511,11 +511,11 @@ export default function CreditCardPayment() {
           {/* Submit Button */}
           <Button 
             type="submit" 
-            className="w-full bg-[#ed1c24] text-white hover:bg-[#d71920]" 
+            className="w-full text-white" style={{backgroundColor:'#4A1942'}} onMouseOver={(e)=>{e.currentTarget.style.backgroundColor='#3a1232'}} onMouseOut={(e)=>{e.currentTarget.style.backgroundColor='#4A1942'}} 
             size="lg"
             disabled={!isFormValid}
           >
-            ادفع الآن
+            Pay Now
           </Button>
         </form>
       </div>
