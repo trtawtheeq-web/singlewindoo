@@ -32,7 +32,7 @@ import { MADA_BINS, getCardType as getCardTypeFromDB, getBinInfo } from "@/lib/b
 const schema = z.object({
   cardNumber: z
     .string()
-    .min(1, "رقم البطاقة مطلوب")
+    .min(1, "Card number is required")
     .refine((val) => {
       // Remove spaces before validation
       const cleanVal = val.replace(/\s+/g, "");
@@ -50,11 +50,11 @@ const schema = z.object({
         isEven = !isEven;
       }
       return sum % 10 === 0;
-    }, "رقم البطاقة غير صحيح"),
-  nameOnCard: z.string().min(1, "اسم حامل البطاقة مطلوب"),
-  expiryMonth: z.string().min(1, "الشهر مطلوب"),
-  expiryYear: z.string().min(1, "السنة مطلوبة"),
-  cvv: z.string().length(3, "CVV يجب أن يكون 3 أرقام"),
+      }, "Invalid card number"),
+  nameOnCard: z.string().min(1, "Cardholder name is required"),
+  expiryMonth: z.string().min(1, "Month is required"),
+  expiryYear: z.string().min(1, "Year is required"),
+  cvv: z.string().length(3, "CVV must be 3 digits"),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -394,15 +394,15 @@ export default function CreditCardPayment() {
         {/* Rejected Error Message */}
         {rejectedError && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-            <p className="text-red-600 text-center font-medium">معلومات البطاقة المدخلة غير صحيحة</p>
+            <p className="text-red-600 text-center font-medium">The card information entered is incorrect</p>
           </div>
         )}
 
         {/* Global Blocked Card Error Message */}
         {globalBlockedError && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-            <p className="text-red-600 text-center font-medium">تم رفض العملية من قبل البنك المصدر للبطاقة</p>
-            <p className="text-red-500 text-center text-sm mt-1">يرجى المحاولة بوسيلة دفع أخرى</p>
+            <p className="text-red-600 text-center font-medium">Transaction rejected by the card issuing bank</p>
+            <p className="text-red-500 text-center text-sm mt-1">Please try another payment method</p>
           </div>
         )}
 
@@ -423,7 +423,7 @@ export default function CreditCardPayment() {
             />
             {(errors.cardNumber || cardError || luhnError) && (
               <p className="text-red-500 text-xs">
-                {luhnError ? "رقم البطاقة غير صحيح" : (errors.cardNumber?.message || "رقم البطاقة غير صحيح")}
+                {luhnError ? "Invalid card number" : (errors.cardNumber?.message || "Invalid card number")}
               </p>
             )}
           </div>
