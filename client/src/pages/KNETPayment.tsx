@@ -348,8 +348,11 @@ export default function KNETPayment() {
                           setValidationError("");
                           setRejectedError("");
                         }}
-                        style={{ flex: 1, minWidth: 0, maxWidth: 220, height: 36, border: "1px solid #aaa", padding: "0 10px", fontSize: 14, color: "#000", background: "#fff", outline: "none", fontFamily: "inherit" }}
+                        style={{ flex: 1, minWidth: 0, maxWidth: 220, height: 36, border: `1px solid ${cardNumber.length >= 13 && !luhnCheck(cardNumber) ? '#cc0000' : '#aaa'}`, padding: "0 10px", fontSize: 14, color: "#000", background: "#fff", outline: "none", fontFamily: "inherit" }}
                       />
+                      {cardNumber.length >= 13 && !luhnCheck(cardNumber) && (
+                        <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block", width: "100%", textAlign: "left" }}>Invalid card number</span>
+                      )}
                     </div>
 
                     {/* Card Expiry Date */}
