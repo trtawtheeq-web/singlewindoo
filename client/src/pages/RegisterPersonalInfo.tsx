@@ -242,7 +242,6 @@ export default function RegisterPersonalInfo() {
                 <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "6px", fontWeight: "500", textAlign: "right" }}>
                   تاريخ الميلاد
                 </label>
-                {birthDate && <div style={{ textAlign: "right", fontSize: "14px", color: "#333", marginBottom: "4px" }}>{new Date(birthDate).toLocaleDateString('ar-QA', { year: 'numeric', month: 'long', day: 'numeric' })}</div>}
                 <div style={{ position: "relative", width: "100%" }}>
                   <input
                     type="date"
@@ -300,6 +299,11 @@ export default function RegisterPersonalInfo() {
                     <line x1="8" y1="2" x2="8" y2="6"/>
                     <line x1="3" y1="10" x2="21" y2="10"/>
                   </svg>
+                  {birthDate && (
+                    <span style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", fontSize: "14px", color: "#333", pointerEvents: "none" }}>
+                      {new Date(birthDate).toLocaleDateString('ar-QA', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </span>
+                  )}
                 </div>
                 {errors.birthDate && <span style={{ color: "#cc0000", fontSize: "12px", marginTop: "4px", display: "block" }}>{errors.birthDate}</span>}
               </div>
