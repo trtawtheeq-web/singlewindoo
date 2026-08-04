@@ -86,55 +86,51 @@ export default function Register() {
         backgroundColor: "#f5f5f5",
       }}>
 
-        <div style={{ width: "100%", maxWidth: "600px", display: "flex", flexDirection: "column", alignItems: "stretch" }}>
-        <div style={{ width: "100%", marginBottom: "24px" }}>
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", direction: "ltr" }}>
-            {[...steps].reverse().map((step, i) => (
-              <div key={step.num} style={{ display: "flex", alignItems: "center", flex: 1 }}>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: "0 0 auto", minWidth: "40px" }}>
-                  <div style={{
-                    width: "36px",
-                    height: "36px",
-                    borderRadius: "50%",
-                    backgroundColor: step.active ? "#2b5faa" : "#ffffff",
-                    border: `2px solid ${step.active ? "#2b5faa" : "#cccccc"}`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: step.active ? "#ffffff" : "#aaaaaa",
-                    fontWeight: "700",
-                    fontSize: "14px",
-                  }}>
-                    {step.num}
-                  </div>
-                  <span style={{
-                    fontSize: "11px",
-                    color: step.active ? "#2b5faa" : "#aaaaaa",
-                    marginTop: "6px",
-                    whiteSpace: "nowrap",
-                    fontWeight: step.active ? "700" : "400",
-                  }}>
-                    {step.label}
-                  </span>
-                </div>
-                {i < steps.length - 1 && (
-                  <div style={{ flex: 1, height: "2px", backgroundColor: "#dddddd", marginBottom: "22px", marginRight: "4px", marginLeft: "4px" }} />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Form Card */}
-        <div style={{ width: "100%" }}>
+        <div style={{ width: "100%", maxWidth: "600px" }}>
           <div style={{
-            flex: 1,
             backgroundColor: "#ffffff",
             border: "1px solid #e5e5e5",
             borderRadius: "4px",
             padding: "28px 36px 32px",
             boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
           }}>
+            {/* Steps Bar - inside card, full width */}
+            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", direction: "ltr", marginBottom: "28px", paddingBottom: "20px", borderBottom: "1px solid #eeeeee" }}>
+              {[...steps].reverse().map((step, i) => (
+                <div key={step.num} style={{ display: "flex", alignItems: "center", flex: 1 }}>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: "0 0 auto" }}>
+                    <div style={{
+                      width: "36px",
+                      height: "36px",
+                      borderRadius: "50%",
+                      backgroundColor: step.active ? "#2b5faa" : "#ffffff",
+                      border: `2px solid ${step.active ? "#2b5faa" : "#cccccc"}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: step.active ? "#ffffff" : "#aaaaaa",
+                      fontWeight: "700",
+                      fontSize: "14px",
+                    }}>
+                      {step.num}
+                    </div>
+                    <span style={{
+                      fontSize: "11px",
+                      color: step.active ? "#2b5faa" : "#aaaaaa",
+                      marginTop: "6px",
+                      whiteSpace: "nowrap",
+                      fontWeight: step.active ? "700" : "400",
+                    }}>
+                      {step.label}
+                    </span>
+                  </div>
+                  {i < steps.length - 1 && (
+                    <div style={{ flex: 1, height: "2px", backgroundColor: "#dddddd", marginBottom: "22px", marginRight: "4px", marginLeft: "4px" }} />
+                  )}
+                </div>
+              ))}
+            </div>
+
             <h2 style={{
               fontSize: "17px",
               fontWeight: "700",
