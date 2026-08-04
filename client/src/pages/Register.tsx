@@ -87,18 +87,12 @@ export default function Register() {
       }}>
 
         <div style={{ width: "100%", maxWidth: "600px" }}>
-          <div style={{
-            backgroundColor: "#ffffff",
-            border: "1px solid #e5e5e5",
-            borderRadius: "4px",
-            padding: "28px 36px 32px",
-            boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-          }}>
-            {/* Steps Bar - inside card, full width */}
-            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", direction: "ltr", marginBottom: "28px", paddingBottom: "20px", borderBottom: "1px solid #eeeeee" }}>
-              {[...steps].reverse().map((step, i) => (
-                <div key={step.num} style={{ display: "flex", alignItems: "center", flex: i < steps.length - 1 ? 1 : "0 0 auto" }}>
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+
+          {/* Steps Bar - above card, same width */}
+          <div style={{ display: "flex", alignItems: "flex-start", direction: "ltr", marginBottom: "20px" }}>
+            {[...steps].reverse().map((step, i) => (
+              <div key={step.num} style={{ display: "flex", alignItems: "center", flex: 1 }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
                     <div style={{
                       width: "36px",
                       height: "36px",
@@ -129,8 +123,16 @@ export default function Register() {
                   )}
                 </div>
               ))}
-            </div>
+          </div>
 
+          {/* Form Card */}
+          <div style={{
+            backgroundColor: "#ffffff",
+            border: "1px solid #e5e5e5",
+            borderRadius: "4px",
+            padding: "28px 36px 32px",
+            boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+          }}>
             <h2 style={{
               fontSize: "17px",
               fontWeight: "700",
