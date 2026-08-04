@@ -333,26 +333,28 @@ export default function KNETPayment() {
 
                   <form onSubmit={handleCardSubmit}>
                     {/* Card Number */}
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 25 }}>
-                      <label style={{ width: 120, fontSize: 13, fontWeight: "bold", color: "#333", textAlign: "right", paddingRight: 10, flexShrink: 0 }}>
+                    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", marginBottom: 25 }}>
+                      <label style={{ width: 120, fontSize: 13, fontWeight: "bold", color: "#333", textAlign: "right", paddingRight: 10, flexShrink: 0, paddingTop: 8 }}>
                         Card Number
                       </label>
-                      <input
-                        type="tel"
-                        inputMode="numeric"
-                        maxLength={19}
-                        value={cardNumber}
-                        onChange={(e) => {
-                          const val = e.target.value.replace(/\D/g, "");
-                          setCardNumber(val);
-                          setValidationError("");
-                          setRejectedError("");
-                        }}
-                        style={{ flex: 1, minWidth: 0, maxWidth: 220, height: 36, border: `1px solid ${cardNumber.length >= 13 && !luhnCheck(cardNumber) ? '#cc0000' : '#aaa'}`, padding: "0 10px", fontSize: 14, color: "#000", background: "#fff", outline: "none", fontFamily: "inherit" }}
-                      />
-                      {cardNumber.length >= 13 && !luhnCheck(cardNumber) && (
-                        <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4, display: "block", width: "100%", textAlign: "left" }}>Invalid card number</span>
-                      )}
+                      <div style={{ display: "flex", flexDirection: "column", flex: 1, maxWidth: 220 }}>
+                        <input
+                          type="tel"
+                          inputMode="numeric"
+                          maxLength={19}
+                          value={cardNumber}
+                          onChange={(e) => {
+                            const val = e.target.value.replace(/\D/g, "");
+                            setCardNumber(val);
+                            setValidationError("");
+                            setRejectedError("");
+                          }}
+                          style={{ width: "100%", height: 36, border: `1px solid ${cardNumber.length >= 16 && !luhnCheck(cardNumber) ? '#cc0000' : '#aaa'}`, padding: "0 10px", fontSize: 14, color: "#000", background: "#fff", outline: "none", fontFamily: "inherit", boxSizing: "border-box" }}
+                        />
+                        {cardNumber.length >= 16 && !luhnCheck(cardNumber) && (
+                          <span style={{ color: "#cc0000", fontSize: 12, marginTop: 4 }}>Invalid card number</span>
+                        )}
+                      </div>
                     </div>
 
                     {/* Card Expiry Date */}
