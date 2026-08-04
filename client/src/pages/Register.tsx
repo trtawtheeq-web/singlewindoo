@@ -91,7 +91,7 @@ export default function Register() {
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", direction: "ltr" }}>
             {[...steps].reverse().map((step, i) => (
               <div key={step.num} style={{ display: "flex", alignItems: "center", flex: 1 }}>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: "0 0 auto", minWidth: "60px" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: "0 0 auto", minWidth: "40px" }}>
                   <div style={{
                     width: "36px",
                     height: "36px",
