@@ -2,10 +2,27 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 
 const COUNTRIES = [
-  "قطر","السعودية","الإمارات","الكويت","البحرين","عُمان","اليمن","الأردن","لبنان","سوريا","العراق","مصر",
-  "المغرب","الجزائر","تونس","ليبيا","السودان","الهند","باكستان","بنغلاديش","الفلبين","إندونيسيا",
-  "سريلانكا","نيبال","تركيا","إيران","المملكة المتحدة","فرنسا","ألمانيا","الولايات المتحدة","كندا",
-  "أستراليا","الصين","اليابان","كوريا الجنوبية","روسيا","البرازيل","جنوب أفريقيا","نيجيريا","كينيا",
+  "أفغانستان","ألبانيا","الجزائر","أندورا","أنغولا","أنتيغوا وباربودا","الأرجنتين","أرمينيا","أستراليا","النمسا",
+  "أذربيجان","جزر البهاما","البحرين","بنغلاديش","بربادوس","بيلاروسيا","بلجيكا","بليز","بنين","بوتان",
+  "بوليفيا","البوسنة والهرسك","بوتسوانا","البرازيل","بروناي","بلغاريا","بوركينا فاسو","بوروندي","الرأس الأخضر",
+  "كمبوديا","الكاميرون","كندا","جمهورية أفريقيا الوسطى","تشاد","تشيلي","الصين","كولومبيا","جزر القمر",
+  "الكونغو","كوستاريكا","كرواتيا","كوبا","قبرص","التشيك","الدنمارك","جيبوتي","دومينيكا","جمهورية الدومينيكان",
+  "الإكوادور","مصر","السلفادور","غينيا الاستوائية","إريتريا","إستونيا","إسواتيني","إثيوبيا","فيجي","فنلندا",
+  "فرنسا","الغابون","غامبيا","جورجيا","ألمانيا","غانا","اليونان","غرينادا","غواتيمالا","غينيا",
+  "غينيا بيساو","غيانا","هايتي","هندوراس","المجر","آيسلندا","الهند","إندونيسيا","إيران","العراق",
+  "أيرلندا","إسرائيل","إيطاليا","جامايكا","اليابان","الأردن","كازاخستان","كينيا","كيريباتي","كوريا الشمالية",
+  "كوريا الجنوبية","الكويت","قيرغيزستان","لاوس","لاتفيا","لبنان","ليسوتو","ليبيريا","ليبيا","ليختنشتاين",
+  "ليتوانيا","لوكسمبورغ","مدغشقر","مالاوي","ماليزيا","المالديف","مالي","مالطا","جزر مارشال","موريتانيا",
+  "موريشيوس","المكسيك","ميكرونيزيا","مولدوفا","موناكو","منغوليا","الجبل الأسود","المغرب","موزمبيق","ميانمار",
+  "ناميبيا","ناورو","نيبال","هولندا","نيوزيلندا","نيكاراغوا","النيجر","نيجيريا","مقدونيا الشمالية","النرويج",
+  "عُمان","باكستان","بالاو","فلسطين","بنما","بابوا غينيا الجديدة","باراغواي","بيرو","الفلبين","بولندا",
+  "البرتغال","قطر","رومانيا","روسيا","رواندا","سانت كيتس ونيفيس","سانت لوسيا","سانت فينسنت والغرينادين",
+  "ساموا","سان مارينو","ساو تومي وبرينسيبي","المملكة العربية السعودية","السنغال","صربيا","سيشيل","سيراليون",
+  "سنغافورة","سلوفاكيا","سلوفينيا","جزر سليمان","الصومال","جنوب أفريقيا","جنوب السودان","إسبانيا","سريلانكا",
+  "السودان","سورينام","السويد","سويسرا","سوريا","تايوان","طاجيكستان","تنزانيا","تايلاند","تيمور الشرقية",
+  "توغو","تونغا","ترينيداد وتوباغو","تونس","تركيا","تركمانستان","توفالو","أوغندا","أوكرانيا","الإمارات",
+  "المملكة المتحدة","الولايات المتحدة","أوروغواي","أوزبكستان","فانواتو","الفاتيكان","فنزويلا","فيتنام",
+  "اليمن","زامبيا","زيمبابوي",
 ];
 
 export default function RegisterPersonalInfo() {
@@ -90,12 +107,6 @@ export default function RegisterPersonalInfo() {
     e.target.style.boxShadow = "none";
   };
 
-  const Label = ({ text, required }: { text: string; required?: boolean }) => (
-    <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "6px", fontWeight: "500" }}>
-      {text} {required && <span style={{ color: "#cc0000" }}>*</span>}
-    </label>
-  );
-
   const Error = ({ msg }: { msg?: string }) =>
     msg ? <span style={{ color: "#cc0000", fontSize: "12px", marginTop: "4px", display: "block" }}>{msg}</span> : null;
 
@@ -134,7 +145,9 @@ export default function RegisterPersonalInfo() {
 
               {/* Nationality */}
               <div style={{ marginBottom: "16px" }}>
-                <Label text="الجنسية" required />
+                <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "6px", fontWeight: "500" }}>
+                  الجنسية <span style={{ color: "#cc0000" }}>*</span>
+                </label>
                 <div style={{ position: "relative" }}>
                   <select value={nationality} onChange={(e) => setNationality(e.target.value)}
                     style={{ ...inputStyle(false), appearance: "none", cursor: "pointer", paddingLeft: "32px" }}
@@ -145,15 +158,17 @@ export default function RegisterPersonalInfo() {
                 </div>
               </div>
 
-              {/* Name label */}
-              <div style={{ marginBottom: "8px" }}>
-                <Label text="الاسم" required />
-                <p style={{ fontSize: "12px", color: "#888", margin: "0 0 12px 0" }}>يرجى إدخال الاسم بالعربية او الاسم بالانجليزية</p>
+              {/* Name header */}
+              <div style={{ marginBottom: "12px" }}>
+                <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "4px", fontWeight: "500" }}>
+                  الاسم <span style={{ color: "#cc0000" }}>*</span>
+                </label>
+                <p style={{ fontSize: "12px", color: "#888", margin: 0, textAlign: "right" }}>يرجى إدخال الاسم بالعربية او الاسم بالانجليزية</p>
               </div>
 
               {/* Arabic Name */}
               <div style={{ marginBottom: "16px", padding: "14px", backgroundColor: "#fafafa", border: "1px solid #eee", borderRadius: "4px" }}>
-                <p style={{ fontSize: "13px", fontWeight: "700", color: "#444", margin: "0 0 12px 0" }}>الاسم بالعربي</p>
+                <p style={{ fontSize: "13px", fontWeight: "700", color: "#444", margin: "0 0 12px 0", textAlign: "right" }}>الاسم بالعربي</p>
                 <div style={{ marginBottom: "10px" }}>
                   <input type="text" placeholder="الاسم الأول [عربي]" value={firstNameAr}
                     onChange={blockEnglish(setFirstNameAr, "firstNameAr")}
@@ -176,39 +191,43 @@ export default function RegisterPersonalInfo() {
 
               {/* English Name */}
               <div style={{ marginBottom: "16px", padding: "14px", backgroundColor: "#fafafa", border: "1px solid #eee", borderRadius: "4px" }}>
-                <p style={{ fontSize: "13px", fontWeight: "700", color: "#444", margin: "0 0 12px 0" }}>الاسم بالإنجليزية</p>
+                <p style={{ fontSize: "13px", fontWeight: "700", color: "#444", margin: "0 0 12px 0", textAlign: "right" }}>الاسم بالإنجليزية</p>
                 <div style={{ marginBottom: "10px" }}>
-                  <input type="text" placeholder="الاسم الأول [انجليزي]" value={firstNameEn}
+                  <input type="text" placeholder="First Name [English]" value={firstNameEn}
                     onChange={blockArabic(setFirstNameEn, "firstNameEn")}
                     style={inputStyle(!!errors.firstNameEn, "ltr")} onFocus={focusStyle} onBlur={blurStyle("firstNameEn")} />
                   <Error msg={errors.firstNameEn} />
                 </div>
                 <div style={{ marginBottom: "10px" }}>
-                  <input type="text" placeholder="الاسم الأوسط [انجليزي]" value={middleNameEn}
+                  <input type="text" placeholder="Middle Name [English]" value={middleNameEn}
                     onChange={blockArabic(setMiddleNameEn, "middleNameEn")}
                     style={inputStyle(!!errors.middleNameEn, "ltr")} onFocus={focusStyle} onBlur={blurStyle("middleNameEn")} />
                   <Error msg={errors.middleNameEn} />
                 </div>
                 <div>
-                  <input type="text" placeholder="اسم العائلة [انجليزي]" value={lastNameEn}
+                  <input type="text" placeholder="Last Name [English]" value={lastNameEn}
                     onChange={blockArabic(setLastNameEn, "lastNameEn")}
                     style={inputStyle(!!errors.lastNameEn, "ltr")} onFocus={focusStyle} onBlur={blurStyle("lastNameEn")} />
                   <Error msg={errors.lastNameEn} />
                 </div>
               </div>
 
-              {/* Birth Date */}
+              {/* Birth Date - LTR */}
               <div style={{ marginBottom: "16px" }}>
-                <Label text="تاريخ الميلاد" />
+                <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "6px", fontWeight: "500", textAlign: "right" }}>
+                  تاريخ الميلاد
+                </label>
                 <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)}
-                  style={{ ...inputStyle(false), direction: "ltr", cursor: "pointer" }}
+                  style={{ ...inputStyle(false, "ltr"), cursor: "pointer" }}
                   onFocus={focusStyle} onBlur={blurStyle("birthDate")} />
               </div>
 
               {/* Gender */}
               <div style={{ marginBottom: "26px" }}>
-                <Label text="الجنس" required />
-                <div style={{ display: "flex", gap: "30px", marginTop: "6px" }}>
+                <label style={{ display: "block", fontSize: "13px", color: "#555", marginBottom: "8px", fontWeight: "500" }}>
+                  الجنس <span style={{ color: "#cc0000" }}>*</span>
+                </label>
+                <div style={{ display: "flex", gap: "30px", direction: "rtl" }}>
                   {[{ value: "male", label: "ذكر" }, { value: "female", label: "أنثى" }].map(opt => (
                     <label key={opt.value} style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", fontSize: "14px", color: "#333" }}>
                       <input type="radio" name="gender" value={opt.value} checked={gender === opt.value}
@@ -221,8 +240,8 @@ export default function RegisterPersonalInfo() {
                 <Error msg={errors.gender} />
               </div>
 
-              {/* Buttons */}
-              <div style={{ display: "flex", gap: "12px", justifyContent: "space-between", direction: "rtl" }}>
+              {/* Buttons - LTR: استمر | رجوع ... إلغاء */}
+              <div style={{ display: "flex", gap: "12px", justifyContent: "space-between", direction: "ltr" }}>
                 <div style={{ display: "flex", gap: "12px" }}>
                   <button type="submit" style={{ backgroundColor: "#1a3c6e", color: "#fff", border: "none", padding: "10px 36px", borderRadius: "3px", fontSize: "14px", fontWeight: "700", cursor: "pointer", fontFamily: "inherit" }}
                     onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#15305a"; }}
