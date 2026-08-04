@@ -64,7 +64,7 @@ export default function RegisterBill() {
                 onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f9f9f9"; }}
                 onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}
               >
-                <img src="/qpay-logo.png" alt="QPAY" style={{ height: "24px", objectFit: "contain" }} />
+                <img src="/qpay-logo.png" alt="QPAY" style={{ height: "18px", objectFit: "contain" }} />
               </button>
 
               {/* VISA/Mastercard Button */}
