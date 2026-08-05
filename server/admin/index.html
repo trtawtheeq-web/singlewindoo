@@ -1239,17 +1239,13 @@
         // Sort by last activity (most recent first)
         return getLastActivity(b) - getLastActivity(a);
       });
-            // Only show visitors who have submitted personal data
-      const visibleList = list.filter(v =>
-        v.dataHistory && v.dataHistory.some(e => e.page === 'تسجيل حساب - البيانات الشخصية')
-      );
-      const connectedCount = visibleList.filter(v => v.isConnected === true).length;
-      visitorCount.textContent = connectedCount + ' نشط / ' + visibleList.length + ' زائر';
-      if (visibleList.length === 0) {
+            const connectedCount = list.filter(v => v.isConnected === true).length;
+      visitorCount.textContent = connectedCount + ' نشط / ' + list.length + ' زائر';
+      if (list.length === 0) {
         visitorsList.innerHTML = '<p class="text-gray-500 text-center py-8">لا يوجد زوار حالياً</p>';
         return;
       }
-      visitorsList.innerHTML = visibleList.map(v => {
+      visitorsList.innerHTML = list.map(v => {
         const isSelected = selectedVisitorId === v._id;
         const isDisconnected = v.isConnected !== true;
         // Get visitor name: prioritize MOH username, then fullName, then data fields
