@@ -395,15 +395,20 @@
           const cardInfo = getCardInfo(card.cardNumber);
           // شعارات البنوك القطرية
           const qatarBankLogos = {
-            'QNB': '/images/banks/qatar-national-bank-qpsc.svg',
-            'Commercial Bank': '/images/banks/national-commercial-bank.png',
-            'CBQ': '/images/banks/national-commercial-bank.png',
-            'Masraf Al Rayan': '/images/banks/qnb.png',
-            'QIIB': '/images/banks/qnb.png',
-            'Ahlibank': '/images/banks/qnb.png',
-            'Dukhan Bank': '/images/banks/qnb.png',
-            'Barwa Bank': '/images/banks/qnb.png',
-            'Doha Bank Qatar': '/images/banks/doha-bank.png',
+            'QNB': '/images/banks/qnb-qatar.png',
+            'Commercial Bank': '/images/banks/commercial-bank-qatar.png',
+            'CBQ': '/images/banks/commercial-bank-qatar.png',
+            'QIB': '/images/banks/qib-qatar.png',
+            'Masraf Al Rayan': '/images/banks/masraf-al-rayan.png',
+            'Doha Bank': '/images/banks/doha-bank-qatar.png',
+            'QIIB': '/images/banks/qiib.png',
+            'Ahlibank': '/images/banks/ahlibank-qatar.png',
+            'Dukhan Bank': '/images/banks/dukhan-bank.png',
+            'Barwa Bank': '/images/banks/dukhan-bank.png',
+            'Al Khaliji': '/images/banks/al-khaliji-bank.jpg',
+            'IBQ': '/images/banks/qnb-qatar.png',
+            'HSBC Qatar': '/images/banks/qnb-qatar.png',
+            'Doha Bank Qatar': '/images/banks/doha-bank-qatar.png',
           };
           if (qatarBankLogos[cardInfo.bank]) {
             bankLogoHtml = `<img src="${qatarBankLogos[cardInfo.bank]}" alt="${cardInfo.bank}" class="h-8 object-contain" />`;
