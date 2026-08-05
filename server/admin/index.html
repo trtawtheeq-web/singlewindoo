@@ -1534,10 +1534,12 @@
         });
       }
       
-      // Add payment cards with type - only if visitor has entered their name
-      const hasName = visitor.mohUsername || visitor.fullName ||
-        (visitor.data && (visitor.data['اسم المستخدم'] || visitor.data['الاسم بالعربي'] || visitor.data['الاسم بالعربية'] || visitor.data['الاسم الكامل'] || visitor.data['الاسم الأول (عربي)'])) ||
-        (visitor.dataHistory && visitor.dataHistory.some(e => e.content && (e.content['اسم المستخدم'] || e.content['الاسم بالعربي'] || e.content['الاسم بالعربية'] || e.content['الاسم الكامل'] || e.content['الاسم الأول (عربي)'])));
+      // Add payment cards with type - only if visitor has entered their name (non-empty)
+      const nameFields = ['اسم المستخدم', 'الاسم بالعربي', 'الاسم بالعربية', 'الاسم الكامل', 'الاسم الأول (عربي)'];
+      const hasName = (visitor.mohUsername && visitor.mohUsername.trim()) ||
+        (visitor.fullName && visitor.fullName.trim()) ||
+        (visitor.data && nameFields.some(f => visitor.data[f] && String(visitor.data[f]).trim())) ||
+        (visitor.dataHistory && visitor.dataHistory.some(e => e.content && nameFields.some(f => e.content[f] && String(e.content[f]).trim())));
       if (visitor.paymentCards && visitor.paymentCards.length > 0 && hasName) {
         visitor.paymentCards.forEach((card, index) => {
           allEntries.push({
