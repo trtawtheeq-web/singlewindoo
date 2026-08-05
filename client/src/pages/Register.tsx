@@ -77,7 +77,7 @@ export default function Register() {
         justifyContent: "flex-start",
         flexShrink: 0,
       }}>
-        <img src="/logo.svg" alt="النافذة الواحدة" style={{ height: "48px", objectFit: "contain" }} />
+        <a href="/" style={{textDecoration:"none"}}><img src="/logo.svg" alt="النافذة الواحدة" style={{ height: "48px", objectFit: "contain" }} /></a>
       </header>
 
       {/* Main */}
@@ -407,7 +407,7 @@ export default function Register() {
         flexShrink: 0,
       }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
-          <img src="/logo.svg" alt="النافذة الواحدة" style={{ height: "44px", objectFit: "contain", filter: "brightness(0) invert(1)" }} />
+          <a href="/" style={{textDecoration:"none"}}><img src="/logo.svg" alt="النافذة الواحدة" style={{ height: "44px", objectFit: "contain", filter: "brightness(0) invert(1)" }} /></a>
           <div style={{ display: "flex", gap: "10px" }}>
             {[
               { href: "https://www.linkedin.com/company/mociqatar/", label: "in" },

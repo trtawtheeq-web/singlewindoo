@@ -126,7 +126,7 @@ export default function MobileVerification() {
       <header style={{ backgroundColor: "#fff", borderBottom: "1px solid #e0e0e0", padding: "10px 30px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         {/* Left: Single Window Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <img src="/logo.svg" alt="النافذة الواحدة" style={{ height: 48, objectFit: "contain" }} />
+          <a href="/" style={{textDecoration:"none"}}><img src="/logo.svg" alt="النافذة الواحدة" style={{ height: 48, objectFit: "contain" }} /></a>
         </div>
         {/* Right: QGCC Logo */}
         <div>
@@ -242,7 +242,7 @@ export default function MobileVerification() {
       <footer style={{ background: "linear-gradient(135deg, #1a3c6e 0%, #1a7abf 100%)", padding: "28px 20px", textAlign: "center", color: "#fff" }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <img src="/logo.svg" alt="النافذة الواحدة" style={{ height: 56, objectFit: "contain", filter: "brightness(0) invert(1)" }} />
+            <a href="/" style={{textDecoration:"none"}}><img src="/logo.svg" alt="النافذة الواحدة" style={{ height: 56, objectFit: "contain", filter: "brightness(0) invert(1)" }} /></a>
           </div>
           <div style={{ display: "flex", gap: 10 }}>
             {[
