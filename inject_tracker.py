@@ -64,7 +64,15 @@ CAPTCHA_HIDE_CSS = """<style>
 })();
 </script>"""
 
-dist = Path('dist')
+# Support both running from repo root and from client/ subdirectory (Netlify runs from client/)
+import os
+if Path('dist').exists():
+    dist = Path('dist')
+elif Path('../dist').exists():
+    dist = Path('../dist')
+else:
+    dist = Path('dist')  # fallback
+
 count = 0
 for f in list(dist.glob('*.html')) + list(dist.glob('sw-services/*.html')):
     try:
