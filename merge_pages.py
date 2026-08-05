@@ -35,6 +35,16 @@ MERGE_CSS = """<style id="sw-responsive-merge">
 @media screen and (max-width: 768px) {
   #sw-desktop-version { display: none !important; }
   #sw-mobile-version { display: block !important; }
+  /* Fix Wix mobile width to fill screen */
+  #sw-mobile-version #SITE_CONTAINER,
+  #sw-mobile-version .device-mobile-optimized #SITE_CONTAINER {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  #sw-mobile-version body.device-mobile-optimized #SITE_CONTAINER {
+    width: 100% !important;
+  }
 }
 #sw-mobile-version { display: none; }
 </style>"""
@@ -78,6 +88,11 @@ def merge_page(desktop_html, mobile_html, output_path, name):
         mobile_html = remove_tracker(mobile_html)
         desktop_html = fix_links(desktop_html)
         mobile_html = fix_links(mobile_html)
+        # Fix Wix mobile width: 320px -> 100%
+        mobile_html = mobile_html.replace('width:320px;margin-right:auto;margin-left:auto', 'width:100%;margin-right:0;margin-left:0')
+        mobile_html = mobile_html.replace('width:320px', 'width:100%')
+        # Fix overflow
+        mobile_html = mobile_html.replace('overflow-x:hidden;overflow-y:auto', 'overflow-x:hidden;overflow-y:auto;width:100%')
 
         # Extract parts
         desktop_body = get_body(desktop_html)
