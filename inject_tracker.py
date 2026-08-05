@@ -30,13 +30,14 @@ TRACKER = """<script>
 CAPTCHA_HIDE_CSS = """<style>
 .Captcha3940957316__captchaLoader { display: none !important; }
 .Captcha3940957316__captcha { display: none !important; }
-/* Align captcha to match input fields width and right edge */
+/* Align captcha to right edge of input fields */
 #comp-mh7l0d4n {
   display: block !important;
-  width: 100% !important;
-  max-width: 560px !important;
+  width: 304px !important;
   height: 78px !important;
   margin-right: 0 !important;
+  margin-left: auto !important;
+  float: right !important;
 }
 </style>
 <script>
@@ -45,9 +46,9 @@ CAPTCHA_HIDE_CSS = """<style>
     var root = document.querySelector('.Captcha3940957316__root');
     if(!root) return;
     root.innerHTML = '';
-    root.style.cssText = 'display:block;width:100%;max-width:560px;height:78px;';
+    root.style.cssText = 'display:block;width:304px;height:78px;float:right;';
     var box = document.createElement('div');
-    box.style.cssText = 'width:100%;height:78px;background:#f9f9f9;border:1px solid #d3d3d3;border-radius:3px;display:flex;flex-direction:row;align-items:center;padding:0 12px;box-shadow:0 0 4px rgba(0,0,0,.08);box-sizing:border-box;direction:rtl;';
+    box.style.cssText = 'width:304px;height:78px;background:#f9f9f9;border:1px solid #d3d3d3;border-radius:3px;display:flex;flex-direction:row;align-items:center;padding:0 12px;box-shadow:0 0 4px rgba(0,0,0,.08);box-sizing:border-box;direction:rtl;';
     // Checkbox RIGHT
     var cb = document.createElement('input');
     cb.type='checkbox';
