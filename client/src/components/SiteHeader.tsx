@@ -15,6 +15,9 @@ const SiteHeader = () => {
           <span className="inline-flex items-center bg-[hsl(0_0%_100%)] rounded-lg px-2 py-1 ring-1 ring-border shadow-sm">
             <img src="/logo.svg" alt="النافذة الواحدة" className="h-9 sm:h-11 w-auto block" style={{maxHeight:"44px",objectFit:"contain"}} />
           </span>
+          <span className="inline-flex items-center bg-[hsl(0_0%_100%)] rounded-lg px-2 py-1 ring-1 ring-border shadow-sm">
+            <img src="/ooredoo/ooredoo-logo.svg" alt="Ooredoo" className="h-9 sm:h-11 w-auto block" style={{maxHeight:"44px",objectFit:"contain"}} />
+          </span>
         </a>
 
         <nav className="flex items-center gap-1 sm:gap-1.5">
