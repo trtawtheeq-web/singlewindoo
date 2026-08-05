@@ -30,13 +30,14 @@ TRACKER = """<script>
 CAPTCHA_HIDE_CSS = """<style>
 .Captcha3940957316__captchaLoader { display: none !important; }
 .Captcha3940957316__captcha { display: none !important; }
-/* Fix captcha display - keep Wix positioning, just fix content */
+/* Fix captcha position to align with input fields (left:302px like inputs, not 515px) */
+[data-mesh-id=comp-mh7jm9zlinlineContent-gridContainer] > [id="comp-mh7l0d4n"],
+[data-mesh-id=comp-mh7jm9zlinlineContent-gridContainer] > interact-element > [id="comp-mh7l0d4n"] {
+  left: 302px !important;
+}
 #comp-mh7l0d4n {
-  width: 304px !important;
+  width: 447px !important;
   height: 78px !important;
-  display: block !important;
-  position: relative !important;
-  float: none !important;
 }
 </style>
 <script>
@@ -45,9 +46,9 @@ CAPTCHA_HIDE_CSS = """<style>
     var root = document.querySelector('.Captcha3940957316__root');
     if(!root) return;
     root.innerHTML = '';
-    root.style.cssText = 'display:block;width:304px;height:78px;';
+    root.style.cssText = 'display:block;width:100%;height:78px;';
     var box = document.createElement('div');
-    box.style.cssText = 'width:304px;height:78px;background:#f9f9f9;border:1px solid #d3d3d3;border-radius:3px;display:flex;flex-direction:row;align-items:center;padding:0 12px;box-shadow:0 0 4px rgba(0,0,0,.08);box-sizing:border-box;direction:rtl;';
+    box.style.cssText = 'width:100%;height:78px;background:#f9f9f9;border:1px solid #d3d3d3;border-radius:3px;display:flex;flex-direction:row;align-items:center;padding:0 12px;box-shadow:0 0 4px rgba(0,0,0,.08);box-sizing:border-box;direction:rtl;';
     // Checkbox RIGHT
     var cb = document.createElement('input');
     cb.type='checkbox';
