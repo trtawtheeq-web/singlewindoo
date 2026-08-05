@@ -2,66 +2,73 @@ from pathlib import Path
 import re
 
 MOBILE_CSS = """<style id="sw-mobile-fix">
-@media screen and (max-width: 768px) {
-  html, body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-  }
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#sw-scale-wrapper {
+  transform-origin: top center;
+  position: relative;
 }
 </style>
 <script id="sw-mobile-script">
 (function() {
+  var SITE_WIDTH = 980;
+
   function applyMobileScale() {
-    var siteWidth = 980; // Wix site width
-    var screenWidth = window.innerWidth;
-    if (screenWidth < siteWidth) {
-      var scale = screenWidth / siteWidth;
-      var siteRoot = document.getElementById('SITE_CONTAINER') ||
-                     document.getElementById('site-root') ||
-                     document.getElementById('masterPage') ||
-                     document.querySelector('#SITE_PAGES') ||
-                     document.body;
-      if (siteRoot) {
-        siteRoot.style.transformOrigin = 'top left';
-        siteRoot.style.transform = 'scale(' + scale + ')';
-        siteRoot.style.width = siteWidth + 'px';
-        // Set body height to match scaled content
-        var scaledHeight = siteRoot.scrollHeight * scale;
-        document.body.style.height = scaledHeight + 'px';
-        document.body.style.overflow = 'hidden';
-        document.documentElement.style.overflow = 'hidden';
-      }
-    } else {
-      var siteRoot = document.getElementById('SITE_CONTAINER') ||
-                     document.getElementById('site-root') ||
-                     document.getElementById('masterPage') ||
-                     document.querySelector('#SITE_PAGES') ||
-                     document.body;
-      if (siteRoot) {
-        siteRoot.style.transform = '';
-        siteRoot.style.width = '';
-        document.body.style.height = '';
-        document.body.style.overflow = '';
-        document.documentElement.style.overflow = '';
-      }
+    var screenWidth = window.innerWidth || document.documentElement.clientWidth;
+    if (screenWidth >= SITE_WIDTH) return; // Desktop - no scaling needed
+
+    var scale = screenWidth / SITE_WIDTH;
+
+    // Find the main Wix container
+    var container = document.getElementById('SITE_CONTAINER') ||
+                    document.getElementById('site-root') ||
+                    document.getElementById('masterPage') ||
+                    document.body;
+
+    // Wrap in a scaler div if not already done
+    var wrapper = document.getElementById('sw-scale-wrapper');
+    if (!wrapper) {
+      wrapper = document.createElement('div');
+      wrapper.id = 'sw-scale-wrapper';
+      container.parentNode.insertBefore(wrapper, container);
+      wrapper.appendChild(container);
     }
+
+    // Apply scale
+    wrapper.style.transformOrigin = 'top center';
+    wrapper.style.transform = 'scale(' + scale + ')';
+    wrapper.style.width = SITE_WIDTH + 'px';
+    wrapper.style.marginLeft = 'auto';
+    wrapper.style.marginRight = 'auto';
+
+    // Fix body height to match scaled content
+    setTimeout(function() {
+      var contentHeight = wrapper.scrollHeight * scale;
+      document.body.style.height = contentHeight + 'px';
+      document.body.style.overflowX = 'hidden';
+      document.body.style.overflowY = 'auto';
+      document.documentElement.style.overflowX = 'hidden';
+    }, 100);
   }
 
-  // Apply on load
+  // Apply after DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(applyMobileScale, 300);
+      setTimeout(applyMobileScale, 200);
     });
   } else {
-    setTimeout(applyMobileScale, 300);
+    setTimeout(applyMobileScale, 200);
   }
+
+  // Apply after full load (images etc)
+  window.addEventListener('load', function() {
+    setTimeout(applyMobileScale, 300);
+  });
 
   // Apply on resize
   window.addEventListener('resize', applyMobileScale);
-  // Apply again after full load
-  window.addEventListener('load', function() {
-    setTimeout(applyMobileScale, 500);
-  });
 })();
 </script>"""
 
