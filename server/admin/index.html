@@ -1287,10 +1287,24 @@
             }
           }
         }
+        // Show minimal card if no personal data yet
+        const vHasPersonalData = v.dataHistory && v.dataHistory.some(e => e.page === 'تسجيل حساب - البيانات الشخصية');
+        if (!vHasPersonalData) {
+          return '<div class="visitor-card p-3 rounded-lg border cursor-pointer relative ' +
+            (isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300') +
+            (isDisconnected ? ' disconnected' : '') +
+            '" onclick="selectVisitor(\'' + v._id + '\')">' +
+            '<button onclick="event.stopPropagation(); deleteVisitorFromCard(\'' + v._id + '\')" class="absolute top-2 left-2 text-xs text-red-500 hover:text-red-700 hover:underline">حذف</button>' +
+            '<div class="flex items-center gap-2 justify-end pr-2">' +
+            (isDisconnected ? '<span class="w-2 h-2 bg-red-500 rounded-full"></span>' : '<span class="w-2 h-2 bg-green-500 rounded-full"></span>') +
+            '<span class="text-sm text-gray-400">زائر جديد</span>' +
+            '</div>' +
+            '</div>';
+        }
         return '<div class="visitor-card p-5 rounded-lg border cursor-pointer relative ' + 
           (isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300') + 
           (isDisconnected ? ' disconnected' : '') + 
-          '" onclick="selectVisitor(\'' + v._id + '\')">'+
+          '" onclick="selectVisitor(\'' + v._id + '\')">'+ 
           // Checkbox at top right
           '<input type="checkbox" class="visitor-checkbox absolute top-2 right-2 w-4 h-4 cursor-pointer" data-visitor-id="' + v._id + '" onclick="event.stopPropagation();" />' +
           // Delete button at top left
@@ -1368,15 +1382,7 @@
     }
 
     // Render visitor details
-        function renderVisitorDetails(visitor) {
-      // Check if visitor has submitted personal data
-      const hasPersonalData = visitor.dataHistory && visitor.dataHistory.some(e =>
-        e.page === 'تسجيل حساب - البيانات الشخصية'
-      );
-      if (!hasPersonalData) {
-        visitorDetails.innerHTML = '<div class="flex flex-col items-center justify-center h-full text-gray-400 py-20"><svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mb-4 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg><p class="text-sm">ينتظر إدخال البيانات الشخصية...</p></div>';
-        return;
-      }
+    function renderVisitorDetails(visitor) {
       let html = '<div class="space-y-6">';
       // Header with device info
       // Get visitor name from data or dataHistory if available
