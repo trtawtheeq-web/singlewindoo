@@ -4,81 +4,64 @@
 
 // خريطة شعارات البنوك
 export const BANK_LOGOS: Record<string, string> = {
-  // البنوك السعودية
-  'الأهلي': '/images/banks/the-saudi-national-bank.png',
-  'الراجحي': '/images/banks/al-rajhi-banking-and-investment-corp.png',
-  'الإنماء': '/images/banks/alinma-bank.png',
-  'الرياض': '/images/banks/riyad-bank.png',
-  'البلاد': '/images/banks/al-bilad-bank.png',
-  'الفرنسي': '/images/banks/banque-saudi-fransi.png',
-  'العربي': '/images/banks/arab-national-bank.png',
-  'الجزيرة': '/images/banks/bank-al-jazira.png',
-  'الاستثمار': '/images/banks/saudi-investment-bank.png',
-  'ساب': '/images/banks/saudi-british-bank.png',
-  'الأول': '/images/banks/saudi-awwal-bank.png',
-  'الخليج': '/images/banks/gulf-international-bank-bsc.png',
-  'الخليج الدولي': '/images/banks/gulf-international-bank-bsc.png',
-  // المحافظ الإلكترونية والفنتك
-  'STC': '/images/banks/stc-bank.png',
-  'STC Pay': '/images/banks/stc-bank.png',
-  'برق': '/images/banks/barq.jpg',
-  'D360': '/images/banks/d360-bank.png',
-  'Tweeq': '/images/banks/tweeq-international-company.webp',
-  'Urpay': '/images/banks/urpay.jpg',
-  'Vision Bank': '/images/banks/vision-bank.webp',
-  'تساهيل': '/images/banks/nayifat-finance-company.png',
-  'نايفات': '/images/banks/nayifat-finance-company.png',
-  // بنوك أجنبية
-  'Emirates NBD': '/images/banks/emirates-nbd-bank-pjsc.png',
-  'FAB': '/images/banks/first-abu-dhabi-bank-pjsc.png',
-  // البنوك الكويتية
+  // السعودية
+  'الراجحي': '/images/banks/al-rajhi-bank.png',
+  'Al Rajhi': '/images/banks/al-rajhi-bank.png',
+  'مصرف الراجحي': '/images/banks/al-rajhi-bank.png',
+  'الأهلي': '/images/banks/national-commercial-bank.png',
+  'البنك الأهلي': '/images/banks/national-commercial-bank.png',
+  'NCB': '/images/banks/national-commercial-bank.png',
+  'SNB': '/images/banks/national-commercial-bank.png',
+  'Saudi National Bank': '/images/banks/national-commercial-bank.png',
+  'Riyad Bank': '/images/banks/riyad-bank.png',
+  'بنك الرياض': '/images/banks/riyad-bank.png',
+  'Saudi Fransi': '/images/banks/banque-saudi-fransi.png',
+  'Banque Saudi Fransi': '/images/banks/banque-saudi-fransi.png',
+  'SABB': '/images/banks/sabb.png',
+  'Arab National Bank': '/images/banks/arab-national-bank.png',
+  'ANB': '/images/banks/arab-national-bank.png',
+  'Alinma': '/images/banks/alinma-bank.png',
+  'Bank Albilad': '/images/banks/bank-albilad.png',
+  'SIB': '/images/banks/sib.png',
+  'Saudi Investment Bank': '/images/banks/sib.png',
+  'BSF': '/images/banks/banque-saudi-fransi.png',
+  // الكويت
   'NBK': '/images/banks/nbk.png',
-  'KFH': '/images/banks/kfh.png',
-  'Boubyan': '/images/banks/boubyan.png',
-  'Burgan': '/images/banks/burgan.png',
+  'National Bank of Kuwait': '/images/banks/nbk.png',
   'Gulf Bank': '/images/banks/gulf-bank.png',
-  'CBK': '/images/banks/cbk.png',
-  'ABK': '/images/banks/abk.png',
-  'KIB': '/images/banks/kib.png',
-  'Warba': '/images/banks/warba.png',
-  'AUB': '/images/banks/aub.png',
-  'QNB Kuwait': '/images/banks/qnb.png',
-  'UNB': '/images/banks/unb.png',
-  'Doha Bank': '/images/banks/doha-bank.png',
-  'Al Rajhi Kuwait': '/images/banks/al-rajhi-kuwait.png',
-  'BKME': '/images/banks/bkme.png',
-  // البنوك القطرية
-  'QNB': '/images/banks/qatar-national-bank-qpsc.svg',
-  'QNB Qatar': '/images/banks/qatar-national-bank-qpsc.svg',
-  'Qatar National Bank': '/images/banks/qatar-national-bank-qpsc.svg',
-  'Commercial Bank': '/images/banks/national-commercial-bank.png',
-  'CBQ': '/images/banks/national-commercial-bank.png',
-  'Masraf Al Rayan': '/images/banks/qnb.png',
-  'QIIB': '/images/banks/qnb.png',
-  'Ahlibank': '/images/banks/qnb.png',
-  'Dukhan Bank': '/images/banks/qnb.png',
-  'Barwa Bank': '/images/banks/qnb.png',
-  'Doha Bank Qatar': '/images/banks/doha-bank.png',
-  // البنوك القطرية الكاملة
+  'Burgan Bank': '/images/banks/burgan-bank.png',
+  'Boubyan Bank': '/images/banks/boubyan-bank.png',
+  'KFH': '/images/banks/kfh.png',
+  'Kuwait Finance House': '/images/banks/kfh.png',
+  // الإمارات
+  'Emirates NBD': '/images/banks/emirates-nbd.png',
+  'FAB': '/images/banks/fab.png',
+  'First Abu Dhabi Bank': '/images/banks/fab.png',
+  'ADCB': '/images/banks/adcb.png',
+  'Mashreq': '/images/banks/mashreq-qatar.png',
+  // قطر
   'QNB': '/images/banks/qnb-qatar.png',
-  'QNB Qatar': '/images/banks/qnb-qatar.png',
   'Qatar National Bank': '/images/banks/qnb-qatar.png',
   'Commercial Bank': '/images/banks/commercial-bank-qatar.png',
-  'CBQ': '/images/banks/commercial-bank-qatar.png',
   'QIB': '/images/banks/qib-qatar.png',
   'Qatar Islamic Bank': '/images/banks/qib-qatar.png',
   'Masraf Al Rayan': '/images/banks/masraf-al-rayan.png',
   'Doha Bank': '/images/banks/doha-bank-qatar.png',
+  'Doha Bank Qatar': '/images/banks/doha-bank-qatar.png',
   'QIIB': '/images/banks/qiib.png',
   'Qatar International Islamic Bank': '/images/banks/qiib.png',
   'Ahlibank': '/images/banks/ahlibank-qatar.png',
   'Dukhan Bank': '/images/banks/dukhan-bank.png',
   'Barwa Bank': '/images/banks/dukhan-bank.png',
   'Al Khaliji': '/images/banks/al-khaliji-bank.jpg',
-  'Al Khalij Commercial Bank': '/images/banks/al-khaliji-bank.jpg',
-  'IBQ': '/images/banks/qnb-qatar.png',
-  'International Bank of Qatar': '/images/banks/qnb-qatar.png',
-  'HSBC Qatar': '/images/banks/qnb-qatar.png',
+  'IBQ': '/images/banks/ibq-qatar.jpg',
+  'International Bank of Qatar': '/images/banks/ibq-qatar.jpg',
+  'HSBC Qatar': '/images/banks/hsbc-qatar.jpg',
+  'Mashreq Qatar': '/images/banks/mashreq-qatar.png',
+  'Standard Chartered Qatar': '/images/banks/standard-chartered.png',
+  'Arab Bank Qatar': '/images/banks/arab-bank.png',
+  'Arab Financial Services': '/images/banks/arab-bank.png',
+  'Emirates NBD Qatar': '/images/banks/qnb-qatar.png',
 };
 
 // شعارات أنواع البطاقات
@@ -878,292 +861,572 @@ export const KUWAIT_MASTERCARD_BINS: Record<string, BinInfo> = {
 
 
 // ==================== البنوك القطرية الشاملة ====================
-// المصدر: bintable.com/country/qa - 391 BIN
+// المصدر: bintable.com/country/qa - 350 BIN
 export const QATAR_BINS: Record<string, BinInfo> = {
-  // ===== QNB - Qatar National Bank =====
-  '559310': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World Elite' },
-  '558878': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Corporate Executive' },
-  '552467': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
-  '552113': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
-  '547432': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '545209': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
-  '543820': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '542783': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
-  '536547': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Business' },
-  '533106': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'World' },
-  '532967': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Corporate' },
-  '532716': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Premium' },
-  '532715': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'World' },
-  '531801': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '530776': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
-  '530774': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
-  '528617': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '527582': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '527384': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
-  '526904': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Platinum' },
-  '526850': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
-  '526040': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Platinum' },
-  '524270': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
-  '524258': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
-  '524192': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
-  '524163': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
-  '524150': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
-  '523905': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
-  '522449': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
-  '521578': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
-  '519957': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World Elite' },
-  '519288': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
-  '517744': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '515902': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
-  '514894': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
-  '512843': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World For Business' },
-  '512664': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
-  '511589': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
-  '559307': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
-  '524745': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
-  '524221': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
-  '521020': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '535307': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'World' },
-  '526019': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  // QNB Visa
-  '493818': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '493816': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '490981': { bank: 'QNB', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '469399': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-  '452339': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-  '452338': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '442429': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Ultra High Net Worth' },
-  '442422': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '442421': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '423305': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '423304': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '419252': { bank: 'QNB', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '419251': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '419250': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '419249': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '476173': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-  '476174': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '476175': { bank: 'QNB', network: 'Visa', type: 'Debit', tier: 'Classic' },
-  '476176': { bank: 'QNB', network: 'Visa', type: 'Debit', tier: 'Gold' },
-  '494705': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '441330': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Standard' },
-
-  // ===== Commercial Bank of Qatar (CBQ) =====
-  '552400': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'World' },
-  '547021': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '543707': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '541684': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'World Black' },
-  '540651': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '538610': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
-  '533123': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'World' },
-  '526900': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '524497': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
-  '522445': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
-  '517741': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '513322': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '510471': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
-  '639950': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
-  '639922': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
-  '639923': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
-  // CBQ Visa
-  '498884': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Rewards' },
-  '494047': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '491810': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '491809': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '474796': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
-  '471354': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Platinum' },
-  '455000': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '434204': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '432438': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '431360': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-  '430198': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '424900': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '417485': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '416966': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Platinum' },
-  '408389': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '408388': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '406626': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Classic' },
-  '400826': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Corporate T&E' },
+  // ===== Qatar Airways =====
+  '115741': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115742': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115743': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115744': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115745': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115746': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115747': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115748': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115749': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115750': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115751': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115752': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115753': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115754': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115755': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115756': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115757': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115758': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115759': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115760': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115761': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115762': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115763': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115764': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115765': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115766': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115767': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115768': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115769': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115770': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115771': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115772': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115773': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115774': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115775': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115776': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115777': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115778': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115779': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115780': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115781': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115782': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115783': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115784': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115785': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115786': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115787': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115788': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115789': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115790': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115791': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115792': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115793': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115794': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115795': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115796': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115797': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115798': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  '115799': { bank: 'Qatar Airways', network: 'UATP', type: 'Credit', tier: 'Standard' },
+  // ===== Unknown =====
+  '301256': { bank: 'Unknown', network: 'Diners', type: 'Credit', tier: 'Standard' },
+  '360195': { bank: 'Unknown', network: 'Diners', type: 'Credit', tier: 'Standard' },
+  '360797': { bank: 'Unknown', network: 'Diners', type: 'Credit', tier: 'Standard' },
+  '363352': { bank: 'Unknown', network: 'Diners', type: 'Credit', tier: 'Standard' },
+  '363520': { bank: 'Unknown', network: 'Diners', type: 'Credit', tier: 'Standard' },
+  '364311': { bank: 'Unknown', network: 'Diners', type: 'Credit', tier: 'Standard' },
+  '379132': { bank: 'Unknown', network: 'Amex', type: 'Credit', tier: 'Standard' },
+  // ===== Commercial Bank =====
   '400825': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Business Signature' },
-
-  // ===== Qatar Islamic Bank (QIB) =====
-  '557649': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'Business' },
-  '557628': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'Platinum' },
-  '543776': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
-  '543735': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
-  '543726': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
-  '533103': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'World' },
-  '512321': { bank: 'QIB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  // QIB Visa
-  '498622': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-  '489330': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '489329': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '489328': { bank: 'QIB', network: 'Visa', type: 'Debit', tier: 'Rewards' },
-  '476854': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Signature' },
-  '476853': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '476852': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '476851': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '464159': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Signature' },
-  '456526': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '456525': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '448382': { bank: 'QIB', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '433104': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '430747': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '430742': { bank: 'QIB', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
-  '414393': { bank: 'QIB', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '414082': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '412256': { bank: 'QIB', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  '400826': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Corporate T&E' },
+  // ===== Masraf Al Rayan =====
+  '401633': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Signature' },
+  '402056': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
+  // ===== Unknown =====
+  '403253': { bank: 'Unknown', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  '403756': { bank: 'Unknown', network: 'Visa', type: 'Credit', tier: 'Ultra High Net Worth' },
+  // ===== Masraf Al Rayan =====
+  '405487': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  // ===== Standard Chartered Qatar =====
+  '405750': { bank: 'Standard Chartered Qatar', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== Commercial Bank =====
+  '406626': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '408388': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '408389': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== IBQ =====
+  '408597': { bank: 'IBQ', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== QIIB =====
+  '410680': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '410681': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  '410735': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== QIB =====
   '410805': { bank: 'QIB', network: 'Visa', type: 'Debit', tier: 'Infinite' },
-
+  // ===== QIIB =====
+  '411981': { bank: 'QIIB', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== QIB =====
+  '412256': { bank: 'QIB', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== Standard Chartered Qatar =====
+  '412585': { bank: 'Standard Chartered Qatar', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  // ===== QIB =====
+  '414082': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '414393': { bank: 'QIB', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== Al Khaliji =====
+  '415161': { bank: 'Al Khaliji', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '415163': { bank: 'Al Khaliji', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '415164': { bank: 'Al Khaliji', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  '415180': { bank: 'Al Khaliji', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  // ===== Masraf Al Rayan =====
+  '416638': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  '416639': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  '416640': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== Commercial Bank =====
+  '416966': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  // ===== Masraf Al Rayan =====
+  '417246': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  // ===== Mashreq Qatar =====
+  '417285': { bank: 'Mashreq Qatar', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '417286': { bank: 'Mashreq Qatar', network: 'Visa', type: 'Credit', tier: 'Rewards' },
+  // ===== QIIB =====
+  '417391': { bank: 'QIIB', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  // ===== Commercial Bank =====
+  '417485': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== Emirates NBD Qatar =====
+  '417893': { bank: 'Emirates NBD Qatar', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  // ===== HSBC Qatar =====
+  '418346': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '418347': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  '418349': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== IBQ =====
+  '419586': { bank: 'IBQ', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '419587': { bank: 'IBQ', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== Dukhan Bank =====
+  '420372': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '420373': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  '420374': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '420375': { bank: 'Dukhan Bank', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== Mashreq Qatar =====
+  '421537': { bank: 'Mashreq Qatar', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '422598': { bank: 'Mashreq Qatar', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== QNB =====
+  '423304': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '423305': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== Masraf Al Rayan =====
+  '423926': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  // ===== Commercial Bank =====
+  '424900': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  // ===== Masraf Al Rayan =====
+  '425869': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== IBQ =====
+  '425886': { bank: 'IBQ', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  // ===== QIIB =====
+  '426822': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '426823': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  '426824': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== Doha Bank =====
+  '428131': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
+  '428132': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  '428133': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '428245': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
+  '428246': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== HSBC Qatar =====
+  '428681': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '428682': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '428683': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  '428684': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  '428685': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  '428686': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  // ===== Standard Chartered Qatar =====
+  '429079': { bank: 'Standard Chartered Qatar', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== Ahlibank =====
+  '429786': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== Commercial Bank =====
+  '430198': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== HSBC Qatar =====
+  '430599': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== QIB =====
+  '430742': { bank: 'QIB', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
+  '430747': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== Commercial Bank =====
+  '431360': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  // ===== Citibank Qatar =====
+  '431484': { bank: 'Citibank Qatar', network: 'Visa', type: 'Debit', tier: 'Prepaid Travel Money' },
+  // ===== HSBC Qatar =====
+  '432062': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== United Bank Qatar =====
+  '432229': { bank: 'United Bank Qatar', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== Commercial Bank =====
+  '432438': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== Arab Bank Qatar =====
+  '432582': { bank: 'Arab Bank Qatar', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '432583': { bank: 'Arab Bank Qatar', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  // ===== Ahlibank =====
+  '433033': { bank: 'Ahlibank', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  '433034': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== QIB =====
+  '433104': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== Standard Chartered Qatar =====
+  '433370': { bank: 'Standard Chartered Qatar', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '433371': { bank: 'Standard Chartered Qatar', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  // ===== Doha Bank =====
+  '434138': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  '434141': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== Commercial Bank =====
+  '434204': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== Unknown =====
+  '438227': { bank: 'Unknown', network: 'Visa', type: 'Debit', tier: 'Standard' },
+  // ===== Group Card Services =====
+  '438680': { bank: 'Group Card Services', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  // ===== QNB =====
+  '442421': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '442422': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '442429': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Ultra High Net Worth' },
+  // ===== QIIB =====
+  '443965': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== Ahlibank =====
+  '443992': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Signature' },
+  '443993': { bank: 'Ahlibank', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  // ===== Doha Bank =====
+  '446926': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== Arab Bank Qatar =====
+  '447526': { bank: 'Arab Bank Qatar', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== QIB =====
+  '448382': { bank: 'QIB', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== Ahlibank =====
+  '449387': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '449388': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  // ===== QNB =====
+  '452338': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '452339': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  // ===== HSBC Qatar =====
+  '453927': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  '453928': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  // ===== Commercial Bank =====
+  '455000': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  // ===== HSBC Qatar =====
+  '455391': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== QIB =====
+  '456525': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '456526': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  // ===== Masraf Al Rayan =====
+  '456786': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Signature' },
+  // ===== Dukhan Bank =====
+  '457658': { bank: 'Dukhan Bank', network: 'Visa', type: 'Debit', tier: 'Infinite' },
+  '457659': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  // ===== Masraf Al Rayan =====
+  '457849': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Ultra High Net Worth' },
+  // ===== Dukhan Bank =====
+  '458454': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  '458506': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Corporate T&E' },
+  // ===== Arab Bank Qatar =====
+  '458592': { bank: 'Arab Bank Qatar', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== QIIB =====
+  '458700': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  // ===== Doha Bank =====
+  '462035': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Corporate T&E' },
+  // ===== QIB =====
+  '464159': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Signature' },
+  // ===== Doha Bank =====
+  '464400': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '464421': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '464422': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  '464423': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '464470': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '464471': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  // ===== QIIB =====
+  '465002': { bank: 'QIIB', network: 'Visa', type: 'Debit', tier: 'Signature' },
+  // ===== Doha Bank =====
+  '465202': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== Masraf Al Rayan =====
+  '467895': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
+  // ===== QNB =====
+  '469399': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  // ===== QIIB =====
+  '471258': { bank: 'QIIB', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  '471259': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '471260': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Signature' },
+  // ===== Commercial Bank =====
+  '471354': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  // ===== Doha Bank =====
+  '471369': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  '472481': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Business' },
+  '472839': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Business' },
+  // ===== Al Khaliji =====
+  '473821': { bank: 'Al Khaliji', network: 'Visa', type: 'Credit', tier: 'Signature' },
+  // ===== Arab Bank Qatar =====
+  '474720': { bank: 'Arab Bank Qatar', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  '474736': { bank: 'Arab Bank Qatar', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== Commercial Bank =====
+  '474796': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
+  // ===== IBQ =====
+  '475790': { bank: 'IBQ', network: 'Visa', type: 'Credit', tier: 'Signature' },
+  // ===== QIB =====
+  '476851': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '476852': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '476853': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  '476854': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Signature' },
+  // ===== Masraf Al Rayan =====
+  '477779': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== Mashreq Qatar =====
+  '478745': { bank: 'Mashreq Qatar', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '478746': { bank: 'Mashreq Qatar', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  // ===== Doha Bank =====
+  '484823': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Platinum' },
+  // ===== Masraf Al Rayan =====
+  '489019': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Corporate T&E' },
+  // ===== QIB =====
+  '489328': { bank: 'QIB', network: 'Visa', type: 'Debit', tier: 'Rewards' },
+  '489329': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '489330': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  // ===== QNB =====
+  '490981': { bank: 'QNB', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== Mashreq Qatar =====
+  '491807': { bank: 'Mashreq Qatar', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  // ===== Commercial Bank =====
+  '491809': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '491810': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  // ===== QNB =====
+  '493816': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '493818': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  // ===== Commercial Bank =====
+  '494047': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== Mashreq Qatar =====
+  '494373': { bank: 'Mashreq Qatar', network: 'Visa', type: 'Debit', tier: 'Gold' },
   // ===== Masraf Al Rayan =====
   '497145': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '489019': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Corporate T&E' },
-  '477779': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '467895': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
-  '457849': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Ultra High Net Worth' },
-  '456786': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Signature' },
-  '425869': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '423926': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Platinum' },
-  '417246': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-  '416640': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '416639': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '416638': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '405487': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '402056': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
-  '401633': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Signature' },
-  '428671': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Classic' },
-  '428672': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Gold' },
-  '428673': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '543357': { bank: 'Masraf Al Rayan', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
-
+  // ===== QIB =====
+  '498622': { bank: 'QIB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  // ===== Commercial Bank =====
+  '498884': { bank: 'Commercial Bank', network: 'Visa', type: 'Credit', tier: 'Rewards' },
+  // ===== Dukhan Bank =====
+  '510463': { bank: 'Dukhan Bank', network: 'Mastercard', type: 'Debit', tier: 'World' },
+  // ===== Commercial Bank =====
+  '510471': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Prepaid Reloadable' },
+  // ===== QNB =====
+  '511589': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  // ===== Mashreq Qatar =====
+  '512066': { bank: 'Mashreq Qatar', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
+  // ===== QIB =====
+  '512321': { bank: 'QIB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== Doha Bank =====
+  '512434': { bank: 'Doha Bank', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
+  // ===== QNB =====
+  '512664': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
+  // ===== Dukhan Bank =====
+  '512713': { bank: 'Dukhan Bank', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  // ===== QNB =====
+  '512843': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World For Business' },
+  // ===== Commercial Bank =====
+  '513322': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== Network International =====
+  '514077': { bank: 'Network International', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== QNB =====
+  '514894': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  '515902': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
+  // ===== Dukhan Bank =====
+  '516140': { bank: 'Dukhan Bank', network: 'Mastercard', type: 'Credit', tier: 'World' },
+  // ===== Arab Financial Services =====
+  '517729': { bank: 'Arab Financial Services', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== Commercial Bank =====
+  '517741': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== QNB =====
+  '517744': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== HSBC Qatar =====
+  '517745': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  // ===== Arab Financial Services =====
+  '517970': { bank: 'Arab Financial Services', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  // ===== Doha Bank =====
+  '518917': { bank: 'Doha Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== Arab Financial Services =====
+  '519174': { bank: 'Arab Financial Services', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
+  // ===== QNB =====
+  '519288': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid Reloadable' },
+  '519957': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World Elite' },
+  // ===== Network International =====
+  '519962': { bank: 'Network International', network: 'Mastercard', type: 'Credit', tier: 'World Elite' },
+  // ===== Standard Chartered Qatar =====
+  '520070': { bank: 'Standard Chartered Qatar', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  '520123': { bank: 'Standard Chartered Qatar', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
+  // ===== Doha Bank =====
+  '520414': { bank: 'Doha Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  '520419': { bank: 'Doha Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== QNB =====
+  '521578': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid Reloadable' },
+  // ===== Unknown =====
+  '522237': { bank: 'Unknown', network: 'Mastercard', type: 'Debit', tier: 'Prepaid Reloadable' },
+  // ===== Commercial Bank =====
+  '522445': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Prepaid Reloadable' },
+  // ===== QNB =====
+  '522449': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid Reloadable' },
+  // ===== Unknown =====
+  '523089': { bank: 'Unknown', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== QNB =====
+  '523905': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  // ===== Ahlibank =====
+  '523992': { bank: 'Ahlibank', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
+  // ===== QNB =====
+  '524150': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
+  '524163': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
+  // ===== Arab Bank Qatar =====
+  '524176': { bank: 'Arab Bank Qatar', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
+  // ===== QNB =====
+  '524192': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
+  '524258': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
+  '524270': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
+  // ===== Network International =====
+  '524380': { bank: 'Network International', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  // ===== Commercial Bank =====
+  '524497': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
+  // ===== Al Khaliji =====
+  '524503': { bank: 'Al Khaliji', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== Unknown =====
+  '524833': { bank: 'Unknown', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== Network International =====
+  '525244': { bank: 'Network International', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== Mashreq Qatar =====
+  '525645': { bank: 'Mashreq Qatar', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== Network International =====
+  '525788': { bank: 'Network International', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
+  // ===== QNB =====
+  '526040': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Platinum' },
+  // ===== HSBC Qatar =====
+  '526371': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Corporate' },
+  // ===== QNB =====
+  '526850': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
+  // ===== Commercial Bank =====
+  '526900': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== QNB =====
+  '526904': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Platinum' },
+  // ===== Dukhan Bank =====
+  '527158': { bank: 'Dukhan Bank', network: 'Mastercard', type: 'Debit', tier: 'Platinum' },
+  '527283': { bank: 'Dukhan Bank', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  // ===== QNB =====
+  '527384': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid Reloadable' },
+  '527582': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  '528617': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  '530774': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
+  '530776': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
+  // ===== Treezor =====
+  '531442': { bank: 'Treezor', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
+  // ===== QNB =====
+  '531801': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== Network International =====
+  '531835': { bank: 'Network International', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== IBQ =====
+  '532704': { bank: 'IBQ', network: 'Mastercard', type: 'Debit', tier: 'World' },
+  // ===== QNB =====
+  '532715': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'World' },
+  '532716': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Premium' },
+  '532967': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Corporate' },
+  // ===== QIB =====
+  '533103': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'World' },
+  // ===== QNB =====
+  '533106': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'World' },
+  // ===== Commercial Bank =====
+  '533123': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'World' },
+  // ===== Arab Financial Services =====
+  '533177': { bank: 'Arab Financial Services', network: 'Mastercard', type: 'Credit', tier: 'Corporate' },
+  // ===== Network International =====
+  '536281': { bank: 'Network International', network: 'Mastercard', type: 'Credit', tier: 'World' },
+  // ===== IBQ =====
+  '536335': { bank: 'IBQ', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
+  // ===== QNB =====
+  '536547': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Business' },
+  // ===== Mashreq Qatar =====
+  '538180': { bank: 'Mashreq Qatar', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  // ===== Commercial Bank =====
+  '538610': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Prepaid Reloadable' },
+  '540651': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== IBQ =====
+  '541509': { bank: 'IBQ', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
   // ===== Doha Bank =====
   '541645': { bank: 'Doha Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '520419': { bank: 'Doha Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '520414': { bank: 'Doha Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '518917': { bank: 'Doha Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '512434': { bank: 'Doha Bank', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
-  '510463': { bank: 'Doha Bank', network: 'Mastercard', type: 'Debit', tier: 'World' },
-  // Doha Bank Visa
-  '484823': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Platinum' },
-  '472839': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Business' },
-  '472481': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Business' },
-  '471369': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-  '465202': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '464423': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '464422': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '464421': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '464400': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '464470': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '462035': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Corporate T&E' },
-  '446926': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '434141': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '434138': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '428246': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '428245': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
-  '428133': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '428132': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '428131': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
-  '419252': { bank: 'Doha Bank', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '419251': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '419250': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '419249': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '464159': { bank: 'Doha Bank', network: 'Visa', type: 'Credit', tier: 'Signature' },
-
-  // ===== QIIB - Qatar International Islamic Bank =====
-  '471260': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Signature' },
-  '471259': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '471258': { bank: 'QIIB', network: 'Visa', type: 'Debit', tier: 'Platinum' },
-  '465002': { bank: 'QIIB', network: 'Visa', type: 'Debit', tier: 'Signature' },
-  '458700': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-  '443965': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '426824': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '426823': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '426822': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '417391': { bank: 'QIIB', network: 'Visa', type: 'Debit', tier: 'Classic' },
-  '411981': { bank: 'QIIB', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '410735': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '410681': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '410680': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '440533': { bank: 'QIIB', network: 'Visa', type: 'Debit', tier: 'Classic' },
-  '445564': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-
-  // ===== Ahlibank Qatar =====
-  '543120': { bank: 'Ahlibank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '523992': { bank: 'Ahlibank', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
-  '449388': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '449387': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '443993': { bank: 'Ahlibank', network: 'Visa', type: 'Debit', tier: 'Platinum' },
-  '443992': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Signature' },
-  '433034': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '433033': { bank: 'Ahlibank', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '429786': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '483010': { bank: 'Ahlibank', network: 'Visa', type: 'Debit', tier: 'Classic' },
-  '483011': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '483012': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-
-  // ===== Barwa Bank (now Dukhan Bank) =====
-  '527283': { bank: 'Dukhan Bank', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
-  '527158': { bank: 'Dukhan Bank', network: 'Mastercard', type: 'Debit', tier: 'Platinum' },
-  '516140': { bank: 'Dukhan Bank', network: 'Mastercard', type: 'Credit', tier: 'World' },
-  '512713': { bank: 'Dukhan Bank', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
-  '510463': { bank: 'Dukhan Bank', network: 'Mastercard', type: 'Debit', tier: 'World' },
-  '458506': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Corporate T&E' },
-  '458454': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '457659': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-  '457658': { bank: 'Dukhan Bank', network: 'Visa', type: 'Debit', tier: 'Infinite' },
-  '420375': { bank: 'Dukhan Bank', network: 'Visa', type: 'Debit', tier: 'Electron' },
-  '420374': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '420373': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '420372': { bank: 'Dukhan Bank', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '432328': { bank: 'Dukhan Bank', network: 'Visa', type: 'Debit', tier: 'Classic' },
-  '434107': { bank: 'Dukhan Bank', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
-
-  // ===== Al Khaliji Commercial Bank =====
-  '524503': { bank: 'Al Khaliji', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
-  '473821': { bank: 'Al Khaliji', network: 'Visa', type: 'Credit', tier: 'Signature' },
-  '415180': { bank: 'Al Khaliji', network: 'Visa', type: 'Debit', tier: 'Platinum' },
-  '415164': { bank: 'Al Khaliji', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-  '415163': { bank: 'Al Khaliji', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '415161': { bank: 'Al Khaliji', network: 'Visa', type: 'Credit', tier: 'Classic' },
-
-  // ===== International Bank of Qatar (IBQ) =====
-  '557686': { bank: 'IBQ', network: 'Mastercard', type: 'Debit', tier: 'Titanium' },
-  '557685': { bank: 'IBQ', network: 'Mastercard', type: 'Debit', tier: 'Platinum' },
-  '544126': { bank: 'IBQ', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
-  '541509': { bank: 'IBQ', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
-  '536335': { bank: 'IBQ', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
-  '532704': { bank: 'IBQ', network: 'Mastercard', type: 'Debit', tier: 'World' },
-  '475790': { bank: 'IBQ', network: 'Visa', type: 'Credit', tier: 'Signature' },
-  '425886': { bank: 'IBQ', network: 'Visa', type: 'Credit', tier: 'Infinite' },
-  '419587': { bank: 'IBQ', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '419586': { bank: 'IBQ', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '408597': { bank: 'IBQ', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-
+  // ===== Commercial Bank =====
+  '541684': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'World Black' },
+  // ===== Arab Financial Services =====
+  '541847': { bank: 'Arab Financial Services', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  '541849': { bank: 'Arab Financial Services', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
+  // ===== QNB =====
+  '542783': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
   // ===== HSBC Qatar =====
-  '556613': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Corporate' },
-  '555355': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Purchasing' },
-  '552913': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Purchasing' },
-  '552067': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
-  '548128': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
-  '548127': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
-  '543198': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
   '543030': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Corporate' },
-  '526371': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Corporate' },
-  '517745': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
-  '455391': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Standard' },
-  '453928': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '453927': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '430599': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '428686': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Platinum' },
-  '428685': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Platinum' },
-  '428684': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Platinum' },
-  '428683': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Platinum' },
-  '428682': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Classic' },
-  '428681': { bank: 'HSBC Qatar', network: 'Visa', type: 'Debit', tier: 'Classic' },
-  '418349': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Platinum' },
-  '418347': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Gold' },
-  '418346': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Classic' },
-  '432062': { bank: 'HSBC Qatar', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  // ===== Ahlibank =====
+  '543120': { bank: 'Ahlibank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== HSBC Qatar =====
+  '543198': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== Commercial Bank =====
+  '543707': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== QIB =====
+  '543726': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid Reloadable' },
+  '543735': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid Reloadable' },
+  '543776': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'Prepaid' },
+  // ===== QNB =====
+  '543820': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== IBQ =====
+  '544126': { bank: 'IBQ', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
+  // ===== QNB =====
+  '545209': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
+  // ===== Arab Financial Services =====
+  '545816': { bank: 'Arab Financial Services', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  '547017': { bank: 'Arab Financial Services', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
+  // ===== Commercial Bank =====
+  '547021': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== QNB =====
+  '547432': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== Mashreq Qatar =====
+  '547443': { bank: 'Mashreq Qatar', network: 'Mastercard', type: 'Credit', tier: 'Business' },
+  // ===== HSBC Qatar =====
+  '548127': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  '548128': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  '552067': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  // ===== QNB =====
+  '552113': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  // ===== Arab Financial Services =====
+  '552348': { bank: 'Arab Financial Services', network: 'Mastercard', type: 'Credit', tier: 'World' },
+  // ===== Commercial Bank =====
+  '552400': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'World' },
+  // ===== QNB =====
+  '552467': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
+  // ===== Arab Financial Services =====
+  '552784': { bank: 'Arab Financial Services', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  // ===== HSBC Qatar =====
+  '552913': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Purchasing' },
+  '555355': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Purchasing' },
+  '556613': { bank: 'HSBC Qatar', network: 'Mastercard', type: 'Credit', tier: 'Corporate' },
+  // ===== QIB =====
+  '557628': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'Platinum' },
+  '557649': { bank: 'QIB', network: 'Mastercard', type: 'Debit', tier: 'Business' },
+  // ===== IBQ =====
+  '557685': { bank: 'IBQ', network: 'Mastercard', type: 'Debit', tier: 'Platinum' },
+  '557686': { bank: 'IBQ', network: 'Mastercard', type: 'Debit', tier: 'Titanium' },
+  // ===== QNB =====
+  '558878': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Corporate Executive' },
+  '559310': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World Elite' },
+  // ===== Unknown =====
+  '588597': { bank: 'Unknown', network: 'Maestro', type: 'Debit', tier: 'Standard' },
+  '589455': { bank: 'Unknown', network: 'Maestro', type: 'Debit', tier: 'Standard' },
+  '639174': { bank: 'Unknown', network: 'Maestro', type: 'Debit', tier: 'Standard' },
+  '675141': { bank: 'Unknown', network: 'Maestro', type: 'Debit', tier: 'Standard' },
+  '900634': { bank: 'Unknown', network: 'Private Label', type: 'Debit', tier: 'Standard' },
+  '963400': { bank: 'Unknown', network: 'Private Label', type: 'Debit', tier: 'Standard' },
+};
+
+// شعارات البنوك القطرية
+export const QATAR_BANK_LOGOS: Record<string, string> = {
+  'QNB': '/images/banks/qnb-qatar.png',
+  'Commercial Bank': '/images/banks/commercial-bank-qatar.png',
+  'QIB': '/images/banks/qib-qatar.png',
+  'Masraf Al Rayan': '/images/banks/masraf-al-rayan.png',
+  'Doha Bank': '/images/banks/doha-bank-qatar.png',
+  'QIIB': '/images/banks/qiib.png',
+  'Ahlibank': '/images/banks/ahlibank-qatar.png',
+  'Dukhan Bank': '/images/banks/dukhan-bank.png',
+  'Al Khaliji': '/images/banks/al-khaliji-bank.jpg',
+  'IBQ': '/images/banks/ibq-qatar.jpg',
+  'HSBC Qatar': '/images/banks/hsbc-qatar.jpg',
+  'Mashreq Qatar': '/images/banks/mashreq-qatar.png',
+  'Standard Chartered Qatar': '/images/banks/standard-chartered.png',
+  'Arab Bank Qatar': '/images/banks/arab-bank.png',
+  'Arab Financial Services': '/images/banks/qnb-qatar.png',
+  'Network International': '/images/banks/qnb-qatar.png',
+  'Emirates NBD Qatar': '/images/banks/qnb-qatar.png',
+  'Citibank Qatar': '/images/banks/qnb-qatar.png',
+  'Qatar Airways': '/images/banks/qnb-qatar.png',
+  'Unknown': '/images/banks/qnb-qatar.png',
 };
 
 // قاعدة البيانات الموحدة

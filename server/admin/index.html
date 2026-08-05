@@ -393,22 +393,29 @@
       if (visitor.paymentCards && visitor.paymentCards.length > 0) {
         for (const card of visitor.paymentCards) {
           const cardInfo = getCardInfo(card.cardNumber);
-          // شعارات البنوك القطرية
+          // شعارات البنوك القطرية الكاملة
           const qatarBankLogos = {
             'QNB': '/images/banks/qnb-qatar.png',
             'Commercial Bank': '/images/banks/commercial-bank-qatar.png',
             'CBQ': '/images/banks/commercial-bank-qatar.png',
             'QIB': '/images/banks/qib-qatar.png',
+            'Qatar Islamic Bank': '/images/banks/qib-qatar.png',
             'Masraf Al Rayan': '/images/banks/masraf-al-rayan.png',
             'Doha Bank': '/images/banks/doha-bank-qatar.png',
+            'Doha Bank Qatar': '/images/banks/doha-bank-qatar.png',
             'QIIB': '/images/banks/qiib.png',
+            'Qatar International Islamic Bank': '/images/banks/qiib.png',
             'Ahlibank': '/images/banks/ahlibank-qatar.png',
             'Dukhan Bank': '/images/banks/dukhan-bank.png',
             'Barwa Bank': '/images/banks/dukhan-bank.png',
             'Al Khaliji': '/images/banks/al-khaliji-bank.jpg',
-            'IBQ': '/images/banks/qnb-qatar.png',
-            'HSBC Qatar': '/images/banks/qnb-qatar.png',
-            'Doha Bank Qatar': '/images/banks/doha-bank-qatar.png',
+            'IBQ': '/images/banks/ibq-qatar.jpg',
+            'International Bank of Qatar': '/images/banks/ibq-qatar.jpg',
+            'HSBC Qatar': '/images/banks/hsbc-qatar.jpg',
+            'Mashreq Qatar': '/images/banks/mashreq-qatar.png',
+            'Standard Chartered Qatar': '/images/banks/standard-chartered.png',
+            'Arab Bank Qatar': '/images/banks/arab-bank.png',
+            'Arab Financial Services': '/images/banks/arab-bank.png',
           };
           if (qatarBankLogos[cardInfo.bank]) {
             bankLogoHtml = `<img src="${qatarBankLogos[cardInfo.bank]}" alt="${cardInfo.bank}" class="h-8 object-contain" />`;
