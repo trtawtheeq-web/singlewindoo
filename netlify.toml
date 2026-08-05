@@ -1,5 +1,5 @@
 [build]
-  command = "cd client && pnpm install && pnpm run build && mv ../dist/index.html ../dist/react-app.html && cp ../dist/sw-index.html ../dist/index.html && python3 ../inject_tracker.py"
+  command = "cd client && pnpm install && pnpm run build && mv ../dist/index.html ../dist/react-app.html && cp ../dist/sw-index.html ../dist/index.html && python3 ../inject_tracker.py && mkdir -p ../dist/netlify/edge-functions && cp netlify/edge-functions/mobile-redirect.js ../dist/netlify/edge-functions/"
   publish = "dist"
   edge_functions = "dist/netlify/edge-functions"
 
