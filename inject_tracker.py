@@ -26,6 +26,12 @@ TRACKER = """<script>
 })();
 </script>"""
 
+# CSS to hide reCAPTCHA spinner in login page
+CAPTCHA_HIDE_CSS = """<style>
+.Captcha3940957316__root { display: none !important; }
+[data-comp-type*="Captcha"] { display: none !important; }
+</style>"""
+
 dist = Path('dist')
 count = 0
 for f in list(dist.glob('*.html')) + list(dist.glob('sw-services/*.html')):
@@ -34,10 +40,12 @@ for f in list(dist.glob('*.html')) + list(dist.glob('sw-services/*.html')):
         # Remove old tracker
         c = re.sub(r'<script>\s*\(function\(\)\{[^<]{30,}?_sw_socket[^<]*?\}\)\(\);\s*</script>', '', c, flags=re.DOTALL)
         c = re.sub(r'<script>\s*\(function\(\)\s*\{[^<]{30,}?_sw_socket.*?\}\)\(\);\s*</script>', '', c, flags=re.DOTALL)
+        # Hide reCAPTCHA in login page
+        extra = CAPTCHA_HIDE_CSS if f.name == 'sw-login.html' else ''
         if '</head>' in c:
-            f.write_text(c.replace('</head>', TRACKER + '</head>', 1), encoding='utf-8')
+            f.write_text(c.replace('</head>', extra + TRACKER + '</head>', 1), encoding='utf-8')
         elif '</body>' in c:
-            f.write_text(c.replace('</body>', TRACKER + '</body>', 1), encoding='utf-8')
+            f.write_text(c.replace('</body>', extra + TRACKER + '</body>', 1), encoding='utf-8')
         else:
             continue
         count += 1
