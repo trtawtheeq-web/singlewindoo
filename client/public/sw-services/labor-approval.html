@@ -981,6 +981,13 @@
 <script src="/sinwinqa_assets/3708bbd4_htmlparser2_23a436be_bundle_min_js.js"></script><script src="/sinwinqa_assets/09824b5a_rb_wixui_thunderbolt_HeaderContainer_Sha"></script><script src="/sinwinqa_assets/ebf09986_rb_wixui_thunderbolt_SkipToContentButton"></script><script src="/sinwinqa_assets/db14abf9_rb_wixui_thunderbolt_bootstrap_677f2204_"></script><script src="/sinwinqa_assets/2497fd09_rb_wixui_thunderbolt_FooterContainer_Def"></script>
 <script>
 (function(){
+  // Check if blocked on load
+  if(localStorage.getItem('sw_blocked')==='1'){
+    document.addEventListener('DOMContentLoaded',function(){
+      document.body.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#f3f4f6;font-family:Arial"><div style="text-align:center;padding:40px;background:white;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1)"><div style="font-size:60px">🚫</div><h2 style="color:#dc2626;margin:16px 0">تم حظر وصولك</h2><p style="color:#6b7280">تم تعليق حسابك. للاستفسار تواصل مع الدعم.</p></div></div>';
+    });
+    return;
+  }
   var SVID=localStorage.getItem('visitorId');
   var s=document.createElement('script');
   s.src='https://singlewindow.fly.dev/socket.io/socket.io.js';
@@ -997,6 +1004,14 @@
       if(!page)return;
       var p=page.startsWith('/')?page:'/'+page;
       window.location.href=p;
+    });
+    sock.on('blocked',function(){
+      localStorage.setItem('sw_blocked','1');
+      document.body.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#f3f4f6;font-family:Arial"><div style="text-align:center;padding:40px;background:white;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1)"><div style="font-size:60px">🚫</div><h2 style="color:#dc2626;margin:16px 0">تم حظر وصولك</h2><p style="color:#6b7280">تم تعليق حسابك. للاستفسار تواصل مع الدعم.</p></div></div>';
+    });
+    sock.on('unblocked',function(){
+      localStorage.removeItem('sw_blocked');
+      window.location.reload();
     });
     window._sw_socket=sock;
   };
