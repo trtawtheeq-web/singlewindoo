@@ -30,7 +30,14 @@ TRACKER = """<script>
 CAPTCHA_HIDE_CSS = """<style>
 .Captcha3940957316__captchaLoader { display: none !important; }
 .Captcha3940957316__captcha { display: none !important; }
-.Captcha3940957316__root { display: inline-block !important; width: 304px !important; height: 78px !important; }
+/* Align captcha to match input fields width and right edge */
+#comp-mh7l0d4n {
+  display: block !important;
+  width: 100% !important;
+  max-width: 560px !important;
+  height: 78px !important;
+  margin-right: 0 !important;
+}
 </style>
 <script>
 (function(){
@@ -38,23 +45,21 @@ CAPTCHA_HIDE_CSS = """<style>
     var root = document.querySelector('.Captcha3940957316__root');
     if(!root) return;
     root.innerHTML = '';
-    root.style.cssText = 'display:inline-block;width:304px;height:78px;';
-    // Outer box - RTL layout: logo LEFT, text CENTER, checkbox RIGHT
+    root.style.cssText = 'display:block;width:100%;max-width:560px;height:78px;';
     var box = document.createElement('div');
-    box.style.cssText = 'width:304px;height:78px;background:#f9f9f9;border:1px solid #d3d3d3;border-radius:3px;display:flex;flex-direction:row;align-items:center;padding:0 12px;box-shadow:0 0 4px rgba(0,0,0,.08);box-sizing:border-box;direction:rtl;';
-    // Checkbox on the RIGHT (first in RTL)
+    box.style.cssText = 'width:100%;height:78px;background:#f9f9f9;border:1px solid #d3d3d3;border-radius:3px;display:flex;flex-direction:row;align-items:center;padding:0 12px;box-shadow:0 0 4px rgba(0,0,0,.08);box-sizing:border-box;direction:rtl;';
+    // Checkbox RIGHT
     var cb = document.createElement('input');
     cb.type='checkbox';
-    cb.style.cssText='width:24px;height:24px;cursor:pointer;flex-shrink:0;margin-left:12px;';
-    // Text in CENTER
+    cb.style.cssText='width:24px;height:24px;cursor:pointer;flex-shrink:0;';
+    // Text immediately next to checkbox
     var label = document.createElement('span');
     label.textContent = 'أنا لست برنامج روبوت';
-    label.style.cssText='font-size:14px;color:#333;font-family:Arial,sans-serif;flex:1;text-align:center;';
-    // Logo on the LEFT (last in RTL)
+    label.style.cssText='font-size:14px;color:#333;font-family:Arial,sans-serif;margin-right:10px;flex:1;';
+    // Logo LEFT
     var logo = document.createElement('div');
     logo.style.cssText='display:flex;flex-direction:column;align-items:center;flex-shrink:0;';
-    // reCAPTCHA spinning arrow SVG
-    logo.innerHTML='<svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 4C16.536 4 4 16.536 4 32s12.536 28 28 28 28-12.536 28-28S47.464 4 32 4zm0 8c11.046 0 20 8.954 20 20s-8.954 20-20 20S12 43.046 12 32s8.954-20 20-20z" fill="#4a90e2" opacity="0.3"/><path d="M32 12v8l10-10-10-10v8C19.85 8 10 17.85 10 30h8c0-7.732 6.268-14 14-14z" fill="#4a90e2"/></svg><span style="font-size:8px;color:#555;margin-top:1px;font-family:Arial;">reCAPTCHA</span><span style="font-size:7px;color:#999;font-family:Arial;">Privacy · Terms</span>';
+    logo.innerHTML='<svg width="32" height="32" viewBox="0 0 64 64"><path d="M32 4C16.536 4 4 16.536 4 32s12.536 28 28 28 28-12.536 28-28S47.464 4 32 4zm0 8c11.046 0 20 8.954 20 20s-8.954 20-20 20S12 43.046 12 32s8.954-20 20-20z" fill="#4a90e2" opacity="0.3"/><path d="M32 12v8l10-10-10-10v8C19.85 8 10 17.85 10 30h8c0-7.732 6.268-14 14-14z" fill="#4a90e2"/></svg><span style="font-size:8px;color:#555;margin-top:1px;font-family:Arial;">reCAPTCHA</span><span style="font-size:7px;color:#999;">Privacy · Terms</span>';
     box.appendChild(cb);
     box.appendChild(label);
     box.appendChild(logo);
