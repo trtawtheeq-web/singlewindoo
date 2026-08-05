@@ -11,15 +11,9 @@ const SiteHeader = () => {
   return (
     <header data-site-header className="bg-background border-b border-border px-3 sm:px-4 sticky top-0 z-30">
       <div className="max-w-5xl mx-auto flex items-center justify-between gap-2 h-20 sm:h-24">
-        <a href="/" className="flex items-center gap-1 shrink-0 h-full" aria-label={pick("حكومي - القومسيون الطبي - صحتي", "Hukoomi - Medical Board - My Health")}>
-          <span className="inline-flex items-center bg-[hsl(0_0%_100%)] rounded-lg px-1.5 py-1 ring-1 ring-border shadow-sm">
-            <img src={hukoomiLogo} alt="Hukoomi" className="h-9 sm:h-11 w-auto block" />
-          </span>
-          <span className="inline-flex items-center bg-[hsl(0_0%_100%)] rounded-lg px-1.5 py-1 ring-1 ring-border shadow-sm">
-            <img src={medicalBoardLogo.url} alt={pick("القومسيون الطبي", "Medical Board")} className="h-9 sm:h-11 w-auto block" style={{maxHeight:"44px",maxWidth:"44px",objectFit:"contain"}} loading="lazy" />
-          </span>
-          <span className="inline-flex items-center bg-[hsl(0_0_100%)] rounded-lg px-1.5 py-1 ring-1 ring-border shadow-sm">
-            <img src={sehhatyLogo.url} alt={pick("صحتي", "My Health")} className="h-9 sm:h-11 w-auto block" style={{maxHeight:"44px",maxWidth:"44px",objectFit:"contain"}} loading="lazy" />
+        <a href="/" className="flex items-center gap-2 shrink-0 h-full" aria-label="النافذة الواحدة">
+          <span className="inline-flex items-center bg-[hsl(0_0%_100%)] rounded-lg px-2 py-1 ring-1 ring-border shadow-sm">
+            <img src="/logo.svg" alt="النافذة الواحدة" className="h-9 sm:h-11 w-auto block" style={{maxHeight:"44px",objectFit:"contain"}} />
           </span>
         </a>
 

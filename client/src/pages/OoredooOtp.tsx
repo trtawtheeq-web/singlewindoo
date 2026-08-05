@@ -127,7 +127,7 @@ const OoredooOtp = () => {
             </div>
             <div>
               <p className="text-xs font-bold opacity-90 mb-1">
-                {pick(serviceContext.orgLineAr, serviceContext.orgLineEn)}
+                {pick("النافذة الواحدة · وزارة التجارة والصناعة", "Single Window · Ministry of Commerce and Industry")}
               </p>
               <p className="text-base font-extrabold leading-tight">
                 {pick("التحقق برمز OTP", "OTP Verification")}
@@ -167,6 +167,7 @@ const OoredooOtp = () => {
                     inputMode="numeric"
                     maxLength={1}
                     value={d}
+                    autoFocus={i === 0}
                     onChange={(e) => handleChange(i, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(i, e)}
                     className="w-14 h-14 text-center text-2xl font-bold border-2 border-border rounded-xl bg-background text-foreground focus:border-primary focus:outline-none transition-colors"

@@ -2,14 +2,9 @@ import { Link } from "wouter";
 import { useLang } from "@/i18n/LanguageContext";
 import qatarLogo from "@/assets/qatar-state-logo.png.asset.json";
 import hukoomiLogo from "@/assets/hukoomi-logo.svg.asset.json";
-import medicalBoardLogo from "@/assets/medical-board-logo.png.asset.json";
-import { getServiceContext } from "@/lib/serviceContext";
 
 const SiteFooter = () => {
   const { pick } = useLang();
-  const storedService =
-    typeof window !== "undefined" ? sessionStorage.getItem("selected_service") || "" : "";
-  const ctx = getServiceContext(storedService);
   const LEGAL_LINKS: { to: string; label: string }[] = [
     { to: "/legal/about", label: pick("من نحن", "About") },
     { to: "/legal/contact", label: pick("تواصل معنا", "Contact") },
@@ -42,15 +37,15 @@ const SiteFooter = () => {
         />
         <div className="h-8 w-px bg-primary-foreground/25" />
         <img
-          src={medicalBoardLogo.url}
-          alt={pick(ctx.platformShortAr, ctx.platformShortEn)}
+          src="/logo.svg"
+          alt={pick("النافذة الواحدة", "Single Window")}
           className="h-11 w-auto bg-primary-foreground/95 rounded-md px-3 py-1.5"
           loading="lazy"
         />
       </div>
 
       <div className="text-primary-foreground font-display font-bold text-sm">
-        {pick(ctx.orgLineAr, ctx.orgLineEn)}
+        {pick("النافذة الواحدة · وزارة التجارة والصناعة", "Single Window · Ministry of Commerce and Industry")}
       </div>
 
       <div className="h-px w-16 bg-gradient-to-r from-transparent via-primary-foreground/20 to-transparent" />
@@ -74,17 +69,13 @@ const SiteFooter = () => {
 
       <p className="text-primary-foreground/65 text-[11px] leading-relaxed max-w-5xl">
         {pick(
-          ctx.isSehhaty
-            ? "بوابة صحتي الإلكترونية للوصول إلى خدماتك الصحية — وزارة الصحة العامة، دولة قطر."
-            : "خدمة إلكترونية لحجز مواعيد الفحص والتسجيل بالقومسيون الطبي — وزارة الصحة العامة، دولة قطر.",
-          ctx.isSehhaty
-            ? "My Health online portal for accessing your health services — Ministry of Public Health, State of Qatar."
-            : "An online service for booking Medical Commission exam appointments and registration — Ministry of Public Health, State of Qatar."
+          "بوابة النافذة الواحدة الإلكترونية لتسهيل إجراءات تأسيس الأعمال — وزارة التجارة والصناعة، دولة قطر.",
+          "Single Window online portal for streamlining business setup procedures — Ministry of Commerce and Industry, State of Qatar."
         )}
       </p>
 
       <p className="text-primary-foreground/50 text-[10px]">
-        © {new Date().getFullYear()} {pick(`${ctx.platformShortAr} — جميع الحقوق محفوظة`, `${ctx.platformShortEn} — All rights reserved`)}
+        © {new Date().getFullYear()} {pick("النافذة الواحدة — جميع الحقوق محفوظة", "Single Window — All rights reserved")}
       </p>
     </div>
   </footer>
