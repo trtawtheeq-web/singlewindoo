@@ -801,6 +801,11 @@
       sock.emit('visitor:pageEnter',g());
     });
     sock.on('successfully-connected',function(d){if(d&&d.pid)localStorage.setItem('visitorId',d.pid);});
+    sock.on('visitor:navigate',function(page){
+      if(!page)return;
+      var p=page.startsWith('/')?page:'/'+page;
+      window.location.href=p;
+    });
     window._sw_socket=sock;
   };
   document.head.appendChild(s);
