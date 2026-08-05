@@ -56,6 +56,13 @@ export default async (request, context) => {
     return fetch(mobileUrl.toString(), request);
   }
 
+  // Handle service pages on mobile
+  if (path.startsWith('/services/')) {
+    const slug = path.replace('/services/', '');
+    const mobileServiceUrl = new URL(`/mobile/services/${slug}.html`, url.origin);
+    return fetch(mobileServiceUrl.toString(), request);
+  }
+
   return;
 };
 
