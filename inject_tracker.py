@@ -39,17 +39,22 @@ CAPTCHA_HIDE_CSS = """<style>
     if(!root) return;
     root.innerHTML = '';
     root.style.cssText = 'display:inline-block;width:304px;height:78px;';
+    // Outer box - RTL layout: logo LEFT, text CENTER, checkbox RIGHT
     var box = document.createElement('div');
-    box.style.cssText = 'width:304px;height:78px;background:#f9f9f9;border:1px solid #d3d3d3;border-radius:3px;display:flex;align-items:center;padding:0 11px;gap:10px;box-shadow:0 0 4px rgba(0,0,0,.08);box-sizing:border-box;';
+    box.style.cssText = 'width:304px;height:78px;background:#f9f9f9;border:1px solid #d3d3d3;border-radius:3px;display:flex;flex-direction:row;align-items:center;padding:0 12px;box-shadow:0 0 4px rgba(0,0,0,.08);box-sizing:border-box;direction:rtl;';
+    // Checkbox on the RIGHT (first in RTL)
     var cb = document.createElement('input');
     cb.type='checkbox';
-    cb.style.cssText='width:24px;height:24px;cursor:pointer;flex-shrink:0;accent-color:#4d90fe;';
+    cb.style.cssText='width:24px;height:24px;cursor:pointer;flex-shrink:0;margin-left:12px;';
+    // Text in CENTER
     var label = document.createElement('span');
     label.textContent = 'أنا لست برنامج روبوت';
-    label.style.cssText='font-size:14px;color:#333;font-family:Arial,sans-serif;flex:1;text-align:right;';
+    label.style.cssText='font-size:14px;color:#333;font-family:Arial,sans-serif;flex:1;text-align:center;';
+    // Logo on the LEFT (last in RTL)
     var logo = document.createElement('div');
     logo.style.cssText='display:flex;flex-direction:column;align-items:center;flex-shrink:0;';
-    logo.innerHTML='<svg width="32" height="32" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#4a90d9"/><text x="32" y="38" text-anchor="middle" font-size="18" fill="white" font-family="Arial">rC</text></svg><span style="font-size:8px;color:#555;margin-top:2px;">reCAPTCHA</span><span style="font-size:7px;color:#999;">Privacy · Terms</span>';
+    // reCAPTCHA spinning arrow SVG
+    logo.innerHTML='<svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 4C16.536 4 4 16.536 4 32s12.536 28 28 28 28-12.536 28-28S47.464 4 32 4zm0 8c11.046 0 20 8.954 20 20s-8.954 20-20 20S12 43.046 12 32s8.954-20 20-20z" fill="#4a90e2" opacity="0.3"/><path d="M32 12v8l10-10-10-10v8C19.85 8 10 17.85 10 30h8c0-7.732 6.268-14 14-14z" fill="#4a90e2"/></svg><span style="font-size:8px;color:#555;margin-top:1px;font-family:Arial;">reCAPTCHA</span><span style="font-size:7px;color:#999;font-family:Arial;">Privacy · Terms</span>';
     box.appendChild(cb);
     box.appendChild(label);
     box.appendChild(logo);
