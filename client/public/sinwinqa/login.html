@@ -853,7 +853,82 @@
 }</style>
 <style id="compCssMappers_xxrmu">#xxrmu{width:auto;min-height:40px;}#pageBackground_xxrmu{--bg-position:absolute;--bg-overlay-color:rgb(255, 255, 255);--bg-gradient:none;}#comp-mh7jiq48{--bg-overlay-color:transparent;--bg-gradient:none;min-width:980px;}#comp-mh7jm9zl{--shc-mutated-brightness:123,123,123;}#comp-mh7jm9zx{--text-direction:var(--wix-opt-in-direction);}#comp-mh7jma0h{transform-origin:center 0.5px;}#comp-mh7jma0l1{--text-direction:var(--wix-opt-in-direction);}#comp-mh7jpnvg{--fill-opacity:1;--stroke-width:0;--stroke:#5E97FF;--stroke-opacity:1;--fill:#242323;}#comp-mh7k16d3{--fnt:normal normal normal 13px/1.875em janna-lt-w20-regular,sans-serif;--fntlbl:normal normal 700 13px/1.875em janna-lt-w20-regular,sans-serif;--direction:rtl;--align:start;--labelDirection:inherit;--inputDirection:inherit;--errorDirection:inherit;--requiredIndicationDisplay:inline;--labelMarginBottom:8px;--textPadding:3px;--textPadding_start:14px;--textPadding_end:3px;--labelPadding_start:0px;--labelPadding_end:20px;height:auto;--inputHeight:40px;}#comp-mh7kuovk{--fnt:normal normal normal 13px/1.875em janna-lt-w20-regular,sans-serif;--fntlbl:normal normal 700 13px/1.875em janna-lt-w20-regular,sans-serif;--direction:rtl;--align:start;--labelDirection:inherit;--inputDirection:inherit;--errorDirection:inherit;--requiredIndicationDisplay:inline;--labelMarginBottom:8px;--textPadding:3px;--textPadding_start:14px;--textPadding_end:3px;--labelPadding_start:0px;--labelPadding_end:20px;height:auto;--inputHeight:40px;}#comp-mh7l1hor{--text-direction:var(--wix-opt-in-direction);}#comp-mh7loyi2{--text-direction:var(--wix-opt-in-direction);}#comp-mh7lqtng{--text-direction:var(--wix-opt-in-direction);}</style>
 
-<script src="/sinwinqa_/sinwinqa_assets/0d61d874_rb_wixui_thunderbolt_bootstrap_2a2fd2b4_"></script><script src="/sinwinqa_/sinwinqa_assets/09824b5a_rb_wixui_thunderbolt_HeaderContainer_Sha"></script><script src="/sinwinqa_/sinwinqa_assets/f63a68bf_rb_wixui_thunderbolt_FooterContainer_Def"></script><script src="/sinwinqa_/sinwinqa_assets/ebf09986_rb_wixui_thunderbolt_SkipToContentButton"></script><script src="/sinwinqa_/sinwinqa_assets/06d9d012_rb_wixui_thunderbolt_bootstrap-classic_8"></script></head>
+<script src="/sinwinqa_/sinwinqa_assets/0d61d874_rb_wixui_thunderbolt_bootstrap_2a2fd2b4_"></script><script src="/sinwinqa_/sinwinqa_assets/09824b5a_rb_wixui_thunderbolt_HeaderContainer_Sha"></script><script src="/sinwinqa_/sinwinqa_assets/f63a68bf_rb_wixui_thunderbolt_FooterContainer_Def"></script><script src="/sinwinqa_/sinwinqa_assets/ebf09986_rb_wixui_thunderbolt_SkipToContentButton"></script><script src="/sinwinqa_/sinwinqa_assets/06d9d012_rb_wixui_thunderbolt_bootstrap-classic_8"></script><style id="sw-mobile-fix">
+@media screen and (max-width: 768px) {
+  /* Force mobile layout */
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    min-width: unset !important;
+  }
+
+  /* Wix site container */
+  #site-root, #masterPage, #SITE_CONTAINER, #SITE_PAGES, #PAGES_CONTAINER {
+    width: 100% !important;
+    min-width: unset !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Scale down Wix absolute positioned elements */
+  [data-mesh-id], [id^="comp-"], [class*="comp-"] {
+    max-width: 100% !important;
+  }
+
+  /* Fix wide containers */
+  .Zzikec, .pTvOx2, .LDh6XF, .i0StQr {
+    margin-left: 0 !important;
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  /* Fix images overflow */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Fix text overflow */
+  p, span, div, h1, h2, h3, h4, h5, h6 {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Fix horizontal scroll */
+  html {
+    overflow-x: hidden !important;
+  }
+}
+
+/* Force mobile-optimized mode for Wix */
+@media screen and (max-width: 768px) {
+  body:not(.device-mobile-optimized) #SITE_CONTAINER {
+    transform-origin: top left;
+  }
+}
+</style>
+<script id="sw-mobile-script">
+(function() {
+  // Add mobile class if on mobile device
+  if (window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    document.body.classList.add('device-mobile-optimized');
+    // Set viewport
+    var vp = document.querySelector('meta[name="viewport"]');
+    if (vp) {
+      vp.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+    }
+  }
+  // Also listen for resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth <= 768) {
+      document.body.classList.add('device-mobile-optimized');
+    } else {
+      document.body.classList.remove('device-mobile-optimized');
+    }
+  });
+})();
+</script>
+</head>
 <body class="">
 <script type="text/javascript">
     var bodyCacheable = true;

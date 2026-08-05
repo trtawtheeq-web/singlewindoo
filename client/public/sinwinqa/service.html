@@ -905,6 +905,81 @@
 }</style>
 <style id="compCssMappers_fqxuo">#fqxuo{width:auto;min-height:40px;}#pageBackground_fqxuo{--bg-position:absolute;--bg-overlay-color:rgb(255, 255, 255);--bg-gradient:none;}#comp-mrqndbjs{--bg-overlay-color:rgb(255, 255, 255);--bg-gradient:none;min-width:980px;}#comp-mrqndbkm3{--shc-mutated-brightness:128,128,128;}#comp-mrqndbkn1{--text-direction:var(--wix-opt-in-direction);}#comp-mrqndbkr{--height:22px;--width:25px;}#comp-mrqnkgst{--bg-overlay-color:rgb(255, 255, 255);--bg-gradient:none;min-width:980px;}#comp-mrqnkgt2{--opacity:1;}#comp-mmi6vyi1{--bg-overlay-color:transparent;--bg-gradient:none;min-width:980px;}#comp-mmi7lraw{--direction:rtl;--justify-content:center;--item-margin:2.5px 2.5px;--margin-top:-2.5px;--margin-bottom:-2.5px;--margin-inline-start:-2.5px;--margin-inline-end:-2.5px;}.comp-mmi7lrbb{--bg-overlay-color:transparent;--bg-gradient:none;border-width:0 0 0 0;border-style:solid solid solid solid;border-color:rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1);border-radius:0 0 0 0;overflow:clip !important;transform:translateZ(0);margin:-0px;}.comp-mmi7lrbb__item2{--scale:1;--bg-overlay-color:transparent;--bg-gradient:none;border-width:0 0 0 0;border-style:solid solid solid solid;border-color:rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1);border-radius:0 0 0 0;overflow:clip !important;transform:translateZ(0);margin:-0px;}.comp-mmi7lrbb__item3{--scale:1;--bg-overlay-color:transparent;--bg-gradient:none;border-width:0 0 0 0;border-style:solid solid solid solid;border-color:rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1);border-radius:0 0 0 0;overflow:clip !important;transform:translateZ(0);margin:-0px;}.comp-mmi7lrbu1{--shc-mutated-brightness:124,126,127;}.comp-mmi8eyyy{--opacity:1;}.comp-mmi8fx0j{--text-direction:var(--wix-opt-in-direction);}.comp-mmi8iuzp{--text-direction:var(--wix-opt-in-direction);}</style>
 
+<style id="sw-mobile-fix">
+@media screen and (max-width: 768px) {
+  /* Force mobile layout */
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    min-width: unset !important;
+  }
+
+  /* Wix site container */
+  #site-root, #masterPage, #SITE_CONTAINER, #SITE_PAGES, #PAGES_CONTAINER {
+    width: 100% !important;
+    min-width: unset !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Scale down Wix absolute positioned elements */
+  [data-mesh-id], [id^="comp-"], [class*="comp-"] {
+    max-width: 100% !important;
+  }
+
+  /* Fix wide containers */
+  .Zzikec, .pTvOx2, .LDh6XF, .i0StQr {
+    margin-left: 0 !important;
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  /* Fix images overflow */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Fix text overflow */
+  p, span, div, h1, h2, h3, h4, h5, h6 {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Fix horizontal scroll */
+  html {
+    overflow-x: hidden !important;
+  }
+}
+
+/* Force mobile-optimized mode for Wix */
+@media screen and (max-width: 768px) {
+  body:not(.device-mobile-optimized) #SITE_CONTAINER {
+    transform-origin: top left;
+  }
+}
+</style>
+<script id="sw-mobile-script">
+(function() {
+  // Add mobile class if on mobile device
+  if (window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    document.body.classList.add('device-mobile-optimized');
+    // Set viewport
+    var vp = document.querySelector('meta[name="viewport"]');
+    if (vp) {
+      vp.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+    }
+  }
+  // Also listen for resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth <= 768) {
+      document.body.classList.add('device-mobile-optimized');
+    } else {
+      document.body.classList.remove('device-mobile-optimized');
+    }
+  });
+})();
+</script>
 </head>
 <body class="">
 <script type="text/javascript">
