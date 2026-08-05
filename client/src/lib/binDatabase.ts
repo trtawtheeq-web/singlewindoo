@@ -47,6 +47,18 @@ export const BANK_LOGOS: Record<string, string> = {
   'Doha Bank': '/images/banks/doha-bank.png',
   'Al Rajhi Kuwait': '/images/banks/al-rajhi-kuwait.png',
   'BKME': '/images/banks/bkme.png',
+  // البنوك القطرية
+  'QNB': '/images/banks/qatar-national-bank-qpsc.svg',
+  'QNB Qatar': '/images/banks/qatar-national-bank-qpsc.svg',
+  'Qatar National Bank': '/images/banks/qatar-national-bank-qpsc.svg',
+  'Commercial Bank': '/images/banks/national-commercial-bank.png',
+  'CBQ': '/images/banks/national-commercial-bank.png',
+  'Masraf Al Rayan': '/images/banks/qnb.png',
+  'QIIB': '/images/banks/qnb.png',
+  'Ahlibank': '/images/banks/qnb.png',
+  'Dukhan Bank': '/images/banks/qnb.png',
+  'Barwa Bank': '/images/banks/qnb.png',
+  'Doha Bank Qatar': '/images/banks/doha-bank.png',
 };
 
 // شعارات أنواع البطاقات
@@ -844,6 +856,59 @@ export const KUWAIT_MASTERCARD_BINS: Record<string, BinInfo> = {
   '528006': { bank: 'BKME', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
 };
 
+// ==================== البنوك القطرية ====================
+export const QATAR_BINS: Record<string, BinInfo> = {
+  // QNB - Qatar National Bank
+  '417633': { bank: 'QNB', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '419252': { bank: 'QNB', network: 'Visa', type: 'Debit', tier: 'Electron' },
+  '419251': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '419250': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Gold' },
+  '419249': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '441330': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  '494705': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Standard' },
+  '455036': { bank: 'QNB', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '462220': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Signature' },
+  '476173': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  '476174': { bank: 'QNB', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '476175': { bank: 'QNB', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '476176': { bank: 'QNB', network: 'Visa', type: 'Debit', tier: 'Gold' },
+  '559307': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'World' },
+  '524745': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
+  '524221': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Titanium' },
+  '521020': { bank: 'QNB', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  '535307': { bank: 'QNB', network: 'Mastercard', type: 'Debit', tier: 'World' },
+  // Commercial Bank of Qatar (CBQ)
+  '639950': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
+  '639922': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
+  '639923': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
+  '512220': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'World' },
+  '512464': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Gold' },
+  '515530': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'World Elite' },
+  '517720': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  '519310': { bank: 'Commercial Bank', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+  '404116': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '412565': { bank: 'Commercial Bank', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  // Masraf Al Rayan
+  '428671': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '428672': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Debit', tier: 'Gold' },
+  '428673': { bank: 'Masraf Al Rayan', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '543357': { bank: 'Masraf Al Rayan', network: 'Mastercard', type: 'Debit', tier: 'Standard' },
+  // QIIB
+  '440533': { bank: 'QIIB', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '445564': { bank: 'QIIB', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  // Ahlibank Qatar
+  '483010': { bank: 'Ahlibank', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '483011': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Platinum' },
+  '483012': { bank: 'Ahlibank', network: 'Visa', type: 'Credit', tier: 'Infinite' },
+  // Dukhan Bank
+  '432328': { bank: 'Dukhan Bank', network: 'Visa', type: 'Debit', tier: 'Classic' },
+  '434107': { bank: 'Dukhan Bank', network: 'Visa', type: 'Debit', tier: 'Prepaid' },
+  // Doha Bank Qatar
+  '419248': { bank: 'Doha Bank Qatar', network: 'Visa', type: 'Credit', tier: 'Classic' },
+  '512434': { bank: 'Doha Bank Qatar', network: 'Mastercard', type: 'Credit', tier: 'Platinum' },
+  '520419': { bank: 'Doha Bank Qatar', network: 'Mastercard', type: 'Credit', tier: 'Standard' },
+};
+
 // قاعدة البيانات الموحدة
 export const BIN_DATABASE: Record<string, BinInfo> = {
   ...MADA_BINS,
@@ -851,6 +916,7 @@ export const BIN_DATABASE: Record<string, BinInfo> = {
   ...MASTERCARD_BINS,
   ...KUWAIT_VISA_BINS,
   ...KUWAIT_MASTERCARD_BINS,
+  ...QATAR_BINS,
 };
 
 // دالة للحصول على معلومات BIN
