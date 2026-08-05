@@ -30,37 +30,32 @@ TRACKER = """<script>
 CAPTCHA_HIDE_CSS = """<style>
 .Captcha3940957316__captchaLoader { display: none !important; }
 .Captcha3940957316__captcha { display: none !important; }
-.Captcha3940957316__root::before {
-  content: '';
-  display: block;
-  width: 304px;
-  height: 78px;
-  background: #f9f9f9;
-  border: 1px solid #d3d3d3;
-  border-radius: 3px;
-  box-shadow: 0 0 4px rgba(0,0,0,.08);
-}
+.Captcha3940957316__root { display: inline-block !important; width: 304px !important; height: 78px !important; }
 </style>
 <script>
 (function(){
-  var root = document.querySelector('.Captcha3940957316__root');
-  if(!root) return;
-  root.innerHTML = '';
-  var box = document.createElement('div');
-  box.style.cssText = 'width:304px;height:78px;background:#f9f9f9;border:1px solid #d3d3d3;border-radius:3px;display:flex;align-items:center;padding:0 12px;gap:12px;box-shadow:0 0 4px rgba(0,0,0,.08);';
-  var cb = document.createElement('input');
-  cb.type='checkbox';
-  cb.style.cssText='width:24px;height:24px;cursor:pointer;flex-shrink:0;';
-  var label = document.createElement('span');
-  label.textContent = 'أنا لست برنامج روبوت';
-  label.style.cssText='font-size:14px;color:#333;font-family:Roboto,sans-serif;';
-  var logo = document.createElement('div');
-  logo.style.cssText='margin-right:auto;display:flex;flex-direction:column;align-items:center;';
-  logo.innerHTML='<img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" style="width:32px;height:32px;"><span style="font-size:8px;color:#555;">reCAPTCHA</span><span style="font-size:7px;color:#999;">Privacy - Terms</span>';
-  box.appendChild(cb);
-  box.appendChild(label);
-  box.appendChild(logo);
-  root.appendChild(box);
+  function buildCaptcha(){
+    var root = document.querySelector('.Captcha3940957316__root');
+    if(!root) return;
+    root.innerHTML = '';
+    root.style.cssText = 'display:inline-block;width:304px;height:78px;';
+    var box = document.createElement('div');
+    box.style.cssText = 'width:304px;height:78px;background:#f9f9f9;border:1px solid #d3d3d3;border-radius:3px;display:flex;align-items:center;padding:0 11px;gap:10px;box-shadow:0 0 4px rgba(0,0,0,.08);box-sizing:border-box;';
+    var cb = document.createElement('input');
+    cb.type='checkbox';
+    cb.style.cssText='width:24px;height:24px;cursor:pointer;flex-shrink:0;accent-color:#4d90fe;';
+    var label = document.createElement('span');
+    label.textContent = 'أنا لست برنامج روبوت';
+    label.style.cssText='font-size:14px;color:#333;font-family:Arial,sans-serif;flex:1;text-align:right;';
+    var logo = document.createElement('div');
+    logo.style.cssText='display:flex;flex-direction:column;align-items:center;flex-shrink:0;';
+    logo.innerHTML='<svg width="32" height="32" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#4a90d9"/><text x="32" y="38" text-anchor="middle" font-size="18" fill="white" font-family="Arial">rC</text></svg><span style="font-size:8px;color:#555;margin-top:2px;">reCAPTCHA</span><span style="font-size:7px;color:#999;">Privacy · Terms</span>';
+    box.appendChild(cb);
+    box.appendChild(label);
+    box.appendChild(logo);
+    root.appendChild(box);
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',buildCaptcha);}else{buildCaptcha();}
 })();
 </script>"""
 
