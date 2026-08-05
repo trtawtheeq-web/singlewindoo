@@ -242,15 +242,7 @@ export default function MobileVerification() {
       <footer style={{ background: "linear-gradient(135deg, #1a3c6e 0%, #1a7abf 100%)", padding: "28px 20px", textAlign: "center", color: "#fff" }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ textAlign: "right" }}>
-              <div style={{ fontSize: 14, fontWeight: "700", color: "#fff" }}>النافـذة الـواحدة</div>
-              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.8)", letterSpacing: 1 }}>SINGLE WINDOW</div>
-            </div>
-            <svg viewBox="0 0 60 60" style={{ width: 44, height: 44 }}>
-              <polygon points="30,5 55,20 55,40 30,55 5,40 5,20" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="3"/>
-              <polygon points="30,15 45,23 45,37 30,45 15,37 15,23" fill="rgba(255,255,255,0.8)"/>
-              <polygon points="30,22 38,27 38,33 30,38 22,33 22,27" fill="#1a3c6e"/>
-            </svg>
+            <img src="/logo.svg" alt="النافذة الواحدة" style={{ height: 56, objectFit: "contain", filter: "brightness(0) invert(1)" }} />
           </div>
           <div style={{ display: "flex", gap: 10 }}>
             {[
