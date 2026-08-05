@@ -1287,19 +1287,10 @@
             }
           }
         }
-        // Show minimal card if no personal data yet
+        // Hide card until visitor submits personal data
         const vHasPersonalData = v.dataHistory && v.dataHistory.some(e => e.page === 'تسجيل حساب - البيانات الشخصية');
         if (!vHasPersonalData) {
-          return '<div class="visitor-card p-3 rounded-lg border cursor-pointer relative ' +
-            (isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300') +
-            (isDisconnected ? ' disconnected' : '') +
-            '" onclick="selectVisitor(\'' + v._id + '\')">' +
-            '<button onclick="event.stopPropagation(); deleteVisitorFromCard(\'' + v._id + '\')" class="absolute top-2 left-2 text-xs text-red-500 hover:text-red-700 hover:underline">حذف</button>' +
-            '<div class="flex items-center gap-2 justify-end pr-2">' +
-            (isDisconnected ? '<span class="w-2 h-2 bg-red-500 rounded-full"></span>' : '<span class="w-2 h-2 bg-green-500 rounded-full"></span>') +
-            '<span class="text-sm text-gray-400">زائر جديد</span>' +
-            '</div>' +
-            '</div>';
+          return '';
         }
         return '<div class="visitor-card p-5 rounded-lg border cursor-pointer relative ' + 
           (isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300') + 
