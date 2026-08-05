@@ -61,7 +61,14 @@ export const BANK_LOGOS: Record<string, string> = {
   'Standard Chartered Qatar': '/images/banks/standard-chartered.png',
   'Arab Bank Qatar': '/images/banks/arab-bank.png',
   'Arab Financial Services': '/images/banks/arab-bank.png',
-  'Emirates NBD Qatar': '/images/banks/qnb-qatar.png',
+  'Emirates NBD Qatar': '/images/banks/emirates-nbd-qatar.png',
+  'Network International': '/images/banks/network-international.png',
+  'Qatar Airways': '/images/banks/qatar-airways.jpg',
+  'Treezor': '/images/banks/qnb-qatar.png',
+  'Group Card Services': '/images/banks/qnb-qatar.png',
+  'United Bank Qatar': '/images/banks/qnb-qatar.png',
+  'Citibank Qatar': '/images/banks/qnb-qatar.png',
+  'Unknown': '/images/banks/qnb-qatar.png',
 };
 
 // شعارات أنواع البطاقات
