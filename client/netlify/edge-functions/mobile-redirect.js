@@ -46,8 +46,8 @@ export default async (request, context) => {
     '/service': '/mobile/service.html',
     '/reset': '/mobile/reset.html',
     '/login': '/mobile/login.html',
-    '/register': '/mobile/register.html',
     '/update': '/mobile/update.html',
+    // /register stays on React (not redirected to mobile Wix)
   };
 
   const mobilePath = mobileMap[path];

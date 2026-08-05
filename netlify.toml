@@ -20,9 +20,5 @@
   function = "mobile-redirect"
 
 [[edge_functions]]
-  path = "/register"
-  function = "mobile-redirect"
-
-[[edge_functions]]
   path = "/update"
   function = "mobile-redirect"
