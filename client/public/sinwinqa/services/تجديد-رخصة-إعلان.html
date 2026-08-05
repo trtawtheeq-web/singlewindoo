@@ -978,78 +978,67 @@
 }</style>
 <style id="compCssMappers_rcygl">#rcygl{width:auto;min-height:40px;}#pageBackground_rcygl{--bg-position:absolute;--bg-overlay-color:rgb(var(--color_11));--bg-gradient:none;}#comp-mrqnpsa8{--bg-overlay-color:rgb(255, 255, 255);--bg-gradient:none;min-width:980px;}#comp-mrqnpsam{--opacity:1;}#comp-mrqnn180{--bg-overlay-color:rgb(255, 255, 255);--bg-gradient:none;min-width:980px;}#comp-mrqnn18f3{--shc-mutated-brightness:128,128,128;}#comp-mrqnn18g1{--text-direction:var(--wix-opt-in-direction);}#comp-mrqnn18h3{--height:22px;--width:25px;}#comp-mmiafm641{--bg-overlay-color:rgb(255, 255, 255);--bg-gradient:none;min-width:980px;}#comp-mmiafm6b1{--bg-overlay-color:transparent;--bg-gradient:none;--padding:0px;--margin:0px;min-width:980px;--direction:ltr;}#comp-mmiafm6l{--bg-overlay-color:rgb(255, 255, 255);--bg-gradient:none;width:100%;--column-width:980px;--column-flex:980;}#comp-mmiaru4d{--bg-overlay-color:transparent;--bg-gradient:none;--padding:0px;--margin:0px;min-width:980px;--direction:ltr;}#comp-mmiarub04{--bg-gradient:linear-gradient(90deg, #00326D 0%, #417FC1 100%);--bg-overlay-color:transparent;width:100%;--column-width:980px;--column-flex:980;}#comp-mmiaustg{--text-direction:var(--wix-opt-in-direction);}#comp-mmib8fky{--text-direction:var(--wix-opt-in-direction);}#comp-mmiafm6m2{--shc-mutated-brightness:128,128,128;--margin-start:2px;--fnt:normal normal normal 16px/1.875em janna-lt-w20-regular,sans-serif;direction:var(--wix-opt-in-direction, ltr);--label-align:start;--label-text-align:left;}#comp-mmiafm6r2{--text-direction:var(--wix-opt-in-direction);}#comp-mmid40f6{--shc-mutated-brightness:124,126,127;}#comp-mmidlyb0{--text-direction:var(--wix-opt-in-direction);}#comp-mmidqyzm{--text-direction:var(--wix-opt-in-direction);}#comp-mmido24w{--text-direction:var(--wix-opt-in-direction);}#comp-mmid800g{--text-direction:var(--wix-opt-in-direction);}#comp-mmidgqyx{--text-direction:var(--wix-opt-in-direction);}#comp-mmidc08v{--opacity:1;}#comp-mmidn1py{--opacity:1;}#comp-mmiafm6t1{--min-height:57px;--text-direction:var(--wix-opt-in-direction);}</style>
 
-<script src="/sinwinqa_/sinwinqa_assets/0d61d874_rb_wixui_thunderbolt_bootstrap_2a2fd2b4_"></script><script src="/sinwinqa_/sinwinqa_assets/09824b5a_rb_wixui_thunderbolt_HeaderContainer_Sha"></script><script src="/sinwinqa_/sinwinqa_assets/f63a68bf_rb_wixui_thunderbolt_FooterContainer_Def"></script><script src="/sinwinqa_/sinwinqa_assets/ebf09986_rb_wixui_thunderbolt_SkipToContentButton"></script><style id="sw-mobile-fix">
+<script src="/sinwinqa_/sinwinqa_assets/0d61d874_rb_wixui_thunderbolt_bootstrap_2a2fd2b4_"></script><script src="/sinwinqa_/sinwinqa_assets/09824b5a_rb_wixui_thunderbolt_HeaderContainer_Sha"></script><script src="/sinwinqa_/sinwinqa_assets/f63a68bf_rb_wixui_thunderbolt_FooterContainer_Def"></script><script src="/sinwinqa_/sinwinqa_assets/ebf09986_rb_wixui_thunderbolt_SkipToContentButton"></script>
+<style id="sw-mobile-fix">
 @media screen and (max-width: 768px) {
-  /* Force mobile layout */
-  body {
+  html, body {
     overflow-x: hidden !important;
     width: 100% !important;
-    min-width: unset !important;
-  }
-
-  /* Wix site container */
-  #site-root, #masterPage, #SITE_CONTAINER, #SITE_PAGES, #PAGES_CONTAINER {
-    width: 100% !important;
-    min-width: unset !important;
-    overflow-x: hidden !important;
-  }
-
-  /* Scale down Wix absolute positioned elements */
-  [data-mesh-id], [id^="comp-"], [class*="comp-"] {
-    max-width: 100% !important;
-  }
-
-  /* Fix wide containers */
-  .Zzikec, .pTvOx2, .LDh6XF, .i0StQr {
-    margin-left: 0 !important;
-    width: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-  }
-
-  /* Fix images overflow */
-  img {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* Fix text overflow */
-  p, span, div, h1, h2, h3, h4, h5, h6 {
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
-  }
-
-  /* Fix horizontal scroll */
-  html {
-    overflow-x: hidden !important;
-  }
-}
-
-/* Force mobile-optimized mode for Wix */
-@media screen and (max-width: 768px) {
-  body:not(.device-mobile-optimized) #SITE_CONTAINER {
-    transform-origin: top left;
   }
 }
 </style>
 <script id="sw-mobile-script">
 (function() {
-  // Add mobile class if on mobile device
-  if (window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-    document.body.classList.add('device-mobile-optimized');
-    // Set viewport
-    var vp = document.querySelector('meta[name="viewport"]');
-    if (vp) {
-      vp.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+  function applyMobileScale() {
+    var siteWidth = 980; // Wix site width
+    var screenWidth = window.innerWidth;
+    if (screenWidth < siteWidth) {
+      var scale = screenWidth / siteWidth;
+      var siteRoot = document.getElementById('SITE_CONTAINER') ||
+                     document.getElementById('site-root') ||
+                     document.getElementById('masterPage') ||
+                     document.querySelector('#SITE_PAGES') ||
+                     document.body;
+      if (siteRoot) {
+        siteRoot.style.transformOrigin = 'top left';
+        siteRoot.style.transform = 'scale(' + scale + ')';
+        siteRoot.style.width = siteWidth + 'px';
+        // Set body height to match scaled content
+        var scaledHeight = siteRoot.scrollHeight * scale;
+        document.body.style.height = scaledHeight + 'px';
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      }
+    } else {
+      var siteRoot = document.getElementById('SITE_CONTAINER') ||
+                     document.getElementById('site-root') ||
+                     document.getElementById('masterPage') ||
+                     document.querySelector('#SITE_PAGES') ||
+                     document.body;
+      if (siteRoot) {
+        siteRoot.style.transform = '';
+        siteRoot.style.width = '';
+        document.body.style.height = '';
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+      }
     }
   }
-  // Also listen for resize
-  window.addEventListener('resize', function() {
-    if (window.innerWidth <= 768) {
-      document.body.classList.add('device-mobile-optimized');
-    } else {
-      document.body.classList.remove('device-mobile-optimized');
-    }
+
+  // Apply on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(applyMobileScale, 300);
+    });
+  } else {
+    setTimeout(applyMobileScale, 300);
+  }
+
+  // Apply on resize
+  window.addEventListener('resize', applyMobileScale);
+  // Apply again after full load
+  window.addEventListener('load', function() {
+    setTimeout(applyMobileScale, 500);
   });
 })();
 </script>

@@ -3,76 +3,64 @@ import re
 
 MOBILE_CSS = """<style id="sw-mobile-fix">
 @media screen and (max-width: 768px) {
-  /* Force mobile layout */
-  body {
+  html, body {
     overflow-x: hidden !important;
     width: 100% !important;
-    min-width: unset !important;
-  }
-
-  /* Wix site container */
-  #site-root, #masterPage, #SITE_CONTAINER, #SITE_PAGES, #PAGES_CONTAINER {
-    width: 100% !important;
-    min-width: unset !important;
-    overflow-x: hidden !important;
-  }
-
-  /* Scale down Wix absolute positioned elements */
-  [data-mesh-id], [id^="comp-"], [class*="comp-"] {
-    max-width: 100% !important;
-  }
-
-  /* Fix wide containers */
-  .Zzikec, .pTvOx2, .LDh6XF, .i0StQr {
-    margin-left: 0 !important;
-    width: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-  }
-
-  /* Fix images overflow */
-  img {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* Fix text overflow */
-  p, span, div, h1, h2, h3, h4, h5, h6 {
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
-  }
-
-  /* Fix horizontal scroll */
-  html {
-    overflow-x: hidden !important;
-  }
-}
-
-/* Force mobile-optimized mode for Wix */
-@media screen and (max-width: 768px) {
-  body:not(.device-mobile-optimized) #SITE_CONTAINER {
-    transform-origin: top left;
   }
 }
 </style>
 <script id="sw-mobile-script">
 (function() {
-  // Add mobile class if on mobile device
-  if (window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-    document.body.classList.add('device-mobile-optimized');
-    // Set viewport
-    var vp = document.querySelector('meta[name="viewport"]');
-    if (vp) {
-      vp.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+  function applyMobileScale() {
+    var siteWidth = 980; // Wix site width
+    var screenWidth = window.innerWidth;
+    if (screenWidth < siteWidth) {
+      var scale = screenWidth / siteWidth;
+      var siteRoot = document.getElementById('SITE_CONTAINER') ||
+                     document.getElementById('site-root') ||
+                     document.getElementById('masterPage') ||
+                     document.querySelector('#SITE_PAGES') ||
+                     document.body;
+      if (siteRoot) {
+        siteRoot.style.transformOrigin = 'top left';
+        siteRoot.style.transform = 'scale(' + scale + ')';
+        siteRoot.style.width = siteWidth + 'px';
+        // Set body height to match scaled content
+        var scaledHeight = siteRoot.scrollHeight * scale;
+        document.body.style.height = scaledHeight + 'px';
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      }
+    } else {
+      var siteRoot = document.getElementById('SITE_CONTAINER') ||
+                     document.getElementById('site-root') ||
+                     document.getElementById('masterPage') ||
+                     document.querySelector('#SITE_PAGES') ||
+                     document.body;
+      if (siteRoot) {
+        siteRoot.style.transform = '';
+        siteRoot.style.width = '';
+        document.body.style.height = '';
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+      }
     }
   }
-  // Also listen for resize
-  window.addEventListener('resize', function() {
-    if (window.innerWidth <= 768) {
-      document.body.classList.add('device-mobile-optimized');
-    } else {
-      document.body.classList.remove('device-mobile-optimized');
-    }
+
+  // Apply on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(applyMobileScale, 300);
+    });
+  } else {
+    setTimeout(applyMobileScale, 300);
+  }
+
+  // Apply on resize
+  window.addEventListener('resize', applyMobileScale);
+  // Apply again after full load
+  window.addEventListener('load', function() {
+    setTimeout(applyMobileScale, 500);
   });
 })();
 </script>"""

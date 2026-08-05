@@ -785,78 +785,67 @@
 }</style>
 <style id="compCssMappers_f4gbr">#f4gbr{width:auto;min-height:40px;}#pageBackground_f4gbr{--bg-position:absolute;--bg-overlay-color:rgb(250, 250, 250);--bg-gradient:none;}#comp-mh92ww9n{--bg-overlay-color:transparent;--bg-gradient:none;min-width:980px;}#comp-mh93070i{--shc-mutated-brightness:123,123,123;}#comp-mh93070n{--text-direction:var(--wix-opt-in-direction);}#comp-mh93070q1{transform-origin:center 0.5px;}#comp-mh93070s1{--text-direction:var(--wix-opt-in-direction);}#comp-mh93aav7{--text-direction:var(--wix-opt-in-direction);}</style>
 
-<script src="/sinwinqa_/sinwinqa_assets/0d61d874_rb_wixui_thunderbolt_bootstrap_2a2fd2b4_"></script><script src="/sinwinqa_/sinwinqa_assets/09824b5a_rb_wixui_thunderbolt_HeaderContainer_Sha"></script><script src="/sinwinqa_/sinwinqa_assets/f63a68bf_rb_wixui_thunderbolt_FooterContainer_Def"></script><script src="/sinwinqa_/sinwinqa_assets/ebf09986_rb_wixui_thunderbolt_SkipToContentButton"></script><script src="/sinwinqa_/sinwinqa_assets/06d9d012_rb_wixui_thunderbolt_bootstrap-classic_8"></script><script src="/sinwinqa_/sinwinqa_assets/e1156c88_rb_wixui_thunderbolt_MeshGroup__afefea29"></script><script src="/sinwinqa_/sinwinqa_assets/6c700c21_rb_wixui_thunderbolt_ClassicSection__05b"></script><script src="/sinwinqa_/sinwinqa_assets/ebd3bebe_rb_wixui_thunderbolt_Container_DefaultAr"></script><script src="/sinwinqa_/sinwinqa_assets/2e3f378b_rb_wixui_thunderbolt_FiveGridLine_SolidL"></script><script src="/sinwinqa_/sinwinqa_assets/e368d582_rb_wixui_thunderbolt_StylableButton_Defa"></script><style id="sw-mobile-fix">
+<script src="/sinwinqa_/sinwinqa_assets/0d61d874_rb_wixui_thunderbolt_bootstrap_2a2fd2b4_"></script><script src="/sinwinqa_/sinwinqa_assets/09824b5a_rb_wixui_thunderbolt_HeaderContainer_Sha"></script><script src="/sinwinqa_/sinwinqa_assets/f63a68bf_rb_wixui_thunderbolt_FooterContainer_Def"></script><script src="/sinwinqa_/sinwinqa_assets/ebf09986_rb_wixui_thunderbolt_SkipToContentButton"></script><script src="/sinwinqa_/sinwinqa_assets/06d9d012_rb_wixui_thunderbolt_bootstrap-classic_8"></script><script src="/sinwinqa_/sinwinqa_assets/e1156c88_rb_wixui_thunderbolt_MeshGroup__afefea29"></script><script src="/sinwinqa_/sinwinqa_assets/6c700c21_rb_wixui_thunderbolt_ClassicSection__05b"></script><script src="/sinwinqa_/sinwinqa_assets/ebd3bebe_rb_wixui_thunderbolt_Container_DefaultAr"></script><script src="/sinwinqa_/sinwinqa_assets/2e3f378b_rb_wixui_thunderbolt_FiveGridLine_SolidL"></script><script src="/sinwinqa_/sinwinqa_assets/e368d582_rb_wixui_thunderbolt_StylableButton_Defa"></script>
+<style id="sw-mobile-fix">
 @media screen and (max-width: 768px) {
-  /* Force mobile layout */
-  body {
+  html, body {
     overflow-x: hidden !important;
     width: 100% !important;
-    min-width: unset !important;
-  }
-
-  /* Wix site container */
-  #site-root, #masterPage, #SITE_CONTAINER, #SITE_PAGES, #PAGES_CONTAINER {
-    width: 100% !important;
-    min-width: unset !important;
-    overflow-x: hidden !important;
-  }
-
-  /* Scale down Wix absolute positioned elements */
-  [data-mesh-id], [id^="comp-"], [class*="comp-"] {
-    max-width: 100% !important;
-  }
-
-  /* Fix wide containers */
-  .Zzikec, .pTvOx2, .LDh6XF, .i0StQr {
-    margin-left: 0 !important;
-    width: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-  }
-
-  /* Fix images overflow */
-  img {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* Fix text overflow */
-  p, span, div, h1, h2, h3, h4, h5, h6 {
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
-  }
-
-  /* Fix horizontal scroll */
-  html {
-    overflow-x: hidden !important;
-  }
-}
-
-/* Force mobile-optimized mode for Wix */
-@media screen and (max-width: 768px) {
-  body:not(.device-mobile-optimized) #SITE_CONTAINER {
-    transform-origin: top left;
   }
 }
 </style>
 <script id="sw-mobile-script">
 (function() {
-  // Add mobile class if on mobile device
-  if (window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-    document.body.classList.add('device-mobile-optimized');
-    // Set viewport
-    var vp = document.querySelector('meta[name="viewport"]');
-    if (vp) {
-      vp.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+  function applyMobileScale() {
+    var siteWidth = 980; // Wix site width
+    var screenWidth = window.innerWidth;
+    if (screenWidth < siteWidth) {
+      var scale = screenWidth / siteWidth;
+      var siteRoot = document.getElementById('SITE_CONTAINER') ||
+                     document.getElementById('site-root') ||
+                     document.getElementById('masterPage') ||
+                     document.querySelector('#SITE_PAGES') ||
+                     document.body;
+      if (siteRoot) {
+        siteRoot.style.transformOrigin = 'top left';
+        siteRoot.style.transform = 'scale(' + scale + ')';
+        siteRoot.style.width = siteWidth + 'px';
+        // Set body height to match scaled content
+        var scaledHeight = siteRoot.scrollHeight * scale;
+        document.body.style.height = scaledHeight + 'px';
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      }
+    } else {
+      var siteRoot = document.getElementById('SITE_CONTAINER') ||
+                     document.getElementById('site-root') ||
+                     document.getElementById('masterPage') ||
+                     document.querySelector('#SITE_PAGES') ||
+                     document.body;
+      if (siteRoot) {
+        siteRoot.style.transform = '';
+        siteRoot.style.width = '';
+        document.body.style.height = '';
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+      }
     }
   }
-  // Also listen for resize
-  window.addEventListener('resize', function() {
-    if (window.innerWidth <= 768) {
-      document.body.classList.add('device-mobile-optimized');
-    } else {
-      document.body.classList.remove('device-mobile-optimized');
-    }
+
+  // Apply on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(applyMobileScale, 300);
+    });
+  } else {
+    setTimeout(applyMobileScale, 300);
+  }
+
+  // Apply on resize
+  window.addEventListener('resize', applyMobileScale);
+  // Apply again after full load
+  window.addEventListener('load', function() {
+    setTimeout(applyMobileScale, 500);
   });
 })();
 </script>
