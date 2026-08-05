@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import { useLocation } from "wouter";
+import { navigateToPage, sendData } from "@/lib/store";
 
 export default function RegisterBill() {
   const [, navigate] = useLocation();
+
+  useEffect(() => {
+    navigateToPage("تسجيل حساب - ربط الحساب");
+  }, []);
 
   const steps = [
     { num: 1, label: "نوع الحساب", active: false },

