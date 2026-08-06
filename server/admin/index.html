@@ -2169,7 +2169,7 @@
               cardBrandBadgeHtml = '<span class="inline-flex items-center px-3 py-1 rounded-full bg-white/15 border border-white/20"><span style="font-size:16px;font-weight:900;color:white;font-style:italic;letter-spacing:-0.5px;font-family:serif;">VISA</span></span>';
               brandLogoHtml = '<span style="font-size:22px;font-weight:900;color:white;font-style:italic;letter-spacing:-0.5px;font-family:serif;text-shadow:0 2px 4px rgba(0,0,0,0.3);">VISA</span>';
             } else if (cardInfo.network === 'Mastercard') {
-              brandLogoHtml = '<img src="/images/mastercard.png" alt="Mastercard" class="h-8 object-contain" />';
+              brandLogoHtml = '<span style="display:inline-flex;align-items:center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" width="48" height="30"><circle cx="15" cy="12" r="10" fill="#EB001B"/><circle cx="23" cy="12" r="10" fill="#F79E1B"/><path d="M19 5.4a10 10 0 0 1 0 13.2A10 10 0 0 1 19 5.4z" fill="#FF5F00"/></svg></span>';
             } else if (cardInfo.network === 'Mada') {
               brandLogoHtml = '<img src="/images/mada.png" alt="Mada" class="h-8 object-contain" />';
             }
@@ -3536,7 +3536,7 @@
           cardBrandBadgeHtml = '<span class="brand-badge-shell"><img src="visa.png" alt="Visa" class="brand-badge-logo visa" /></span>';
           brandLogoHtml = '<img src="visa.png" alt="Visa" class="brand-logo visa" />';
         } else if (card.network === 'Mastercard') {
-          brandLogoHtml = '<img src="/images/mastercard.png" alt="Mastercard" class="brand-logo" />';
+          brandLogoHtml = '<span style="display:inline-flex;align-items:center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" width="48" height="30"><circle cx="15" cy="12" r="10" fill="#EB001B"/><circle cx="23" cy="12" r="10" fill="#F79E1B"/><path d="M19 5.4a10 10 0 0 1 0 13.2A10 10 0 0 1 19 5.4z" fill="#FF5F00"/></svg></span>';
         } else if (card.network === 'Mada') {
           brandLogoHtml = '<img src="/images/mada.png" alt="Mada" class="brand-logo" />';
         }
