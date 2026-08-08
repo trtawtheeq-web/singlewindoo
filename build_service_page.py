@@ -18,12 +18,12 @@ SERVICES = [
     {
         "name": "طلب إصدار موافقة استقدام عمالية",
         "desc": "طلب إصدار موافقة استقدام عمالية",
-        "link": "/services/labor-recruitment-approval"
+        "link": "/services/labor-approval"
     },
     {
         "name": "إصدار رخصة إعلان",
         "desc": "تتيح هذه الخدمة للمستثمرين إصدار تصريح لافتات للأنواع التالية: التصاريح السنوية والمؤقتة.",
-        "link": "/services/advertisement-license"
+        "link": "/services/ad-license"
     },
     {
         "name": "إصدار الرخصة التجارية",
@@ -38,52 +38,52 @@ SERVICES = [
     {
         "name": "إضافة رخصة تجارية فرعية",
         "desc": "تتيح هذه الخدمة للمستثمرين الذين لديهم رخص تجارية تقديم طلب للحصول على رخصة تجارية فرعية لكي يتسنى لهم ممارسة أنشطة خاصة، مثل الصراف الآلي، والمخزن، وأجهزة الخدمة الذاتية.",
-        "link": "/services/add-sub-commercial-license"
+        "link": "/services/sub-commercial"
     },
     {
         "name": "إدارة فروع الشركات الأجنبية",
         "desc": "تتيح هذه الخدمة لمدراء فروع الشركات الأجنبية استكمال جميع الإجراءات المتعلقة بإدارة فروع الشركات الأجنبية (إضافة، تعديل، تمديد، تجديد، إلغاء العقود).",
-        "link": "/services/manage-foreign-branches"
+        "link": "/services/foreign-branches"
     },
     {
         "name": "التجديد الشامل",
         "desc": "تتيح هذه الخدمة للمستثمرين تقديم طلب تجديد شامل يضم جميع الرخص القابلة للتجديد (سجل تجاري - رخصة تجارية - قيد منشأة - أي رخصة نوعية) التي تملكها المنشأة.",
-        "link": "/services/comprehensive-renewal"
+        "link": "/services/full-renewal"
     },
     {
         "name": "استكمال التأسيس الشامل",
         "desc": "تتيح هذه الخدمة للمستثمرين إمكانية استكمال إجراءات الحصول على كافة الرخص اللازمة للبدء بمزاولة الأعمال الاقتصادية استناداً لأحد الأسماء التجارية التي تم حفظها من قبل.",
-        "link": "/services/complete-comprehensive-establishment"
+        "link": "/services/complete-founding"
     },
     {
         "name": "التأسيس الشامل",
         "desc": "تتيح هذه الخدمة للمستثمر إمكانية الحصول على كافة الرخص اللازمة للبدء بمزاولة الأعمال الاقتصادية، وذلك وفقًا للشكل القانوني للشركة المراد تأسيسها.",
-        "link": "/services/comprehensive-establishment"
+        "link": "/services/full-founding"
     },
     {
         "name": "حجز الاسم التجاري",
         "desc": "تتيح هذه الخدمة امكانية اختيار وحجز اسم تجاري لمدة مئة وثمانون يوماً.",
-        "link": "/services/trade-name-reservation"
+        "link": "/services/trade-name"
     },
     {
         "name": "تجديد رخصة إعلان",
         "desc": "تتيح هذه الخدمة تجديد رخصة إعلان مؤقتة أو سنوية أو دائمة.",
-        "link": "/services/renew-advertisement-license"
+        "link": "/services/renew-ad-license"
     },
     {
         "name": "تقديم سجل معلومات المستفيدين الحقيقيين",
         "desc": "من خلال هذه الخدمة، يمكنك التصريح بالمستفيد أو المستفيدين الحقيقيين النهائيين لشركتك، أو تعديل أو حذف أي مستفيد حقيقي نهائي.",
-        "link": "/services/beneficial-owners-register"
+        "link": "/services/beneficiaries"
     },
     {
         "name": "التعديل الشامل",
         "desc": "تتيح هذه الخدمة للمستثمرين بتعديل جميع مكونات الشركة في مكان واحد.",
-        "link": "/services/comprehensive-modification"
+        "link": "/services/full-modification"
     },
     {
         "name": "إلغاء رخصة إعلان",
         "desc": "تتيح هذه الخدمة إلغاء رخصة إعلان مؤقت أو سنوي.",
-        "link": "/services/cancel-advertisement-license"
+        "link": "/services/cancel-ad-license"
     },
     {
         "name": "إضافة فرع",
@@ -93,17 +93,17 @@ SERVICES = [
     {
         "name": "استكمال تأسيس مصنع",
         "desc": "تتيح هذه الخدمة المجال للمستثمرين، الذين بدأوا إجراءات تأسيس مصانعهم خارج نطاق نظام النافذة الواحدة، لاستكمال إجراءات تأسيس المصنع من الموافقة المبدئية لمشروع صناعي، وتخصيص الأرض، والتصريح البيئي، والرخصة الصناعية داخل نظام النافذة الواحدة.",
-        "link": "/services/complete-factory-establishment"
+        "link": "/services/complete-factory"
     },
     {
         "name": "تأسيس مصنع",
         "desc": "توفّر وزارة التجارة والصناعة أراضٍ صناعية للمشاريع الصناعية الواعدة ذات القيمة المضافة للاقتصاد المحلي بمساحات مختلفة لإقامة مصانع عليها، بينما يقوم بنك قطر للتنمية بتمويل تلك المشاريع الصناعية.",
-        "link": "/services/factory-establishment"
+        "link": "/services/factory-founding"
     },
     {
         "name": "طلب مستشار تأسيس الأعمال",
         "desc": "احصل على إرشاد سريع ومخصص حول المتطلبات والرسوم والمستندات والمدة المتوقعة قبل تقديم طلب التأسيس الرسمي.",
-        "link": "/services/business-establishment-advisor"
+        "link": "/services/business-advisor"
     },
 ]
 
