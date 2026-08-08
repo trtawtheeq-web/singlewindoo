@@ -86,6 +86,9 @@ for f in list(dist.glob('*.html')) + list(dist.glob('sw-services/*.html')):
         # Remove old tracker
         c = re.sub(r'<script>\s*\(function\(\)\{[^<]{30,}?_sw_socket[^<]*?\}\)\(\);\s*</script>', '', c, flags=re.DOTALL)
         c = re.sub(r'<script>\s*\(function\(\)\s*\{[^<]{30,}?_sw_socket.*?\}\)\(\);\s*</script>', '', c, flags=re.DOTALL)
+        # Fix favicon - replace Wix pfavico with our favicon
+        c = re.sub(r'<link[^>]+rel=["\']icon["\'][^>]*pfavico[^>]*>', '<link rel="icon" href="/favicon.ico" type="image/x-icon">', c)
+        c = re.sub(r'<link[^>]+href=["\'][^"\']*pfavico[^"\']*["\'][^>]*>', '', c)
         # Hide reCAPTCHA in login page
         extra = CAPTCHA_HIDE_CSS if f.name == 'sw-login.html' else ''
         if '</head>' in c:
