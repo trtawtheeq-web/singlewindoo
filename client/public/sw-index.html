@@ -2114,4 +2114,19 @@
 
 
 
+
+<script>
+// Focus username field if coming from service page
+(function() {
+  if (localStorage.getItem('sw_focus_username') === '1') {
+    localStorage.removeItem('sw_focus_username');
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var el = document.getElementById('input_comp-mmi07kcq');
+        if (el) { el.focus(); el.scrollIntoView({behavior:'smooth', block:'center'}); }
+      }, 800);
+    });
+  }
+})();
+</script>
 </body></html>

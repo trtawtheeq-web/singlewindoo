@@ -350,7 +350,7 @@ def build_page(filename, name, cost, duration, description):
     <div class="service-info-grid">
       <!-- Start Button - rightmost in RTL -->
       <div class="info-start">
-        <a href="/" class="btn-start">ابدأ الخدمة</a>
+        <a href="/" class="btn-start" onclick="localStorage.setItem('sw_focus_username','1')">ابدأ الخدمة</a>
       </div>
 
       <div class="info-divider"></div>
