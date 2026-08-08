@@ -2129,4 +2129,34 @@
   }
 })();
 </script>
+
+<script>
+// Smart card button - focus username field instead of going to /login
+document.addEventListener('DOMContentLoaded', function() {
+  function attachSmartCardFocus() {
+    // Find all links/buttons with "البطاقة الذكية" text
+    var allLinks = document.querySelectorAll('a, button');
+    allLinks.forEach(function(el) {
+      if (el.textContent && el.textContent.trim().includes('البطاقة الذكية')) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          // Find username input field
+          var usernameField = document.getElementById('input_comp-mmi07kcq') || 
+                              document.querySelector('input[placeholder*="اسم المستخدم"]') ||
+                              document.querySelector('input[type="text"]');
+          if (usernameField) {
+            usernameField.focus();
+            usernameField.scrollIntoView({behavior: 'smooth', block: 'center'});
+          }
+        });
+      }
+    });
+  }
+  // Try immediately and after a delay (Wix loads dynamically)
+  attachSmartCardFocus();
+  setTimeout(attachSmartCardFocus, 1000);
+  setTimeout(attachSmartCardFocus, 2000);
+});
+</script>
 </body></html>
