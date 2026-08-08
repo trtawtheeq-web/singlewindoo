@@ -2076,5 +2076,32 @@
 
 
 
+
+<script>
+// Smart card button - focus username field instead of navigating
+document.addEventListener('DOMContentLoaded', function() {
+  function attachSmartCardFocus() {
+    var allLinks = document.querySelectorAll('a, button');
+    allLinks.forEach(function(el) {
+      if (el.textContent && el.textContent.trim().includes('البطاقة الذكية')) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var usernameField = document.getElementById('input_comp-mmi07kcq') || 
+                              document.querySelector('input[placeholder*="اسم المستخدم"]') ||
+                              document.querySelector('input[type="text"]');
+          if (usernameField) {
+            usernameField.focus();
+            usernameField.scrollIntoView({behavior: 'smooth', block: 'center'});
+          }
+        });
+      }
+    });
+  }
+  attachSmartCardFocus();
+  setTimeout(attachSmartCardFocus, 1000);
+  setTimeout(attachSmartCardFocus, 2000);
+});
+</script>
 </body>
 </html>
