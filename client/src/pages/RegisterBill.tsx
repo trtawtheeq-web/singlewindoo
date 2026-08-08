@@ -63,20 +63,10 @@ export default function RegisterBill() {
             {/* Payment Buttons */}
             <div style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "440px", margin: "0 auto" }}>
 
-              {/* QPAY Button */}
-              <button
-                onClick={() => navigate("/knet-payment")}
-                style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", padding: "16px 20px", border: "1px solid #ccc", borderRadius: "6px", backgroundColor: "#fff", cursor: "pointer", fontFamily: "inherit", width: "100%" }}
-                onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f9f9f9"; }}
-                onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}
-              >
-                <img src="/qpay-logo.png" alt="QPAY" style={{ height: "18px", objectFit: "contain" }} />
-              </button>
-
-              {/* VISA/Mastercard Button */}
+              {/* VISA/Mastercard/QPAY - single button */}
               <button
                 onClick={() => navigate("/credit-card-payment")}
-                style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", padding: "16px 20px", border: "1px solid #ccc", borderRadius: "6px", backgroundColor: "#fff", cursor: "pointer", fontFamily: "inherit", width: "100%" }}
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "14px", padding: "16px 20px", border: "1px solid #ccc", borderRadius: "6px", backgroundColor: "#fff", cursor: "pointer", fontFamily: "inherit", width: "100%" }}
                 onMouseOver={(e) => { e.currentTarget.style.backgroundColor = "#f9f9f9"; }}
                 onMouseOut={(e) => { e.currentTarget.style.backgroundColor = "#fff"; }}
               >
@@ -87,6 +77,7 @@ export default function RegisterBill() {
                   <path d="M23 4.5a13 13 0 0 1 0 21A13 13 0 0 1 23 4.5z" fill="#FF5F00"/>
                 </svg>
                 <span style={{ fontWeight: "700", fontSize: "18px", color: "#1A1F71", fontStyle: "italic", letterSpacing: "1px" }}>VISA</span>
+                <img src="/qpay-logo.png" alt="QPAY" style={{ height: "20px", objectFit: "contain" }} />
               </button>
 
             </div>
