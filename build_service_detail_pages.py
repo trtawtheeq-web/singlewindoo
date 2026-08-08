@@ -348,13 +348,9 @@ def build_page(filename, name, cost, duration, description):
   <!-- Service Info Card -->
   <div class="service-card">
     <div class="service-info-grid">
-      <!-- Duration -->
-      <div class="info-item">
-        <span class="info-label">المدة الزمنية (تقريبا)</span>
-        <div class="info-value">
-          <span>{duration}</span>
-          <span class="info-icon">{CLOCK_SVG}</span>
-        </div>
+      <!-- Start Button - rightmost in RTL -->
+      <div class="info-start">
+        <a href="/" class="btn-start">ابدأ الخدمة</a>
       </div>
 
       <div class="info-divider"></div>
@@ -363,16 +359,20 @@ def build_page(filename, name, cost, duration, description):
       <div class="info-item">
         <span class="info-label">التكلفة (تقريبا)</span>
         <div class="info-value">
-          <span>{cost}</span>
           <span class="info-icon">{MONEY_SVG}</span>
+          <span>{cost}</span>
         </div>
       </div>
 
       <div class="info-divider"></div>
 
-      <!-- Start Button -->
-      <div class="info-start">
-        <a href="/" class="btn-start">ابدأ الخدمة</a>
+      <!-- Duration - leftmost in RTL -->
+      <div class="info-item">
+        <span class="info-label">المدة الزمنية (تقريبا)</span>
+        <div class="info-value">
+          <span class="info-icon">{CLOCK_SVG}</span>
+          <span>{duration}</span>
+        </div>
       </div>
     </div>
   </div>
