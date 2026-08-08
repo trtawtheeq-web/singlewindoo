@@ -77,7 +77,7 @@ export default function RegisterBill() {
                   <path d="M23 4.5a13 13 0 0 1 0 21A13 13 0 0 1 23 4.5z" fill="#FF5F00"/>
                 </svg>
                 <span style={{ fontWeight: "700", fontSize: "22px", color: "#1A1F71", fontStyle: "italic", letterSpacing: "1px", lineHeight: "28px" }}>VISA</span>
-                <img src="/qpay-logo.png" alt="QPAY" style={{ height: "28px", objectFit: "contain" }} />
+                <img src="/qpay-logo.png" alt="QPAY" style={{ height: "26px", objectFit: "contain" }} />
               </button>
 
             </div>
