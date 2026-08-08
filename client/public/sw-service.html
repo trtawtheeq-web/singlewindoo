@@ -7,7 +7,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Helvetica Neue', Arial, 'Segoe UI', sans-serif;
       background: #f5f5f5;
       direction: rtl;
       color: #333;
@@ -25,32 +25,27 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
     .header-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
       text-decoration: none;
     }
     .header-logo img {
-      height: 40px;
+      height: 44px;
+      width: auto;
     }
-    .header-left {
+    .header-nav {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
     }
     .btn-services {
       background: #1a4f8a;
       color: #fff;
       border: none;
-      padding: 8px 20px;
+      padding: 8px 22px;
       border-radius: 4px;
       font-size: 14px;
       font-weight: 600;
@@ -74,17 +69,12 @@
       color: #555;
       text-decoration: none;
     }
-    .lang-btn img {
-      width: 20px;
-      height: 14px;
-      border-radius: 2px;
-    }
 
     /* Main */
     .main {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 40px 20px 60px;
+      padding: 40px 24px 60px;
     }
 
     /* Services Grid */
@@ -98,87 +88,79 @@
     .service-card {
       background: #fff;
       border-radius: 8px;
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      text-align: right;
+      padding: 24px 20px;
       text-decoration: none;
       color: inherit;
-      transition: box-shadow 0.2s, transform 0.2s;
+      transition: box-shadow 0.2s, transform 0.15s;
       border: 1px solid #eee;
-      min-height: 160px;
+      display: block;
     }
     .service-card:hover {
       box-shadow: 0 4px 20px rgba(0,0,0,0.12);
       transform: translateY(-2px);
     }
-    .service-header {
+    .card-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      direction: ltr;
+    }
+    .card-icon {
+      flex-shrink: 0;
+      width: 80px;
+      height: 92px;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 16px;
-      width: 100%;
-      margin-bottom: 16px;
+      justify-content: center;
     }
-    .service-title {
-      font-size: 18px;
+    .card-icon svg {
+      width: 80px;
+      height: 92px;
+    }
+    .card-content {
+      flex: 1;
+      direction: rtl;
+      text-align: right;
+    }
+    .card-title {
+      font-size: 17px;
       font-weight: 700;
       color: #1a1a2e;
-      text-align: right;
+      margin-bottom: 10px;
       line-height: 1.4;
     }
-    .service-icon {
-      flex-shrink: 0;
-      width: 64px;
-      height: 64px;
-    }
-    .service-desc {
+    .card-desc {
       font-size: 13px;
       color: #666;
       line-height: 1.7;
-      text-align: right;
-      width: 100%;
-    }
-
-    /* Hexagon icon */
-    .hex-icon {
-      position: relative;
-      width: 64px;
-      height: 64px;
-    }
-    .hex-icon svg {
-      width: 64px;
-      height: 64px;
     }
 
     /* Footer */
     .footer {
       background: #1a2a4a;
       color: #fff;
-      padding: 40px;
+      padding: 36px 40px;
       text-align: center;
     }
     .footer-logo {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
       margin-bottom: 20px;
     }
     .footer-logo img {
-      height: 40px;
+      height: 44px;
       filter: brightness(0) invert(1);
     }
     .footer-social {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 12px;
       margin-bottom: 16px;
     }
     .footer-social a {
       color: #fff;
-      font-size: 18px;
+      font-size: 14px;
       text-decoration: none;
       width: 36px;
       height: 36px;
@@ -195,18 +177,16 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .header { padding: 0 16px; }
-      .main { padding: 20px 12px 40px; }
-      .services-grid { grid-template-columns: 1fr; gap: 12px; }
-      .service-card { padding: 20px 16px; min-height: auto; }
-      .service-title { font-size: 16px; }
-      .service-icon { width: 52px; height: 52px; }
-      .hex-icon { width: 52px; height: 52px; }
-      .hex-icon svg { width: 52px; height: 52px; }
+      .header { padding: 0 16px; height: 56px; }
+      .header-logo img { height: 36px; }
       .btn-login { display: none; }
-    }
-    @media (max-width: 480px) {
-      .services-grid { grid-template-columns: 1fr; }
+      .main { padding: 16px 12px 40px; }
+      .services-grid { grid-template-columns: 1fr; gap: 12px; }
+      .service-card { padding: 16px 14px; }
+      .card-icon { width: 64px; height: 74px; }
+      .card-icon svg { width: 64px; height: 74px; }
+      .card-title { font-size: 15px; }
+      .card-desc { font-size: 12px; }
     }
   </style>
 </head>
@@ -214,378 +194,521 @@
 
 <!-- Header -->
 <header class="header">
-  <div class="header-right">
-    <a href="/" class="header-logo">
-      <img src="/sinwinqa_assets/f9b6577f_qjka_png" alt="النافذة الواحدة">
-    </a>
-  </div>
-  <div class="header-left">
+  <a href="/" class="header-logo">
+    <img src="/sinwinqa_assets/f9b6577f_qjka_png" alt="النافذة الواحدة" onerror="this.src='/logo.svg'">
+  </a>
+  <nav class="header-nav">
     <a href="/service" class="btn-services">الخدمات</a>
     <a href="/" class="btn-login">تسجيل الدخول</a>
-    <a href="#" class="lang-btn">
-      <span>English</span>
-      <img src="https://flagcdn.com/w20/qa.png" alt="QA">
-    </a>
-  </div>
+    <a href="#" class="lang-btn">English 🇶🇦</a>
+  </nav>
 </header>
 
 <!-- Main -->
 <main class="main">
   <div class="services-grid">
-
-    <!-- 1. خدمة الشهادات -->
     <a href="/services/certificates" class="service-card">
-      <div class="service-header">
-        <span class="service-title">خدمة الشهادات</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <circle cx="16" cy="14" r="10" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M11 14l4 4 6-7" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M6 28h20M8 32h16" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <defs>
+            <clipPath id="s0_icon0_306">
+                <path d="M56.904 0v56.901H0V0z"></path>
+            </clipPath>
+        </defs>
+        <g>
+            <g>
+                <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+                <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
             </g>
-          </svg>
+            <g clip-path="url(#s0_13a7521d-b098-4333-95eb-69daa7c19a4e_comp-mmi8eyyy__1b6c57ff-b0bb-4299-b9a7-958a12b91ba8)" transform="translate(24.47 32.55)">
+                <g>
+                    <path fill-rule="evenodd" fill="#19407f" d="M32.449 11.698a17.1 17.1 0 0 1 5.018 2.081l3.261-1.448 3.843 3.843-1.448 3.26a17.1 17.1 0 0 1 2.08 5.019l3.327 1.281v5.435l-3.328 1.281a17.1 17.1 0 0 1-2.081 5.018l1.448 3.261-3.843 3.843-3.26-1.448a17.1 17.1 0 0 1-5.02 2.08l-1.28 3.327h-5.432l-1.281-3.328a17.1 17.1 0 0 1-5.018-2.081l-3.261 1.448-3.843-3.843 1.448-3.26a17.1 17.1 0 0 1-2.081-5.02l-3.327-1.28v-5.434l3.327-1.281a17.1 17.1 0 0 1 2.081-5.019l-1.448-3.26 3.843-3.843 3.261 1.448a17.1 17.1 0 0 1 5.018-2.081l1.281-3.328h5.435zm-4 5.527A11.225 11.225 0 1 0 39.676 28.45a11.225 11.225 0 0 0-11.225-11.225Zm0 1.836a9.39 9.39 0 1 0 9.39 9.39 9.39 9.39 0 0 0-9.39-9.39m-1.354 10.3-2.3-2.3a1.529 1.529 0 0 0-2.162 2.162l3.383 3.383a1.53 1.53 0 0 0 2.162 0c2.042-2.042 4.061-4.107 6.093-6.158a1.526 1.526 0 0 0-2.165-2.151l-5.012 5.062Zm1.43 25.713A26.622 26.622 0 0 1 18.088 3.929l-1.256 2.368a.916.916 0 1 0 1.621.853l2.363-4.448a.918.918 0 0 0-.567-1.355L15.316.113a.917.917 0 0 0-.445 1.778l2.095.525a28.454 28.454 0 0 0 11.56 54.486.914.914 0 0 0 0-1.828Zm13.5-.061-2.1-.526A28.453 28.453 0 0 0 28.375 0a.914.914 0 0 0 0 1.828 26.623 26.623 0 0 1 10.441 51.147l1.258-2.371a.916.916 0 0 0-1.621-.853l-2.359 4.448a.92.92 0 0 0 .567 1.355l4.928 1.236a.916.916 0 1 0 .444-1.778Z" data-color="3"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">خدمة الشهادات</h3>
+          <p class="card-desc">تُمكّن هذه الخدمة جميع المستثمرين من طلب شهادات لمن يهمه الأمر، واستخراج مستخرج السجل التجاري والرخص التجارية صادرة من وزارة التجارة والصناعة.</p>
         </div>
       </div>
-      <p class="service-desc">تُمكّن هذه الخدمة جميع المستثمرين من طلب شهادات لمن يهمه الأمر، واستخراج مستخرج السجل التجاري والرخص التجارية صادرة من وزارة التجارة والصناعة.</p>
     </a>
-
-    <!-- 2. طلب إصدار موافقة استقدام عمالية -->
     <a href="/services/labor-recruitment-approval" class="service-card">
-      <div class="service-header">
-        <span class="service-title">طلب إصدار موافقة استقدام عمالية</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <circle cx="16" cy="10" r="6" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M6 30c0-6 4-10 10-10s10 4 10 10" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="26" cy="10" r="4" stroke="#1a4f8a" stroke-width="1.5" fill="none"/>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <defs>
+            <clipPath id="s1_icon1_306">
+                <path d="M56.904 0v56.901H0V0z"></path>
+            </clipPath>
+        </defs>
+        <g>
+            <g>
+                <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+                <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
             </g>
-          </svg>
+            <g clip-path="url(#s1_13a7521d-b098-4333-95eb-69daa7c19a4e_comp-mmi8eyyy__5a0f6c54-84fc-48ec-a2f0-b1942ddf7229)" transform="translate(24.47 32.55)">
+                <g>
+                    <path fill-rule="evenodd" fill="#19407f" d="M32.449 11.698a17.1 17.1 0 0 1 5.018 2.081l3.261-1.448 3.843 3.843-1.448 3.26a17.1 17.1 0 0 1 2.08 5.019l3.327 1.281v5.435l-3.328 1.281a17.1 17.1 0 0 1-2.081 5.018l1.448 3.261-3.843 3.843-3.26-1.448a17.1 17.1 0 0 1-5.02 2.08l-1.28 3.327h-5.432l-1.281-3.328a17.1 17.1 0 0 1-5.018-2.081l-3.261 1.448-3.843-3.843 1.448-3.26a17.1 17.1 0 0 1-2.081-5.02l-3.327-1.28v-5.434l3.327-1.281a17.1 17.1 0 0 1 2.081-5.019l-1.448-3.26 3.843-3.843 3.261 1.448a17.1 17.1 0 0 1 5.018-2.081l1.281-3.328h5.435zm-4 5.527A11.225 11.225 0 1 0 39.676 28.45a11.225 11.225 0 0 0-11.225-11.225Zm0 1.836a9.39 9.39 0 1 0 9.39 9.39 9.39 9.39 0 0 0-9.39-9.39m-1.354 10.3-2.3-2.3a1.529 1.529 0 0 0-2.162 2.162l3.383 3.383a1.53 1.53 0 0 0 2.162 0c2.042-2.042 4.061-4.107 6.093-6.158a1.526 1.526 0 0 0-2.165-2.151l-5.012 5.062Zm1.43 25.713A26.622 26.622 0 0 1 18.088 3.929l-1.256 2.368a.916.916 0 1 0 1.621.853l2.363-4.448a.918.918 0 0 0-.567-1.355L15.316.113a.917.917 0 0 0-.445 1.778l2.095.525a28.454 28.454 0 0 0 11.56 54.486.914.914 0 0 0 0-1.828Zm13.5-.061-2.1-.526A28.453 28.453 0 0 0 28.375 0a.914.914 0 0 0 0 1.828 26.623 26.623 0 0 1 10.441 51.147l1.258-2.371a.916.916 0 0 0-1.621-.853l-2.359 4.448a.92.92 0 0 0 .567 1.355l4.928 1.236a.916.916 0 1 0 .444-1.778Z" data-color="3"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">طلب إصدار موافقة استقدام عمالية</h3>
+          <p class="card-desc">طلب إصدار موافقة استقدام عمالية</p>
         </div>
       </div>
-      <p class="service-desc">طلب إصدار موافقة استقدام عمالية</p>
     </a>
-
-    <!-- 3. إصدار رخصة إعلان -->
     <a href="/services/advertisement-license" class="service-card">
-      <div class="service-header">
-        <span class="service-title">إصدار رخصة إعلان</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <rect x="4" y="6" width="24" height="18" rx="2" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M4 12h24M10 6v18" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M8 28l4 4h8l4-4" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
-            </g>
-          </svg>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.006 104.818 120.271" viewBox="0.001 -0.006 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <path fill="#eaaa1b" d="M1.238 29.157 51.172.326a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.105a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+        <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
+        <path fill-rule="evenodd" fill="#19407f" d="M56.129 53.106a4.13 4.13 0 0 1-3.3 1.876l1.242 2.883a.118.118 0 0 0 .209.016l1.85-2.981 3.437.7a.118.118 0 0 0 .133-.163l-1.8-4.179-.687.294a.3.3 0 0 0-.158.132l-.927 1.418Zm8.89-13.686a1 1 0 0 1 .292.206l5.606 5.606a1 1 0 0 1 .206.292h-5.6a.5.5 0 0 1-.5-.5v-5.6Zm-19.354 4a.948.948 0 0 1 1.34-1.34l1.347 1.347 4.15-3.766a.946.946 0 1 1 1.273 1.4L48.994 45.4a.95.95 0 0 1-1.345.005l-1.985-1.991Zm5.421-10.964 1.356 1.015a2.16 2.16 0 0 0 1.224.445l1.691.094a2.22 2.22 0 0 1 2.064 1.734l.386 1.649a2.16 2.16 0 0 0 .651 1.128l1.235 1.159a2.22 2.22 0 0 1 .468 2.656l-.764 1.511a2.16 2.16 0 0 0-.226 1.283l.2 1.682a2.22 2.22 0 0 1-1.349 2.336l-1.557.667a2.17 2.17 0 0 0-1 .837l-.927 1.417a2.22 2.22 0 0 1-2.534.922l-1.618-.489a2.16 2.16 0 0 0-1.3 0l-1.622.49a2.22 2.22 0 0 1-2.534-.922l-.927-1.417a2.15 2.15 0 0 0-1-.837l-1.557-.667a2.22 2.22 0 0 1-1.347-2.335l.2-1.682a2.16 2.16 0 0 0-.226-1.283l-.764-1.511a2.22 2.22 0 0 1 .468-2.656l1.235-1.159a2.16 2.16 0 0 0 .651-1.128l.386-1.649a2.22 2.22 0 0 1 2.068-1.732l1.691-.1a2.16 2.16 0 0 0 1.224-.445l1.354-1.014a2.224 2.224 0 0 1 2.7 0Zm-1.35 3.791a6.3 6.3 0 1 0 6.3 6.3 6.3 6.3 0 0 0-6.3-6.3m-16.735 4.084a1 1 0 0 1 1-1h3.678a4.12 4.12 0 0 0-.058 3.858c1.02 2.018.867 1.151.6 3.4a4.12 4.12 0 0 0 2.13 4.131l-2.287 4.912a2.017 2.017 0 0 0 2.172 2.834l2.15-.378 1.1 1.891a2.016 2.016 0 0 0 3.566-.162l2.558-5.494.023-.007a.28.28 0 0 1 .206 0l.736.223 1.757 4.075a2.016 2.016 0 0 0 3.561.265l1.153-1.859 2.143.439a2.016 2.016 0 0 0 2.253-2.769L59.6 50.414a4.11 4.11 0 0 0 1.655-3.831l-.2-1.682a.28.28 0 0 1 .036-.2l.764-1.511a4.12 4.12 0 0 0-.058-3.858h1.329v5.691a2.4 2.4 0 0 0 2.394 2.394h5.691v40.44a1 1 0 0 1-1 1H33.998a1 1 0 0 1-1-1V40.331Zm13.944 26.183h19.134a.95.95 0 1 0 0-1.9H46.945a.95.95 0 0 0 0 1.9m0-3.7h19.134a.948.948 0 1 0 0-1.895H46.945a.948.948 0 1 0 0 1.895m0 12.841h19.134a.95.95 0 0 0 0-1.9H46.945a.95.95 0 0 0 0 1.9m0-3.7h19.134a.95.95 0 1 0 0-1.9H46.945a.95.95 0 0 0 0 1.9m-.947 11.893a.95.95 0 0 0 .947.948h19.134a.95.95 0 0 0 0-1.9H46.945a.947.947 0 0 0-.947.948Zm0-3.7a.95.95 0 0 0 .947.947h19.134a.95.95 0 1 0 0-1.9H46.945a.947.947 0 0 0-.947.948Zm-7.051-19.234a1.187 1.187 0 0 0-1.185 1.185v3.23a1.187 1.187 0 0 0 1.185 1.185h3.23a1.187 1.187 0 0 0 1.185-1.185v-3.23a1.187 1.187 0 0 0-1.186-1.185zm0 9.137a1.187 1.187 0 0 0-1.185 1.185v3.23a1.187 1.187 0 0 0 1.185 1.185h3.23a1.187 1.187 0 0 0 1.185-1.185v-3.23a1.187 1.187 0 0 0-1.186-1.182Zm0 9.137a1.187 1.187 0 0 0-1.185 1.185v3.23a1.187 1.187 0 0 0 1.185 1.185h3.23a1.187 1.187 0 0 0 1.185-1.185v-3.23a1.187 1.187 0 0 0-1.185-1.185Zm3.139-27.707-2.3 4.949a.118.118 0 0 0 .128.167l3.456-.6 1.762 3.033a.119.119 0 0 0 .21-.009l1.887-4.052a4.12 4.12 0 0 1-3.877-1.858l-.927-1.417a.28.28 0 0 0-.158-.132Z" data-color="3"></path>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">إصدار رخصة إعلان</h3>
+          <p class="card-desc">تتيح هذه الخدمة للمستثمرين إصدار تصريح لافتات للأنواع التالية: التصاريح السنوية والمؤقتة.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة للمستثمرين إصدار تصريح لافتات للأنواع التالية: التصاريح السنوية والمؤقتة.</p>
     </a>
-
-    <!-- 4. إصدار الرخصة التجارية -->
     <a href="/services/commercial-license" class="service-card">
-      <div class="service-header">
-        <span class="service-title">إصدار الرخصة التجارية</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <rect x="6" y="4" width="20" height="26" rx="2" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M10 10h12M10 15h12M10 20h8" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="23" cy="26" r="4" fill="#1a4f8a"/>
-              <path d="M21 26l1.5 1.5 2.5-2.5" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
-            </g>
-          </svg>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.006 104.818 120.271" viewBox="0.001 -0.006 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <path fill="#eaaa1b" d="M1.238 29.157 51.172.326a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.105a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+        <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
+        <path fill-rule="evenodd" fill="#19407f" d="M32.134 48.021a.837.837 0 1 1 0-1.673h17.121a.837.837 0 1 1 0 1.673Zm0 6.931a.836.836 0 1 1 0-1.672h17.121a.836.836 0 0 1 0 1.672Zm0 4.214a.836.836 0 1 1 0-1.672h17.121a.836.836 0 0 1 0 1.672Zm37.75 11.362 3.381 2.372 3.074-4.391a.83.83 0 0 1 .549-.345 3.3 3.3 0 1 0-3.794-2.652.83.83 0 0 1-.158.654l-3.054 4.362Zm-28.587 1.984a.835.835 0 1 1 1.1-1.254l1.743 1.536 5.513-6.256a.836.836 0 0 1 1.255 1.1l-6.064 6.887a.836.836 0 0 1-1.18.076l-2.369-2.089Zm10.4-7.611a7.961 7.961 0 1 0 2.337 5.631 7.96 7.96 0 0 0-2.337-5.632Zm-5.63-4a9.637 9.637 0 1 0 6.813 2.822 9.64 9.64 0 0 0-6.813-2.823Zm30.274 4.938a1.195 1.195 0 1 1 0-2.389h.042a1.195 1.195 0 0 1 0 2.389Zm-22.587-8.07a.835.835 0 1 1 1.1-1.254l.975.859 3.546-4.025a.836.836 0 0 1 1.259 1.101l-4.1 4.65a.833.833 0 0 1-1.179.075Zm0-11.145a.836.836 0 1 1 1.1-1.255l.975.86 3.549-4.029a.836.836 0 1 1 1.256 1.1l-4.1 4.652a.833.833 0 0 1-1.179.075l-1.6-1.411Zm13.8 24.315a1 1 0 0 0 .082.053l5.358 3.748.672.47a.714.714 0 0 1 .171.976l-.4.573-4.9-3.434-2.338-1.637.357-.512a1 1 0 0 0 .074-.1.7.7 0 0 1 .421-.242.7.7 0 0 1 .444.063l.059.039Zm-3.5 11.39a1 1 0 0 1 .125.087l4.205 2.944a1 1 0 0 1 .125.087l1.888 1.322a.68.68 0 0 0 .929-.162l.383-.547-6.859-4.8-6.8-4.759-.381.545a.677.677 0 0 0 .162.929Zm-.829-10.684 1.336.935 4.306 3.013 6.351 4.447a2.656 2.656 0 0 1 .647 3.676l-1.091 1.549a.757.757 0 0 1-1.038.182c-4.271-3.106-8.691-6.105-13.048-9.136l-2.367-1.657-.039-.026-.348-.248a.757.757 0 0 1-.182-1.038l1.082-1.552a2.657 2.657 0 0 1 3.676-.647l.587.411a1 1 0 0 0 .125.087ZM55.391 30H36.742a2.25 2.25 0 0 0-2.137 1.569v.01a2.2 2.2 0 0 0-.1.663v4.831h23.129v-4.831a2.2 2.2 0 0 0-.1-.663v-.01A2.26 2.26 0 0 0 55.391 30m-22.563 4.944v-2.786H27.01a2.02 2.02 0 0 0-2.01 2.01v53.31a2.02 2.02 0 0 0 2.01 2.01h38.113a2.02 2.02 0 0 0 2.01-2.01v-.961l-2.661-1.863v1.212a.836.836 0 0 1-.836.836H28.497a.836.836 0 0 1-.836-.836V35.781a.836.836 0 0 1 .836-.836Zm26.477 1.673v1.3a.833.833 0 0 1-.836.833H33.662a.836.836 0 0 1-.836-.833v-1.3h-3.492V85.03H62.8v-1.55l-5.925-4.148a2.33 2.33 0 0 1-.573-3.247l.4-.568a2.41 2.41 0 0 1-.368-3.054 1 1 0 0 1 .1-.139l1.043-1.487A4.31 4.31 0 0 1 62.8 69.4V36.617Zm0-4.462v2.789h4.329a.836.836 0 0 1 .836.836v34.7l.357.251.4-.574a2.36 2.36 0 0 1 1.9-1.011V34.168a2.02 2.02 0 0 0-2.01-2.01ZM32.134 43.807a.836.836 0 1 1 0-1.672h17.121a.836.836 0 0 1 0 1.672Z" data-color="3"></path>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">إصدار الرخصة التجارية</h3>
+          <p class="card-desc">تتيح هذه الخدمة للمستثمر إمكانية إصدار الرخصة التجارية بعد الانتهاء من إصدار السجل التجاري.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة للمستثمر إمكانية إصدار الرخصة التجارية بعد الانتهاء من إصدار السجل التجاري.</p>
     </a>
-
-    <!-- 5. إغلاق شركة -->
     <a href="/services/close-company" class="service-card">
-      <div class="service-header">
-        <span class="service-title">إغلاق شركة</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <rect x="4" y="12" width="24" height="18" rx="2" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M10 12V8a6 6 0 0 1 12 0v4" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="16" cy="21" r="3" fill="#1a4f8a"/>
-            </g>
-          </svg>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <g>
+            <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+            <path fill="#ffffff" d="m6.255 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
+        </g>
+        <g>
+            <path fill="#19407f" d="M37.438 63.675a1.213 1.213 0 1 1-2.426 0 1.213 1.213 0 0 1 2.426 0" data-color="3"></path>
+            <path fill="#19407f" d="M37.438 75.81a1.213 1.213 0 1 1-2.426 0 1.213 1.213 0 0 1 2.426 0" data-color="3"></path>
+            <path fill="#19407f" d="M69.853 63.675a1.213 1.213 0 1 1-2.426 0 1.213 1.213 0 0 1 2.426 0" data-color="3"></path>
+            <path fill="#19407f" d="M69.853 75.81a1.213 1.213 0 1 1-2.426 0 1.213 1.213 0 0 1 2.426 0" data-color="3"></path>
+            <path fill="#19407f" d="m71.15 69.047 5.521-2.027-.044-11.98-5.477 2.009V39.31H59.873v-4.309H45.919v4.308H34.835v17.857l-5.79-2.125L29 67.021l5.834 2.141v1.216L29 72.517l.045 11.983 5.79-2.125v2.991h15.237v-6.75h5.871v6.75h15.2v-2.877l5.479 2.011.044-11.983-5.521-2.026v-1.444Zm3.711-3.281-8.3 3.042-11.105-4.076 19.376-7.112ZM60.073 44.849h5.848v5.848h-5.848Zm0 9.7h5.848v4.417l-3.877 1.422h-1.971Zm-10-9.7h5.85v5.848h-5.85Zm0 9.695h5.85v5.851h-5.85Zm-10-9.695h5.848v5.848h-5.855v-5.848Zm0 9.7h5.848v5.845h-2.293l-3.562-1.306v-4.543Zm-9.264 19.226 8.3-3.046 11.109 4.078-19.378 7.114Zm44.022 8.146L30.809 65.766l.031-8.142 44.021 16.152Z" data-color="3"></path>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">إغلاق شركة</h3>
+          <p class="card-desc">تتيح هذه الخدمة للمستثمرين الذين لديهم شركات قائمة التقدم بطلب إغلاق الشركة كاملة وتصفيتها، أو إغلاق فرع أو أكثر من فروعها وما يتبعها من رخص تجارية.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة للمستثمرين الذين لديهم شركات قائمة التقدم بطلب إغلاق الشركة كاملة وتصفيتها، أو إغلاق فرع أو أكثر من فروعها وما يتبعها من رخص تجارية.</p>
     </a>
-
-    <!-- 6. إضافة رخصة تجارية فرعية -->
     <a href="/services/add-sub-commercial-license" class="service-card">
-      <div class="service-header">
-        <span class="service-title">إضافة رخصة تجارية فرعية</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <rect x="4" y="4" width="14" height="18" rx="2" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M22 14h6M25 11v6" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round"/>
-              <path d="M8 10h6M8 15h4" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
-            </g>
-          </svg>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <g>
+            <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+            <path fill="#ffffff" d="m6.255 32.199 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932v52.007a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.131A2.23 2.23 0 0 1 6.255 32.2Z" data-color="2"></path>
+        </g>
+        <g>
+            <path fill="#19407f" d="M75.281 73.967a9.014 9.014 0 1 0-4.313 7.714 9.01 9.01 0 0 0 4.313-7.714m-3.286.822h-4.93v4.931a.822.822 0 1 1-1.643 0v-4.932h-4.925a.822.822 0 1 1 0-1.643h4.929V68.22a.822.822 0 1 1 1.643 0v4.929h4.928a.822.822 0 1 1 0 1.643Z" data-color="3"></path>
+            <path fill="#19407f" d="M38.312 50.142h29.575v-9.858h-23v5.751a.82.82 0 0 1-.822.822h-5.753Zm9.037-6.572h18.073a.822.822 0 1 1 0 1.643H47.349a.822.822 0 0 1 0-1.643m0 3.286h18.073a.822.822 0 1 1 0 1.643H47.349a.822.822 0 0 1 0-1.643" data-color="3"></path>
+            <path fill="#19407f" d="M34.796 83.003h25.78a10.668 10.668 0 1 1 12.478-17.244l1.955-13.029a.83.83 0 0 0-.189-.657.82.82 0 0 0-.624-.288H30.359a.82.82 0 0 0-.624.288.83.83 0 0 0-.189.657l4.436 29.575a.816.816 0 0 0 .813.7Zm32.27-29.575h4.929a.822.822 0 0 1 .81.957l-.822 4.929a.82.82 0 0 1-.81.686 1 1 0 0 1-.136-.011.82.82 0 0 1-.674-.946l.657-3.972h-3.955a.822.822 0 0 1 0-1.643ZM35.342 74.761a.82.82 0 0 1 .934.691l.639 4.265h4.694a.822.822 0 1 1 0 1.643h-5.4a.82.82 0 0 1-.812-.7l-.745-4.964a.82.82 0 0 1 .69-.935" data-color="3"></path>
+            <path fill="#19407f" d="M39.47 45.213h3.771v-3.771Z" data-color="3"></path>
+            <path fill="#19407f" d="M71.995 46.856H69.53v3.286h3.286v-2.464a.82.82 0 0 0-.821-.822" data-color="3"></path>
+            <path fill="#19407f" d="M46.527 36.998H34.205a.82.82 0 0 0-.822.822v12.322h3.286v-4.107a.85.85 0 0 1 .238-.583l6.576-6.573a.85.85 0 0 1 .583-.238h3.286v-.821a.82.82 0 0 0-.825-.822" data-color="3"></path>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">إضافة رخصة تجارية فرعية</h3>
+          <p class="card-desc">تتيح هذه الخدمة للمستثمرين الذين لديهم رخص تجارية تقديم طلب للحصول على رخصة تجارية فرعية لكي يتسنى لهم ممارسة أنشطة خاصة، مثل الصراف الآلي، والمخزن، وأجهزة الخدمة الذاتية.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة للمستثمرين الذين لديهم رخص تجارية تقديم طلب للحصول على رخصة تجارية فرعية لكي يتسنى لهم ممارسة أنشطة خاصة.</p>
     </a>
-
-    <!-- 7. إدارة فروع الشركات الأجنبية -->
     <a href="/services/manage-foreign-branches" class="service-card">
-      <div class="service-header">
-        <span class="service-title">إدارة فروع الشركات الأجنبية</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <circle cx="16" cy="16" r="12" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M4 16h24M16 4c-4 4-4 8 0 24M16 4c4 4 4 8 0 24" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
-            </g>
-          </svg>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+        <path fill="#ffffff" d="m6.255 32.199 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932v52.007a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.131A2.23 2.23 0 0 1 6.255 32.2Z" data-color="2"></path>
+        <g>
+            <path fill="#19407f" d="M54.331 70.51h5.149a2.066 2.066 0 0 1 2.047 2.047v7.507a2.066 2.066 0 0 1-2.047 2.047H45.955a2.066 2.066 0 0 1-2.047-2.047v-7.507a2.066 2.066 0 0 1 2.047-2.047zm17.682 0h-5.15a2.066 2.066 0 0 0-2.047 2.047v7.507a2.066 2.066 0 0 0 2.047 2.047h13.463a2.066 2.066 0 0 0 2.047-2.047v-7.507a2.066 2.066 0 0 0-2.047-2.047zm-41.813 0h-5.153A2.066 2.066 0 0 0 23 72.557v7.507a2.066 2.066 0 0 0 2.047 2.047H38.51a2.066 2.066 0 0 0 2.047-2.047v-7.507a2.066 2.066 0 0 0-2.047-2.047zm45.042-8.065v5.211h-3.229v-3.6H54.331v3.6H51.1v-3.6H33.423v3.6H30.2v-5.212a1.643 1.643 0 0 1 1.613-1.613H51.1V55.5h-9.053a2.555 2.555 0 0 1-2.547-2.548V40.544A2.555 2.555 0 0 1 42.047 38h21.342a2.555 2.555 0 0 1 2.544 2.544v12.47a2.555 2.555 0 0 1-2.544 2.544h-9.058v5.336h19.295a1.515 1.515 0 0 1 1.613 1.55ZM43.6 44.762a.754.754 0 0 0 .744.744h16.811a.754.754 0 0 0 .745-.744v-.931a.754.754 0 0 0-.744-.744H44.342a.754.754 0 0 0-.744.744Zm17.5 5.646a.754.754 0 0 0 .744-.744v-.931a.754.754 0 0 0-.744-.744H44.342a.754.754 0 0 0-.744.744v.931a.754.754 0 0 0 .744.744Z" data-color="3"></path>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">إدارة فروع الشركات الأجنبية</h3>
+          <p class="card-desc">تتيح هذه الخدمة لمدراء فروع الشركات الأجنبية استكمال جميع الإجراءات المتعلقة بإدارة فروع الشركات الأجنبية (إضافة، تعديل، تمديد، تجديد، إلغاء العقود).</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة لمدراء فروع الشركات الأجنبية استكمال جميع الإجراءات المتعلقة بإدارة فروع الشركات الأجنبية (إضافة، تعديل، تمديد، تجديد، إلغاء العقود).</p>
     </a>
-
-    <!-- 8. التجديد الشامل -->
     <a href="/services/comprehensive-renewal" class="service-card">
-      <div class="service-header">
-        <span class="service-title">التجديد الشامل</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <path d="M28 16A12 12 0 1 1 16 4" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round"/>
-              <path d="M16 4l4-4M16 4l-4-4" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round"/>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <g>
+            <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+            <path fill="#ffffff" d="m6.255 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
+        </g>
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <path fill="#19407f" d="M48.589 76.955a.97.97 0 0 1-.97.97h-12.44l.2-.52.96-1.42h11.28a.97.97 0 0 1 .97.97" data-color="3"></path>
+                        <path fill="#19407f" d="M63.729 37.305v18.01a.965.965 0 0 1-1.93 0s0-17.05 0-17.05h-5.37v2.43a3.584 3.584 0 1 1-7.15 0 .965.965 0 1 1 1.93 0 1.658 1.658 0 1 0 3.28 0v-2.43h-20.58v30.29a9.8 9.8 0 0 0 2.72-3.98 7.3 7.3 0 0 1 1.64-3.04 2.005 2.005 0 0 1 2.39-.63 1.98 1.98 0 0 1 1.16 1.79s0 4.37 0 4.37a2.65 2.65 0 0 1-.47 1.52c-.672.994-5.422 8.006-5.97 8.82-.109.275-1.177 3.01-1.32 3.36a.965.965 0 0 1-.9.62h-6.58a.984.984 0 0 1-.94-.72l-2.2-8.24a1 1 0 0 1 0-.48l2.2-9.15a.5.5 0 0 1 .04-.13l3.29-8.25a.92.92 0 0 1 .43-.48l2.58-1.43v-15.2a.96.96 0 0 1 .96-.97h21.55v-1.38a1.659 1.659 0 1 0-3.28 0 .965.965 0 0 1-1.93 0 3.581 3.581 0 1 1 7.15 0s0 1.38 0 1.38h6.33a.965.965 0 0 1 .97.97" data-color="3"></path>
+                    </g>
+                </g>
+                <path fill="#19407f" d="M80.439 69.955h-3.24a11 11 0 0 0-.69-1.66l2.3-2.29a.984.984 0 0 0 0-1.37l-3.85-3.85a1 1 0 0 0-1.37 0l-2.29 2.29a12 12 0 0 0-1.67-.68v-3.25a.96.96 0 0 0-.96-.96h-5.45a.97.97 0 0 0-.97.96v3.25a12 12 0 0 0-1.66.68l-2.29-2.29a.983.983 0 0 0-1.37 0l-3.85 3.85a.966.966 0 0 0 0 1.37l2.29 2.29a12 12 0 0 0-.68 1.66h-3.25a.97.97 0 0 0-.96.97v5.45a.96.96 0 0 0 .96.96h3.25a12 12 0 0 0 .68 1.67l-2.29 2.29a.966.966 0 0 0 0 1.37l3.85 3.85a1 1 0 0 0 1.37 0l2.29-2.3a11 11 0 0 0 1.66.69v3.24a.97.97 0 0 0 .97.97h5.45a.96.96 0 0 0 .96-.97v-3.24a11 11 0 0 0 1.67-.69l2.29 2.3a.983.983 0 0 0 1.37 0l3.85-3.85a.984.984 0 0 0 0-1.37l-2.3-2.29a11 11 0 0 0 .69-1.67h3.24a.96.96 0 0 0 .97-.96v-5.45a.97.97 0 0 0-.97-.97m-14.5 9.98a6.293 6.293 0 0 1-6.28-6.29c.3-8.316 12.275-8.3 12.57 0a6.3 6.3 0 0 1-6.29 6.29" data-color="3"></path>
+                <path fill="#19407f" d="M45.642 50.448h-6.766a.967.967 0 0 1 0-1.933h6.767a.967.967 0 0 1-.001 1.933" data-color="3"></path>
+                <path fill="#19407f" d="M53.376 55.282h-14.5a.967.967 0 0 1 0-1.933h14.5a.967.967 0 0 1 0 1.933" data-color="3"></path>
             </g>
-          </svg>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">التجديد الشامل</h3>
+          <p class="card-desc">تتيح هذه الخدمة للمستثمرين تقديم طلب تجديد شامل يضم جميع الرخص القابلة للتجديد (سجل تجاري - رخصة تجارية - قيد منشأة - أي رخصة نوعية) التي تملكها المنشأة.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة للمستثمرين تقديم طلب تجديد شامل يضم جميع الرخص القابلة للتجديد (سجل تجاري - رخصة تجارية - قيد منشأة - أي رخصة نوعية) التي تملكها المنشأة.</p>
     </a>
-
-    <!-- 9. استكمال التأسيس الشامل -->
     <a href="/services/complete-comprehensive-establishment" class="service-card">
-      <div class="service-header">
-        <span class="service-title">استكمال التأسيس الشامل</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <rect x="4" y="8" width="24" height="20" rx="2" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M10 4v4M22 4v4M4 14h24" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M10 20l3 3 7-7" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <defs>
+            <clipPath id="s8_icon8_306">
+                <path d="M56.904 0v56.901H0V0z"></path>
+            </clipPath>
+        </defs>
+        <g>
+            <g>
+                <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+                <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
             </g>
-          </svg>
+            <g clip-path="url(#s8_13a7521d-b098-4333-95eb-69daa7c19a4e_comp-mmi8eyyy__c242c31f-bc5e-4bac-8218-8b43a20ff2ea)" transform="translate(24.47 32.55)">
+                <g>
+                    <path fill-rule="evenodd" fill="#19407f" d="M32.449 11.698a17.1 17.1 0 0 1 5.018 2.081l3.261-1.448 3.843 3.843-1.448 3.26a17.1 17.1 0 0 1 2.08 5.019l3.327 1.281v5.435l-3.328 1.281a17.1 17.1 0 0 1-2.081 5.018l1.448 3.261-3.843 3.843-3.26-1.448a17.1 17.1 0 0 1-5.02 2.08l-1.28 3.327h-5.432l-1.281-3.328a17.1 17.1 0 0 1-5.018-2.081l-3.261 1.448-3.843-3.843 1.448-3.26a17.1 17.1 0 0 1-2.081-5.02l-3.327-1.28v-5.434l3.327-1.281a17.1 17.1 0 0 1 2.081-5.019l-1.448-3.26 3.843-3.843 3.261 1.448a17.1 17.1 0 0 1 5.018-2.081l1.281-3.328h5.435zm-4 5.527A11.225 11.225 0 1 0 39.676 28.45a11.225 11.225 0 0 0-11.225-11.225Zm0 1.836a9.39 9.39 0 1 0 9.39 9.39 9.39 9.39 0 0 0-9.39-9.39m-1.354 10.3-2.3-2.3a1.529 1.529 0 0 0-2.162 2.162l3.383 3.383a1.53 1.53 0 0 0 2.162 0c2.042-2.042 4.061-4.107 6.093-6.158a1.526 1.526 0 0 0-2.165-2.151l-5.012 5.062Zm1.43 25.713A26.622 26.622 0 0 1 18.088 3.929l-1.256 2.368a.916.916 0 1 0 1.621.853l2.363-4.448a.918.918 0 0 0-.567-1.355L15.316.113a.917.917 0 0 0-.445 1.778l2.095.525a28.454 28.454 0 0 0 11.56 54.486.914.914 0 0 0 0-1.828Zm13.5-.061-2.1-.526A28.453 28.453 0 0 0 28.375 0a.914.914 0 0 0 0 1.828 26.623 26.623 0 0 1 10.441 51.147l1.258-2.371a.916.916 0 0 0-1.621-.853l-2.359 4.448a.92.92 0 0 0 .567 1.355l4.928 1.236a.916.916 0 1 0 .444-1.778Z" data-color="3"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">استكمال التأسيس الشامل</h3>
+          <p class="card-desc">تتيح هذه الخدمة للمستثمرين إمكانية استكمال إجراءات الحصول على كافة الرخص اللازمة للبدء بمزاولة الأعمال الاقتصادية استناداً لأحد الأسماء التجارية التي تم حفظها من قبل.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة للمستثمرين إمكانية استكمال إجراءات الحصول على كافة الرخص اللازمة للبدء بمزاولة الأعمال الاقتصادية استناداً لأحد الأسماء التجارية التي تم حفظها من قبل.</p>
     </a>
-
-    <!-- 10. التأسيس الشامل -->
     <a href="/services/comprehensive-establishment" class="service-card">
-      <div class="service-header">
-        <span class="service-title">التأسيس الشامل</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <path d="M16 4L4 10v8c0 7 5 13 12 15 7-2 12-8 12-15V10L16 4z" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M11 16l3 3 6-6" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <defs>
+            <clipPath id="s9_icon9_306">
+                <path d="M56.904 0v56.901H0V0z"></path>
+            </clipPath>
+        </defs>
+        <g>
+            <g>
+                <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+                <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
             </g>
-          </svg>
+            <g clip-path="url(#s9_13a7521d-b098-4333-95eb-69daa7c19a4e_comp-mmi8eyyy__8d7006cd-f1a5-470a-aee8-e4d61e4fcd29)" transform="translate(24.47 32.55)">
+                <g>
+                    <path fill-rule="evenodd" fill="#19407f" d="M32.449 11.698a17.1 17.1 0 0 1 5.018 2.081l3.261-1.448 3.843 3.843-1.448 3.26a17.1 17.1 0 0 1 2.08 5.019l3.327 1.281v5.435l-3.328 1.281a17.1 17.1 0 0 1-2.081 5.018l1.448 3.261-3.843 3.843-3.26-1.448a17.1 17.1 0 0 1-5.02 2.08l-1.28 3.327h-5.432l-1.281-3.328a17.1 17.1 0 0 1-5.018-2.081l-3.261 1.448-3.843-3.843 1.448-3.26a17.1 17.1 0 0 1-2.081-5.02l-3.327-1.28v-5.434l3.327-1.281a17.1 17.1 0 0 1 2.081-5.019l-1.448-3.26 3.843-3.843 3.261 1.448a17.1 17.1 0 0 1 5.018-2.081l1.281-3.328h5.435zm-4 5.527A11.225 11.225 0 1 0 39.676 28.45a11.225 11.225 0 0 0-11.225-11.225Zm0 1.836a9.39 9.39 0 1 0 9.39 9.39 9.39 9.39 0 0 0-9.39-9.39m-1.354 10.3-2.3-2.3a1.529 1.529 0 0 0-2.162 2.162l3.383 3.383a1.53 1.53 0 0 0 2.162 0c2.042-2.042 4.061-4.107 6.093-6.158a1.526 1.526 0 0 0-2.165-2.151l-5.012 5.062Zm1.43 25.713A26.622 26.622 0 0 1 18.088 3.929l-1.256 2.368a.916.916 0 1 0 1.621.853l2.363-4.448a.918.918 0 0 0-.567-1.355L15.316.113a.917.917 0 0 0-.445 1.778l2.095.525a28.454 28.454 0 0 0 11.56 54.486.914.914 0 0 0 0-1.828Zm13.5-.061-2.1-.526A28.453 28.453 0 0 0 28.375 0a.914.914 0 0 0 0 1.828 26.623 26.623 0 0 1 10.441 51.147l1.258-2.371a.916.916 0 0 0-1.621-.853l-2.359 4.448a.92.92 0 0 0 .567 1.355l4.928 1.236a.916.916 0 1 0 .444-1.778Z" data-color="3"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">التأسيس الشامل</h3>
+          <p class="card-desc">تتيح هذه الخدمة للمستثمر إمكانية الحصول على كافة الرخص اللازمة للبدء بمزاولة الأعمال الاقتصادية، وذلك وفقًا للشكل القانوني للشركة المراد تأسيسها.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة للمستثمر إمكانية الحصول على كافة الرخص اللازمة للبدء بمزاولة الأعمال الاقتصادية، وذلك وفقًا للشكل القانوني للشركة المراد تأسيسها.</p>
     </a>
-
-    <!-- 11. حجز الاسم التجاري -->
     <a href="/services/trade-name-reservation" class="service-card">
-      <div class="service-header">
-        <span class="service-title">حجز الاسم التجاري</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <rect x="4" y="4" width="24" height="24" rx="2" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M9 12h14M9 17h10M9 22h6" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.006 104.818 120.271" viewBox="0.001 -0.006 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <path fill="#eaaa1b" d="M1.238 29.157 51.172.326a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.105a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+        <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
+        <g>
+            <g>
+                <path fill="#19407f" d="M33.942 43.125H58.81a1.49 1.49 0 0 0 1.494-1.486v-1.983a1.49 1.49 0 0 0-1.494-1.485H33.942a1.484 1.484 0 0 0-1.486 1.485v1.984a1.484 1.484 0 0 0 1.486 1.485" data-color="3"></path>
+                <path fill="#19407f" d="M37.926 47.216h-4.98a1.923 1.923 0 0 0-1.917 1.917v4.607a1.923 1.923 0 0 0 1.917 1.917h4.979a1.923 1.923 0 0 0 1.918-1.917v-4.606a1.923 1.923 0 0 0-1.917-1.918m-.515 3.635-2.166 2.166a.7.7 0 0 1-1 0l-1.1-1.087a.706.706 0 0 1 0-1 .7.7 0 0 1 1 0c.066.066.515.515.6.589l1.668-1.668a.707.707 0 0 1 1 1Z" data-color="3"></path>
+                <path fill="#19407f" d="M37.926 58.972h-4.98a1.92 1.92 0 0 0-1.917 1.917v4.6a1.925 1.925 0 0 0 1.917 1.925h4.979a1.925 1.925 0 0 0 1.917-1.925v-4.6a1.92 1.92 0 0 0-1.916-1.917m-.515 3.635-2.166 2.165a.7.7 0 0 1-1 0l-1.1-1.1a.707.707 0 0 1 1-1l.6.6 1.668-1.677a.707.707 0 0 1 1 0 .716.716 0 0 1-.002 1.008Z" data-color="3"></path>
+                <path fill="#19407f" d="M37.926 70.712h-4.98a1.923 1.923 0 0 0-1.917 1.917v4.606a1.923 1.923 0 0 0 1.917 1.917h4.979a1.923 1.923 0 0 0 1.917-1.917v-4.606a1.923 1.923 0 0 0-1.916-1.917m-.515 3.635-2.166 2.166a.7.7 0 0 1-1 0l-1.1-1.087a.706.706 0 0 1 0-1 .69.69 0 0 1 1 0c.066.066.515.515.6.59l1.668-1.668a.707.707 0 1 1 1 1Z" data-color="3"></path>
+                <path fill="#19407f" d="M43.613 49.242a.83.83 0 0 0 .83.83h16.505a.83.83 0 0 0 0-1.66H44.443a.83.83 0 0 0-.83.83" data-color="3"></path>
+                <path fill="#19407f" d="M55.959 52.803H44.443a.83.83 0 1 0 0 1.66h11.516a.83.83 0 1 0 0-1.66" data-color="3"></path>
+                <path fill="#19407f" d="M52.178 60.16h-7.735a.83.83 0 1 0 0 1.66h7.735a.83.83 0 1 0 0-1.66" data-color="3"></path>
+                <path fill="#19407f" d="M44.443 66.21h5.4a.83.83 0 1 0 0-1.66h-5.4a.83.83 0 0 0 0 1.66" data-color="3"></path>
+                <path fill="#19407f" d="M52.178 71.907h-7.735a.83.83 0 0 0 0 1.66h7.735a.83.83 0 1 0 0-1.66" data-color="3"></path>
+                <path fill="#19407f" d="M49.837 76.298h-5.4a.83.83 0 1 0 0 1.66h5.4a.83.83 0 0 0 0-1.66" data-color="3"></path>
+                <path fill="#19407f" d="M78.484 69.417a1.784 1.784 0 0 0 0-2.216c-1.086-1.355-1.083-1.286-1.062-1.369l.382-1.593a1.78 1.78 0 0 0-.963-2.008l-1.486-.7c-.084-.022-.047-.069-.415-1.676a1.765 1.765 0 0 0-1.734-1.386l-1.643.016c-.008-.008-.058-.016-.083-.041l-1.013-1.294a1.77 1.77 0 0 0-2.166-.5l-1.477.731a.06.06 0 0 1-.066.008v-4.471h6.3a3.425 3.425 0 0 0 3.417-3.418V38.693A5.69 5.69 0 0 0 70.782 33H31.694a5.69 5.69 0 0 0-5.693 5.693v42.342a3.425 3.425 0 0 0 3.419 3.419h31.461v2.324a1.44 1.44 0 0 0 2.1 1.27l3.809-1.992c3.991 1.954 4.03 2.166 4.647 2.166a1.42 1.42 0 0 0 1.427-1.427v-8.648h.357a1.76 1.76 0 0 0 1.716-1.377c.389-1.7.331-1.642.415-1.685l1.486-.7a1.77 1.77 0 0 0 .963-2l-.382-1.6c-.025-.085.087-.141 1.065-1.368m-2.672 1.751.373 1.6c.049.148-.084.1-1.535.814a1.77 1.77 0 0 0-.979 1.22c-.374 1.581-.294 1.685-.448 1.685l-1.643-.009a1.75 1.75 0 0 0-1.4.672c-1.029 1.264-.986 1.381-1.145 1.328-1.2-.554-1.584-.913-2.249-.913h-.029a1.7 1.7 0 0 0-.755.182l-1.477.731c-.144.057-.128-.09-1.137-1.328a1.79 1.79 0 0 0-1.4-.672l-1.643.009c-.174 0-.1-.2-.456-1.685a1.78 1.78 0 0 0-.971-1.22l-1.486-.7c-.142-.047-.018-.161.324-1.718a1.77 1.77 0 0 0-.349-1.511c-.882-1.143-1.137-1.278-1.037-1.411l1.037-1.278a1.79 1.79 0 0 0 .349-1.519c-.356-1.616-.459-1.651-.324-1.718l1.486-.7a1.78 1.78 0 0 0 .971-1.22l.349-1.6c.052-.154.122-.05 1.751-.066a1.72 1.72 0 0 0 1.4-.68l1.013-1.295c.084-.112.217.05.7.257.832.369 1.072.622 1.66.622.7 0 .964-.312 2.274-.9.146-.074.142.088 1.145 1.319a1.78 1.78 0 0 0 1.4.68l1.643-.016c.134-.02.072.052.448 1.685a1.77 1.77 0 0 0 .979 1.22l1.486.7c.125.075.028.089-.324 1.718a1.78 1.78 0 0 0 .34 1.519c1.079 1.36 1.119 1.287 1.037 1.411l-1.037 1.278a1.77 1.77 0 0 0-.342 1.509ZM29.42 82.794a1.76 1.76 0 0 1-1.759-1.759V38.693a4.04 4.04 0 0 1 4.033-4.033h35.071l-.008.009a5.68 5.68 0 0 0-1.66 4.025v17.884a1.79 1.79 0 0 0-2.008.573l-1.013 1.295c-.055.083-.112.025-1.726.025a1.806 1.806 0 0 0-1.735 1.386c-.378 1.643-.311 1.613-.407 1.676l-1.485.7a1.776 1.776 0 0 0-.971 2.008c.372 1.618.421 1.6.365 1.685L55.08 67.2a1.77 1.77 0 0 0 0 2.224c1.057 1.318 1.076 1.276 1.057 1.362l-.382 1.6a1.766 1.766 0 0 0 .971 2c1.482.713 1.519.674 1.544.772l.348 1.6a1.766 1.766 0 0 0 1.719 1.389h.548v4.647z" data-color="3"></path>
+                <path fill="#19407f" d="M65.097 61.383a7.126 7.126 0 0 0 1.66 14.05h.025a7.126 7.126 0 1 0-1.685-14.05m5.079 6.664-1.089 1.063a.54.54 0 0 0-.158.49l.257 1.5a.554.554 0 0 1-.8.581c-1.312-.66-1.5-.907-1.859-.706a15 15 0 0 1-1.427.739.554.554 0 0 1-.722-.614l.257-1.5a.59.59 0 0 0-.158-.49l-1.09-1.062a.548.548 0 0 1 .307-.938l1.5-.224a.57.57 0 0 0 .415-.3 11 11 0 0 1 .764-1.494.5.5 0 0 1 .34-.166.06.06 0 0 1 .042-.009.54.54 0 0 1 .523.307l.672 1.361a.54.54 0 0 0 .415.3l1.5.224a.55.55 0 0 1 .311.939Z" data-color="3"></path>
             </g>
-          </svg>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">حجز الاسم التجاري</h3>
+          <p class="card-desc">تتيح هذه الخدمة امكانية اختيار وحجز اسم تجاري لمدة مئة وثمانون يوماً.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة امكانية اختيار وحجز اسم تجاري لمدة مئة وثمانون يوماً.</p>
     </a>
-
-    <!-- 12. تجديد رخصة إعلان -->
     <a href="/services/renew-advertisement-license" class="service-card">
-      <div class="service-header">
-        <span class="service-title">تجديد رخصة إعلان</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <rect x="4" y="6" width="24" height="18" rx="2" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M4 12h24" stroke="#1a4f8a" stroke-width="1.5"/>
-              <path d="M24 28l4-4M24 28l-4-4" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
-            </g>
-          </svg>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.006 104.818 120.271" viewBox="0.001 -0.006 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <path fill="#eaaa1b" d="M1.238 29.157 51.172.326a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.105a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+        <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
+        <path fill-rule="evenodd" fill="#19407f" d="M32.134 48.021a.837.837 0 1 1 0-1.673h17.121a.837.837 0 1 1 0 1.673Zm0 6.931a.836.836 0 1 1 0-1.672h17.121a.836.836 0 0 1 0 1.672Zm0 4.214a.836.836 0 1 1 0-1.672h17.121a.836.836 0 0 1 0 1.672Zm37.75 11.362 3.381 2.372 3.074-4.391a.83.83 0 0 1 .549-.345 3.3 3.3 0 1 0-3.794-2.652.83.83 0 0 1-.158.654l-3.054 4.362Zm-28.587 1.984a.835.835 0 1 1 1.1-1.254l1.743 1.536 5.513-6.256a.836.836 0 0 1 1.255 1.1l-6.064 6.887a.836.836 0 0 1-1.18.076l-2.369-2.089Zm10.4-7.611a7.961 7.961 0 1 0 2.337 5.631 7.96 7.96 0 0 0-2.337-5.632Zm-5.63-4a9.637 9.637 0 1 0 6.813 2.822 9.64 9.64 0 0 0-6.813-2.823Zm30.274 4.938a1.195 1.195 0 1 1 0-2.389h.042a1.195 1.195 0 0 1 0 2.389Zm-22.587-8.07a.835.835 0 1 1 1.1-1.254l.975.859 3.546-4.025a.836.836 0 0 1 1.259 1.101l-4.1 4.65a.833.833 0 0 1-1.179.075Zm0-11.145a.836.836 0 1 1 1.1-1.255l.975.86 3.549-4.029a.836.836 0 1 1 1.256 1.1l-4.1 4.652a.833.833 0 0 1-1.179.075l-1.6-1.411Zm13.8 24.315a1 1 0 0 0 .082.053l5.358 3.748.672.47a.714.714 0 0 1 .171.976l-.4.573-4.9-3.434-2.338-1.637.357-.512a1 1 0 0 0 .074-.1.7.7 0 0 1 .421-.242.7.7 0 0 1 .444.063l.059.039Zm-3.5 11.39a1 1 0 0 1 .125.087l4.205 2.944a1 1 0 0 1 .125.087l1.888 1.322a.68.68 0 0 0 .929-.162l.383-.547-6.859-4.8-6.8-4.759-.381.545a.677.677 0 0 0 .162.929Zm-.829-10.684 1.336.935 4.306 3.013 6.351 4.447a2.656 2.656 0 0 1 .647 3.676l-1.091 1.549a.757.757 0 0 1-1.038.182c-4.271-3.106-8.691-6.105-13.048-9.136l-2.367-1.657-.039-.026-.348-.248a.757.757 0 0 1-.182-1.038l1.082-1.552a2.657 2.657 0 0 1 3.676-.647l.587.411a1 1 0 0 0 .125.087ZM55.391 30H36.742a2.25 2.25 0 0 0-2.137 1.569v.01a2.2 2.2 0 0 0-.1.663v4.831h23.129v-4.831a2.2 2.2 0 0 0-.1-.663v-.01A2.26 2.26 0 0 0 55.391 30m-22.563 4.944v-2.786H27.01a2.02 2.02 0 0 0-2.01 2.01v53.31a2.02 2.02 0 0 0 2.01 2.01h38.113a2.02 2.02 0 0 0 2.01-2.01v-.961l-2.661-1.863v1.212a.836.836 0 0 1-.836.836H28.497a.836.836 0 0 1-.836-.836V35.781a.836.836 0 0 1 .836-.836Zm26.477 1.673v1.3a.833.833 0 0 1-.836.833H33.662a.836.836 0 0 1-.836-.833v-1.3h-3.492V85.03H62.8v-1.55l-5.925-4.148a2.33 2.33 0 0 1-.573-3.247l.4-.568a2.41 2.41 0 0 1-.368-3.054 1 1 0 0 1 .1-.139l1.043-1.487A4.31 4.31 0 0 1 62.8 69.4V36.617Zm0-4.462v2.789h4.329a.836.836 0 0 1 .836.836v34.7l.357.251.4-.574a2.36 2.36 0 0 1 1.9-1.011V34.168a2.02 2.02 0 0 0-2.01-2.01ZM32.134 43.807a.836.836 0 1 1 0-1.672h17.121a.836.836 0 0 1 0 1.672Z" data-color="3"></path>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">تجديد رخصة إعلان</h3>
+          <p class="card-desc">تتيح هذه الخدمة تجديد رخصة إعلان مؤقتة أو سنوية أو دائمة.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة تجديد رخصة إعلان مؤقتة أو سنوية أو دائمة.</p>
     </a>
-
-    <!-- 13. تقديم سجل معلومات المستفيدين الحقيقيين -->
     <a href="/services/beneficial-owners-register" class="service-card">
-      <div class="service-header">
-        <span class="service-title">تقديم سجل معلومات المستفيدين الحقيقيين</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <circle cx="16" cy="10" r="6" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M6 30c0-6 4-10 10-10s10 4 10 10" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round"/>
-              <path d="M24 18l2 2 4-4" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-          </svg>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.006 104.818 120.271" viewBox="0.001 -0.006 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <path fill="#eaaa1b" d="M1.238 29.157 51.172.326a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.105a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+        <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
+        <g>
+            <path fill="#19407f" d="M78.571 55.829a2.72 2.72 0 0 0-1.536-1.425l-3.649-1.369a2.73 2.73 0 0 0-3.521 1.609l-.56 1.481 8.8 3.273.544-1.472a2.72 2.72 0 0 0-.078-2.097" data-color="3"></path>
+            <path fill="#19407f" d="M61.524 77.981a12.6 12.6 0 0 1 3.577.512l7.291-19.519-3.641-1.361-7.611 20.376c.128-.008.256-.008.384-.008" data-color="3"></path>
+            <path fill="#19407f" d="M66.598 79.062a12.7 12.7 0 0 1 3.321 2.217l7.619-20.383-3.641-1.36Z" data-color="3"></path>
+            <path fill="#19407f" d="m67.247 57.07-.008-.008 1.128-2.985a4.33 4.33 0 0 1 4.057-2.817c.064 0 .128.016.192.016v-11a3.286 3.286 0 0 0-3.281-3.281H29.281A3.286 3.286 0 0 0 26 40.28v36.189a3.286 3.286 0 0 0 3.281 3.281h29.507c.008-.008.008-.008.008-.016h-.016ZM39.093 45.522h26.5a.8.8 0 1 1 0 1.6h-26.5a.8.8 0 0 1 0-1.6m0 11.124h23.528a.8.8 0 0 1 0 1.6H39.093a.8.8 0 0 1 0-1.6m-2.977 9.123-4.978 5.426a.82.82 0 0 1-.56.264h-.032a.82.82 0 0 1-.546-.215l-1.887-1.737a.8.8 0 0 1 1.08-1.176l1.3 1.192 4.442-4.834a.8.8 0 1 1 1.177 1.08Zm0-11.116-4.978 5.426a.814.814 0 0 1-1.138.048l-1.887-1.736a.807.807 0 0 1-.048-1.136.8.8 0 0 1 1.128-.04l1.3 1.192 4.442-4.834a.8.8 0 1 1 1.177 1.08Zm0-11.124-4.978 5.426a.78.78 0 0 1-.56.256h-.032a.8.8 0 0 1-.546-.208l-1.887-1.736a.8.8 0 0 1 1.08-1.176l1.3 1.192 4.446-4.839a.8.8 0 0 1 1.177 1.08Zm2.177 25.033a.8.8 0 0 1 .8-.8h20.455a.8.8 0 1 1 0 1.6H39.093a.8.8 0 0 1-.8-.8" data-color="3"></path>
+            <path fill="#19407f" d="M61.068 79.59a.82.82 0 0 0-.6.3.8.8 0 0 0-.152.656l1.44 7.251a.79.79 0 0 0 .5.592.7.7 0 0 0 .28.056.8.8 0 0 0 .488-.168l5.842-4.538a.82.82 0 0 0 .312-.592.8.8 0 0 0-.256-.624 10.6 10.6 0 0 0-7.854-2.933" data-color="3"></path>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">تقديم سجل معلومات المستفيدين الحقيقيين</h3>
+          <p class="card-desc">من خلال هذه الخدمة، يمكنك التصريح بالمستفيد أو المستفيدين الحقيقيين النهائيين لشركتك، أو تعديل أو حذف أي مستفيد حقيقي نهائي.</p>
         </div>
       </div>
-      <p class="service-desc">من خلال هذه الخدمة، يمكنك التصريح بالمستفيد أو المستفيدين الحقيقيين النهائيين لشركتك، أو تعديل أو حذف أي مستفيد حقيقي نهائي.</p>
     </a>
-
-    <!-- 14. التعديل الشامل -->
     <a href="/services/comprehensive-modification" class="service-card">
-      <div class="service-header">
-        <span class="service-title">التعديل الشامل</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <path d="M20 6l6 6-14 14H6v-6L20 6z" stroke="#1a4f8a" stroke-width="2" fill="none" stroke-linejoin="round"/>
-              <path d="M17 9l6 6" stroke="#1a4f8a" stroke-width="1.5"/>
-            </g>
-          </svg>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.006 104.818 120.271" viewBox="0.001 -0.006 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <g>
+            <path fill="#eaaa1b" d="M1.238 29.157 51.172.326a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.105a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+            <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
+        </g>
+        <g>
+            <path fill="#19407f" d="M65.702 75.393v2.58l4.1-4.1h-2.58a1.523 1.523 0 0 0-1.52 1.52" data-color="3"></path>
+            <path fill="#19407f" d="M70.778 42.198a.4.4 0 0 0-.4-.4h-3.027v1.838a.71.71 0 0 1-.707.707h-22.7a.71.71 0 0 1-.707-.707v-1.838h-3.026a.4.4 0 0 0-.4.4v22.828a13.26 13.26 0 0 1 6.031 13.829h18.469v-3.463a2.933 2.933 0 0 1 2.933-2.933h3.557V42.198ZM50.93 49.96h12.262a.707.707 0 0 1 0 1.413H50.931a.707.707 0 1 1 0-1.413Zm11.532 6.7a.71.71 0 0 1-.707.707h-3.192a.707.707 0 1 1 0-1.413h3.192a.71.71 0 0 1 .707.709Zm-18.517-6.7h4.335a.707.707 0 1 1 0 1.413h-4.335a.71.71 0 0 1-.707-.707.7.7 0 0 1 .708-.705Zm0 6h12.392a.707.707 0 1 1 0 1.413H43.946a.71.71 0 0 1-.707-.707.7.7 0 0 1 .707-.709Zm-.707 7.079a.71.71 0 0 1 .707-.707h15.172a.707.707 0 1 1 0 1.413H43.946a.7.7 0 0 1-.707-.709Zm6.808 6.6h-3.828a.707.707 0 1 1 0-1.413h3.828a.707.707 0 1 1 0 1.413m16.585 0H52.58a.707.707 0 1 1 0-1.413h14.053a.707.707 0 0 1 0 1.413Zm0-5.89h-4.983a.707.707 0 1 1 0-1.413h4.983a.707.707 0 0 1 0 1.413m0-6.373h-2.344a.707.707 0 1 1 0-1.413h2.344a.707.707 0 0 1 0 1.413m0-6h-.836a.707.707 0 1 1 0-1.413h.836a.707.707 0 0 1 0 1.413" data-color="3"></path>
+            <path fill="#19407f" d="M44.653 42.929h21.285v-3.923h-6.632a.71.71 0 0 1-.707-.707v-2a3.3 3.3 0 1 0-6.6 0v2a.71.71 0 0 1-.707.707H44.66v3.923Z" data-color="3"></path>
+            <path fill="#19407f" d="M38.386 64.261V42.199a1.815 1.815 0 0 1 1.814-1.814h3.027V38.3a.71.71 0 0 1 .707-.707h6.632v-1.3a3.6 3.6 0 0 1 .047-.624H36.16a1.523 1.523 0 0 0-1.52 1.52v25.984a13.5 13.5 0 0 1 2.792.695q.477.181.954.393" data-color="3"></path>
+            <path fill="#19407f" d="M74.415 35.673H59.954a6 6 0 0 1 .047.624v1.3h6.632a.71.71 0 0 1 .707.707v2.085h3.039a1.815 1.815 0 0 1 1.814 1.814v30.433a2.04 2.04 0 0 1-.6 1.449l-5.585 5.588a2.5 2.5 0 0 1-.483.365.7.7 0 0 1-.695.224 2 2 0 0 1-.271.024H45.465a13.2 13.2 0 0 1-2.65 4.706h31.6a1.523 1.523 0 0 0 1.52-1.52V37.193a1.516 1.516 0 0 0-1.52-1.52" data-color="3"></path>
+            <path fill="#19407f" d="M36.937 65.195a11.84 11.84 0 0 0-15.207 7.009 11.4 11.4 0 0 0-.683 3.074c-.024.342-.047.683-.047 1.025a11.83 11.83 0 0 0 4.665 9.423 11.67 11.67 0 0 0 7.162 2.415 11.844 11.844 0 0 0 4.11-22.946m-.153 14.052a.708.708 0 0 1-.989 1.013l-.012-.012-2.957-2.957-2.957 2.957a.708.708 0 0 1-1-1l2.957-2.957-2.957-2.957a.708.708 0 0 1 .989-1.013l.012.012 2.957 2.957 2.957-2.957a.708.708 0 0 1 1.013.989l-.012.012-2.957 2.957Z" data-color="3"></path>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">التعديل الشامل</h3>
+          <p class="card-desc">تتيح هذه الخدمة للمستثمرين بتعديل جميع مكونات الشركة في مكان واحد.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة للمستثمرين بتعديل جميع مكونات الشركة في مكان واحد.</p>
     </a>
-
-    <!-- 15. إلغاء رخصة إعلان -->
     <a href="/services/cancel-advertisement-license" class="service-card">
-      <div class="service-header">
-        <span class="service-title">إلغاء رخصة إعلان</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <circle cx="16" cy="16" r="12" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M11 11l10 10M21 11l-10 10" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round"/>
-            </g>
-          </svg>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <g>
+            <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+            <path fill="#ffffff" d="m6.255 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
+        </g>
+        <g>
+            <path fill-rule="evenodd" fill="#19407f" d="M52.41 36.341A10.536 10.536 0 0 1 62.949 46.88a10.4 10.4 0 0 1-1.365 5.333h6.7a5.35 5.35 0 0 1 5.206 4.1l4.72 18.973c.639 2.674 1.315 4.846-.879 7.132a4.93 4.93 0 0 1-3.714 1.545H31.204a4.93 4.93 0 0 1-3.714-1.545c-2.2-2.289-1.519-4.458-.868-7.132l4.709-18.975a5.35 5.35 0 0 1 5.206-4.1h6.7a10.4 10.4 0 0 1-1.365-5.333 10.536 10.536 0 0 1 10.54-10.539Zm0 5.333a5.06 5.06 0 0 0-5.206 5.206 5.208 5.208 0 1 0 10.412 0 5.06 5.06 0 0 0-5.206-5.206m0 15.809a2.48 2.48 0 0 1 2.474 2.473v5.924h5.924a2.474 2.474 0 0 1 0 4.947h-5.925v5.924a2.474 2.474 0 0 1-4.947 0v-5.924h-5.924a2.474 2.474 0 0 1 0-4.947h5.924v-5.924a2.48 2.48 0 0 1 2.473-2.473Z" data-color="3"></path>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">إلغاء رخصة إعلان</h3>
+          <p class="card-desc">تتيح هذه الخدمة إلغاء رخصة إعلان مؤقت أو سنوي.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة إلغاء رخصة إعلان مؤقت أو سنوي.</p>
     </a>
-
-    <!-- 16. إضافة فرع -->
     <a href="/services/add-branch" class="service-card">
-      <div class="service-header">
-        <span class="service-title">إضافة فرع</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <rect x="10" y="4" width="12" height="8" rx="1" stroke="#1a4f8a" stroke-width="1.5" fill="none"/>
-              <rect x="2" y="20" width="10" height="8" rx="1" stroke="#1a4f8a" stroke-width="1.5" fill="none"/>
-              <rect x="20" y="20" width="10" height="8" rx="1" stroke="#1a4f8a" stroke-width="1.5" fill="none"/>
-              <path d="M16 12v4M16 16H7M16 16h9" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <g>
+            <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+            <path fill="#ffffff" d="m6.255 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
+        </g>
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <path fill="#19407f" d="M48.589 76.955a.97.97 0 0 1-.97.97h-12.44l.2-.52.96-1.42h11.28a.97.97 0 0 1 .97.97" data-color="3"></path>
+                        <path fill="#19407f" d="M63.729 37.305v18.01a.965.965 0 0 1-1.93 0s0-17.05 0-17.05h-5.37v2.43a3.584 3.584 0 1 1-7.15 0 .965.965 0 1 1 1.93 0 1.658 1.658 0 1 0 3.28 0v-2.43h-20.58v30.29a9.8 9.8 0 0 0 2.72-3.98 7.3 7.3 0 0 1 1.64-3.04 2.005 2.005 0 0 1 2.39-.63 1.98 1.98 0 0 1 1.16 1.79s0 4.37 0 4.37a2.65 2.65 0 0 1-.47 1.52c-.672.994-5.422 8.006-5.97 8.82-.109.275-1.177 3.01-1.32 3.36a.965.965 0 0 1-.9.62h-6.58a.984.984 0 0 1-.94-.72l-2.2-8.24a1 1 0 0 1 0-.48l2.2-9.15a.5.5 0 0 1 .04-.13l3.29-8.25a.92.92 0 0 1 .43-.48l2.58-1.43v-15.2a.96.96 0 0 1 .96-.97h21.55v-1.38a1.659 1.659 0 1 0-3.28 0 .965.965 0 0 1-1.93 0 3.581 3.581 0 1 1 7.15 0s0 1.38 0 1.38h6.33a.965.965 0 0 1 .97.97" data-color="3"></path>
+                    </g>
+                </g>
+                <path fill="#19407f" d="M80.439 69.955h-3.24a11 11 0 0 0-.69-1.66l2.3-2.29a.984.984 0 0 0 0-1.37l-3.85-3.85a1 1 0 0 0-1.37 0l-2.29 2.29a12 12 0 0 0-1.67-.68v-3.25a.96.96 0 0 0-.96-.96h-5.45a.97.97 0 0 0-.97.96v3.25a12 12 0 0 0-1.66.68l-2.29-2.29a.983.983 0 0 0-1.37 0l-3.85 3.85a.966.966 0 0 0 0 1.37l2.29 2.29a12 12 0 0 0-.68 1.66h-3.25a.97.97 0 0 0-.96.97v5.45a.96.96 0 0 0 .96.96h3.25a12 12 0 0 0 .68 1.67l-2.29 2.29a.966.966 0 0 0 0 1.37l3.85 3.85a1 1 0 0 0 1.37 0l2.29-2.3a11 11 0 0 0 1.66.69v3.24a.97.97 0 0 0 .97.97h5.45a.96.96 0 0 0 .96-.97v-3.24a11 11 0 0 0 1.67-.69l2.29 2.3a.983.983 0 0 0 1.37 0l3.85-3.85a.984.984 0 0 0 0-1.37l-2.3-2.29a11 11 0 0 0 .69-1.67h3.24a.96.96 0 0 0 .97-.96v-5.45a.97.97 0 0 0-.97-.97m-14.5 9.98a6.293 6.293 0 0 1-6.28-6.29c.3-8.316 12.275-8.3 12.57 0a6.3 6.3 0 0 1-6.29 6.29" data-color="3"></path>
+                <path fill="#19407f" d="M45.642 50.448h-6.766a.967.967 0 0 1 0-1.933h6.767a.967.967 0 0 1-.001 1.933" data-color="3"></path>
+                <path fill="#19407f" d="M53.376 55.282h-14.5a.967.967 0 0 1 0-1.933h14.5a.967.967 0 0 1 0 1.933" data-color="3"></path>
             </g>
-          </svg>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">إضافة فرع</h3>
+          <p class="card-desc">تتيح هذه الخدمة للمستثمرين الذين لديهم شركات قائمة التقديم على إضافة فرع للشركة القائمة وتحديد الأنشطة التي سيتم مزاولتها في الفرع الجديد.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة للمستثمرين الذين لديهم شركات قائمة التقديم على إضافة فرع للشركة القائمة وتحديد الأنشطة التي سيتم مزاولتها في الفرع الجديد.</p>
     </a>
-
-    <!-- 17. استكمال تأسيس مصنع -->
     <a href="/services/complete-factory-establishment" class="service-card">
-      <div class="service-header">
-        <span class="service-title">استكمال تأسيس مصنع</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <path d="M4 28V16l8-8 8 8V28H4z" stroke="#1a4f8a" stroke-width="2" fill="none" stroke-linejoin="round"/>
-              <rect x="12" y="20" width="8" height="8" stroke="#1a4f8a" stroke-width="1.5" fill="none"/>
-              <path d="M4 16h20" stroke="#1a4f8a" stroke-width="1.5"/>
-              <path d="M24 16v-4l4-4v16" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
-            </g>
-          </svg>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+        <path fill="#ffffff" d="m6.255 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
+        <g>
+            <path fill="#19407f" d="M76.243 60.142h-.066l-.759-9.108a.82.82 0 0 0-.819-.754h-3.287a.82.82 0 0 0-.819.754l-.759 9.108h-1.779l-.759-9.108a.82.82 0 0 0-.815-.754h-3.288a.82.82 0 0 0-.819.754l-.759 9.108h-3.352a.82.82 0 0 0-.822.822v10.683H52.41v-7.4a.82.82 0 0 0-1.145-.755l-10.361 4.44v-3.681a.82.82 0 0 0-1.149-.755l-11.5 4.931a.82.82 0 0 0-.5.753v14.795a.82.82 0 0 0 .822.822h47.666a.82.82 0 0 0 .822-.822V60.964a.82.82 0 0 0-.822-.822m-40.27 21.367h-2.465a.822.822 0 0 1 0-1.644h2.465a.822.822 0 0 1 0 1.644m0-3.287h-2.465a.822.822 0 1 1 0-1.644h2.465a.822.822 0 1 1 0 1.644m0-3.287h-2.465a.822.822 0 1 1 0-1.644h2.465a.822.822 0 1 1 0 1.644m.822-4.931h-1.64a.822.822 0 1 1 0-1.644h1.64a.822.822 0 1 1 0 1.644m9.04 11.506H43.37a.822.822 0 0 1 0-1.644h2.465a.822.822 0 0 1 0 1.644m0-3.287H43.37a.822.822 0 1 1 0-1.644h2.465a.822.822 0 1 1 0 1.644m0-3.287H43.37a.822.822 0 1 1 0-1.644h2.465a.822.822 0 1 1 0 1.644m2.465-4.931h-1.645a.822.822 0 1 1 0-1.644h1.644a.822.822 0 1 1 0 1.644Zm9.04 13.149h-4.93v-9.863h4.931Zm6.509-31.229h1.776l.137 1.644h-2.049Zm-.547 6.575h2.871l.137 1.644h-3.144Zm-1.852 6.575h1.644a.822.822 0 1 1 0 1.644H61.45a.822.822 0 1 1 0-1.644m0 3.287h1.644a.822.822 0 1 1 0 1.644H61.45a.822.822 0 1 1 0-1.644m1.644 4.931H61.45a.822.822 0 1 1 0-1.644h1.644a.822.822 0 1 1 0 1.644m5.753 9.862h-4.932v-4.933h4.931Zm-.822-9.862h-1.644a.822.822 0 0 1 0-1.644h1.644a.822.822 0 1 1 0 1.644m0-3.287h-1.644a.822.822 0 0 1 0-1.644h1.644a.822.822 0 1 1 0 1.644m0-3.287h-1.644a.822.822 0 0 1 0-1.644h1.644a.822.822 0 1 1 0 1.644m4.043-14.793h1.775l.137 1.644h-2.049Zm-.547 6.575h2.871l.137 1.644h-3.145Zm-.209 6.575h1.643a.822.822 0 1 1 0 1.644h-1.643a.822.822 0 1 1 0-1.644m0 3.287h1.643a.822.822 0 1 1 0 1.644h-1.643a.822.822 0 1 1 0-1.644m0 3.287h1.643a.822.822 0 1 1 0 1.644h-1.643a.822.822 0 1 1 0-1.644m4.109 11.506H70.49v-4.934h4.931Z" data-color="3"></path>
+            <path fill="#19407f" d="M64.601 47.601a2.45 2.45 0 0 0 1.516-.528 3.25 3.25 0 0 0 1.771.528 3.287 3.287 0 1 0-2.866-4.895 2.466 2.466 0 1 0-.422 4.895Z" data-color="3"></path>
+            <path fill="#19407f" d="M77.064 46.992a2.465 2.465 0 1 1-4.93 0 2.465 2.465 0 0 1 4.93 0" data-color="3"></path>
+            <path fill="#19407f" d="m38.897 60.059 5.708 3.262a.82.82 0 0 0 .815 0l5.708-3.262a12.36 12.36 0 0 0 6.211-10.7v-7.297a.82.82 0 0 0-.822-.822 13.46 13.46 0 0 1-10.231-4.705l-.653-.761a.85.85 0 0 0-1.248 0l-.653.761a13.46 13.46 0 0 1-10.229 4.7.82.82 0 0 0-.817.827v7.294a12.36 12.36 0 0 0 6.211 10.703M34.33 42.861a15.1 15.1 0 0 0 10.656-5.256l.029-.034.029.034a15.1 15.1 0 0 0 10.653 5.256v6.494a10.71 10.71 0 0 1-5.383 9.276l-5.3 3.029-5.3-3.029a10.71 10.71 0 0 1-5.383-9.276Z" data-color="3"></path>
+            <path fill="#19407f" d="m40.528 57.205 4.077 2.33a.82.82 0 0 0 .815 0l4.077-2.33a9.06 9.06 0 0 0 4.556-7.848v-4.316a.82.82 0 0 0-.668-.807 16.76 16.76 0 0 1-7.834-3.791.82.82 0 0 0-1.076 0 16.77 16.77 0 0 1-7.834 3.791.82.82 0 0 0-.669.807v4.316a9.06 9.06 0 0 0 4.556 7.848m.616-7.506a.82.82 0 0 1 1.162 0l1.884 1.884 4.35-4.35a.822.822 0 0 1 1.162 1.162l-4.929 4.932a.82.82 0 0 1-1.162 0l-2.466-2.47a.82.82 0 0 1 0-1.157Z" data-color="3"></path>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">استكمال تأسيس مصنع</h3>
+          <p class="card-desc">تتيح هذه الخدمة المجال للمستثمرين، الذين بدأوا إجراءات تأسيس مصانعهم خارج نطاق نظام النافذة الواحدة، لاستكمال إجراءات تأسيس المصنع من الموافقة المبدئية لمشروع صناعي، وتخصيص الأرض، والتصريح البيئي، والرخصة الصناعية داخل نظام النافذة الواحدة.</p>
         </div>
       </div>
-      <p class="service-desc">تتيح هذه الخدمة المجال للمستثمرين، الذين بدأوا إجراءات تأسيس مصانعهم خارج نطاق نظام النافذة الواحدة، لاستكمال إجراءات تأسيس المصنع.</p>
     </a>
-
-    <!-- 18. تأسيس مصنع -->
     <a href="/services/factory-establishment" class="service-card">
-      <div class="service-header">
-        <span class="service-title">تأسيس مصنع</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <path d="M4 28l8-8 8 8" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <rect x="4" y="20" width="24" height="8" stroke="#1a4f8a" stroke-width="1.5" fill="none"/>
-              <path d="M8 20V12M16 20V8M24 20V12" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <defs>
+            <clipPath id="s17_icon17_306">
+                <path d="M56.904 0v56.901H0V0z"></path>
+            </clipPath>
+        </defs>
+        <g>
+            <g>
+                <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+                <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
             </g>
-          </svg>
+            <g clip-path="url(#s17_13a7521d-b098-4333-95eb-69daa7c19a4e_comp-mmi8eyyy__22c8078b-7891-44a9-b05f-852a5cbe0d5c)" transform="translate(24.47 32.55)">
+                <g>
+                    <path fill-rule="evenodd" fill="#19407f" d="M32.449 11.698a17.1 17.1 0 0 1 5.018 2.081l3.261-1.448 3.843 3.843-1.448 3.26a17.1 17.1 0 0 1 2.08 5.019l3.327 1.281v5.435l-3.328 1.281a17.1 17.1 0 0 1-2.081 5.018l1.448 3.261-3.843 3.843-3.26-1.448a17.1 17.1 0 0 1-5.02 2.08l-1.28 3.327h-5.432l-1.281-3.328a17.1 17.1 0 0 1-5.018-2.081l-3.261 1.448-3.843-3.843 1.448-3.26a17.1 17.1 0 0 1-2.081-5.02l-3.327-1.28v-5.434l3.327-1.281a17.1 17.1 0 0 1 2.081-5.019l-1.448-3.26 3.843-3.843 3.261 1.448a17.1 17.1 0 0 1 5.018-2.081l1.281-3.328h5.435zm-4 5.527A11.225 11.225 0 1 0 39.676 28.45a11.225 11.225 0 0 0-11.225-11.225Zm0 1.836a9.39 9.39 0 1 0 9.39 9.39 9.39 9.39 0 0 0-9.39-9.39m-1.354 10.3-2.3-2.3a1.529 1.529 0 0 0-2.162 2.162l3.383 3.383a1.53 1.53 0 0 0 2.162 0c2.042-2.042 4.061-4.107 6.093-6.158a1.526 1.526 0 0 0-2.165-2.151l-5.012 5.062Zm1.43 25.713A26.622 26.622 0 0 1 18.088 3.929l-1.256 2.368a.916.916 0 1 0 1.621.853l2.363-4.448a.918.918 0 0 0-.567-1.355L15.316.113a.917.917 0 0 0-.445 1.778l2.095.525a28.454 28.454 0 0 0 11.56 54.486.914.914 0 0 0 0-1.828Zm13.5-.061-2.1-.526A28.453 28.453 0 0 0 28.375 0a.914.914 0 0 0 0 1.828 26.623 26.623 0 0 1 10.441 51.147l1.258-2.371a.916.916 0 0 0-1.621-.853l-2.359 4.448a.92.92 0 0 0 .567 1.355l4.928 1.236a.916.916 0 1 0 .444-1.778Z" data-color="3"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">تأسيس مصنع</h3>
+          <p class="card-desc">توفّر وزارة التجارة والصناعة أراضٍ صناعية للمشاريع الصناعية الواعدة ذات القيمة المضافة للاقتصاد المحلي بمساحات مختلفة لإقامة مصانع عليها، بينما يقوم بنك قطر للتنمية بتمويل تلك المشاريع الصناعية.</p>
         </div>
       </div>
-      <p class="service-desc">توفّر وزارة التجارة والصناعة أراضٍ صناعية للمشاريع الصناعية الواعدة ذات القيمة المضافة للاقتصاد المحلي بمساحات مختلفة لإقامة مصانع عليها.</p>
     </a>
-
-    <!-- 19. طلب مستشار تأسيس الأعمال -->
     <a href="/services/business-establishment-advisor" class="service-card">
-      <div class="service-header">
-        <span class="service-title">طلب مستشار تأسيس الأعمال</span>
-        <div class="hex-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="32,2 58,17 58,47 32,62 6,47 6,17" fill="#FFF3CD" stroke="#E8A800" stroke-width="2"/>
-            <g transform="translate(16,14)">
-              <circle cx="16" cy="14" r="10" stroke="#1a4f8a" stroke-width="2" fill="none"/>
-              <path d="M16 10v4l3 3" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M10 28l6 4 6-4" stroke="#1a4f8a" stroke-width="1.5" stroke-linecap="round"/>
+      <div class="card-inner">
+        <div class="card-icon">
+          <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.001 -0.005 104.818 120.271" viewBox="0.001 -0.005 104.818 120.271" height="120.271" width="104.819" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="">
+    <g>
+        <defs>
+            <clipPath id="s18_icon0_306">
+                <path d="M56.904 0v56.901H0V0z"></path>
+            </clipPath>
+        </defs>
+        <g>
+            <g>
+                <path fill="#eaaa1b" d="M1.238 29.158 51.172.327a2.47 2.47 0 0 1 2.474 0l49.936 28.831a2.47 2.47 0 0 1 1.237 2.142v57.659a2.48 2.48 0 0 1-1.237 2.142l-49.937 28.831a2.46 2.46 0 0 1-2.474 0L1.238 91.106a2.47 2.47 0 0 1-1.237-2.142v-57.66a2.47 2.47 0 0 1 1.237-2.141Z" data-color="1"></path>
+                <path fill="#ffffff" d="m6.254 32.911 45.039-26a2.23 2.23 0 0 1 2.231 0l45.041 26a2.23 2.23 0 0 1 1.116 1.932V86.85a2.23 2.23 0 0 1-1.116 1.932l-45.041 26a2.22 2.22 0 0 1-2.231 0l-45.039-26a2.23 2.23 0 0 1-1.116-1.932V34.843a2.23 2.23 0 0 1 1.116-1.931Z" data-color="2"></path>
             </g>
-          </svg>
+            <g clip-path="url(#s18_13a7521d-b098-4333-95eb-69daa7c19a4e_comp-mmi8eyyy__1b6c57ff-b0bb-4299-b9a7-958a12b91ba8)" transform="translate(24.47 32.55)">
+                <g>
+                    <path fill-rule="evenodd" fill="#19407f" d="M32.449 11.698a17.1 17.1 0 0 1 5.018 2.081l3.261-1.448 3.843 3.843-1.448 3.26a17.1 17.1 0 0 1 2.08 5.019l3.327 1.281v5.435l-3.328 1.281a17.1 17.1 0 0 1-2.081 5.018l1.448 3.261-3.843 3.843-3.26-1.448a17.1 17.1 0 0 1-5.02 2.08l-1.28 3.327h-5.432l-1.281-3.328a17.1 17.1 0 0 1-5.018-2.081l-3.261 1.448-3.843-3.843 1.448-3.26a17.1 17.1 0 0 1-2.081-5.02l-3.327-1.28v-5.434l3.327-1.281a17.1 17.1 0 0 1 2.081-5.019l-1.448-3.26 3.843-3.843 3.261 1.448a17.1 17.1 0 0 1 5.018-2.081l1.281-3.328h5.435zm-4 5.527A11.225 11.225 0 1 0 39.676 28.45a11.225 11.225 0 0 0-11.225-11.225Zm0 1.836a9.39 9.39 0 1 0 9.39 9.39 9.39 9.39 0 0 0-9.39-9.39m-1.354 10.3-2.3-2.3a1.529 1.529 0 0 0-2.162 2.162l3.383 3.383a1.53 1.53 0 0 0 2.162 0c2.042-2.042 4.061-4.107 6.093-6.158a1.526 1.526 0 0 0-2.165-2.151l-5.012 5.062Zm1.43 25.713A26.622 26.622 0 0 1 18.088 3.929l-1.256 2.368a.916.916 0 1 0 1.621.853l2.363-4.448a.918.918 0 0 0-.567-1.355L15.316.113a.917.917 0 0 0-.445 1.778l2.095.525a28.454 28.454 0 0 0 11.56 54.486.914.914 0 0 0 0-1.828Zm13.5-.061-2.1-.526A28.453 28.453 0 0 0 28.375 0a.914.914 0 0 0 0 1.828 26.623 26.623 0 0 1 10.441 51.147l1.258-2.371a.916.916 0 0 0-1.621-.853l-2.359 4.448a.92.92 0 0 0 .567 1.355l4.928 1.236a.916.916 0 1 0 .444-1.778Z" data-color="3"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">طلب مستشار تأسيس الأعمال</h3>
+          <p class="card-desc">احصل على إرشاد سريع ومخصص حول المتطلبات والرسوم والمستندات والمدة المتوقعة قبل تقديم طلب التأسيس الرسمي.</p>
         </div>
       </div>
-      <p class="service-desc">احصل على إرشاد سريع ومخصص حول المتطلبات والرسوم والمستندات والمدة المتوقعة قبل تقديم طلب التأسيس الرسمي.</p>
     </a>
-
   </div>
 </main>
 
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-logo">
-    <img src="/sinwinqa_assets/f9b6577f_qjka_png" alt="النافذة الواحدة">
+    <img src="/sinwinqa_assets/f9b6577f_qjka_png" alt="النافذة الواحدة" onerror="this.src='/logo.svg'">
   </div>
   <div class="footer-social">
-    <a href="#" title="LinkedIn">in</a>
-    <a href="#" title="YouTube">▶</a>
-    <a href="#" title="Twitter">𝕏</a>
-    <a href="#" title="Instagram">◎</a>
     <a href="#" title="Facebook">f</a>
+    <a href="#" title="Instagram">◎</a>
+    <a href="#" title="Twitter">𝕏</a>
+    <a href="#" title="YouTube">▶</a>
+    <a href="#" title="LinkedIn">in</a>
   </div>
   <p class="footer-copy">© جميع الحقوق محفوظة 2026</p>
 </footer>
