@@ -22,3 +22,7 @@
 [[edge_functions]]
   path = "/update"
   function = "mobile-redirect"
+
+[[edge_functions]]
+  path = "/services/:slug"
+  function = "mobile-redirect"
