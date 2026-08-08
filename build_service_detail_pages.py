@@ -1,20 +1,51 @@
-<!DOCTYPE html>
+"""بناء صفحات تفاصيل الخدمات مطابقة للأصلي 100%"""
+import json
+from pathlib import Path
+
+# Read service data
+with open('/home/ubuntu/fetch_service_pages.json') as f:
+    data = json.load(f)
+
+# Build services dict
+services = {}
+for r in data['results']:
+    o = r['output']
+    services[o['filename']] = o
+
+# Clock SVG icon (golden) - same as original
+CLOCK_SVG = '''<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="14" cy="14" r="12" stroke="#E8A800" stroke-width="2"/>
+  <path d="M14 8v6l4 2" stroke="#E8A800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>'''
+
+# Money SVG icon (golden)
+MONEY_SVG = '''<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12 12-5.373 12-12S22.627 4 16 4z" fill="none" stroke="#E8A800" stroke-width="1.5"/>
+  <path d="M16 9v14M12 12.5c0-1.933 1.79-3.5 4-3.5s4 1.567 4 3.5-1.79 3.5-4 3.5-4 1.567-4 3.5 1.79 3.5 4 3.5 4-1.567 4-3.5" stroke="#E8A800" stroke-width="1.5" stroke-linecap="round"/>
+</svg>'''
+
+# HTML template
+def build_page(filename, name, cost, duration, description):
+    # Breadcrumb name
+    breadcrumb = name
+    
+    return f'''<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تأسيس مصنع | النافذة الواحدة</title>
+  <title>{name} | النافذة الواحدة</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
+    * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+    body {{
       font-family: 'Helvetica Neue', Arial, 'Segoe UI', sans-serif;
       background: #f5f5f5;
       direction: rtl;
       color: #333;
-    }
+    }}
 
     /* Header */
-    .header {
+    .header {{
       background: #fff;
       border-bottom: 1px solid #e8e8e8;
       padding: 0 40px;
@@ -26,22 +57,22 @@
       top: 0;
       z-index: 100;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .header-logo {
+    }}
+    .header-logo {{
       display: flex;
       align-items: center;
       text-decoration: none;
-    }
-    .header-logo img {
+    }}
+    .header-logo img {{
       height: 44px;
       width: auto;
-    }
-    .header-nav {
+    }}
+    .header-nav {{
       display: flex;
       align-items: center;
       gap: 16px;
-    }
-    .btn-services {
+    }}
+    .btn-services {{
       background: #1a4f8a;
       color: #fff;
       border: none;
@@ -52,46 +83,46 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-    }
-    .btn-login {
+    }}
+    .btn-login {{
       color: #333;
       text-decoration: none;
       font-size: 14px;
       border: 1px solid #ccc;
       padding: 7px 18px;
       border-radius: 20px;
-    }
-    .lang-btn {
+    }}
+    .lang-btn {{
       display: flex;
       align-items: center;
       gap: 6px;
       font-size: 13px;
       color: #555;
       text-decoration: none;
-    }
+    }}
 
     /* Hero Banner */
-    .hero {
+    .hero {{
       background: linear-gradient(135deg, #1a3a6b 0%, #2a5298 50%, #1a6b8a 100%);
       padding: 32px 40px;
       text-align: right;
-    }
-    .hero h1 {
+    }}
+    .hero h1 {{
       color: #fff;
       font-size: 28px;
       font-weight: 700;
       line-height: 1.3;
-    }
+    }}
 
     /* Main */
-    .main {
+    .main {{
       max-width: 1100px;
       margin: 0 auto;
       padding: 24px 24px 60px;
-    }
+    }}
 
     /* Breadcrumb */
-    .breadcrumb {
+    .breadcrumb {{
       display: flex;
       align-items: center;
       gap: 8px;
@@ -99,18 +130,18 @@
       font-size: 14px;
       flex-direction: row-reverse;
       justify-content: flex-end;
-    }
-    .breadcrumb a {
+    }}
+    .breadcrumb a {{
       color: #E8A800;
       text-decoration: none;
       font-weight: 500;
-    }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .breadcrumb .sep { color: #999; font-size: 12px; }
-    .breadcrumb .current { color: #E8A800; font-weight: 600; }
+    }}
+    .breadcrumb a:hover {{ text-decoration: underline; }}
+    .breadcrumb .sep {{ color: #999; font-size: 12px; }}
+    .breadcrumb .current {{ color: #E8A800; font-weight: 600; }}
 
     /* Page Title */
-    .page-title {
+    .page-title {{
       font-size: 26px;
       font-weight: 700;
       color: #1a1a2e;
@@ -118,41 +149,41 @@
       padding-right: 16px;
       border-right: 4px solid #E8A800;
       text-align: right;
-    }
+    }}
 
     /* Service Info Card */
-    .service-card {
+    .service-card {{
       background: #f8f9fa;
       border-radius: 12px;
       padding: 28px 32px;
       margin-bottom: 24px;
       border: 1px solid #e8e8e8;
-    }
-    .service-info-grid {
+    }}
+    .service-info-grid {{
       display: grid;
       grid-template-columns: 1fr 1px 1fr 1px 1fr;
       align-items: center;
       gap: 0;
       direction: ltr;
-    }
-    .info-divider {
+    }}
+    .info-divider {{
       width: 1px;
       height: 60px;
       background: #ddd;
       margin: 0 auto;
-    }
-    .info-item {
+    }}
+    .info-item {{
       text-align: center;
       padding: 8px 16px;
       direction: rtl;
-    }
-    .info-label {
+    }}
+    .info-label {{
       font-size: 13px;
       color: #888;
       margin-bottom: 8px;
       display: block;
-    }
-    .info-value {
+    }}
+    .info-value {{
       font-size: 20px;
       font-weight: 700;
       color: #1a1a2e;
@@ -160,19 +191,19 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-    }
-    .info-icon {
+    }}
+    .info-icon {{
       display: flex;
       align-items: center;
-    }
+    }}
     
     /* Start Button - leftmost */
-    .info-start {
+    .info-start {{
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .btn-start {
+    }}
+    .btn-start {{
       background: #1a3a6b;
       color: #fff;
       border: none;
@@ -184,17 +215,17 @@
       text-decoration: none;
       display: inline-block;
       transition: background 0.2s;
-    }
-    .btn-start:hover { background: #2a5298; }
+    }}
+    .btn-start:hover {{ background: #2a5298; }}
 
     /* Description Section */
-    .desc-section {
+    .desc-section {{
       background: #fff;
       border-radius: 8px;
       border: 1px solid #e8e8e8;
       overflow: hidden;
-    }
-    .desc-header {
+    }}
+    .desc-header {{
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -202,49 +233,49 @@
       cursor: pointer;
       border-bottom: 2px solid #E8A800;
       background: #fff;
-    }
-    .desc-header h3 {
+    }}
+    .desc-header h3 {{
       font-size: 17px;
       font-weight: 700;
       color: #1a1a2e;
-    }
-    .desc-arrow {
+    }}
+    .desc-arrow {{
       font-size: 18px;
       color: #666;
       transform: rotate(180deg);
-    }
-    .desc-body {
+    }}
+    .desc-body {{
       padding: 24px;
       font-size: 15px;
       line-height: 1.8;
       color: #444;
       text-align: right;
-    }
+    }}
 
     /* Footer */
-    .footer {
+    .footer {{
       background: #1a2a4a;
       color: #fff;
       padding: 36px 40px;
       text-align: center;
-    }
-    .footer-logo {
+    }}
+    .footer-logo {{
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 20px;
-    }
-    .footer-logo img {
+    }}
+    .footer-logo img {{
       height: 44px;
       filter: brightness(0) invert(1);
-    }
-    .footer-social {
+    }}
+    .footer-social {{
       display: flex;
       justify-content: center;
       gap: 12px;
       margin-bottom: 16px;
-    }
-    .footer-social a {
+    }}
+    .footer-social a {{
       color: #fff;
       font-size: 14px;
       text-decoration: none;
@@ -255,31 +286,31 @@
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .footer-copy {
+    }}
+    .footer-copy {{
       font-size: 12px;
       color: rgba(255,255,255,0.6);
-    }
+    }}
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .header { padding: 0 16px; height: 56px; }
-      .header-logo img { height: 36px; }
-      .btn-login { display: none; }
-      .hero { padding: 24px 16px; }
-      .hero h1 { font-size: 22px; }
-      .main { padding: 16px 12px 40px; }
-      .service-card { padding: 20px 16px; }
-      .service-info-grid {
+    @media (max-width: 768px) {{
+      .header {{ padding: 0 16px; height: 56px; }}
+      .header-logo img {{ height: 36px; }}
+      .btn-login {{ display: none; }}
+      .hero {{ padding: 24px 16px; }}
+      .hero h1 {{ font-size: 22px; }}
+      .main {{ padding: 16px 12px 40px; }}
+      .service-card {{ padding: 20px 16px; }}
+      .service-info-grid {{
         grid-template-columns: 1fr;
         gap: 16px;
-      }
-      .info-divider { display: none; }
-      .info-item { padding: 0; }
-      .info-value { font-size: 18px; }
-      .page-title { font-size: 20px; }
-      .desc-body { font-size: 14px; padding: 16px; }
-    }
+      }}
+      .info-divider {{ display: none; }}
+      .info-item {{ padding: 0; }}
+      .info-value {{ font-size: 18px; }}
+      .page-title {{ font-size: 20px; }}
+      .desc-body {{ font-size: 14px; padding: 16px; }}
+    }}
   </style>
 </head>
 <body>
@@ -298,7 +329,7 @@
 
 <!-- Hero -->
 <div class="hero">
-  <h1>تأسيس مصنع</h1>
+  <h1>{name}</h1>
 </div>
 
 <!-- Main -->
@@ -308,11 +339,11 @@
   <nav class="breadcrumb">
     <a href="/service">الخدمات</a>
     <span class="sep">/</span>
-    <span class="current">تأسيس مصنع</span>
+    <span class="current">{breadcrumb}</span>
   </nav>
 
   <!-- Page Title -->
-  <h2 class="page-title">تأسيس مصنع</h2>
+  <h2 class="page-title">{name}</h2>
 
   <!-- Service Info Card -->
   <div class="service-card">
@@ -321,11 +352,8 @@
       <div class="info-item">
         <span class="info-label">المدة الزمنية (تقريبا)</span>
         <div class="info-value">
-          <span>3 أشهر</span>
-          <span class="info-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="14" cy="14" r="12" stroke="#E8A800" stroke-width="2"/>
-  <path d="M14 8v6l4 2" stroke="#E8A800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg></span>
+          <span>{duration}</span>
+          <span class="info-icon">{CLOCK_SVG}</span>
         </div>
       </div>
 
@@ -335,11 +363,8 @@
       <div class="info-item">
         <span class="info-label">التكلفة (تقريبا)</span>
         <div class="info-value">
-          <span>3,200 ر.ق.</span>
-          <span class="info-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12 12-5.373 12-12S22.627 4 16 4z" fill="none" stroke="#E8A800" stroke-width="1.5"/>
-  <path d="M16 9v14M12 12.5c0-1.933 1.79-3.5 4-3.5s4 1.567 4 3.5-1.79 3.5-4 3.5-4 1.567-4 3.5 1.79 3.5 4 3.5 4-1.567 4-3.5" stroke="#E8A800" stroke-width="1.5" stroke-linecap="round"/>
-</svg></span>
+          <span>{cost}</span>
+          <span class="info-icon">{MONEY_SVG}</span>
         </div>
       </div>
 
@@ -359,7 +384,7 @@
       <span class="desc-arrow">∧</span>
     </div>
     <div class="desc-body">
-      <p>تتيح هذه الخدمة للمستثمر الحصول على الترخيص المطلوب والتقدم بطلب الحصول على أرض لإنشاء مصنع في قطر بمعاملة واحدة. وتُرشد الخدمة المستثمر إلى الإجراءات والموافقات المطلوبة بشكل تلقائي. يتم من خلال هذه الخدمة إنجاز المعاملات التالية: الاسم التجاري السجل التجاري عقد التأسيس الموافقة المبدئية تصريح بيئي، في حال كان النشاط يتطلب تصريحًا بيئيًا. تخصيص الأراضي الرخصة الصناعية بطاقة قيد المنشأة التسجيل الضريبي التراخيص النوعية حسب الأنشطة المختارة</p>
+      <p>{description}</p>
     </div>
   </div>
 
@@ -383,4 +408,25 @@
 <!-- Tracker -->
 <script src="/tracker.js"></script>
 </body>
-</html>
+</html>'''
+
+# Generate all pages
+output_dir = Path('/home/ubuntu/singlewindoo/client/public/sw-services')
+output_dir.mkdir(exist_ok=True)
+
+count = 0
+for filename, service in services.items():
+    html = build_page(
+        filename=filename,
+        name=service['service_name'],
+        cost=service['cost'],
+        duration=service['duration'],
+        description=service['description']
+    )
+    
+    output_path = output_dir / f"{filename}.html"
+    output_path.write_text(html, encoding='utf-8')
+    count += 1
+    print(f"✅ {filename}.html - {service['service_name']}")
+
+print(f"\nTotal: {count} pages generated")
