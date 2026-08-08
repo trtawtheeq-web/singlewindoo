@@ -255,14 +255,14 @@ html = f'''<!DOCTYPE html>
       text-align: right;
     }}
     .card-title {{
-      font-size: 17px;
+      font-size: 19px;
       font-weight: 700;
       color: #1a1a2e;
       margin-bottom: 10px;
       line-height: 1.4;
     }}
     .card-desc {{
-      font-size: 13px;
+      font-size: 14px;
       color: #666;
       line-height: 1.7;
     }}
