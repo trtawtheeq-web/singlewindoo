@@ -40,7 +40,7 @@ def build_page(filename, name, cost, duration, description):
   <style>
     * {{ margin: 0; padding: 0; box-sizing: border-box; }}
     body {{
-      font-family: 'Helvetica Neue', Arial, 'Segoe UI', sans-serif;
+      font-family: 'janna-lt-w20-regular', Arial, sans-serif;
       background: #f5f5f5;
       direction: rtl;
       color: #333;
