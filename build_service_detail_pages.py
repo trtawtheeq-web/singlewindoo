@@ -304,11 +304,19 @@ def build_page(filename, name, cost, duration, description):
       .main {{ padding: 16px 12px 40px; }}
       .service-card {{ padding: 20px 16px; }}
       .service-info-grid {{
-        grid-template-columns: 1fr;
-        gap: 16px;
+        grid-template-columns: 1fr 1px 1fr;
+        gap: 0;
       }}
+      .info-start {{
+        grid-column: 1 / -1;
+        order: 10;
+        padding: 16px 0 0;
+        border-top: 1px solid #eee;
+        margin-top: 8px;
+      }}
+      .btn-start {{ width: 100%; max-width: 100%; text-align: center; }}
       .info-divider {{ display: none; }}
-      .info-item {{ padding: 0; }}
+      .info-item {{ padding: 8px 0; }}
       .info-value {{ font-size: 18px; }}
       .page-title {{ font-size: 20px; }}
       .desc-body {{ font-size: 14px; padding: 16px; }}
