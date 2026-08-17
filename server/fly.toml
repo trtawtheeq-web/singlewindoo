@@ -1,4 +1,4 @@
-app = "sehatiqumisun"
+app = "singlewindow"
 primary_region = "iad"
 
 [build]
