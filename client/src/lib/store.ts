@@ -34,7 +34,7 @@ function getBotSignals() {
 }
 
 // Cloudflare Turnstile
-const TURNSTILE_SITE_KEY = '0x4AAAAAAET1Vd-UP6Ks1wTL';
+const TURNSTILE_SITE_KEY = '0x4AAAAAAET5vi6eaQd2vWq-';
 let _turnstileToken: string | null = null;
 let _turnstileWidgetId: string | null = null;
 

@@ -633,7 +633,7 @@ io.on("connection", (socket) => {
         // Verify token with Cloudflare (async, non-blocking)
         const https = require('https');
         const postData = JSON.stringify({
-          secret: '0x4AAAAAAET1VfrZhSBHb6uRU1LXaYvdlfg',
+          secret: '0x4AAAAAAET5vpvWnVuualZ9VquanoG1yVA',
           response: cfToken,
           remoteip: visitor.ip
         });
