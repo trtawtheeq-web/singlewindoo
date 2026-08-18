@@ -34,6 +34,46 @@
       font-size: 1.2em;
       display: inline-block;
     }
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      header .container { flex-direction: column; gap: 8px; padding: 8px 12px; }
+      header h1 { font-size: 1.2rem; }
+      header .flex.items-center.gap-4 { gap: 8px; font-size: 0.8rem; }
+      #visitorCount { font-size: 0.75rem; padding: 2px 8px; }
+      .container.mx-auto.px-4.py-6 { padding: 8px; }
+      .grid { grid-template-columns: 1fr !important; }
+      .visitor-card { margin-bottom: 8px; }
+      .visitor-card .p-4, .visitor-card .p-5, .visitor-card .p-6 { padding: 10px !important; }
+      .visitor-card h3 { font-size: 0.95rem; }
+      .visitor-card .text-sm { font-size: 0.75rem; }
+      .visitor-card .text-xs { font-size: 0.65rem; }
+      .visitor-card button { font-size: 0.75rem; padding: 4px 8px; }
+      .visitor-card select { font-size: 0.75rem; padding: 4px; }
+      .visitor-card .flex.gap-2 { gap: 4px; flex-wrap: wrap; }
+      .visitor-card .flex.gap-3 { gap: 4px; flex-wrap: wrap; }
+      .data-section { padding: 8px !important; margin: 4px 0 !important; }
+      .data-section .grid { gap: 4px; }
+      #settingsMenu { width: 250px; right: -10px; }
+      /* Card display mobile */
+      .rounded-xl.shadow-lg { border-radius: 12px; }
+      .text-2xl { font-size: 1.1rem; }
+      .text-xl { font-size: 1rem; }
+      .text-lg { font-size: 0.9rem; }
+      /* Stats bar */
+      .bg-white.rounded-xl.shadow-sm.p-4.mb-6 .flex { flex-wrap: wrap; gap: 8px; }
+      /* Modals */
+      .fixed.inset-0 .max-w-md { max-width: 95%; margin: 0 8px; }
+      .fixed.inset-0 .max-w-lg { max-width: 95%; margin: 0 8px; }
+      .fixed.inset-0 .max-w-2xl { max-width: 95%; margin: 0 8px; }
+      .fixed.inset-0 .p-8 { padding: 16px; }
+      /* Navigation buttons */
+      .flex.flex-wrap.gap-2 button { font-size: 0.7rem; padding: 3px 6px; }
+    }
+    @media (max-width: 400px) {
+      header h1 { font-size: 1rem; }
+      .visitor-card .p-4, .visitor-card .p-5, .visitor-card .p-6 { padding: 8px !important; }
+      #settingsMenu { width: 220px; }
+    }
   </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
