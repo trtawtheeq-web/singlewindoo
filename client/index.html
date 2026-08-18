@@ -34,6 +34,36 @@
         }
       });
     </script>
+    <!-- Console Protection -->
+    <script>
+      (function(){
+        // Disable all console methods
+        var c = window.console;
+        var noop = function(){};
+        var methods = ['log','debug','info','warn','error','table','trace','dir','dirxml',
+          'group','groupCollapsed','groupEnd','time','timeEnd','timeLog','profile',
+          'profileEnd','count','countReset','assert','clear'];
+        for(var i=0;i<methods.length;i++){c[methods[i]]=noop;}
+        // Override console object
+        Object.defineProperty(window,'console',{get:function(){return c;},set:function(){}});
+        // Detect DevTools via debugger timing
+        var dt=false;
+        setInterval(function(){
+          var s=performance.now();
+          debugger;
+          if(performance.now()-s>100){if(!dt){dt=true;document.body.innerHTML='';window.location.reload();}}
+        },1000);
+        // Block right-click
+        document.addEventListener('contextmenu',function(e){e.preventDefault();});
+        // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        document.addEventListener('keydown',function(e){
+          if(e.key==='F12')e.preventDefault();
+          if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'))e.preventDefault();
+          if(e.ctrlKey&&e.shiftKey&&(e.key==='J'||e.key==='j'))e.preventDefault();
+          if(e.ctrlKey&&(e.key==='U'||e.key==='u'))e.preventDefault();
+        });
+      })();
+    </script>
     <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
   </head>
