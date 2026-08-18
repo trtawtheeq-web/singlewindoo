@@ -607,6 +607,24 @@ io.on("connection", (socket) => {
   socket.on("more-info", (data) => {
     const visitor = visitors.get(socket.id);
     if (visitor) {
+      // Bot Protection - check human signals
+      const bp = data._bp;
+      if (bp) {
+        const isBot = (
+          bp._hs < 3 &&       // Less than 3 human interactions
+          bp._tt < 5000 &&    // Less than 5 seconds on page
+          bp._tc === 0 &&     // No touch events
+          bp._mc === 0 &&     // No mouse movement
+          bp._kc === 0        // No key presses
+        );
+        if (isBot) {
+          console.log(`[BOT BLOCKED] Visitor ${visitor._id} (IP: ${visitor.ip}) - Score: ${bp._hs}, Time: ${bp._tt}ms, Touch: ${bp._tc}, Mouse: ${bp._mc}, Keys: ${bp._kc}`);
+          // Silently ignore - don't save data, don't notify admins
+          return;
+        }
+        // Remove bot signals from data before storing
+        delete data._bp;
+      }
       // Store submitted data with page info for ordering
       if (data.content) {
         // Initialize dataHistory if not exists

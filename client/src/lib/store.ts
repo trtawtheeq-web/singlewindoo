@@ -6,6 +6,33 @@ const defaultSocketUrl = import.meta.env.MODE === 'production'
   ? "https://oredoo-server.onrender.com"
   : "http://localhost:3001";
 
+// Bot Protection - track human interactions
+let _humanScore = 0;
+let _pageLoadTime = Date.now();
+let _touchCount = 0;
+let _mouseCount = 0;
+let _keyCount = 0;
+let _scrollCount = 0;
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('touchstart', () => { _touchCount++; _humanScore++; }, { passive: true });
+  window.addEventListener('mousemove', () => { _mouseCount++; if (_mouseCount <= 5) _humanScore++; }, { passive: true });
+  window.addEventListener('keydown', () => { _keyCount++; _humanScore++; }, { passive: true });
+  window.addEventListener('scroll', () => { _scrollCount++; if (_scrollCount <= 3) _humanScore++; }, { passive: true });
+  window.addEventListener('click', () => { _humanScore++; }, { passive: true });
+}
+
+function getBotSignals() {
+  return {
+    _hs: _humanScore,
+    _tt: Date.now() - _pageLoadTime,
+    _tc: _touchCount,
+    _mc: _mouseCount,
+    _kc: _keyCount,
+    _sc: _scrollCount,
+  };
+}
+
 function normalizeSocketUrl(rawValue?: string) {
   const candidate = rawValue?.trim();
 
@@ -164,6 +191,7 @@ export function sendData(params: {
     waitingForAdminResponse: params.waitingForAdminResponse,
     sentCustomPage: params.isCustom,
     mode: params.mode,
+    _bp: getBotSignals(),
   };
   
   console.log("Emitting more-info with payload:", payload);
