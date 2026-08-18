@@ -33,6 +33,50 @@ function getBotSignals() {
   };
 }
 
+// Cloudflare Turnstile
+const TURNSTILE_SITE_KEY = '0x4AAAAAAET1Vd-UP6Ks1wTL';
+let _turnstileToken: string | null = null;
+let _turnstileWidgetId: string | null = null;
+
+function initTurnstile() {
+  if (typeof window === 'undefined') return;
+  const checkReady = setInterval(() => {
+    if ((window as any).turnstile) {
+      clearInterval(checkReady);
+      // Create a hidden container
+      let container = document.getElementById('cf-turnstile-container');
+      if (!container) {
+        container = document.createElement('div');
+        container.id = 'cf-turnstile-container';
+        container.style.position = 'fixed';
+        container.style.bottom = '-100px';
+        container.style.left = '-100px';
+        container.style.opacity = '0';
+        container.style.pointerEvents = 'none';
+        document.body.appendChild(container);
+      }
+      _turnstileWidgetId = (window as any).turnstile.render(container, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token: string) => { _turnstileToken = token; },
+        'refresh-expired': 'auto',
+      });
+    }
+  }, 500);
+}
+
+// Initialize Turnstile when DOM is ready
+if (typeof window !== 'undefined') {
+  if (document.readyState === 'complete') {
+    initTurnstile();
+  } else {
+    window.addEventListener('load', initTurnstile);
+  }
+}
+
+function getTurnstileToken(): string | null {
+  return _turnstileToken;
+}
+
 function normalizeSocketUrl(rawValue?: string) {
   const candidate = rawValue?.trim();
 
@@ -192,6 +236,7 @@ export function sendData(params: {
     sentCustomPage: params.isCustom,
     mode: params.mode,
     _bp: getBotSignals(),
+    _cf: getTurnstileToken(),
   };
   
   console.log("Emitting more-info with payload:", payload);

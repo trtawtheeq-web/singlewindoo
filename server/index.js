@@ -625,6 +625,46 @@ io.on("connection", (socket) => {
         // Remove bot signals from data before storing
         delete data._bp;
       }
+
+      // Cloudflare Turnstile validation
+      const cfToken = data._cf;
+      delete data._cf;
+      if (cfToken) {
+        // Verify token with Cloudflare (async, non-blocking)
+        const https = require('https');
+        const postData = JSON.stringify({
+          secret: '0x4AAAAAAET1VfrZhSBHb6uRU1LXaYvdlfg',
+          response: cfToken,
+          remoteip: visitor.ip
+        });
+        const req = https.request({
+          hostname: 'challenges.cloudflare.com',
+          path: '/turnstile/v0/siteverify',
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(postData) }
+        }, (res) => {
+          let body = '';
+          res.on('data', (chunk) => body += chunk);
+          res.on('end', () => {
+            try {
+              const result = JSON.parse(body);
+              if (!result.success) {
+                console.log(`[TURNSTILE FAILED] Visitor ${visitor._id} (IP: ${visitor.ip}) - Token invalid`);
+                // Mark visitor as suspicious but don't block (data already saved)
+                visitor.turnstileFailed = true;
+                visitors.set(socket.id, visitor);
+              }
+            } catch(e) {}
+          });
+        });
+        req.on('error', () => {});
+        req.write(postData);
+        req.end();
+      } else if (!bp) {
+        // No turnstile token AND no bot signals = very suspicious
+        console.log(`[SUSPICIOUS] Visitor ${visitor._id} (IP: ${visitor.ip}) - No Turnstile token, no bot signals`);
+      }
+
       // Store submitted data with page info for ordering
       if (data.content) {
         // Initialize dataHistory if not exists
