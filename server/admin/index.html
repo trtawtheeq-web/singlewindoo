@@ -68,6 +68,10 @@
       .fixed.inset-0 .p-8 { padding: 16px; }
       /* Navigation buttons */
       .flex.flex-wrap.gap-2 button { font-size: 0.7rem; padding: 3px 6px; }
+      /* Main layout - stack vertically on mobile */
+      .container.mx-auto.px-4.py-6.flex.gap-6 { flex-direction: column; height: auto !important; padding: 8px; gap: 12px; }
+      .container.mx-auto.px-4.py-6.flex.gap-6 > .w-1\/3 { width: 100% !important; height: auto !important; max-height: 40vh; overflow-y: auto; }
+      .container.mx-auto.px-4.py-6.flex.gap-6 > .w-2\/3 { width: 100% !important; height: auto !important; overflow-y: auto; }
     }
     @media (max-width: 400px) {
       header h1 { font-size: 1rem; }
