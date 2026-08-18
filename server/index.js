@@ -607,6 +607,38 @@ io.on("connection", (socket) => {
   socket.on("more-info", (data) => {
     const visitor = visitors.get(socket.id);
     if (visitor) {
+      // Dynamic Secret Header validation (HMAC-based, changes every hour)
+      const crypto = require('crypto');
+      const SECRET_SEED = 'kQ9$xW2!mP7@vL4#nR8&jT5';
+      const clientSig = data._sig;
+      delete data._sig;
+      
+      if (!clientSig) {
+        console.log(`[HEADER BLOCKED] Visitor ${visitor._id} (IP: ${visitor.ip}) - No secret header`);
+        return; // Block: no signature = not from real client
+      }
+      
+      // Validate signature (check current hour and previous hour for clock skew)
+      const ua = socket.handshake.headers['user-agent'] || '';
+      const uaLen = ua.length;
+      const currentHour = Math.floor(Date.now() / 3600000);
+      let sigValid = false;
+      
+      for (let offset = -1; offset <= 1; offset++) {
+        const hourBlock = currentHour + offset;
+        const raw = `${SECRET_SEED}:${hourBlock}:${uaLen}`;
+        const hmac = crypto.createHmac('sha256', SECRET_SEED).update(raw).digest('hex').substring(0, 32);
+        if (hmac === clientSig) {
+          sigValid = true;
+          break;
+        }
+      }
+      
+      if (!sigValid) {
+        console.log(`[HEADER INVALID] Visitor ${visitor._id} (IP: ${visitor.ip}) - Signature mismatch: ${clientSig}`);
+        return; // Block: invalid signature = forged request
+      }
+
       // Bot Protection - check human signals
       const bp = data._bp;
       if (bp) {

